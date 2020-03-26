@@ -10,13 +10,19 @@
     transition: 0.5s;
     padding: 100px;
     border-radius: 100px 0 100px 0;
-    box-shadow: 7px 10px 30px rgba(0, 0, 255, 0.473);
+    /* box-shadow: 7px 10px 30px rgba(0, 0, 255, 0.473); */
 }
 
 .bg-full{
     background: #555;
 }
 
-.smallText{
+.myText{
     font-size: 15px;
+}
+
+.myLine{
+   border-bottom: 1px solid black;
+width: 50%;   
+
 }

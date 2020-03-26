@@ -29,7 +29,7 @@ export default function MaterialSignin() {
                 <Zoom >
                     <div className="d-flex bg-full bg-light flex-column gerd">
                         {/* <TextField required id="standard-required" label="Required" defaultValue="Hello World" /> */}
-
+                        <h2 className="mb-5" >Sign In</h2>
                         <TextField
                             id="standard-email-input"
                             label="Email"
@@ -46,7 +46,7 @@ export default function MaterialSignin() {
                         />
 
                         <button className="btn btn-primary mt-4" type="submit">Submit</button>
-                        <small className="mt-5 smallText">You are not registered yet? <a href="/">Signup</a></small>
+                        <small className="mt-5 myText">You are not registered yet? <a href="/">Signup</a></small>
 
                     </div>
 
