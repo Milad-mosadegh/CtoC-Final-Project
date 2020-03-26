@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import '../../App.css'
+import './style.css'
 import Zoom from 'react-reveal/Zoom'
 
 import './style.css'
@@ -13,8 +14,6 @@ const useStyles = makeStyles(theme => ({
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
             width: '25ch',
-
-
         },
 
     },
@@ -24,11 +23,11 @@ export default function MaterialSignin() {
     const classes = useStyles();
 
     return (
-        <div className='App-header backc'>
+        <div className='App-header bg-full '>
             <form className={classes.root} noValidate autoComplete="off" onSubmit={submitHandler}>
 
                 <Zoom >
-                    <div className="d-flex shadow-lg p-5 flex-column gerd">
+                    <div className="d-flex bg-full bg-light flex-column gerd">
                         {/* <TextField required id="standard-required" label="Required" defaultValue="Hello World" /> */}
 
                         <TextField
@@ -47,7 +46,7 @@ export default function MaterialSignin() {
                         />
 
                         <button className="btn btn-primary mt-4" type="submit">Submit</button>
-                        <small className="mt-5">You are not registered yet? <a href="/">Signup</a> </small>
+                        <small className="mt-5 smallText">You are not registered yet? <a href="/">Signup</a></small>
 
                     </div>
 

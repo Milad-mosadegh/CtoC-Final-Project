@@ -22,10 +22,10 @@ export default function MaterialSignup() {
     const classes = useStyles();
 
     return (
-        <div className='App-header backc'>
+        <div className='App-header bg-full'>
             <form className={classes.root} noValidate autoComplete="off">
                 <Zoom >
-                    <div className="d-flex shadow-lg p-5 flex-column gerd text-light">
+                    <div className="d-flex bg-light flex-column gerd text-light">
                         {/* <TextField required id="standard-required" label="Required" defaultValue="Hello World" /> */}
 
                         <TextField
@@ -82,7 +82,7 @@ export default function MaterialSignup() {
                         />
 
                         <button className="btn btn-primary mt-4">Submit</button>
-                        <small className="mt-5">You have already Account? <a href="/">Signin</a> </small>
+                        <small className="mt-5 smallText text-dark">You have already Account? <a href="/">Signin</a> </small>
 
                     </div>
 
