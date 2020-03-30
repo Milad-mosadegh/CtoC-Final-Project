@@ -7,7 +7,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 
 const MyNavbar = (props) => {
     return (
-        <div>
+        <div >
             <Navbar className="bg-dark p-4 fixed-top" expand="lg">
                 <Navbar.Brand className="text-uppercase milad" href="#home" >C to C</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

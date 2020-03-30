@@ -21,6 +21,10 @@
     font-size: 15px;
 }
 
+.sText{
+    font-size: 9px;
+}
+
 .myLine{
    border-bottom: 1px solid black;
 width: 50%;   

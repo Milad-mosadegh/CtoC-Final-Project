@@ -4,8 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import '../../App.css'
 import './style.css'
 import Zoom from 'react-reveal/Zoom'
-
-import './style.css'
 import POST from '../lib/post';
 
 

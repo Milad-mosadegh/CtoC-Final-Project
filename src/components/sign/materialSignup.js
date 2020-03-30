@@ -105,7 +105,7 @@ export default function MaterialSignup() {
                             value={firstName}
                             onChange={changeHandler}
                         />
-                        <smail>{error === "firstName" ? <p>Attention! name must consist on 3 or more alphabets</p> : null}</smail>
+                        <smail className="sText">{error === "firstName" ? <p>Attention! name must consist on 3 or more alphabets</p> : null}</smail>
 
                         <TextField
                             id="standard-name-input"
@@ -116,7 +116,7 @@ export default function MaterialSignup() {
                             value={lastName}
                             onChange={changeHandler}
                         />
-                        <smail>{error === "lastName" ? <p>Attention! name must consist on 3 or more alphabets</p> : null}</smail>
+                        <smail className="sText">{error === "lastName" ? <p>Attention! name must consist on 3 or more alphabets</p> : null}</smail>
                         <TextField
                             id="standard-email-input"
                             label="Email"
@@ -126,7 +126,7 @@ export default function MaterialSignup() {
                             value={email}
                             onChange={changeHandler}
                         />
-                        <smail>{error === "email" ? <p>Attention! please provide a valid email address</p> : null}</smail>
+                        <smail className="sText">{error === "email" ? <p>Attention! please provide a valid email address</p> : null}</smail>
                         <TextField
                             id="standard-password-input"
                             label="Password"
@@ -136,7 +136,7 @@ export default function MaterialSignup() {
                             value={pass}
                             onChange={changeHandler}
                         />
-                        <smail>{error === "pass" ? <p>Attention! password length must be from 6 to 12 characters.</p> : null}</smail>
+                        <smail className="sText">{error === "pass" ? <p>Attention! password length must be from 6 to 12 characters.</p> : null}</smail>
 
                         <TextField
                             id="standard-password-input"
@@ -147,7 +147,7 @@ export default function MaterialSignup() {
                             value={confirmPass}
                             onChange={changeHandler}
                         />
-                        <smail>{error === "confirmPass" ? <p>Attention! password and confirm passowrd must be same.</p> : null}</smail>
+                        <smail className="sText">{error === "confirmPass" ? <p>Attention! password and confirm passowrd must be same.</p> : null}</smail>
 
                         <button className="btn btn-primary mt-4" type='submit'>Submit</button>
                         <small className="mt-5 myText text-dark">You have already Account? <a href="/">Signin</a> </small>
