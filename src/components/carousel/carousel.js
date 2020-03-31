@@ -1,14 +1,16 @@
 import React from 'react';
-
+import Pic1 from '../../images/signin-bg.jpg'
 import { Carousel } from 'react-bootstrap'
+import './caroStyle.css'
+
 const MyCarousel = () => {
     return (
         <div>
             <Carousel>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100"
-                        src="holder.js/800x400?text=First slide&bg=373940"
+                        className="d-block w-100 caroImage"
+                        src={Pic1}
                         alt="First slide"
                     />
                     <Carousel.Caption>
@@ -18,8 +20,8 @@ const MyCarousel = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100"
-                        src=""
+                        className="d-block w-100 caroImage"
+                        src={Pic1}
                         alt="Third slide"
                     />
 
@@ -30,8 +32,8 @@ const MyCarousel = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100"
-                        src="holder.js/800x400?text=Third slide&bg=20232a"
+                        className="d-block w-100 caroImage"
+                        src={Pic1}
                         alt="Third slide"
                     />
 

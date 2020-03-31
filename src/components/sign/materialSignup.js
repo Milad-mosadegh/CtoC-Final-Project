@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import '../../App.css'
 import POST from "../lib/post";
 import Zoom from 'react-reveal/Zoom'
+import unknown from 'react-reveal/Zoom'
 
 import './style.css'
 
@@ -19,17 +20,18 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function MaterialSignup() {
+export default function MaterialSignup(props) {
     const classes = useStyles();
-
+    console.log("these are props", props)
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [confirmPass, setconfirmPass] = useState("");
-    const [error, setError] = useState("");
-    const [formError, setFormError] = useState(true);
+    const [error, setError] = useState(true);
+    const [formError, setFormError] = useState(unknown);
 
+    const formData = { firstName, lastName, email, pass };
 
 
     const changeHandler = e => {
@@ -69,28 +71,28 @@ export default function MaterialSignup() {
             default:
                 break;
         }
+        let hasEmptyFields = false;
+        Object.keys(formData).forEach(d => {
+            hasEmptyFields = hasEmptyFields || !formData[d]
+        });
+        setFormError(hasEmptyFields);
     }
 
     const submitHandler = async (e) => {
-
         e.preventDefault();
-
         if (!error) {
-            const formData = { firstName, lastName, email, pass }
-            Object.keys(formData).map(d => {
-                if (formData[d] === "") setFormError(true)
-                else setFormError(false)
-            })
-            if (formError === true) return
-            else {
+            if (!formError) {
                 const response = await POST("/api/auth/signup", formData)
-                console.log(response)
+                if (response.data.status === "success") {
+                    props.history.push(`/signin`);
+                }
+                else if (response.data.status === "failed") alert("sorry this email address is already registered with us")
             }
         }
     }
     return (
         <div id="signup" className='App-header bg-full'>
-            <form className={classes.root} noValidate autoComplete="off">
+            <form className={classes.root} noValidate autoComplete="off" onSubmit={submitHandler}>
                 <Zoom >
 
                     <div className="d-flex bg-light flex-column gerd ">
@@ -150,6 +152,7 @@ export default function MaterialSignup() {
                         <smail className="sText">{error === "confirmPass" ? <p>Attention! password and confirm passowrd must be same.</p> : null}</smail>
 
                         <button className="btn btn-primary mt-4" type='submit'>Submit</button>
+                        <small className="sText">{formError === true ? <p>Attention! please fill all fields.</p> : null}</small>
                         <small className="mt-5 myText text-dark">You have already Account? <a href="/">Signin</a> </small>
 
                     </div>

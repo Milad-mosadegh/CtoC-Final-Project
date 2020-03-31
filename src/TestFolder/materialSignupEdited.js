@@ -5,6 +5,7 @@ import '../../App.css';
 import Zoom             from 'react-reveal/Zoom';
 import POST             from "../lib/post";
 import './style.css'
+import unknown from 'react-reveal/Zoom';
 
 
 
@@ -19,17 +20,18 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function MaterialSignup() {
+export default function MaterialSignup(props) {
     const classes = useStyles();
-
+    console.log("these are props",props)
     const [firstName,       setFirstName] = useState("");
     const [lastName,         setLastName] = useState("");
     const [email,               setEmail] = useState("");
     const [pass,                 setPass] = useState("");
     const [confirmPass,   setconfirmPass] = useState("");
-    const [error,               setError] = useState("");
-    const [formError,       setFormError] = useState(true);
+    const [error,               setError] = useState(true);
+    const [formError,       setFormError] = useState(unknown);
 
+    const formData = { firstName, lastName, email, pass };
 
 
     const changeHandler=e=>{
@@ -69,24 +71,24 @@ export default function MaterialSignup() {
             default:
                     break;
         }
-     }
+        let hasEmptyFields = false;
+        Object.keys(formData).forEach( d => {
+            hasEmptyFields = hasEmptyFields || !formData[d]
+        });
+        setFormError(hasEmptyFields);
+    }
 
-    const submitHandler = async(e)=>{
-    
-            e.preventDefault();
-
-            if(!error) {
-                const formData ={firstName,lastName,email, pass}
-                Object.keys(formData).map(d=>{
-                            if(formData[d]==="") setFormError(true)
-                                else setFormError(false)})
-                if(formError===true) return
-                    else {
-                        const response = await POST("/api/auth/signup",formData)
-                        console.log(response)
-                }
+    const submitHandler = async(e)=> {
+        e.preventDefault();
+        if( !error ) {
+            if( !formError )  {
+                const response = await POST("/api/auth/signup",formData)
+                if(response.data.status==="success") {
+                    props.history.push(`/signin`);}
+                else if(response.data.status==="failed") alert("sorry this email address is already registered with us")
             }
         }
+    }
 
     return (
         <div className='App-header backc'>
@@ -154,6 +156,7 @@ export default function MaterialSignup() {
                         {error==="confirmPass"?<p>Attention! password and confirm passowrd must be same.</p>:null}
 
                         <button className="btn btn-primary mt-4" type="submit">Submit</button>
+                        {formError===true?<p>Attention! please fill all fields.</p>:null}
                         <small className="mt-5">Already Registered? <a href="/">Signin</a> </small>
                     </div>
                 </Zoom>
