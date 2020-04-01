@@ -1,58 +1,84 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Link, Redirect } from 'react-router-dom'
 
 import '../navbar/NavStyle.css'
 
 import { Navbar, Nav } from 'react-bootstrap';
 
 const MyNavbar = (props) => {
-    const [auth, setAuth] = useState(true)
-    const [username, setusername] = useState("")
+    console.log("props in navbar", props);
+    const [auth, setAuth] = useState("")
+    const [path, setPath] = useState("")
+    const [username, setUsername] = useState("")
+
+    
+    const logoutHandler = () => {
+        localStorage.removeItem('c2c-token')
+        setAuth(false)
+        props.history.push("/")
+    }
+
+    const loginHandler = () => {
+        console.log('1234',props.history,props);
+        
+        props.history.push("/signin")
+        setAuth(false)
+    }
+
+    const signupHandler = () => {
+        props.history.push("/signup")
+    }
+
+    useEffect(() => {
+        if (localStorage.getItem("c2c-token")) setAuth(true)
+        else setAuth(false)
+        if(props.location) {
+            console.log("props address", props.location.pathname)
+            setPath(props.location.pathname)
+        }
+    }, [])
 
     return (
-        <div >
-            <Router>
-                <Navbar className="bg-dark p-2 fixed-top" expand="lg">
-                    <Navbar.Brand className="text-uppercase text-light" href="#home" style={{ padding: "10px" }} >C to C</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
-                            <Link to='/'>
-                                <Nav.Link id="home" className="text-light text-uppercase" href="#home">Home</Nav.Link>
-                            </Link>
-                            <Link to='/sell'>
-                                <Nav.Link id="sell" className="text-light text-uppercase" href="#sell">Sell</Nav.Link>
-                            </Link>
-                            <Link to='/buy'>
-                                <Nav.Link id="buy" className="text-light text-uppercase" href="#buy">Buy</Nav.Link>
-                            </Link>
-                            <Link to='/contact'>
-                                <Nav.Link id="contact" className="text-light text-uppercase" href="#contact">Contact</Nav.Link>
-                            </Link>
-                            <Link to="/account">
-                                {auth ?
-                                    <Nav.Link id="account" className="text-light text-uppercase" href="#account">Account</Nav.Link>
-                                    :
-                                    null
-                                }
-                            </Link>
-
-                        </Nav>
-                        <Nav.Link className="text-light justify-content-center">
-                            {auth ? username : null}
+        <div>
+            <Navbar className="bg-dark p-2 fixed-top" expand="lg">
+                <Navbar.Brand className="text-uppercase text-light" style={{ padding: "10px" }} >C to C</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Nav.Link id="home" >
+                            <Link className="text-light text-uppercase" to="/">Home</Link>
                         </Nav.Link>
-                        <Nav className="float-right">
-                            <Link to="/signin">
-                                <Nav.Link href="#signin" className=" btn btn-danger text-light">
-                                    {auth ? "Logout" : "Signin"}
-                                </Nav.Link>
-                            </Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
-            </Router>
-        </div >
-    );
-}
+                        <Nav.Link id="sellitems" >
+                            <Link className="text-light text-uppercase" to="/sellitems">Sell</Link>
+                        </Nav.Link>
+                      
+                        <Nav.Link id="buy" >
+                            <Link className="text-light text-uppercase" to='/buy'>Buy</Link>
+                        </Nav.Link>
+                        <Nav.Link id="contact" >
+                            <Link className="text-light text-uppercase" to='/contact'>Contact</Link>
+                        </Nav.Link>
+                    </Nav>
 
+                    {auth ?
+
+                        <Nav className="float-right">
+                            <Nav.Link><Link className="text-light text-uppercase" to="/account">Account</Link></Nav.Link>
+                            <Nav.Link className="text-light justify-content-center ">{username}</Nav.Link>
+                            <Nav.Link className="btn btn-danger text-light " onClick={logoutHandler}>Log out</Nav.Link>
+                        </Nav>
+
+                        :
+                        <Nav className="float-right">
+                            {path === "/signin" ?
+                                    <Nav.Link className="btn btn-danger text-light " onClick={signupHandler}>Signup</Nav.Link>
+                                :   <Nav.Link className="btn btn-danger text-light " onClick={loginHandler}>Signin</Nav.Link>
+                            }
+                        </Nav>
+                    }
+
+
+                </Navbar.Collapse></Navbar>
+        </div>)
+}
 export default MyNavbar;

@@ -32,10 +32,10 @@ const LastSeen = () => {
                 addRefrence: "fdsfsdfdsf"
             }])
 
-    })
+    }, [])
 
     return (
-        <div className="container mt-5 p-3">
+        <div className="container mt-5 p-3 text-center">
             <div >
                 <h2>Last Seen Products</h2>
             </div>

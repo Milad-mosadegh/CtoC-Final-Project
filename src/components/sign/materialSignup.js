@@ -7,6 +7,7 @@ import Zoom from 'react-reveal/Zoom'
 import unknown from 'react-reveal/Zoom'
 
 import './style.css'
+import MyNavbar from '../navbar/navBar';
 
 
 const useStyles = makeStyles(theme => ({
@@ -91,74 +92,77 @@ export default function MaterialSignup(props) {
         }
     }
     return (
-        <div id="signup" className='App-header bg-full'>
-            <form className={classes.root} noValidate autoComplete="off" onSubmit={submitHandler}>
-                <Zoom >
+        <div>
+            <MyNavbar {...props} />
+            <div id="signup" className='App-header bg-full'>
+                <form className={classes.root} noValidate autoComplete="off" onSubmit={submitHandler}>
+                    <Zoom >
 
-                    <div className="d-flex bg-light flex-column gerd ">
-                        {/* <TextField required id="standard-required" label="Required" defaultValue="Hello World" /> */}
-                        <h2 className="mb-5" >Sign Up</h2>
-                        <TextField
-                            id="standard-name-input"
-                            label="First Name"
-                            type="name"
-                            autoComplete="current-name"
-                            name="firstName"
-                            value={firstName}
-                            onChange={changeHandler}
-                        />
-                        <smail className="sText">{error === "firstName" ? <p>Attention! name must consist on 3 or more alphabets</p> : null}</smail>
+                        <div className="d-flex bg-light flex-column gerd ">
+                            {/* <TextField required id="standard-required" label="Required" defaultValue="Hello World" /> */}
+                            <h2 className="mb-5" >Sign Up</h2>
+                            <TextField
+                                id="standard-name-input"
+                                label="First Name"
+                                type="name"
+                                autoComplete="current-name"
+                                name="firstName"
+                                value={firstName}
+                                onChange={changeHandler}
+                            />
+                            <smail className="sText">{error === "firstName" ? <p>Attention! name must consist on 3 or more alphabets</p> : null}</smail>
 
-                        <TextField
-                            id="standard-name-input"
-                            label="Last Name"
-                            type="name"
-                            autoComplete="current-name"
-                            name="lastName"
-                            value={lastName}
-                            onChange={changeHandler}
-                        />
-                        <smail className="sText">{error === "lastName" ? <p>Attention! name must consist on 3 or more alphabets</p> : null}</smail>
-                        <TextField
-                            id="standard-email-input"
-                            label="Email"
-                            type="email"
-                            autoComplete="current-email"
-                            name="email"
-                            value={email}
-                            onChange={changeHandler}
-                        />
-                        <smail className="sText">{error === "email" ? <p>Attention! please provide a valid email address</p> : null}</smail>
-                        <TextField
-                            id="standard-password-input"
-                            label="Password"
-                            type="password"
-                            autoComplete="current-password"
-                            name="pass"
-                            value={pass}
-                            onChange={changeHandler}
-                        />
-                        <smail className="sText">{error === "pass" ? <p>Attention! password length must be from 6 to 12 characters.</p> : null}</smail>
+                            <TextField
+                                id="standard-name-input"
+                                label="Last Name"
+                                type="name"
+                                autoComplete="current-name"
+                                name="lastName"
+                                value={lastName}
+                                onChange={changeHandler}
+                            />
+                            <smail className="sText">{error === "lastName" ? <p>Attention! name must consist on 3 or more alphabets</p> : null}</smail>
+                            <TextField
+                                id="standard-email-input"
+                                label="Email"
+                                type="email"
+                                autoComplete="current-email"
+                                name="email"
+                                value={email}
+                                onChange={changeHandler}
+                            />
+                            <smail className="sText">{error === "email" ? <p>Attention! please provide a valid email address</p> : null}</smail>
+                            <TextField
+                                id="standard-password-input"
+                                label="Password"
+                                type="password"
+                                autoComplete="current-password"
+                                name="pass"
+                                value={pass}
+                                onChange={changeHandler}
+                            />
+                            <smail className="sText">{error === "pass" ? <p>Attention! password length must be from 6 to 12 characters.</p> : null}</smail>
 
-                        <TextField
-                            id="standard-password-input"
-                            label="Confirm Password"
-                            type="password"
-                            autoComplete="current-password"
-                            name="confirmPass"
-                            value={confirmPass}
-                            onChange={changeHandler}
-                        />
-                        <smail className="sText">{error === "confirmPass" ? <p>Attention! password and confirm passowrd must be same.</p> : null}</smail>
+                            <TextField
+                                id="standard-password-input"
+                                label="Confirm Password"
+                                type="password"
+                                autoComplete="current-password"
+                                name="confirmPass"
+                                value={confirmPass}
+                                onChange={changeHandler}
+                            />
+                            <smail className="sText">{error === "confirmPass" ? <p>Attention! password and confirm passowrd must be same.</p> : null}</smail>
 
-                        <button className="btn btn-primary mt-4" type='submit'>Submit</button>
-                        <small className="sText">{formError === true ? <p>Attention! please fill all fields.</p> : null}</small>
-                        <small className="mt-5 myText text-dark">You have already Account? <a href="/">Signin</a> </small>
+                            <button className="btn btn-primary mt-4" type='submit'>Submit</button>
+                            <small className="sText">{formError === true ? <p>Attention! please fill all fields.</p> : null}</small>
+                            <small className="mt-5 myText text-dark">You have already Account? <a href="/signin">Signin</a> </small>
 
-                    </div>
+                        </div>
 
-                </Zoom>
-            </form>
+                    </Zoom>
+                </form>
+                </div>
         </div>
     );
 }

@@ -5,23 +5,26 @@ import PopularProduct from './PopularProduct';
 import LastSeen from './LastSeen';
 import SearchBar from '../SearchBar/searchbar';
 import Categories from './Categories';
+import MyNavbar from '../navbar/navBar';
 
 
-const Home = () => {
+
+
+const Home = (props) => {
 
     const [auth, setAuth] = useState(true)
     return (
         <div style={{ height: "100vh" }} >
-
-
+            <MyNavbar {...props} />
             <div className="container" style={{ marginTop: "20px" }} >
-
                 <MyCarousel />
                 <SearchBar />
             </div>
             <PopularProduct />
             {auth ? <LastSeen /> : null}
-            <Categories title="MIlad" />
+            <Categories />
+          
+
         </div>
     );
 }

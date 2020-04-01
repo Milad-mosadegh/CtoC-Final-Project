@@ -1,8 +1,14 @@
 import React from 'react';
+import MyNavbar from '../navbar/navBar';
 
-const Dashboard = () => {
+
+const Dashboard = (props) => {
     return (
-        <h1>Milad Msoadesdofnva</h1>
+        <div>
+            <MyNavbar {...props} />
+            <h1>Milad Msoadesdofnva</h1>
+        </div>
+
     );
 }
 

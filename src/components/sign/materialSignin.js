@@ -7,6 +7,10 @@ import Zoom from 'react-reveal/Zoom'
 import POST from '../lib/post';
 
 
+import { BrowserRouter as Router, Link } from 'react-router-dom'
+import MyNavbar from '../navbar/navBar';
+
+
 const useStyles = makeStyles(theme => ({
     root: {
         '& .MuiTextField-root': {
@@ -60,43 +64,46 @@ export default function MaterialSignin(props) {
         }
     }
     return (
-        <div id="signin" className='App-header bg-full '>
-            <form className={classes.root} noValidate autoComplete="off" onSubmit={submitHandler}>
+        <div>
+            <MyNavbar {...props} />
+            <div id="signin" className='App-header bg-full '>
+                <form className={classes.root} noValidate autoComplete="off" onSubmit={submitHandler}>
 
-                <Zoom >
-                    <div className="d-flex bg-full bg-light flex-column gerd">
-                        {/* <TextField required id="standard-required" label="Required" defaultValue="Hello World" /> */}
-                        <h2 className="mb-5" >Sign In</h2>
-                        <TextField
-                            id="standard-email-input"
-                            label="Email"
-                            type="email"
-                            autoComplete="current-email"
-                            name="email"
-                            value={email}
-                            onChange={changeHandler}
-                        />
-                        <smail className="sText">{error === "email" ? <p>Attention! please provide a valid email address</p> : null}</smail>
+                    <Zoom >
+                        <div className="d-flex bg-full bg-light flex-column gerd">
+                            {/* <TextField required id="standard-required" label="Required" defaultValue="Hello World" /> */}
+                            <h2 className="mb-5" >Sign In</h2>
+                            <TextField
+                                id="standard-email-input"
+                                label="Email"
+                                type="email"
+                                autoComplete="current-email"
+                                name="email"
+                                value={email}
+                                onChange={changeHandler}
+                            />
+                            <smail className="sText">{error === "email" ? <p>Attention! please provide a valid email address</p> : null}</smail>
 
-                        <TextField
-                            id="standard-password-input"
-                            label="Password"
-                            type="password"
-                            autoComplete="current-password"
-                            name="pass"
-                            value={pass}
-                            onChange={changeHandler}
-                        />
+                            <TextField
+                                id="standard-password-input"
+                                label="Password"
+                                type="password"
+                                autoComplete="current-password"
+                                name="pass"
+                                value={pass}
+                                onChange={changeHandler}
+                            />
 
-                        <button className="btn btn-primary mt-4 mb-2" type="submit">Sign in</button>
-                        <smail className="sText">{error === "formError" ? <p>Attention! please fill all fields.</p> : null}</smail>
+                            <button className="btn btn-primary mt-4 mb-2" type="submit">Sign in</button>
+                            <smail className="sText">{error === "formError" ? <p>Attention! please fill all fields.</p> : null}</smail>
 
-                        <small className="mt-5 myText">You are not registered yet? <a href="/">Signup</a></small>
+                            <small className="mt-5 myText">You are not registered yet? <a href="/signup">Signup</a></small>
 
-                    </div>
+                        </div>
 
-                </Zoom>
-            </form>
+                    </Zoom>
+                </form>
+            </div>
         </div>
     );
 }

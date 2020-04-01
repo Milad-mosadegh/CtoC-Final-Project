@@ -34,10 +34,10 @@ const PopularProduct = (props) => {
                 addRefrence: "fdsfsdfdsf"
             }])
 
-    })
+    }, [])
 
     return (
-        <div className="container mt-5 p-3">
+        <div className="container mt-5 text-center ">
             <div >
                 <h2>Popular Product</h2>
             </div>

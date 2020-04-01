@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button } from 'react-bootstrap';
-
+import './cards.css'
 const ItemCard = (props) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("")
@@ -12,12 +12,12 @@ const ItemCard = (props) => {
         setDescription(props.description)
         setImage(props.image)
         setAddRefrence(props.addRefrence)
-    })
+    }, [])
 
     return (
-        <div className="mt-5">
+        <div className="mt-5 d-flex shadow-lg">
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={image} />
+                <Card.Img className="cat-image" variant="top" src={image} />
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     {description ?
