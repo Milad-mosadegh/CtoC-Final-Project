@@ -15,14 +15,6 @@ import MainAcc from './components/accountFolder/mainAcc';
 
 
 function App() {
-
-
-
-  useEffect(() => {
-    if (localStorage.getItem("c2c-token")) console.log("token available")
-
-  }, [])
-
   return (
     <div >
 
