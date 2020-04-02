@@ -10,6 +10,7 @@ connectDB();
 app.use(bodyParser.json());
 app.use("/api/auth", require("./router/auth"))
 app.use("/api/dashboard", require("./router/dashboard"))
+app.use("/api/sell", require("./router/sell"))
 
 
 app.listen(5000, () => {

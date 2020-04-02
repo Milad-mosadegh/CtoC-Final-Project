@@ -41,7 +41,7 @@ const PopularProduct = (props) => {
             <div >
                 <h2>Popular Product</h2>
             </div>
-            <div className="d-flex">
+            <div className="d-flex mb-4">
                 {popProducts ? popProducts.map(data =>
                     <ItemCard
                         image={data.image}

@@ -9,6 +9,14 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import MyNavbar from '../navbar/navBar';
 import MyProfile from './profile';
+import Messages from './Message/message';
+
+
+import '../../App.css'
+import MainActivity from './activity/main';
+import ItemCard from '../LandigPage/ItemCard';
+import Zoom from 'react-reveal/Zoom';
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -61,44 +69,59 @@ export default function MainAcc(props) {
     };
 
     return (
-        <div className="container">
-            <MyNavbar {...props}/>
-            <div className={classes.root} style={{marginTop:"100px"}}>
-                <AppBar position="relative" color="default">
-                    <Tabs
-                        value={value}
-                        onChange={handleChange}
-                        indicatorColor="primary"
-                        textColor="primary"
-                        variant="fullWidth"
-                        aria-label="full width tabs example"
-                    >
-                        <Tab label="Profile" {...a11yProps(0)} />
-                        <Tab label="Message" {...a11yProps(1)} />
-                        <Tab label="Activity" {...a11yProps(2)} />
-                        <Tab label="Favorit" {...a11yProps(3)} />
-                    </Tabs>
-                </AppBar>
-                <SwipeableViews
-                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                    index={value}
-                    onChangeIndex={handleChangeIndex}
-                >
-                    <TabPanel value={value} index={0} dir={theme.direction}>
-                        <MyProfile/>
-            </TabPanel>
-                    <TabPanel value={value} index={1} dir={theme.direction}>
-                        Item Two
-            </TabPanel>
-                    <TabPanel value={value} index={2} dir={theme.direction}>
-                        Item Three
-            </TabPanel>
-                    
-                    <TabPanel value={value} index={3} dir={theme.direction}>
-                        Item Three
-            </TabPanel>
-                    
-                </SwipeableViews>
+        <div >
+            <div className="container ">
+                <MyNavbar {...props} />
+                <div className="mt-5">
+                    <div className={classes.root} >
+                        <AppBar position="relative" color="default">
+                            <Tabs
+                                value={value}
+                                onChange={handleChange}
+                                indicatorColor="primary"
+                                textColor="primary"
+                                variant="fullWidth"
+                                aria-label="full width tabs example"
+                            >
+                                <Tab label="Profile" {...a11yProps(0)} />
+                                <Tab label="Message" {...a11yProps(1)} />
+                                <Tab label="Activity" {...a11yProps(2)} />
+                                <Tab label="Favorit" {...a11yProps(3)} />
+                            </Tabs>
+                        </AppBar>
+                        <SwipeableViews
+                            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                            index={value}
+                            onChangeIndex={handleChangeIndex}
+                        >
+                            <TabPanel value={value} index={0} dir={theme.direction}>
+                                <MyProfile />
+                            </TabPanel>
+                            <TabPanel value={value} index={1} dir={theme.direction}>
+                                <Messages />
+                            </TabPanel>
+                            <TabPanel value={value} index={2} dir={theme.direction}>
+                                <MainActivity />
+                            </TabPanel>
+
+                            <TabPanel value={value} index={3} dir={theme.direction}>
+                                <Zoom>
+                                    <div className="d-flex">
+                                        <div className="row text-center">
+                                            <ItemCard title="MIlad" />
+                                            <ItemCard title="MIlad" />
+                                            <ItemCard title="MIlad" />
+                                            <ItemCard title="MIlad" />
+                                            <ItemCard title="MIlad" />
+                                            <ItemCard title="MIlad" />
+                                        </div>
+                                    </div>
+                                </Zoom>
+                            </TabPanel>
+
+                        </SwipeableViews>
+                    </div>
+                </div>
             </div>
         </div>
     );

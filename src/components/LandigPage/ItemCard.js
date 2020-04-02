@@ -33,7 +33,6 @@ const ItemCard = (props) => {
                 </Card.Body>
             </Card>
 
-
         </div>
     );
 }

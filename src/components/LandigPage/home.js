@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import MyCarousel from '../carousel/carousel';
 import PopularProduct from './PopularProduct';
@@ -11,8 +11,11 @@ import MyNavbar from '../navbar/navBar';
 
 
 const Home = (props) => {
+    const [auth, setAuth] = useState(false)
 
-    const [auth, setAuth] = useState(true)
+    useEffect(() => {
+        if (localStorage.getItem("c2c-token")) setAuth(true)
+    }, [])
     return (
         <div style={{ height: "100vh" }} >
             <MyNavbar {...props} />
@@ -23,8 +26,6 @@ const Home = (props) => {
             <PopularProduct />
             {auth ? <LastSeen /> : null}
             <Categories />
-          
-
         </div>
     );
 }

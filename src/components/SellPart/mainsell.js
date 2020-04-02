@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Form, Col, InputGroup, FormControl } from 'react-bootstrap'
+import { post } from "axios"
+import POST from "../lib/post"
+import ImageCard from "./imageCard"
 
 
 import './style.css'
@@ -14,13 +17,28 @@ const MainSell = (props) => {
     const [color, setColor] = useState("")
     const [price, setPrice] = useState("")
     const [description, setDescription] = useState("")
+    const [images, setImages] = useState()
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        console.log(e.target.category.value)
+        console.log("image s", e.target.imageFiles.value)
+        const response = await POST("/api/sell/postAdd")
+        console.log("response from seell", response)
     }
     const cancelHandler = () => {
         props.history.push("/")
+    }
+    const changeHandler = (e) => {
+        console.log("you reached change in sell", e.target.value)
+    }
+    const fileSelectedHandler = async (e) => {
+        if (e.target.files) {
+            let reader = new FileReader()
+            reader.onload = (e) => {
+                setImages(e.target.result)
+            }
+            reader.readAsDataURL(e.target.files[0])
+        }
     }
     return (
         <div className="posi">
@@ -33,14 +51,14 @@ const MainSell = (props) => {
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="formGridEmail">
                                         <Form.Label>Title</Form.Label>
-                                        <Form.Control name="title" type="text" placeholder="Enter Tilte" />
+                                        <Form.Control name="title" type="text" placeholder="Enter Tilte" onChange={changeHandler} />
                                     </Form.Group>
                                 </Form.Row>
                                 {/*  */}
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="formGridState">
                                         <Form.Label>Categories</Form.Label>
-                                        <Form.Control as="select" name="category">
+                                        <Form.Control as="select" name="category" onChange={changeHandler}>
                                             <option value="0">All Categories</option>
                                             <option value="1">Antiques</option>
                                             <option value="2">Art</option>
@@ -69,7 +87,7 @@ const MainSell = (props) => {
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="formGridState">
                                         <Form.Label>Condition</Form.Label>
-                                        <Form.Control as="select" name="condition">
+                                        <Form.Control as="select" name="condition" onChange={changeHandler}>
                                             <option value="used">Used</option>
                                             <option value="new">New</option>
                                         </Form.Control>
@@ -77,7 +95,7 @@ const MainSell = (props) => {
                                     {/*  */}
                                     <Form.Group controlId="formGridAddress1">
                                         <Form.Label>Quantity</Form.Label>
-                                        <Form.Control type="text" placeholder="Quantity" name="quantity" />
+                                        <Form.Control type="text" placeholder="Quantity" name="quantity" onChange={changeHandler} />
                                     </Form.Group>
 
                                 </Form.Row>
@@ -86,7 +104,7 @@ const MainSell = (props) => {
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="formGridState">
                                         <Form.Label>Color</Form.Label>
-                                        <Form.Control as="select" name="color">
+                                        <Form.Control as="select" name="color" onChange={changeHandler}>
                                             <option value="red">Red</option>
                                             <option value="black">Black</option>
                                             <option value="white">White</option>
@@ -104,11 +122,11 @@ const MainSell = (props) => {
                                 <Form.Label>Price</Form.Label>
                             </Form.Group>
  */}
-                                <InputGroup className="col-md-6 col-sm-12 mb-3">
+                                <InputGroup className="mb-3">
                                     <InputGroup.Prepend>
                                         <InputGroup.Text>$</InputGroup.Text>
                                     </InputGroup.Prepend>
-                                    <FormControl aria-label="Amount (to the nearest dollar)" name="price" />
+                                    <FormControl aria-label="Amount (to the nearest dollar)" name="price" onChange={changeHandler} />
 
                                 </InputGroup>
 
@@ -116,31 +134,25 @@ const MainSell = (props) => {
                                     <InputGroup.Prepend>
                                         <InputGroup.Text>Description</InputGroup.Text>
                                     </InputGroup.Prepend>
-                                    <FormControl as="textarea" aria-label="With textarea" name="description" />
+                                    <FormControl as="textarea" aria-label="With textarea" name="description" onChange={changeHandler} />
                                 </InputGroup>
 
                             </div>
                             {/*  */}
                             <div className="p-5" >
                                 <div className="mb-3 mt-5">
-                                    <div className="d-flex text-center">
-                                        <div className="boxes m-1">Image 1</div>
-                                        <div className="boxes m-1">Image 2</div>
-                                        <div className="boxes m-1">Image 3</div>
+                                    <div className="d-flex text-center">{console.log("imagesss", images)}
+                                        <ImageCard className="boxes m-1" />
+                                        <ImageCard className="boxes m-1" />
+                                        <ImageCard className="boxes m-1" />
                                     </div>
 
                                     <div className="d-flex mb-5 text-center">
-                                        <div className="boxes m-1">Image 4</div>
-                                        <div className="boxes m-1">Image 5</div>
-                                        <div className="boxes m-1">Image 6</div>
+                                        <ImageCard className="boxes m-1" />
+                                        <ImageCard className="boxes m-1" />
+                                        <ImageCard className="boxes m-1" />
                                     </div>
-                                    <Form.File id="formcheck-api-custom" custom>
-                                        <Form.File.Input />
-                                        <Form.File.Label name="imageFiles" data-browse="Upload Image">
-                                            Custom file input
-                                </Form.File.Label>
-                                        <Form.Control.Feedback type="valid">You did it!</Form.Control.Feedback>
-                                    </Form.File>
+
                                 </div>
 
                                 <Button variant="primary m-2" type="submit">
