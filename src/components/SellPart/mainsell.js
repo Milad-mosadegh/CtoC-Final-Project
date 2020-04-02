@@ -104,7 +104,7 @@ const MainSell = (props) => {
                                 <Form.Label>Price</Form.Label>
                             </Form.Group>
  */}
-                                <InputGroup className="mb-3">
+                                <InputGroup className="col-md-6 col-sm-12 mb-3">
                                     <InputGroup.Prepend>
                                         <InputGroup.Text>$</InputGroup.Text>
                                     </InputGroup.Prepend>
