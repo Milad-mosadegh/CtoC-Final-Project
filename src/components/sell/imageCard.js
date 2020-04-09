@@ -21,7 +21,7 @@ const ImageCard = (props) => {
         reader.onloadend = (e)=>{
             setImage(reader.result)
         }
-       props.imageChangeHandler(e.target.files[0])
+       props.imageChangeHandler({image:e.target.files[0], id:e.target.id})
        
     }
     const inputHandler =(e)=>{

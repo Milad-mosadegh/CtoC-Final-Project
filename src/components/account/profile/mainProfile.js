@@ -37,7 +37,6 @@ const MyProfile = (props) => {
                 if(response.data.status==="success") {
                     setAuth(true)
                     setProfile(response.data.data)
-                    console.log("ig eti n profile,", response.data)
                          }
                     else setAuth(false)
 
@@ -48,9 +47,9 @@ const MyProfile = (props) => {
                     }          
         }
 
-     getData();  
-     console.log("image in profile",image)
-
+     if(localStorage.getItem("c2c-token")) getData();
+        else props.history.push("/signin")
+     
         
     },[])
 
@@ -119,7 +118,7 @@ const MyProfile = (props) => {
         }
 
     const imageChangeHandler =  ( image) => {
-        setProfile({...profile, profileImage:image})
+        setProfile({...profile, profileImage:image.image})
         setAvatarChange(true)
     }
    

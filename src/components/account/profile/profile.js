@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState} from 'react';
 import './../styles.css'
 import { Form,Button,Col } from 'react-bootstrap';
 import ImageCard from '../../sell/imageCard';
@@ -15,7 +15,7 @@ const ProfileData = (props) => {
             
             <fieldset id="fieldset" disabled="disabled">
             <div className="w-25 ">
-            <ImageCard image={profile.profileImage} edit={true} id={"img1"} imageChangeHandler={imageChangeHandler}/>
+            <ImageCard image={profile.profileImage} edit={true} id={"1"} imageChangeHandler={imageChangeHandler}/>
             
             </div> 
                 <Form.Row >
