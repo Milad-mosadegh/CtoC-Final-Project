@@ -2,9 +2,9 @@ import React from 'react';
 
 import { ArrowRight } from 'react-bootstrap-icons'
 
-const Footer = () => {
+const Footer = (props) => {
     return (
-        <div className='fixed-bottom bg-dark text-light' >
+        <div className='fixed-bottom bg-dark text-light'>
             <h3>You Can Find Us Here</h3>
             <div className="d-flex justify-content-around">
 
@@ -12,6 +12,7 @@ const Footer = () => {
                 <h3><a href="/">Ather Ahmad</a></h3>
 
             </div>
+        </div>
         
     );
 }

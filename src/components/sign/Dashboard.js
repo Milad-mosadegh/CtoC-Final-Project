@@ -1,12 +1,12 @@
 import React from 'react';
 import MyNavbar from '../navbar/navBar';
+import Home from '../landingpage/home';
 
 
 const Dashboard = (props) => {
     return (
         <div>
-            <MyNavbar {...props} />
-            <h1>Milad Msoadesdofnva</h1>
+            <Home {...props}/>
         </div>
 
     );

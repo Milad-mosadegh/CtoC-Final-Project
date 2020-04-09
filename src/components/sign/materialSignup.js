@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import '../../App.css'
-import POST from "../lib/post";
+import {POST} from "../lib/post";
 import Zoom from 'react-reveal/Zoom'
 import unknown from 'react-reveal/Zoom'
 
@@ -23,7 +23,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function MaterialSignup(props) {
     const classes = useStyles();
-    console.log("these are props", props)
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -84,10 +83,11 @@ export default function MaterialSignup(props) {
         if (!error) {
             if (!formError) {
                 const response = await POST("/api/auth/signup", formData)
-                if (response.data.status === "success") {
+                /* if (response.data.status === "success") {
                     props.history.push(`/signin`);
                 }
-                else if (response.data.status === "failed") alert("sorry this email address is already registered with us")
+                else if (response.data.status === "failed") alert("sorry this email address is already registered with us") */
+                console.log("response in signup", response)
             }
         }
     }

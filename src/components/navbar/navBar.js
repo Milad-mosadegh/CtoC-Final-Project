@@ -1,39 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Redirect } from 'react-router-dom'
-
-import '../navbar/NavStyle.css'
-
+import '../navbar/styles.css'
 import { Navbar, Nav } from 'react-bootstrap';
+import GET from '../lib/get';
 
 const MyNavbar = (props) => {
-    console.log("props in navbar", props);
     const [auth, setAuth] = useState("")
     const [path, setPath] = useState("")
     const [username, setUsername] = useState("")
-
     
     const logoutHandler = () => {
         localStorage.removeItem('c2c-token')
         setAuth(false)
-        props.history.push("/")
+        if(props)props.history.push("/")
+
     }
 
     const loginHandler = () => {
-        console.log('1234',props.history,props);
-        
-        props.history.push("/signin")
-        setAuth(false)
+        if(props) props.history.push("/signin")
     }
 
     const signupHandler = () => {
-        props.history.push("/signup")
+        if(props) props.history.push("/signup")
+
     }
 
     useEffect(() => {
-        if (localStorage.getItem("c2c-token")) setAuth(true)
-        else setAuth(false)
+        if (localStorage.getItem("c2c-token")) 
+            {
+            const getData =async ()=>{
+                let response = await GET("/api/auth/authenticated")
+                console.log(response)
+                if(response.data){
+                    if(response.data.status==="success") setAuth(true)
+                    }
+                else setAuth(false)
+                }
+            getData()
+            }
+        
         if(props.location) {
-            console.log("props address", props.location.pathname)
             setPath(props.location.pathname)
         }
     }, [])

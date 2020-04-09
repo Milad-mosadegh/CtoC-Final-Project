@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import '../../App.css'
 import './style.css'
 import Zoom from 'react-reveal/Zoom'
-import POST from '../lib/post';
+import {POST} from '../lib/post';
 
 
 import { BrowserRouter as Router, Link } from 'react-router-dom'
@@ -52,12 +52,17 @@ export default function MaterialSignin(props) {
                     email: email,
                     pass: pass
                 }
-                const response = await POST("/api/auth/signin", formData)
-                console.log("this is response", response)
+                const config={
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                }
+                const response = await POST("/api/auth/signin", formData,config)
                 if (response.data.status === "success") {
-                    localStorage.setItem("c2c-token", { "value": "jkjasdjflkajdslkfja" })
+                    localStorage.setItem("c2c-token", response.data.token)
                     props.history.push(`/dashboard`)
                 }
+                else console.log(response.data.status, "response from ")
 
             }
             else setError("formError")

@@ -1,13 +1,16 @@
-import { post } from "axios"
+import {post} from "axios"
 
-const POST = async (url, data) => {
-    return await post(url, { data }, {
-        headers: {
-            'x-auth-token': localStorage.getItem('c2c-token'),
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(res => res)
-        .catch(err => err)
+const POST = async (url,data,config)=>{
+
+return await post(url,{data},config)
+    .then(res=>res)
+    .catch(err=>err)
 }
-export default POST;
+
+const IMGPOST = async (url, formData, config)=>{
+
+    return await post(url, formData, config)
+                    .then(res=>res)
+                    .catch(err=>err)
+    }
+export{POST, IMGPOST}

@@ -1,40 +1,86 @@
 const user= require("../model/userModel")
+const bcrypt =require("bcrypt")
+const jwt = require("jsonwebtoken")
+const jwtSecretKey = process.env.JWT_SECRET_KEY
+const emailCheck = require("../middleware/nodemailer")
 
+//Token Generator
+const createToken =  id => jwt.sign({id}, jwtSecretKey, {expiresIn:1000000})
+
+//Sign in  Area
 exports.signin=async (req,res)=>{
 
-    console.log(req.body.data);
     const {email, pass} = req.body.data;
-    await user.findOne({email},(err,doc)=>{
-        if(err) return console.log(err)
+    await user.findOne({email},(err,result)=>{
+        if(err) return res.status(500).json({
+            status:"failed",
+            message:"Sorry, we are unable to process your request please try again"})
             
-        if(!doc) return res.status(404).send({status:"failed", message:"username or password is wrong"})
-                
-        if (doc.pass!== pass)return res.status(404).send({status:"failed", message:"username or password is wrong"})
-            else res.status(200).send({status:"success", data:{
-                                                                firstName:doc.firstName,
-                                                                lastName:doc.lastName,
-                                                                email:doc.email
-                                                            }})
+        if(!result) return res.json({
+            status:"failed",
+            message:"Authorization failed , please check your credentials"})
+
+        bcrypt.compare(pass,result.pass)
+                .then(async(isPassCorrect)=>{
+                   if(isPassCorrect) {
+                        if(result.confirmed){
+                                const token = await createToken(result.id)
+                                res.json({
+                                    status   :"success",
+                                    message  : "Welcome! you are successfully logged in. ", 
+                                    token
+                                     })
+                                    }   else res.json({
+                                                    status:"failed",
+                                                    message:"Authentication failed, please confirm you email address first"
+                                    })
+                            } 
+                            else res.json({
+                                        status:"failed",
+                                        message:"Authorization failed , please check your credentials"})
+                })
                     })
             }
-            
+// Signup Area           
 exports.signup=async (req,res)=>{
 
     const {firstName,lastName,email,pass} = req.body.data
+
+    let userCheck= await user.findOne({email})
+
+    if(userCheck){
+        return res.status(409).json({status:"failed", message:"This email is already registered with us"})
+    }
+// why is it not working no hashedPass coming
+   /*  let hashedPass = await bcrypt.hash(pass, 10,(err, hash)=>{
+        if(err) throw err;
+        else return hash
+    }) */
+    let hashedPass = await bcrypt.hash(pass, 10)
+    console.log(hashedPass)
+    if(!hashedPass) return res.status(501).json({status:"failed", message:"Technical Erro 501, Please contact support team!"})
     const newUser = new user({
                 firstName,
                 lastName,
                 email,
-                pass,   
-                confirmed:true
+                pass:hashedPass,   
+                confirmed:true,
+                accessLevel : "user"
             });
-    await newUser.save((err, doc)=>{
-                if(err) res.json({status: "failed", message:err})
-                    else {
-                    res.json({status:"success", message:"you have successfull did it", user:doc})
+     newUser.save((err, doc)=>{
+                if(err) res.status(500).json({status: "failed", message:err})
+                    else{ 
+                        res.json({status:"success", message:"Welcome ! Your account is successfully created"})
+                        //emailCheck.confirmation(doc)
                     }
+                    
             })
-    }
+        }
+
+exports.authenticated=async(req,res)=>{
+    console.log("it is authenticaed route",req.header)
+    res.json({status:"success", message:"you reached authenticated route"})
+}
 
 
 
