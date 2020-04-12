@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import {Link} from "react-router-dom"
 import '../../App.css'
 import './style.css'
 import Zoom from 'react-reveal/Zoom'
 import {POST} from '../lib/post';
-
-
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import Errors from "../lib/errors"
 import MyNavbar from '../navbar/navBar';
+import PasswordReset from "./passwordReset"
 
 
 const useStyles = makeStyles(theme => ({
@@ -28,13 +28,21 @@ export default function MaterialSignin(props) {
 
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
-    const [error, setError] = useState("")
+    const [errors, setErrors] = useState("")
+    const [showModal, setShowModal] = useState(false)
+
+    useEffect(()=>{
+            setErrors(Errors)
+    },[])
+    const closeModal =()=> setShowModal(false)
+    const openModal  =()=> setShowModal(true)
 
     const changeHandler = (e) => {
+        setErrors({...errors,form:{...errors.form, status:false}})
         switch (e.target.name) {
             case "email":
-                if (!regexEmail.test(e.target.value)) setError(e.target.name)
-                else setError("")
+                if (!regexEmail.test(e.target.value)) setErrors({...errors,[e.target.name]:{...errors[e.target.name], status:true}})
+                else setErrors({...errors,[e.target.name]:{...errors[e.target.name], status:false}})
                 setEmail(e.target.value)
                 break;
             case "pass":
@@ -46,8 +54,11 @@ export default function MaterialSignin(props) {
     }
     const submitHandler = async (e) => {
         e.preventDefault();
-        if (!error) {
-            if ((email !== "") && (pass !== "")) {
+        if(errors.email.status) return console.log("you got error in email")
+        if((email==="") || (pass==="")) return setErrors({...errors,form:{...errors.form, status:true}})
+        
+        if(errors.form.status) return console.log("you got form error")
+            else{
                 const formData = {
                     email: email,
                     pass: pass
@@ -62,10 +73,7 @@ export default function MaterialSignin(props) {
                     localStorage.setItem("c2c-token", response.data.token)
                     props.history.push(`/dashboard`)
                 }
-                else console.log(response.data.status, "response from ")
-
-            }
-            else setError("formError")
+                else setErrors({...errors,authentication:{...errors.authentication, status:true}})
         }
     }
     return (
@@ -87,8 +95,7 @@ export default function MaterialSignin(props) {
                                 value={email}
                                 onChange={changeHandler}
                             />
-                            <smail className="sText">{error === "email" ? <p>Attention! please provide a valid email address</p> : null}</smail>
-
+                            {errors.email? errors.email.status?<smail className="sText"><p>{errors.email.value}</p></smail>:null: null}
                             <TextField
                                 id="standard-password-input"
                                 label="Password"
@@ -100,15 +107,21 @@ export default function MaterialSignin(props) {
                             />
 
                             <button className="btn btn-primary mt-4 mb-2" type="submit">Sign in</button>
-                            <smail className="sText">{error === "formError" ? <p>Attention! please fill all fields.</p> : null}</smail>
+                            {errors.form? errors.form.status?<smail className="sText"><p>{errors.form.value}</p></smail>:null: null}
+                            {errors.authentication? errors.authentication.status?<smail className="sText"><p>{errors.authentication.value}</p></smail>:null: null}
 
-                            <small className="mt-5 myText">You are not registered yet? <a href="/signup">Signup</a></small>
+                            <small className="mt-3 myText">You are not registered yet? <Link to="/signup">Signup</Link></small>
+                            <small className="mt-2 myText">Forgot Password? <strong className="text-danger" onClick={openModal}>Click here</strong></small>
 
                         </div>
 
                     </Zoom>
                 </form>
             </div>
+            <PasswordReset
+                closeModal={closeModal}
+                openModal={openModal}
+            />
         </div>
     );
 }

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import '../../App.css'
 import {POST} from "../lib/post";
 import Zoom from 'react-reveal/Zoom'
-import unknown from 'react-reveal/Zoom'
-
+import Errors from "../lib/errors"
 import './style.css'
+import {Link} from "react-router-dom"
 import MyNavbar from '../navbar/navBar';
 
 
@@ -28,69 +28,82 @@ export default function MaterialSignup(props) {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [confirmPass, setconfirmPass] = useState("");
-    const [error, setError] = useState(true);
-    const [formError, setFormError] = useState(unknown);
-
+    const [inputErrors, setInputErrors] = useState("");
     const formData = { firstName, lastName, email, pass };
+    useEffect(()=>setInputErrors(Errors),[])
 
+    const regexName = new RegExp(/^[a-zA-ZäöüÄÖÜß]*$/)
+    const regexEmail = new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
 
     const changeHandler = e => {
 
-        const regexName = new RegExp(/^[a-zA-ZäöüÄÖÜß]*$/)
-        const regexEmail = new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
-
         switch (e.target.name) {
+            
             case "firstName":
-                if ((!regexName.test(e.target.value)) || (e.target.value.length < 3)) setError(e.target.name)
-                else setError("")
+                if ((!regexName.test(e.target.value)) || (e.target.value.length < 3)) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+
                 setFirstName(e.target.value)
                 break;
             case "lastName":
-                if ((!regexName.test(e.target.value)) || (e.target.value.length < 3)) setError(e.target.name)
-                else setError("")
+                if ((!regexName.test(e.target.value)) || (e.target.value.length < 3)) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+
                 setLastName(e.target.value)
                 break;
             case "email":
-                if (!regexEmail.test(e.target.value)) setError(e.target.name)
-                else setError("")
+                if (!regexEmail.test(e.target.value)) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+
                 setEmail(e.target.value)
                 break;
+
             case "pass":
                 setPass(e.target.value)
-                if ((e.target.value.length < 6) || (e.target.value.length > 12)) {
-                    setError(e.target.name)
-                }
-                else if (e.target.value !== confirmPass) setError("confirmPass")
-                else setError("")
+
+                if((e.target.value.length >12 ) || (e.target.value.length < 6)) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                     setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}}) 
                 break;
+           
             case "confirmPass":
                 setconfirmPass(e.target.value)
-                if (pass !== e.target.value) setError(e.target.name)
-                else setError("")
-                break;
-            default:
+
+                if (pass !== e.target.value) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
                 break;
         }
-        let hasEmptyFields = false;
-        Object.keys(formData).forEach(d => {
-            hasEmptyFields = hasEmptyFields || !formData[d]
-        });
-        setFormError(hasEmptyFields);
     }
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        if (!error) {
-            if (!formError) {
-                const response = await POST("/api/auth/signup", formData)
-                /* if (response.data.status === "success") {
+
+        if(!Object.keys(formData).every(key=>formData[key])) 
+            return setInputErrors({...inputErrors,form:{...inputErrors.form, status:true}})
+            else   setInputErrors({...inputErrors,form:{...inputErrors.form, status:false}})
+        if(pass!== confirmPass) 
+            return setInputErrors({...inputErrors,confirmPass:{...inputErrors.confirmPass, status:true}})
+        
+        if(inputErrors.form.status) return 
+            else{
+                const response = await POST("/api/auth/signup", formData) 
+                if (response.data.status === "success") {
                     props.history.push(`/signin`);
-                }
-                else if (response.data.status === "failed") alert("sorry this email address is already registered with us") */
-                console.log("response in signup", response)
-            }
+                    }
+                else if (response.data.status === "failed") 
+                            setInputErrors({...inputErrors,backend:{...inputErrors.backend, status:true, value:response.data.message}})
+        
+                    }
         }
-    }
     return (
         <div>
             <MyNavbar {...props} />
@@ -99,7 +112,6 @@ export default function MaterialSignup(props) {
                     <Zoom >
 
                         <div className="d-flex bg-light flex-column gerd ">
-                            {/* <TextField required id="standard-required" label="Required" defaultValue="Hello World" /> */}
                             <h2 className="mb-5" >Sign Up</h2>
                             <TextField
                                 id="standard-name-input"
@@ -110,7 +122,7 @@ export default function MaterialSignup(props) {
                                 value={firstName}
                                 onChange={changeHandler}
                             />
-                            <smail className="sText">{error === "firstName" ? <p>Attention! name must consist on 3 or more alphabets</p> : null}</smail>
+                            <smail className="sText">{inputErrors.firstName?inputErrors.firstName.status?inputErrors.firstName.value:null:null}</smail>
 
                             <TextField
                                 id="standard-name-input"
@@ -121,7 +133,7 @@ export default function MaterialSignup(props) {
                                 value={lastName}
                                 onChange={changeHandler}
                             />
-                            <smail className="sText">{error === "lastName" ? <p>Attention! name must consist on 3 or more alphabets</p> : null}</smail>
+                            <smail className="sText">{inputErrors.lastName?inputErrors.lastName.status?inputErrors.lastName.value:null:null}</smail>
                             <TextField
                                 id="standard-email-input"
                                 label="Email"
@@ -131,7 +143,7 @@ export default function MaterialSignup(props) {
                                 value={email}
                                 onChange={changeHandler}
                             />
-                            <smail className="sText">{error === "email" ? <p>Attention! please provide a valid email address</p> : null}</smail>
+                            <smail className="sText">{inputErrors.email?inputErrors.email.status?inputErrors.email.value:null:null}</smail>
                             <TextField
                                 id="standard-password-input"
                                 label="Password"
@@ -141,7 +153,7 @@ export default function MaterialSignup(props) {
                                 value={pass}
                                 onChange={changeHandler}
                             />
-                            <smail className="sText">{error === "pass" ? <p>Attention! password length must be from 6 to 12 characters.</p> : null}</smail>
+                            <smail className="sText">{inputErrors.pass?inputErrors.pass.status?inputErrors.pass.value:null:null}</smail>
 
                             <TextField
                                 id="standard-password-input"
@@ -152,11 +164,12 @@ export default function MaterialSignup(props) {
                                 value={confirmPass}
                                 onChange={changeHandler}
                             />
-                            <smail className="sText">{error === "confirmPass" ? <p>Attention! password and confirm passowrd must be same.</p> : null}</smail>
+                            <smail className="sText">{inputErrors.confirmPass?inputErrors.confirmPass.status?inputErrors.confirmPass.value:null:null}</smail>
 
                             <button className="btn btn-primary mt-4" type='submit'>Submit</button>
-                            <small className="sText">{formError === true ? <p>Attention! please fill all fields.</p> : null}</small>
-                            <small className="mt-5 myText text-dark">You have already Account? <a href="/signin">Signin</a> </small>
+                            <small className="sText">{inputErrors.form?inputErrors.form.status?inputErrors.form.value:null:null}</small>
+                            <small className="sText">{inputErrors.backend?inputErrors.backend.status?inputErrors.backend.value:null:null}</small>
+                            <small className="mt-5 myText text-dark">Are you already registered with us? <Link to="/signin">Signin</Link> </small>
 
                         </div>
 

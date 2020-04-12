@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "./searchbar.css";
+import Categories from "../lib/categories"
 
 class SearchBar extends Component {
   constructor(props) {
@@ -70,7 +71,6 @@ class SearchBar extends Component {
   searchHandler = (e) => {
     e.preventDefault();
     if (e.target.searchText.value === "") return console.log("no search selecte")
-
     this.setState({
       searchText: e.target.searchText.value,
       searchCategory: e.target.searchCategory.value
@@ -95,27 +95,10 @@ class SearchBar extends Component {
                 onChange={this.onTextChanged} />
               {this.renderSuggestion()}
             </div>
+            
             <div className="col-lg-4 col-md-3 col-sm-12 p-2">
               <select className="form-control search-slt" name="searchCategory">
-                <option value="0">All Categories</option>
-                <option value="1">Antiques</option>
-                <option value="2">Art</option>
-                <option value="3">Baby</option>
-                <option value="4">Books</option>
-                <option value="5">Cameras</option>
-                <option value="6">Cell Phones & Accessories</option>
-                <option value="7">Clothing, Shoes & Accessories</option>
-                <option value="8">Computers & Accessories</option>
-                <option value="9">Consumer Electronics</option>
-                <option value="10">DVDs & Movies</option>
-                <option value="11">Home & Garden</option>
-                <option value="12">Jewelry & Watches</option>
-                <option value="13">Musical Instruments & Gear</option>
-                <option value="14">Pet Supplies</option>
-                <option value="15">Sports</option>
-                <option value="16">Toys & Hobbies</option>
-                <option value="17">Video Games & Consoles</option>
-                <option value="18">Others</option>
+                {Categories.map((key,index)=><option value={key.id}>{key.value}</option>)}
               </select>
 
             </div>

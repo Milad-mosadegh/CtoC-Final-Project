@@ -49,13 +49,9 @@ exports.signup=async (req,res)=>{
     let userCheck= await user.findOne({email})
 
     if(userCheck){
-        return res.status(409).json({status:"failed", message:"This email is already registered with us"})
+        return res.json({status:"failed", message:"Sorry! this email is already registered with us"})
     }
-// why is it not working no hashedPass coming
-   /*  let hashedPass = await bcrypt.hash(pass, 10,(err, hash)=>{
-        if(err) throw err;
-        else return hash
-    }) */
+
     let hashedPass = await bcrypt.hash(pass, 10)
     console.log(hashedPass)
     if(!hashedPass) return res.status(501).json({status:"failed", message:"Technical Erro 501, Please contact support team!"})

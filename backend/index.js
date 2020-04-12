@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname+"/public")))
 app.use("/api/auth",require("./router/auth"))
 app.use("/api/dashboard",require("./router/dashboard"))
 app.use("/api/account", require("./router/account"))
+app.use("/api/sell", require("./router/sell"))
 
 
 app.listen(5000, ()=>{

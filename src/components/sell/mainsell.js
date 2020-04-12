@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Form, Col, InputGroup, FormControl } from 'react-bootstrap'
-import { post } from "axios"
-import {POST} from "../lib/post"
+import Categories from "../lib/categories"
 import ImageCard from "./imageCard"
+import Colors from "../lib/colors"
 
 
 import './styles.css'
@@ -33,25 +33,7 @@ const MainSell = (props) => {
                                     <Form.Group as={Col} controlId="formGridState">
                                         <Form.Label>Categories</Form.Label>
                                         <Form.Control as="select" name="category" value={product.category} onChange={changeHandler}>
-                                            <option value="0">All Categories</option>
-                                            <option value="1">Antiques</option>
-                                            <option value="2">Art</option>
-                                            <option value="3">Baby</option>
-                                            <option value="4">Books</option>
-                                            <option value="5">Cameras</option>
-                                            <option value="6">Cell Phones & Accessories</option>
-                                            <option value="7">Clothing, Shoes & Accessories</option>
-                                            <option value="8">Computers & Accessories</option>
-                                            <option value="9">Consumer Electronics</option>
-                                            <option value="10">DVDs & Movies</option>
-                                            <option value="11">Home & Garden</option>
-                                            <option value="12">Jewelry & Watches</option>
-                                            <option value="13">Musical Instruments & Gear</option>
-                                            <option value="14">Pet Supplies</option>
-                                            <option value="15">Sports</option>
-                                            <option value="16">Toys & Hobbies</option>
-                                            <option value="17">Video Games & Consoles</option>
-                                            <option value="18">Others</option>
+                                        {Categories.map((key,index)=><option value={key.id}>{key.value}</option>)}
                                         </Form.Control>
                                     </Form.Group>
                                     {/*  */}
@@ -62,8 +44,9 @@ const MainSell = (props) => {
                                     <Form.Group as={Col} controlId="formGridState">
                                         <Form.Label>Condition</Form.Label>
                                         <Form.Control as="select" name="condition" value={product.condition} onChange={changeHandler}>
-                                            <option value="used">Used</option>
-                                            <option value="new">New</option>
+                                            <option value="0">Select Condition</option>  
+                                            <option value="Used">Used</option>
+                                            <option value="New">New</option>
                                         </Form.Control>
                                     </Form.Group>
                                     {/*  */}
@@ -79,14 +62,7 @@ const MainSell = (props) => {
                                     <Form.Group as={Col} controlId="formGridState">
                                         <Form.Label>Color</Form.Label>
                                         <Form.Control as="select" name="color" value={product.color} onChange={changeHandler}>
-                                            <option value="red">Red</option>
-                                            <option value="black">Black</option>
-                                            <option value="white">White</option>
-                                            <option value="green">Green</option>
-                                            <option value="yellow">Yellow</option>
-                                            <option value="mixed">Mixed</option>
-                                            <option value="blue">Blue</option>
-
+                                        {Colors.map((key,index)=><option value={key.id}>{key.value}</option>)}
                                         </Form.Control>
                                     </Form.Group>
                                 </Form.Row>

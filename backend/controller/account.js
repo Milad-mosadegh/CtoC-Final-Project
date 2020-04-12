@@ -12,8 +12,20 @@ exports.getProfile=(req,res)=>{
             message:err
         })
         else{
-            const {firstName, lastName, email, paypalId, phoneNumber, address, profileImage } = doc
-            const profile = {firstName, lastName, email, paypalId, phoneNumber, address, profileImage }
+            const {firstName, lastName, email, paypalId, phoneNumber, profileImage } = doc
+            let street,city, zipCode;
+            if(doc.address)  {
+                    street = doc.address.street;
+                    city = doc.address.city;
+                    zipCode = doc.address.zipCode
+            } 
+            else{
+                street=""
+                city=""
+                zipCode=""
+            }
+            const profile = {firstName, lastName, email, paypalId, phoneNumber, street, city, zipCode, profileImage }
+            console.log(profile)
             res.json({
                 status:"success",
                 data:profile
@@ -27,13 +39,17 @@ exports.getProfile=(req,res)=>{
 exports.editProfile=async (req,res)=>{
     if(req.body.data) {
      
-        const {firstName, lastName,paypalId,phoneNumber,address} = req.body.data
+        const {firstName, lastName,paypalId,phoneNumber,street,city,zipCode} = req.body.data
         const profileData = {
             firstName,
             lastName,
             paypalId,
             phoneNumber,
-            address
+            address:{
+                street,
+                city,
+                zipCode
+            }
         }
         await user.findByIdAndUpdate(req.userId, profileData,(err, doc)=>{
             if(err) res.json({status:"failed", message:err})
@@ -54,16 +70,20 @@ exports.editProfile=async (req,res)=>{
     
     upload(req,res,async ()=>{ 
     
-    console.log(req.body)
 
-    const {firstName, lastName,paypalId,phoneNumber,address} = req.body.profile
-    console.log(firstName, lastName,paypalId,phoneNumber,address)
+
+    const {firstName, lastName,paypalId,phoneNumber,street,city,zipCode} = req.body
+    console.log(firstName, lastName,paypalId,phoneNumber,street,city,zipCode)
     const profileData = {
         firstName,
         lastName,
         paypalId,
         phoneNumber,
-        address,
+        address:{
+            street,
+            city,
+            zipCode
+        },
         profileImage:fileName
     }
     await user.findByIdAndUpdate(req.userId, profileData,(err, doc)=>{
@@ -73,13 +93,3 @@ exports.editProfile=async (req,res)=>{
         })
     }
    
- /* if(req.body.file) {
-
-            const avatar = new avatarSchema
-            avatar.img.data=req.body.file
-            avatar.img.contentType = "image/png"
-            avatar.save((err,doc)=>{
-                if(err) console.log(err)
-                if(doc) console.log("file save")
-            })
-        } */
