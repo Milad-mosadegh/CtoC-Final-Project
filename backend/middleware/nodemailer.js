@@ -3,6 +3,7 @@ const emailPass = process.env.MAIL_PASS;
 const nodemailer = require("nodemailer");
 
 exports.confirmation = async(doc)=>{
+  const {email, id, subject, text,html} = doc
     console.log("doc is here", doc)
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -17,11 +18,13 @@ exports.confirmation = async(doc)=>{
   let info = await transporter.sendMail({
     from: '"Ather Ahmad " <atherdci.com>', // sender address
     to: email, // list of receivers
-    subject: "Please Confirm", // Subject line
-    text: "To confirm your email click", // plain text body
-    html: `<b>To Confirm your email address please <a href="http://localhost:3000/confirm/${id}">Click here!</a></b>` // html body
+    subject: subject, // Subject line
+    text: text, // plain text body
+    html: html// html body
   });
   console.log("Message sent: %s", info.messageId);
+  if(info.messageId) return true
+    else return false
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
   // Preview only available when sending through an Ethereal account

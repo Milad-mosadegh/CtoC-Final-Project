@@ -8,7 +8,7 @@ import Zoom from 'react-reveal/Zoom'
 import {POST} from '../lib/post';
 import Errors from "../lib/errors"
 import MyNavbar from '../navbar/navBar';
-import PasswordReset from "./passwordReset"
+import {Button, Modal, } from "react-bootstrap"
 
 
 const useStyles = makeStyles(theme => ({
@@ -29,13 +29,38 @@ export default function MaterialSignin(props) {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [errors, setErrors] = useState("")
-    const [showModal, setShowModal] = useState(false)
+    const [show, setShow] = useState(false)
+    const [resetPass, setResetPass]=useState("")
+    const [resetResponse, setResetResponse]=useState("")
 
     useEffect(()=>{
             setErrors(Errors)
     },[])
-    const closeModal =()=> setShowModal(false)
-    const openModal  =()=> setShowModal(true)
+    const handleOpen = () => {
+        setShow(true);
+    };
+
+    const handleClose = () => {
+        setResetPass("")
+        setShow(false);
+    };
+    const resetPassword=async()=>{
+        if(errors.resetPass.status) return console.log("you got error in email")
+        if(resetPass==="") return setErrors({...errors,form:{...errors.form, status:true}})
+        const formData = {
+            email:resetPass
+        }
+        const config={
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }
+        const response = await POST("/api/auth/resetpass", formData,config)
+        if (response.data.status === "success") {
+            setResetResponse(response.data.message)
+        }
+        else setResetResponse(response.data.message)
+    }
 
     const changeHandler = (e) => {
         setErrors({...errors,form:{...errors.form, status:false}})
@@ -47,6 +72,12 @@ export default function MaterialSignin(props) {
                 break;
             case "pass":
                 setPass(e.target.value)
+                break;
+            case "resetPass":
+                setResetResponse("")
+                if (!regexEmail.test(e.target.value)) setErrors({...errors,[e.target.name]:{...errors[e.target.name], status:true}})
+                else setErrors({...errors,[e.target.name]:{...errors[e.target.name], status:false}})
+                setResetPass(e.target.value)
                 break;
             default:
                 break;
@@ -79,6 +110,7 @@ export default function MaterialSignin(props) {
     return (
         <div>
             <MyNavbar {...props} />
+            
             <div id="signin" className='App-header bg-full '>
                 <form className={classes.root} noValidate autoComplete="off" onSubmit={submitHandler}>
 
@@ -111,17 +143,48 @@ export default function MaterialSignin(props) {
                             {errors.authentication? errors.authentication.status?<smail className="sText"><p>{errors.authentication.value}</p></smail>:null: null}
 
                             <small className="mt-3 myText">You are not registered yet? <Link to="/signup">Signup</Link></small>
-                            <small className="mt-2 myText">Forgot Password? <strong className="text-danger" onClick={openModal}>Click here</strong></small>
+                            <small className="mt-2 myText">Forgot Password? <strong className="text-danger" onClick={handleOpen}>Click here</strong></small>
+                    <>
+                      <Modal show={show} onHide={handleClose} animation={false}>
+                        <Modal.Header closeButton>
+                          <Modal.Title>Reset Password</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                        <form className={classes.root} noValidate autoComplete="off" >
+                        <TextField
+                                                id="standard-email-input"
+                                                label="Email"
+                                                type="email"
+                                                autoComplete="none"
+                                                name="resetPass"
+                                                value={resetPass}
+                                                onChange={changeHandler}
+                                            />
+                            {errors.resetPass? errors.resetPass.status?<smail className="sText"><p>{errors.resetPass.value}</p></smail>:null: null}
+                            <small className="mt-2 myText"><p><strong className="text-warning">Please provide your email address to reset password.</strong></p></small>
+                            {resetResponse? <smail className="sText text-success"><p>{resetResponse}</p></smail>: null}
+
+
+                        </form>
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <Button variant="secondary" onClick={handleClose}>
+                            Close
+                          </Button>
+                          <Button variant="primary" onClick={resetPassword}>
+                            Send Link
+                          </Button>
+                        </Modal.Footer>
+                      </Modal>
+                    </>
 
                         </div>
 
                     </Zoom>
                 </form>
             </div>
-            <PasswordReset
-                closeModal={closeModal}
-                openModal={openModal}
-            />
+            
+            
         </div>
     );
 }

@@ -34,8 +34,11 @@ const MyNavbar = (props) => {
                 if(response.data){
                     if(response.data.status==="success") setAuth(true)
                     }
-                else setAuth(false)
+                else {
+                    setAuth(false)
+                    localStorage.removeItem("c2c-token")
                 }
+            }
             getData()
             }
         

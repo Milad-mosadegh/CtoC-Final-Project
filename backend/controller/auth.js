@@ -78,6 +78,23 @@ exports.authenticated=async(req,res)=>{
     res.json({status:"success", message:"you reached authenticated route"})
 }
 
+exports.resetPassword = async(req,res)=>{
+    const {email} =req.body.data
+    let userCheck= await user.findOne({email})
+    if(!userCheck) return res.json({status:"failed", message:"Invalid email address"})
+    let resetLinkSent = await emailCheck.confirmation({
+        id:userCheck._id,
+        email:userCheck.email,
+        subject:"Reset Password at c2c",
+        text:"",
+        html:`<b>To Change your passowrd please <a href="http://localhost:3000/api/aut/resetpass/${userCheck._id}">Click here!</a></b>`
+    })
+    if(resetLinkSent) res.json({status:"success", message:"Email containg reset link successfuly sent. Please check your email."})
+        else res.json({status:"failed", message:"Sorry we are unable to sent please try again later"})
+ 
+    
+}
+
 
 
     

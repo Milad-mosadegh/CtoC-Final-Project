@@ -30,6 +30,10 @@ const Errors={
     backend:{
         status      :false,
         value       :""
+    },
+    resetPass:{
+        status      :false,
+        value       :`Attention! please provide a valid email address.`
     }
 
 }
