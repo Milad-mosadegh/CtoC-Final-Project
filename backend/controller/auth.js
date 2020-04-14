@@ -5,7 +5,7 @@ const jwtSecretKey = process.env.JWT_SECRET_KEY
 const emailCheck = require("../middleware/nodemailer")
 
 //Token Generator
-const createToken =  id => jwt.sign({id}, jwtSecretKey, {expiresIn:1000000})
+const createToken =  id => jwt.sign({id}, jwtSecretKey, {expiresIn:1000})
 
 //Sign in  Area
 exports.signin=async (req,res)=>{

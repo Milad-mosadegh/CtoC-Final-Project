@@ -28,7 +28,7 @@ export default function MaterialSignup(props) {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [confirmPass, setconfirmPass] = useState("");
-    const [inputErrors, setInputErrors] = useState("");
+    let   [inputErrors, setInputErrors] = useState("");
     const formData = { firstName, lastName, email, pass };
     useEffect(()=>setInputErrors(Errors),[])
 
@@ -36,6 +36,7 @@ export default function MaterialSignup(props) {
     const regexEmail = new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
 
     const changeHandler = e => {
+        inputErrors = {...inputErrors,form:{...inputErrors.form, status:false}};
 
         switch (e.target.name) {
             
@@ -68,9 +69,14 @@ export default function MaterialSignup(props) {
                 setPass(e.target.value)
 
                 if((e.target.value.length >12 ) || (e.target.value.length < 6)) 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                    inputErrors = {...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}}
                 else 
-                     setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}}) 
+                    inputErrors = {...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}}
+                if ( e.target.value !== confirmPass )
+                    inputErrors = {...inputErrors,confirmPass:{...inputErrors.confirmPass, status:true}}
+                else
+                    inputErrors = {...inputErrors,confirmPass:{...inputErrors.confirmPass, status:false}}
+                setInputErrors(inputErrors);
                 break;
            
             case "confirmPass":
@@ -81,6 +87,8 @@ export default function MaterialSignup(props) {
                 else 
                     setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
                 break;
+            default:
+                break;
         }
     }
 
@@ -90,7 +98,7 @@ export default function MaterialSignup(props) {
         if(!Object.keys(formData).every(key=>formData[key])) 
             return setInputErrors({...inputErrors,form:{...inputErrors.form, status:true}})
             else   setInputErrors({...inputErrors,form:{...inputErrors.form, status:false}})
-        if(pass!== confirmPass) 
+        if ( pass!== confirmPass ) 
             return setInputErrors({...inputErrors,confirmPass:{...inputErrors.confirmPass, status:true}})
         
         if(inputErrors.form.status) return 

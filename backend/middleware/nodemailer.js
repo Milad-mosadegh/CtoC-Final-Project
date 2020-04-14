@@ -4,6 +4,7 @@ const nodemailer = require("nodemailer");
 
 exports.confirmation = async(doc)=>{
   const {email, id, subject, text,html} = doc
+    console.log(emailUser,emailPass)
     console.log("doc is here", doc)
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
