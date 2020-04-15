@@ -4,6 +4,8 @@ import { Link } from "react-router-dom"
 import Zoom from 'react-reveal/Zoom'
 import PasswordReset from './resetModal';
 
+
+
 export default function SigninForm(props) {
 
     const { classes, submitHandler, changeHandler, email, errors, pass, handleClose, handleOpen, show } = props
@@ -16,7 +18,7 @@ export default function SigninForm(props) {
                     <Zoom >
                         <div className="d-flex bg-full bg-light flex-column gerd">
                             {/* <TextField required id="standard-required" label="Required" defaultValue="Hello World" /> */}
-                            <h2 className="mb-5" >Sign In</h2>
+                            <h2 className="mb-5 p-2 border-bottom" >Sign In</h2>
                             <TextField
                                 id="standard-email-input"
                                 label="Email"
@@ -42,13 +44,16 @@ export default function SigninForm(props) {
                             {errors.authentication ? errors.authentication.status ? <smail className="sText"><p>{errors.authentication.value}</p></smail> : null : null}
 
                             <small className="mt-3 myText">You are not registered yet? <Link to="/signup">Signup</Link></small>
-                            <small className="mt-2 myText">Forgot Password? <strong className="text-danger" style={{ cursor: "pointer" }} onClick={handleOpen}>Click here</strong></small>
+                            <small className="mt-2 myText">Forgot Password?
+                            <strong className="text-danger" style={{ cursor: "pointer" }} onClick={handleOpen}> Click here</strong>
+                                <Link to={"/resetpass"}> Reset Password</Link></small>
                             <PasswordReset handleClose={handleClose} handleOpen={handleOpen} show={show} classes={classes} />
 
                         </div>
-
                     </Zoom>
+
                 </form>
+
             </div>
         </div>
     )
