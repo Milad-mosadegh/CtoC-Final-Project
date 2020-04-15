@@ -13,12 +13,31 @@ export default function ResetPassword(props) {
     const [confirmPass, setconfirmPass] = useState("")
     let [inputErrors, setInputErrors] = useState("");
 
-    useEffect(() => setInputErrors(Errors), [])
+    useEffect(() => {
+        const verifyParams=async()=>{
+
+            const {id, token} = props.match.params
+            console.log("id ", id, " token ",token)
+            const formData = {
+                id,
+                token
+            }
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            const response =  await POST("/api/auth/resetcheck", formData, config)
+            if(response.data.status!=="success") props.history.push("/")
+            if(response.data.status==="success") localStorage.setItem("c2creset-token", response.data.token)
+        }
+        verifyParams();
+        setInputErrors(Errors)}, [])
 
 
     const submitHandler = async (e) => {
         e.preventDefault();
-
+        const {id} = props.match.params
         const formData = {
             pass: pass,
             confirmPass: confirmPass
@@ -33,14 +52,23 @@ export default function ResetPassword(props) {
             return setInputErrors({ ...inputErrors, confirmPass: { ...inputErrors.confirmPass, status: true } })
 
         if (inputErrors.form.status) return
+        if(!localStorage.getItem("c2creset-token")) return props.push.history("/")
         else {
-            const response = await POST("/api/auth/resetpass", formData)
+            const config={
+                headers:{
+                'x-auth-token':localStorage.getItem('c2creset-token'),
+                'Content-Type': 'application/json'
+            }}
+            const response = await POST(`/api/auth/resetpass/${id}`, formData, config)
             if (response.data.status === "success") {
-                props.history.push(`/signin`);
+                alert("you have succesfully changed your password")
+                localStorage.removeItem('c2creset-token')
+                props.history.push("/signin")
             }
             else if (response.data.status === "failed")
-                setInputErrors({ ...inputErrors, backend: { ...inputErrors.backend, status: true, value: response.data.message } })
-
+                {setInputErrors({ ...inputErrors, backend: { ...inputErrors.backend, status: true, value: response.data.message } })
+                alert("sorry request failedn try again later")
+        }
         }
 
     }
