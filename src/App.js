@@ -4,9 +4,9 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import MaterialSignin from './components/sign/materialSignin';
-import MaterialSignup from './components/sign/materialSignup';
-import Dashboard from './components/sign/Dashboard';
+import MaterialSignin from './components/signin/materialSignin';
+import MaterialSignup from './components/signup/materialSignup';
+import Dashboard from './components/dashboard/Dashboard';
 import MainAcc from './components/account/mainacc';
 import SellItems from './components/sell/sellitems';
 import Home from './components/landingpage/home';
