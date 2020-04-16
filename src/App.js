@@ -11,6 +11,7 @@ import MainAcc from './components/account/mainacc';
 import SellItems from './components/sell/sellitems';
 import Home from './components/landingpage/home';
 import ResetPassword from './components/signin/Reset/resetPasword';
+import BuyComponent from './components/Buy/buy';
 
 
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/account" component={MainAcc} />
           <Route path="/resetpass" component={ResetPassword} />
           <Route path="/sellitems" component={SellItems} />
+          <Route path="/buyitems" component={BuyComponent} />
           <Route path="/signin" component={localStorage.getItem('c2c-token') ? Dashboard : MaterialSignin} />
           <Route path="/signup" component={localStorage.getItem('c2c-token') ? Dashboard : MaterialSignup} />
           <Route path="/dashboard" component={Dashboard} />

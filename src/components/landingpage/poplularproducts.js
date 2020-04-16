@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import ItemCard from '../landingpage/itemcard';
+import Categories from '../lib/categories';
 
 
 const PopularProduct = (props) => {

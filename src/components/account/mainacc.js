@@ -68,9 +68,9 @@ export default function MainAcc(props) {
 
     return (
         <div >
+            <MyNavbar {...props} />
             <div className="container ">
-                <MyNavbar {...props} />
-                <div className="mt-5">
+                <div >
                     <div className={classes.root} >
                         <AppBar position="relative" color="default">
                             <Tabs
@@ -93,13 +93,13 @@ export default function MainAcc(props) {
                             onChangeIndex={handleChangeIndex}
                         >
                             <TabPanel value={value} index={0} dir={theme.direction}>
-                                <MyProfile {...props}/>
+                                <MyProfile {...props} />
                             </TabPanel>
                             <TabPanel value={value} index={1} dir={theme.direction}>
-                                <Messages {...props}/>
+                                <Messages {...props} />
                             </TabPanel>
                             <TabPanel value={value} index={2} dir={theme.direction}>
-                                <MainActivity {...props}/>
+                                <MainActivity {...props} />
                             </TabPanel>
 
                             <TabPanel value={value} index={3} dir={theme.direction}>
