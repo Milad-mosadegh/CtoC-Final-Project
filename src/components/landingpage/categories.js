@@ -1,5 +1,6 @@
 import React from 'react';
-import ItemCard from './itemcard';
+
+import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 
@@ -21,6 +22,8 @@ import consumer from '../../images/consumer.jpeg'
 import pet from '../../images/pet.jpeg'
 import toy from '../../images/toys.jpeg'
 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
 
 
 
@@ -48,21 +51,37 @@ const Categories = () => {
         { value: 18, type: "Others" }
     ];
 
+    const settings = {
+        className: "center",
+        centerMode: true,
+        infinite: true,
+        centerPadding: "60px",
+        slidesToShow: 3,
+        speed: 500
+    };
+
+
     return (
-        <div className="container-fluid p-5 colorGray">
-            <div className="container text-center " >
+        <div className="colorGray">
+            <div className="container">
                 <div className="mt-5">
                     <h1>Categories</h1>
                 </div>
-                <div className="row justify-content-around ">
+                <Slider {...settings} className="shadow-lg ">
                     {allCat.map(data =>
-                        <Link to="/signin"><ItemCard title={data.type} image={[data.name]} /></Link>
+                        <Card style={{ width: '18rem' }}>
+                            <Card.Img variant="top" className='cardImg' src={data.name} />
+                            <Card.Body className="bg-dark cbh">
+                                <Card.Title> <Link className="text-light fs" to={data.type}>{data.type}</Link></Card.Title>
+                            </Card.Body>
+                        </Card>
                     )}
-                </div>
 
-
+                </Slider>
             </div>
+
         </div>
+
     );
 }
 

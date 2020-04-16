@@ -15,8 +15,11 @@ const BuyComponent = (props) => {
         <div>
             <MyNavbar {...props} />
             <SearchBar />
-            <div className="d-flex justify-content-center">
+            <div>
                 <SlideShow />
+            </div>
+            <div>
+
             </div>
         </div>
     );

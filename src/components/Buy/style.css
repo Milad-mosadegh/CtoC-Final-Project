@@ -1,3 +1,17 @@
 .cardImg{
     height: 200px;
 }
+
+
+
+/* @media only screen and (min-width:400px){
+    .cardImg{
+        height: 130px;
+    }
+    .fs{
+        font-size: 14px;
+    }
+    .cbh{
+        height: 100px;
+    }
+} */
