@@ -29,7 +29,7 @@ export default function PasswordReset(props) {
               'Content-Type': 'application/json'
           }
       }
-      const response = await POST("/api/auth/resetpass", formData,config)
+      const response = await POST("/api/auth/resetlink", formData,config)
       if (response.data.status === "success") {
           setResetResponse(response.data.message)
       }

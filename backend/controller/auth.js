@@ -85,7 +85,7 @@ exports.authenticated=async(req,res)=>{
 }
 //Reseting Passowrd and Sending Link
 
-exports.resetPassword = async(req,res)=>{
+exports.resetLink = async(req,res)=>{
     const {email} =req.body.data
     let userCheck= await user.findOne({email})
     if(!userCheck) return res.json({status:"failed", message:"Invalid email address"})
@@ -122,17 +122,77 @@ exports.resetPassword = async(req,res)=>{
 }
 
 exports.recoverPassword = async(req,res)=>{
-    const {id, token} = req.params
-    console.log(req.params.id)
-    console.log(req.params.token)
+    const {id, token} = req.body.data
+    console.log(id)
+    console.log(token)
     let tokenCheck= await passRecovery.findOne({tokenId:token})
     if(!tokenCheck) return res.json({status:"failed", message:"invalid token"})
     if(tokenCheck.recovered) return res.json({status:"failed", message:"invalid token"})
-    if(req.body.confirmPass !==req.body.pass) return res.json({status:"failed", message:"Please fill out same pass"})
-    if(req.body.confirmPass === tokenCheck.pass) return res.json({status:"failed", message:"This password was previously used , please try another one"})
-    // hash pass and store it into user profile response succeess it is changed change recover to true
-    //<Route path=`/resetpass/:id/:token` exact component={ResetPass} />
+        else res.json({
+            status   :"success",
+            message  : "Valid Request ", 
+            token    
+             })
+   
+    }
+
+
+
+exports.resetPassword=async(req,res)=>{
+    const {pass,confirmPass} = req.body.data
+    const token = req.header("x-auth-token")
+    const id = req.params.id
+
+    if(!token) return res.json({
+        status:"failed",
+        message:"Authentication failed!"})
+    
+    if(pass!==confirmPass) return res.json({status:"failed", message:"Passwords mismatch please check your inputs"})
+    
+    let targetUser = await user.findById(id)
+
+    if(!targetUser) return res.json({status:"failed", message:"Authentication failed"})
+
+    const jwtPassKey = targetUser.pass
+    
+    try{
+        jwt.verify(token, jwtPassKey,(fail, decodedPayload)=>{
+            if(fail) return res.json({
+                status:"failed",
+                message:"Authentication failed! in jwt part"
+            }) 
+            else {
+                console.log("its payload", decodedPayload)
+               
+            }
+        })
+    } catch(error){
+        res.status(500).json({
+            status:"error",
+            message:error
+        })
+    }
+
+    let hashedPass = await bcrypt.hash(pass, 10)
+    const profileData = {
+        pass:hashedPass
+    }
+    console.log(id, profileData)
+    console.log(await user.findById(id))
+    await user.findByIdAndUpdate(id, profileData,async (err, doc)=>{
+        if(err) return res.json({status:"failed", message:err})
+        else {
+
+            await passRecovery.findOneAndUpdate({tokenId:token}, {recovered:true}, (err,doc)=>{
+                if(err) res.json({status:"failed", message:err})
+                    else res.json({status:"success", message:"You have succesfully cahnged your password"})
+            })
+            console.log("Successfully change")
+        }
+
+     })
 }
+
 
 
 

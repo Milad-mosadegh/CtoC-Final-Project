@@ -45,8 +45,7 @@ export default function SigninForm(props) {
 
                             <small className="mt-3 myText">You are not registered yet? <Link to="/signup">Signup</Link></small>
                             <small className="mt-2 myText">Forgot Password?
-                            <strong className="text-danger" style={{ cursor: "pointer" }} onClick={handleOpen}> Click here</strong>
-                                <Link to={"/resetpass"}> Reset Password</Link></small>
+                            <strong className="text-danger" style={{ cursor: "pointer" }} onClick={handleOpen}> Click here</strong></small>
                             <PasswordReset handleClose={handleClose} handleOpen={handleOpen} show={show} classes={classes} />
 
                         </div>

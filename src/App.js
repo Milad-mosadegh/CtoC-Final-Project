@@ -25,7 +25,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/account" component={MainAcc} />
-          <Route path="/resetpass" component={ResetPassword} />
+          <Route path="/resetpass/:id/:token" component={ResetPassword} />
           <Route path="/sellitems" component={SellItems} />
           <Route path="/buyitems" component={BuyComponent} />
           <Route path="/signin" component={localStorage.getItem('c2c-token') ? Dashboard : MaterialSignin} />
