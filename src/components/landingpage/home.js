@@ -7,6 +7,7 @@ import SearchBar from '../SearchBar/searchbar';
 import Categories from './categories';
 import MyNavbar from '../navbar/navBar';
 import GET from '../lib/get';
+import SlideShow from '../Buy/slideShow';
 
 
 
@@ -38,7 +39,7 @@ const Home = (props) => {
             </div>
             <PopularProduct />
             {auth ? <LastSeen /> : null}
-            <Categories />
+            <SlideShow/>
         </div>
     );
 }

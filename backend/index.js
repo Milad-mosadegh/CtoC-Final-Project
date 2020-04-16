@@ -14,6 +14,7 @@ app.use("/api/auth",require("./router/auth"))
 app.use("/api/dashboard",require("./router/dashboard"))
 app.use("/api/account", require("./router/account"))
 app.use("/api/sell", require("./router/sell"))
+app.use("/api/buy", require("./router/buy"))
 
 
 app.listen(process.env.PORT, ()=>{
