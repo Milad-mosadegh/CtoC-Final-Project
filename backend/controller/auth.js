@@ -84,8 +84,20 @@ exports.authenticated=async(req,res)=>{
 }
 
 exports.changePassword =async(req,res)=>{
-    console.log(req.body.data)
-    res.json({status:"success", message:"you reached password change route"})
+    const {pass, confirmPass} = req.body.data
+
+    if(pass!==confirmPass) return res.json({status:"failed", message:"Request Failed, Please check your inputs"})
+    let hashedPass = await bcrypt.hash(pass, 10)
+    const profileData = {
+        pass:hashedPass
+    }
+    await user.findByIdAndUpdate(req.userId, profileData,async (err, doc)=>{
+        if(err) return res.json({status:"failed", message:err})
+        else {
+            res.json({status:"success", message:"You have succesfully cahnged your password"})
+            console.log("Successfully change")
+        }
+     })
 }
 
 
