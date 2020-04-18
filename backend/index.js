@@ -11,6 +11,7 @@ connectDB();
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname+"/public")))
 app.use("/api/auth",require("./router/auth"))
+app.use("/api/recovery", require("./router/recovery"))
 app.use("/api/dashboard",require("./router/dashboard"))
 app.use("/api/account", require("./router/account"))
 app.use("/api/sell", require("./router/sell"))

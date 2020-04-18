@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import './../styles.css'
 import { Form, Button, Col } from 'react-bootstrap';
 import ImageCard from '../../sell/imageCard';
+import PasswordChange from './changepassword';
 
 const ProfileData = (props) => {
     const [error, setError] = useState("")
 
-    const { submitHandler, imageChangeHandler, changeHandler, cancelHandler, editHandler, profile, edit } = props
+    const {submitHandler,imageChangeHandler,changeHandler,cancelHandler,editHandler,profile,edit,showModal,renderModal,derenderModal} = props
 
 
     return (
@@ -58,7 +59,10 @@ const ProfileData = (props) => {
                         <Form.Group as={Col} controlId="formGridAddress1">
                             <Form.Label>Password</Form.Label>
                             <Form.Control name="password" type="password" value="*********" onChange={changeHandler} />
-                            <smail className="sText">click here to change your password</smail>
+                            {edit?
+                                <smail className="sText"
+                                    onClick={renderModal}
+                                    style={{cursor:"pointer"}}>click here to change your password</smail>:null}
 
                         </Form.Group>
                         <Form.Group as={Col} controlId="formGridAddress1">
@@ -112,8 +116,12 @@ const ProfileData = (props) => {
                         Edit
             </Button>
                 }
-
             </Form>
+            {showModal?
+                <PasswordChange
+                showModal={showModal}
+                derenderModal={derenderModal}
+            />:null}
         </div>
     );
 }

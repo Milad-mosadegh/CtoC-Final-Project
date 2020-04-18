@@ -4,7 +4,7 @@ import { POST } from '../../lib/post';
 import Errors from "../../lib/errors"
 
 import '../style.css'
-import ResetFile from './resetfile';
+import ResetForm from './resetForm';
 
 
 export default function ResetPassword(props) {
@@ -27,7 +27,7 @@ export default function ResetPassword(props) {
                     'Content-Type': 'application/json'
                 }
             }
-            const response =  await POST("/api/auth/resetcheck", formData, config)
+            const response =  await POST("/api/recovery/resetcheck", formData, config)
             if(response.data.status!=="success") props.history.push("/")
             if(response.data.status==="success") localStorage.setItem("c2creset-token", response.data.token)
         }
@@ -59,7 +59,7 @@ export default function ResetPassword(props) {
                 'x-auth-token':localStorage.getItem('c2creset-token'),
                 'Content-Type': 'application/json'
             }}
-            const response = await POST(`/api/auth/resetpass/${id}`, formData, config)
+            const response = await POST(`/api/recovery/resetpass/${id}`, formData, config)
             if (response.data.status === "success") {
                 alert("you have succesfully changed your password")
                 localStorage.removeItem('c2creset-token')
@@ -110,7 +110,7 @@ export default function ResetPassword(props) {
     return (
         <div>
             <div className='App-header bg-full '>
-                <ResetFile
+                <ResetForm
                     submitHandler={submitHandler}
                     pass={pass}
                     changeHandler={changeHandler}

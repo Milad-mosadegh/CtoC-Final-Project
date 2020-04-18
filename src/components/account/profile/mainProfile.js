@@ -1,9 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import './../styles.css'
-import { Form,Button,Col } from 'react-bootstrap';
-import ImageCard from '../../sell/imageCard';
 import GET from '../../lib/get';
-import FormData from "form-data"
+import FormData from "form-data" 
 import { IMGPOST, POST } from '../../lib/post';
 import ProfileData from './profile';
 
@@ -26,6 +24,8 @@ const MyProfile = (props) => {
     const [edit, setEdit]                   = useState(false)
     const [avatarChanged, setAvatarChange]  = useState(false)
     const [image, setImage]                 = useState("")
+    const [pass, setPass]                   = useState("")
+    const [showModal, setShowModal]     = useState(false)
 
     useEffect(()=>{
 
@@ -52,6 +52,13 @@ const MyProfile = (props) => {
      
         
     },[])
+
+    const renderModal = ()=>{
+        setShowModal(true)
+    }
+    const derenderModal = ()=>{
+        setShowModal(false)
+    }
 
     const submitHandler =async (e) =>{
         e.preventDefault();
@@ -108,10 +115,10 @@ const MyProfile = (props) => {
     
     const changeHandler=(e)=>{
 
-        const regexAlphabet = new RegExp(/^[a-zA-ZäöüÄÖÜß]*$/)
+/*         const regexAlphabet = new RegExp(/^[a-zA-ZäöüÄÖÜß]*$/)
         const regexPaypalId= new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
         const regexNumber = new RegExp(/^[0-9]*$/)
-        const regexAlphaNumber = new RegExp(/[a-zA-Z0-9äöüÄÖÜß]/)
+        const regexAlphaNumber = new RegExp(/[a-zA-Z0-9äöüÄÖÜß]/) */
        
         setProfile({...profile, [e.target.name]:e.target.value})
 
@@ -133,6 +140,9 @@ const MyProfile = (props) => {
               editHandler={editHandler}
               profile={profile}
               edit={edit}
+              renderModal={renderModal}
+              showModal={showModal}
+              derenderModal={derenderModal}
           />  
         </div>
      );
