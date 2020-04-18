@@ -46,9 +46,7 @@ exports.resetLink = async(req,res)=>{
 }
 
 exports.recoverPassword = async(req,res)=>{
-    const {id, token} = req.body.data
-    console.log(id)
-    console.log(token)
+    const {token} = req.body.data
     let tokenCheck= await passRecovery.findOne({tokenId:token})
     if(!tokenCheck) return res.json({status:"failed", message:"invalid token"})
     if(tokenCheck.recovered) return res.json({status:"failed", message:"invalid token"})

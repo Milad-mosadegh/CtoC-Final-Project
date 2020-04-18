@@ -6,6 +6,7 @@ import Errors from "../lib/errors"
 import './style.css'
 import MyNavbar from '../navbar/navBar';
 import SignupForm from './signupForm';
+import GET from '../lib/get';
 
 
 const useStyles = makeStyles(theme => ({
@@ -28,7 +29,22 @@ export default function MaterialSignup(props) {
     const [confirmPass, setconfirmPass] = useState("");
     let   [inputErrors, setInputErrors] = useState("");
     const formData = { firstName, lastName, email, pass };
-    useEffect(()=>setInputErrors(Errors),[])
+
+
+    useEffect(()=>{
+        if (localStorage.getItem("c2c-token")) 
+            {
+            const getData =async ()=>{
+                let response = await GET("/api/auth/authenticated")
+                if(response.data){
+                    if(response.data.status==="success") props.history.push("/dashboard")
+                    }
+                else localStorage.removeItem("c2c-token")
+                }
+            getData()
+            }
+        setInputErrors(Errors)
+    },[])
 
     const regexName = new RegExp(/^[a-zA-ZäöüÄÖÜß]*$/)
     const regexEmail = new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)

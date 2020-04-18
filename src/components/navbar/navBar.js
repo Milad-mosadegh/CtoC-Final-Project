@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Link, Redirect } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import '../navbar/styles.css'
 import { Navbar, Nav } from 'react-bootstrap';
 import GET from '../lib/get';
@@ -12,16 +12,16 @@ const MyNavbar = (props) => {
     const logoutHandler = () => {
         localStorage.removeItem('c2c-token')
         setAuth(false)
-        if (props) props.history.push("/")
+        props.history.push("/")
 
     }
 
     const loginHandler = () => {
-        if (props) props.history.push("/signin")
+        props.history.push("/signin")
     }
 
     const signupHandler = () => {
-        if (props) props.history.push("/signup")
+        props.history.push("/signup")
 
     }
 
@@ -29,9 +29,11 @@ const MyNavbar = (props) => {
         if (localStorage.getItem("c2c-token")) {
             const getData = async () => {
                 let response = await GET("/api/auth/authenticated")
-                console.log(response)
                 if (response.data) {
-                    if (response.data.status === "success") setAuth(true)
+                    if (response.data.status === "success") {
+                        setAuth(true)
+                        setUsername(response.data.data.firstName)
+                        }
                 }
                 else {
                     setAuth(false)
@@ -40,11 +42,12 @@ const MyNavbar = (props) => {
             }
             getData()
         }
+        else setAuth(false)
 
         if (props.location) {
             setPath(props.location.pathname)
         }
-    }, [])
+    },[])
 
     return (
         <div>
@@ -72,7 +75,7 @@ const MyNavbar = (props) => {
 
                         <Nav className="float-right">
                             <Nav.Link><Link className="text-light text-uppercase" to="/account">Account</Link></Nav.Link>
-                            <Nav.Link className="text-light justify-content-center ">{username}</Nav.Link>
+                            <Nav.Link className="text-light justify-content-center ">Welcome! {username}</Nav.Link>
                             <Nav.Link className="btn btn-danger text-light " onClick={logoutHandler}>Log out</Nav.Link>
                         </Nav>
 

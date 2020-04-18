@@ -6,7 +6,7 @@ import { POST } from '../lib/post';
 import Errors from "../lib/errors"
 import MyNavbar from '../navbar/navBar';
 import SigninForm from "./signinForm"
-import { Link } from 'react-router-dom'
+import GET from '../lib/get';
 
 
 const useStyles = makeStyles(theme => ({
@@ -29,8 +29,18 @@ export default function MaterialSignin(props) {
     const [errors, setErrors] = useState("")
     const [show, setShow] = useState(false)
 
-
     useEffect(() => {
+        if (localStorage.getItem("c2c-token")) 
+            {
+            const getData =async ()=>{
+                let response = await GET("/api/auth/authenticated")
+                if(response.data){
+                    if(response.data.status==="success") props.history.push("/dashboard")
+                    }
+                else localStorage.removeItem("c2c-token")
+                }
+            getData()
+            }
         setErrors(Errors)
     }, [])
     const handleOpen = () => {

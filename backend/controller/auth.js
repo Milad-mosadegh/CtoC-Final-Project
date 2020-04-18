@@ -79,10 +79,21 @@ exports.signup=async (req,res)=>{
 //Checking Authentication of user
 
 exports.authenticated=async(req,res)=>{
-    console.log("it is authenticaed route",req.header)
-    res.json({status:"success", message:"you reached authenticated route"})
+    await user.findById(req.userId, (err, doc)=>{
+        if(err) return res.json({status:"failed", message:"Unable to retrieve your data please try again"})
+        const {firstName, lastName, email, address, paypalId, phoneNumber, profileImage} = doc 
+        let profileData={
+            firstName,
+            lastName,
+            email, 
+            address, 
+            paypalId, 
+            phoneNumber, 
+            profileImage
+        }
+        res.json({status:"success", message:"You have been authorized", data:profileData})
+})
 }
-
 exports.changePassword =async(req,res)=>{
     const {pass, confirmPass} = req.body.data
 

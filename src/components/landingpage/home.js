@@ -4,7 +4,6 @@ import MyCarousel from '../carousel/carousel';
 import PopularProduct from './poplularproducts';
 import LastSeen from './lastseen';
 import SearchBar from '../SearchBar/searchbar';
-import Categories from './categories';
 import MyNavbar from '../navbar/navBar';
 import GET from '../lib/get';
 import SlideShow from '../Buy/slideShow';
@@ -20,7 +19,6 @@ const Home = (props) => {
             {
             const getData =async ()=>{
                 let response = await GET("/api/auth/authenticated")
-                console.log(response)
                 if(response.data){
                     if(response.data.status==="success") setAuth(true)
                     }
