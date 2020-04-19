@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
-import { POST } from '../../lib/post';
-import Errors from "../../lib/errors"
+import { POST } from '../lib/post';
+import Errors from "../lib/errors"
 
-import '../style.css'
+import '../signin/style.css'
 import ResetForm from './resetForm';
 
 

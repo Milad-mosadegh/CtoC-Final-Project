@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import MyCarousel from '../carousel/carousel';
 import PopularProduct from './poplularproducts';
 import LastSeen from './lastseen';
-import SearchBar from '../SearchBar/searchbar';
+import SearchBar from '../searchBar/searchbar';
 import MyNavbar from '../navbar/navBar';
 import GET from '../lib/get';
-import SlideShow from '../Buy/slideShow';
+import SlideShow from '../buy/slideShow';
 
 
 

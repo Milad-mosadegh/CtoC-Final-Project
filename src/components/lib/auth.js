@@ -1,5 +1,3 @@
-import React from "react";
-import POST from "./post"
 import {get} from "axios"
 
 const IfAuthenticated = async ({children}) => {

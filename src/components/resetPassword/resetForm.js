@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { Link, } from "react-router-dom"
 import Zoom from 'react-reveal/Zoom'
 
-const ResetFile = (props) => {
+const ResetForm = (props) => {
     const { submitHandler, pass, changeHandler, inputErrors, confirmPass } = props
 
     return (
@@ -58,4 +58,4 @@ const ResetFile = (props) => {
     );
 }
 
-export default ResetFile;
+export default ResetForm;

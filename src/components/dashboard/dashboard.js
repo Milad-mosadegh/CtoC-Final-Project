@@ -1,5 +1,4 @@
 import React from 'react';
-import MyNavbar from '../navbar/navBar';
 import Home from '../landingpage/home';
 
 

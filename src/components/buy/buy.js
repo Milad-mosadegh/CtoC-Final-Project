@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import MyNavbar from '../navbar/navBar';
-import SearchBar from '../SearchBar/searchbar';
+import SearchBar from '../searchBar/searchbar';
 import Products from "./products"
 
 import SlideShow from './slideShow';

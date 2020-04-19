@@ -10,8 +10,8 @@ import Dashboard from './components/dashboard/dashboard';
 import MainAcc from './components/account/mainacc';
 import SellItems from './components/sell/sellitems';
 import Home from './components/landingpage/home';
-import ResetPassword from './components/signin/Reset/resetPasword';
-import BuyComponent from './components/Buy/buy';
+import ResetPassword from './components/resetPassword/resetPassword';
+import BuyComponent from './components/buy/buy';
 
 
 
