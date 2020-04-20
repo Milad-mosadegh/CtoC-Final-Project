@@ -121,6 +121,7 @@ const ProfileData = (props) => {
                 <PasswordChange
                 showModal={showModal}
                 derenderModal={derenderModal}
+                {...props}
             />:null}
         </div>
     );

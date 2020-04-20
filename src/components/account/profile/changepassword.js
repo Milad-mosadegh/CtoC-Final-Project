@@ -39,8 +39,11 @@ const submitHandler = async (e) => {
         }}
         const response = await POST(`/api/auth/changepassword`, formData, config)
         if (response.data.status === "success") {
-            alert("you have succesfully changed your password")
+            alert("you have succesfully changed your password, Please relogin")
             derenderModal()
+            localStorage.removeItem("c2c-token")
+            props.history.push("/signin")
+
 
         }
         else if (response.data.status === "failed")

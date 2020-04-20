@@ -143,6 +143,7 @@ const MyProfile = (props) => {
               renderModal={renderModal}
               showModal={showModal}
               derenderModal={derenderModal}
+              {...props}
           />  
         </div>
      );
