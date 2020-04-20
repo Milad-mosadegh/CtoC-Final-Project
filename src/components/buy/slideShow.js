@@ -1,4 +1,4 @@
-import React,{ useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,32 +11,63 @@ import './style.css'
 
 const SlideShow = () => {
 
-    const [categories, setCategories] =useState("")
-    useEffect(()=>{
+    const [categories, setCategories] = useState("")
+    useEffect(() => {
         setCategories(Categories);
 
-    },[])
+    }, [])
 
-    const settings = {
+    var settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     };
 
 
     return (
         <div className="container">
             <Slider {...settings} className="shadow-lg ">
-                {categories?categories.map(data =>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" className='cardImg' src={ require(`../../images/${data.imgName}`) } />
-                        <Card.Body className="bg-dark cbh">
-                            <Card.Title> <Link className="text-light fs" to={data.value}>{data.value}</Link></Card.Title>
+                {categories ? categories.map(data =>
+                    <Card >
+                        <Card.Img variant="top" className='cardImg' src={require(`../../images/${data.imgName}`)} />
+                        <Card.Body className="bg-dark">
+                            <Card.Title >
+                                <Link className="text-light fs" to={data.value}>
+                                    {data.value}
+                                </Link>
+                            </Card.Title>
                         </Card.Body>
                     </Card>
-                ):null}
+                ) : null}
 
             </Slider>
         </div>
