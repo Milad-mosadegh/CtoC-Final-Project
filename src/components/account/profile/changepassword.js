@@ -8,6 +8,7 @@ export default function PasswordChange(props) {
     let [inputErrors, setInputErrors] = useState("")
     const [pass, setPass]   = useState("")
     const [confirmPass, setConfirmPass] = useState("")
+    const [oldPass, setOldPass] = useState("")
 
 
 
@@ -17,8 +18,9 @@ export default function PasswordChange(props) {
 const submitHandler = async (e) => {
     e.preventDefault();
     const formData = {
-        pass: pass,
-        confirmPass: confirmPass
+        pass,
+        confirmPass,
+        oldPass
     }
 
 
@@ -53,6 +55,9 @@ const submitHandler = async (e) => {
 
     switch (e.target.name) {
 
+        case "oldPass":
+            setOldPass(e.target.value)
+            break;
 
         case "pass":
             setPass(e.target.value)
@@ -89,6 +94,7 @@ const submitHandler = async (e) => {
         pass={pass}
         confirmPass={confirmPass}
         inputErrors={inputErrors}
+        oldPass={oldPass}
 
     />
     );

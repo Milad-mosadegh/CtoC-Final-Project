@@ -5,9 +5,9 @@ import { Modal } from "react-bootstrap"
 
 export default function ChangePassform(props) {
 
-    const {derenderModal,showModal, submitHandler, changeHandler, pass, confirmPass, inputErrors} = props
+    const {derenderModal,showModal, submitHandler, changeHandler, pass, confirmPass, inputErrors, oldPass} = props
     return (
-        <Modal show={showModal} onHide={derenderModal} animation={false} >
+        <Modal show={showModal} onHide={derenderModal} animation={true} centered>
                         
                         <Modal.Body className="bg-warning">
                         <form noValidate autoComplete="off" onSubmit={submitHandler}>
@@ -18,8 +18,17 @@ export default function ChangePassform(props) {
                     {/* <TextField required id="standard-required" label="Required" defaultValue="Hello World" /> */}
                     <Modal.Header closeButton></Modal.Header>
                     <Modal.Title>Change Password</Modal.Title>
+                    <TextField
+                        id="standard-password-input"
+                        label="Old Password"
+                        type="password"
+                        autoComplete="current-password"
+                        name="oldPass"
+                        value={oldPass}
+                        onChange={changeHandler}
+                        className="mb-2"
+                    />
 
-                    {/* {errors.pass ? errors.password.status ? <smail className="sText"><p>{errors.password.value}</p></smail> : null : null} */}
                     <TextField
                         id="standard-password-input"
                         label="New Password"
