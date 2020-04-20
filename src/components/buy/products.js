@@ -1,16 +1,26 @@
-import React, {useState,useEffect} from 'react';
+import React from 'react';
+import './style.css'
 
 export default function Products(props) {
-    const {products} = props
+    const { products } = props
     console.log("props in product", props.products)
 
     return (
-        <div>
-        <table>
-        <h1>You are on products</h1>
-                {products?products.map(product=><tr ><td><img className="w-25 vh-25" src={`http://localhost:5000/avatars/${product.images? product.images[0]:null}`} alt="nowimage"/>{/* product.images.lenght>0?product.images[0]:null */}</td><td>{product.title}</td><td>{product.price}</td></tr>):null}
-        
-                </table>
-                </div>
+        <div className="container mt-5">
+            <h1 className="mb-5">You are on products</h1>
+
+            <div className="myWrap" onClick={props.interProduct}>
+                {products ? products.map(product =>
+                    <div className="shadow-lg" key={product.id}>
+                        <div className="imgBox">
+                            <img src={`http://localhost:5000/avatars/${product.images ? product.images[0] : null}`} alt="nowimage" />
+                        </div>
+                        <div className="myContent">
+                            <h3>{product.title}</h3>
+                            <h5> Price : {product.price}$</h5>
+                        </div>
+                    </div>) : null}
+            </div>
+        </div>
     )
 }

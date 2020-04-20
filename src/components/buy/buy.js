@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 import MyNavbar from '../navbar/navBar';
 import SearchBar from '../searchBar/searchbar';
@@ -15,29 +15,35 @@ const BuyComponent = (props) => {
 
     const [products, setProducts] = useState("")
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        const fetchData=async()=>{
+        const fetchData = async () => {
 
-            let response= await GET("/api/buy/allproducts")
+            let response = await GET("/api/buy/allproducts")
             console.log("response from buy", response)
             setProducts(response.data.data)
         }
         fetchData()
-        
-    },[])
+
+    }, [])
+
+    const interProduct = () => {
+        console.log("Inter Product Loged");
+
+    }
     return (
         <div>
             <MyNavbar {...props} />
             <SearchBar />
             <div>
                 <SlideShow />
-                
             </div>
+
             <div>
-            {console.log("products in main component after setstate", products)}
-            <Products 
+                {console.log("products in main component after setstate", products)}
+                <Products
                     products={products}
+                    interProduct={interProduct}
                 />
             </div>
             <div>

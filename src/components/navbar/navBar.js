@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../navbar/styles.css'
 import { Navbar, Nav } from 'react-bootstrap';
 import GET from '../lib/get';
@@ -33,7 +33,7 @@ const MyNavbar = (props) => {
                     if (response.data.status === "success") {
                         setAuth(true)
                         setUsername(response.data.data.firstName)
-                        }
+                    }
                 }
                 else {
                     setAuth(false)
@@ -47,7 +47,7 @@ const MyNavbar = (props) => {
         if (props.location) {
             setPath(props.location.pathname)
         }
-    },[])
+    }, [])
 
     return (
         <div>
@@ -57,17 +57,17 @@ const MyNavbar = (props) => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link id="home" >
-                            <Link className="text-light text-uppercase" to="/">Home</Link>
+                            <Link className="text-light text-uppercase App-link " to="/">Home</Link>
                         </Nav.Link>
                         <Nav.Link id="sellitems" >
-                            <Link className="text-light text-uppercase" to="/sellitems">Sell</Link>
+                            <Link className="text-light text-uppercase App-link" to="/sellitems">Sell</Link>
                         </Nav.Link>
 
                         <Nav.Link id="buy" >
-                            <Link className="text-light text-uppercase" to='/buyitems'>Buy</Link>
+                            <Link className="text-light text-uppercase App-link" to='/buyitems'>Buy</Link>
                         </Nav.Link>
                         <Nav.Link id="contact" >
-                            <Link className="text-light text-uppercase" to='/contact'>Contact</Link>
+                            <Link className="text-light text-uppercase App-link" to='/contact'>Contact</Link>
                         </Nav.Link>
                     </Nav>
 
