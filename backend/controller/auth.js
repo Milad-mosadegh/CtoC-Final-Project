@@ -95,23 +95,33 @@ exports.authenticated=async(req,res)=>{
 })
 }
 exports.changePassword =async(req,res)=>{
-    const {pass, confirmPass} = req.body.data
+    const {pass, confirmPass, oldPass} = req.body.data
 
     if(pass!==confirmPass) return res.json({status:"failed", message:"Request Failed, Please check your inputs"})
-    let hashedPass = await bcrypt.hash(pass, 10)
-    const profileData = {
-        pass:hashedPass
-    }
-    await user.findByIdAndUpdate(req.userId, profileData,async (err, doc)=>{
-        if(err) return res.json({status:"failed", message:err})
-        else {
-            res.json({status:"success", message:"You have succesfully cahnged your password"})
-            console.log("Successfully change")
-        }
-     })
+
+    await user.findById(req.userId,(err,result)=>{
+        if(err) return res.status(500).json({
+            status:"failed",
+            message:"Sorry, we are unable to process your request please try again"})
+            
+        if(!result) return res.json({
+            status:"failed",
+            message:"Authorization failed , please check your credentials"})
+
+        bcrypt.compare(oldPass,result.pass)
+                .then(async(isPassCorrect)=>{
+                    if(!isPassCorrect) return res.json({status:"failed",message:"Authorization failed , please check your credentials"})                
+                    if(isPassCorrect){
+                        let hashedPass = await bcrypt.hash(pass, 10)
+                        const profileData = {pass:hashedPass};
+                        await user.findByIdAndUpdate(req.userId, profileData,async (err, doc)=>{
+                            if(err) return res.json({status:"failed", message:err})
+                            else {
+                                
+                                res.json({status:"success", message:"You have succesfully cahnged your password"})
+                                    }
+                                })
+                            } 
+                })
+        })
 }
-
-
-
-
-    
