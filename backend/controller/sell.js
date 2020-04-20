@@ -35,9 +35,15 @@ exports.newProduct = async (req,res)=>{
         const upload = multer({storage:storageTarget}).array("files", 6)
         upload(req,res, async()=>{
             const {title, category, condition, quantity, color, price, description} = req.body
-            console.log(title, category, condition, quantity, color, price, description)
+            let priceRange;
+            if(price>=250) priceRange=6
+                else if(price>=200) priceRange=5
+                    else if(price>=150) priceRange=4
+                        else if(price>=100) priceRange=3
+                            else if(price>=50) priceRange=2
+                                else priceRange=1
+
             let images=req.files.map(values=>values.filename)
-            console.log(req.files)
             const newProduct = new product({
                 title,
                 category,
@@ -46,7 +52,8 @@ exports.newProduct = async (req,res)=>{
                 color,
                 price,
                 description,
-                images
+                images,
+                priceRange
             })
             await newProduct.save((err,doc)=>{
                 if(err) {res.json({status:"failed", message:err})}

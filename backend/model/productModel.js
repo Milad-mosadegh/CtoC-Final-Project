@@ -9,13 +9,13 @@ const productSchema= new mongoose.Schema({
         type:Number
     },
     condition:{
-        type:String
+        type:Number
     },
     quantity:{
         type:Number
     },
     color:{
-        type:String
+        type:Number
     },
     price:{
         type:Number
@@ -34,6 +34,9 @@ const productSchema= new mongoose.Schema({
     },
     sold:{
         type:Boolean
+    },
+    priceRange:{
+        type:Number
     },
     images:{
         type:Array

@@ -1,9 +1,6 @@
 import React from 'react';
-
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-
-
 import it from '../../images/it.jpg'
 import sports from '../../images/sport.jpg'
 import home from '../../images/home.jpg'
@@ -21,14 +18,12 @@ import jewellery from '../../images/jewellery.jpg'
 import consumer from '../../images/consumer.jpeg'
 import pet from '../../images/pet.jpeg'
 import toy from '../../images/toys.jpeg'
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 
 
-
-
-const Categories = () => {
+const Categories = (props) => {
+    
 
     const allCat = [
         { value: 1, type: "Antiques", name: antique },

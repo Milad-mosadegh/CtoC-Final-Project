@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Form, Col, InputGroup, FormControl } from 'react-bootstrap'
 import Categories from "../lib/categories"
 import ImageCard from "./imageCard"
 import Colors from "../lib/colors"
+import Conditions from "../lib/condition"
 
 
 import './styles.css'
@@ -44,9 +45,7 @@ const MainSell = (props) => {
                                     <Form.Group as={Col} controlId="formGridState">
                                         <Form.Label>Condition</Form.Label>
                                         <Form.Control as="select" name="condition" value={product.condition} onChange={changeHandler}>
-                                            <option value="0">Select Condition</option>
-                                            <option value="Used">Used</option>
-                                            <option value="New">New</option>
+                                        {Conditions.map((key, index) => <option value={key.id}>{key.value}</option>)}
                                         </Form.Control>
                                     </Form.Group>
                                     {/*  */}
@@ -67,11 +66,6 @@ const MainSell = (props) => {
                                     </Form.Group>
                                 </Form.Row>
 
-
-                                {/*       <Form.Group controlId="formGridAddress1">
-                                <Form.Label>Price</Form.Label>
-                            </Form.Group>
- */}
                                 <InputGroup className="mb-3">
                                     <InputGroup.Prepend>
                                         <InputGroup.Text>$</InputGroup.Text>
@@ -88,7 +82,7 @@ const MainSell = (props) => {
                                 </InputGroup>
 
                             </div>
-                            {/*  */}
+
                             <div className="p-5" >
                                 <div className="mb-3 mt-5">
                                     <div className="d-flex text-center">
