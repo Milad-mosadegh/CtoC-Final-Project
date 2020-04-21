@@ -14,7 +14,7 @@ export default function Products({ products, interProduct }) {
                     < div className="myCard" key={product.id} onClick={e => interProduct(index)}>
                         <div className="imgBox"
                             style={{
-                                backgroundImage: `url(${`http://localhost:5000/avatars/${product.images ? product.images[0] : null}`})`,
+                                backgroundImage: `url(${`http://localhost:5000/avatars/${product.images.length > 0 ? product.images[0] : 'noimage.png'}`})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat'

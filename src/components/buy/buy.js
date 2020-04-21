@@ -8,7 +8,7 @@ import GET from '../lib/get';
 
 import FilterBar from "../filterBar/filterBar"
 import ProductDetails from './productDetails';
-import { Link } from 'react-router-dom';
+
 
 
 const BuyComponent = (props) => {
@@ -53,9 +53,7 @@ const BuyComponent = (props) => {
     }
 
     const interProduct = (id) => {
-        /*    <Link to='/productdetails'>
-   
-           </Link> */
+
         setShowModal(true)
         setModalId(id)
     }

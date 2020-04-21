@@ -4,13 +4,61 @@
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    width: 45%; /* Full width */
+    height: 90%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */ 
+    background-color: rgba(245, 245, 245, 0.767); /* Black w/ opacity */ 
+    border-radius: 30px;
+    margin: 50px 500px ;
+    box-shadow: -15px 10px 10px rgba(0, 0, 0, 0.637);
 }
-.content{
-    margin: 100px auto;
+.imageBox{
+    display: flex;
+    flex-direction: row;
+    
     padding: 30px;
+}
+
+.imageBox button{
+    display: flex;
+    background: transparent;
+    border-radius: 100%;
+    color: white;
+    transition: 0.4;
+}
+.imageBox button:hover{
+    background: rgba(255, 0, 0, 0.644);
+    color: black;
+    transition: 0.4;
+
+
+}
+
+.imageBox .largImage{
+    flex: 80%;
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 10px;
+    /* border: 2px solid red; */
+}
+
+
+.imageBox .thumbNailImage{
+    flex: 20%;
+    justify-content: center;
+    margin-left: 10px;
+
+    /* border: 1px solid red; */
+}
+
+.thumbNailImage .thumb{
+    width: 150px;
+    height: 150px;
+    color: white;
+    margin-top: 10px;
+}
+
+.my-container .content{
+    color: rgb(0, 0, 0);
 }
