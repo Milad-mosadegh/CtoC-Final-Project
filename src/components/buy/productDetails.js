@@ -1,13 +1,16 @@
 import React from 'react';
+import "./productstyles.css"
 
 const ProductDetails = ({ showModel, handleClose, title, description, images }) => {
     return (
-        <div show={showModel} onHide={handleClose}>
+        <div className="my-container" show={showModel} onHide={handleClose}>
+            <div className="content">
             <div>
                 {title}
             </div>
             <div className="modal-image">
-                <img src={`http://localhost:5000/avatars/${images ? images[0] : null}`} alt="" />
+                {images.map(image=><img src={`http://localhost:5000/avatars/${image ? image : null}`} alt="" />)}
+               {/*  <img src={`http://localhost:5000/avatars/${images ? images[0] : null}`} alt="" /> */}
             </div>
             <div>
                 {description}
@@ -15,6 +18,7 @@ const ProductDetails = ({ showModel, handleClose, title, description, images }) 
             <button onClick={handleClose}>
                 Close
             </button>
+            </div>
         </div>
     );
 }

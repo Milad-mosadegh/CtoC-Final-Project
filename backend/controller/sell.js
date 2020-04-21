@@ -1,9 +1,10 @@
-const product = require("../model/productModel")
-const multer = require("multer")
-const path = require("path")
+
+const product = require("../model/productModel");
+const multer  = require("multer");
+const path    = require("path");
+const cp      = require('child_process');
+
 exports.newProduct = async (req,res)=>{
-
-
 
     if(req.body.data){
             const {title, category, condition, quantity, color, price, description} = req.body.data
@@ -42,7 +43,14 @@ exports.newProduct = async (req,res)=>{
                         else if(price>=100) priceRange=3
                             else if(price>=50) priceRange=2
                                 else priceRange=1
-
+            req.files.forEach(f => {
+                // create thunbnails
+                // {public/images/18612876a87a74.jpg} => {public/images/18612876a87a74.jpg.thumb.jpg}
+                const thumbPath = f.path + '.thumb.jpg'
+                // $ convert $filePath -resize 500x $thumbPath
+                // sudo apt install imagemagick
+                cp.spawnSync('convert',[f.path,'-resize','500x',thumbPath]);
+            })
             let images=req.files.map(values=>values.filename)
             const newProduct = new product({
                 title,
