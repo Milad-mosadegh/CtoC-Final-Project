@@ -3,7 +3,7 @@ import React from 'react'
 export default function FilterBarForm(props) {
 
     const {categories,colors, conditions, prices, filterHandler} = props
-    console.log("in filterform", categories)
+
     return (
         <div className="container">
         <form  noValidate="novalidate" onSubmit={filterHandler}>

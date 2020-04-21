@@ -1,99 +1,78 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import "./searchbar.css";
 import Categories from "../lib/categories"
 
-class SearchBar extends Component {
-  constructor(props) {
-    super(props)
-    this.items = [
-      "ather",
-      "ahmad",
-      "shahid",
-      "shah",
-      "ali",
-      "aaa",
-      "ahm",
-      "arshad",
-      "mango",
-      "banana",
-      "kino",
-      "black",
-      "arm",
-      "angle",
-      "angel",
-      "argument",
-      "armans",
-      "adha",
-      "aram",
-      "art"
-    ]
-    this.state = {
-      suggestions: [],
-      text: "",
-      searchText: "",
-      searchCategory: ""
 
-    }
-  }
-  onTextChanged = (e) => {
+export default function SearchBar(props) {
+
+  let items=[];
+  if(props.products) items=props.products.map(product=>product.title)
+else items = [
+    "ather",
+    "ahmad",
+    "shahid",
+    "shah",
+    "ali",
+    "aaa",
+    "ahm",
+    "arshad",
+    "mango",
+    "banana",
+    "kino",
+    "black",
+    "arm",
+    "angle",
+    "angel",
+    "argument",
+    "armans",
+    "adha",
+    "aram",
+    "art"
+  ]
+
+  const [suggestions, setSuggestions]       = useState("")
+  const [text, setText]                     = useState("")
+  const [searchText, setSearchText]         = useState("")
+  const [searchCategory, setSearchCategory] = useState("")
+
+  const onTextChanged = (e) => {
     const value = e.target.value;
-    let suggestions = [];
+    let suggestionArray = [];
     if (value.length > 0) {
       let length = value.length;
-      suggestions = (this.items.sort().filter(v => v.slice(0, length).includes(value, 0))).slice(0, 10)
+      suggestionArray = (items.sort().filter(v => v.slice(0, length).includes(value, 0))).slice(0, 10)
+      console.log(suggestionArray)
     }
-    this.setState({ suggestions, text: value })
+    setSuggestions(suggestionArray)
+    setText(value)
   }
 
-  renderSuggestion = () => {
+  const suggestionSelector = (value) => {
+                          setText(value)
+                          setSuggestions("")
+            }
 
-    const { suggestions } = this.state;
-    if (suggestions.length < 1) return null
-
-    return (
-      <ul>
-        {suggestions
-          .map((item, index) =>
-            <li key={index}
-              onClick={() => this.suggestionSelector(item)} >
-              {item}</li>)}
-      </ul>
-    )
-
-  }
-
-  suggestionSelector = (value) => {
-    this.setState(() => ({
-      text: value,
-      suggestions: []
-    }))
-  }
-  searchHandler = (e) => {
+  const searchHandler = (e) => {
     e.preventDefault();
-    if (e.target.searchText.value === "") return console.log("no search selecte")
-    this.setState({
-      searchText: e.target.searchText.value,
-      searchCategory: e.target.searchCategory.value
-    })
-    console.log(this.state)
+    if (e.target.searchText.value === "") return 
 
+      setSearchText(e.target.searchText.value)
+      setSearchCategory(e.target.searchCategory.value)
   }
 
-
-  render() {
-    return (
-
-
-
-
+  return (
       <div className="container">
-        <form onSubmit={this.searchHandler} noValidate="novalidate">
+        <form onSubmit={searchHandler} noValidate="novalidate">
           <div className="row ">
             <div className=" AutoComplete col-lg-5 col-md-4 col-sm-12 p-2">
               <input autoComplete="off" type="text" name="searchText" className="form-control"
-                value={this.state.text} placeholder="Type your Search here !"
-                onChange={this.onTextChanged} />
-              {this.renderSuggestion()}
+                value={text} placeholder="Type your Search here !"
+                onChange={onTextChanged} />
+                <ul>
+              {suggestions.length>0?
+                  suggestions.map((item, index) =><li key={index}  onClick={() => suggestionSelector(item)} >{item}</li>)
+                  :null}
+                </ul>
             </div>
             
             <div className="col-lg-4 col-md-3 col-sm-12 p-2">
@@ -108,11 +87,8 @@ class SearchBar extends Component {
           </div>
 
         </form>
-
-      </div>
-
-    )
-  }
+    </div>
+  
+  )
 }
 
-export default SearchBar;

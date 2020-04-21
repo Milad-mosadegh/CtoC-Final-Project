@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
-
 import 'bootstrap/dist/css/bootstrap.min.css'
-
 import MyNavbar from '../navbar/navBar';
 import SearchBar from '../searchBar/searchbar';
 import Products from "./products"
-
 import SlideShow from './slideShow';
 import GET from '../lib/get';
 import MyModal from './modal';
-
+import FilterBar from "../filterBar/filterBar"
 
 
 const BuyComponent = (props) => {
     const [products, setProducts] = useState("")
     const [showModal, setShowModal] = useState(false)
     const [modalId, setModalId] = useState(0)
+    const [filteredProducts, setFilteredProducts]=useState("")
     useEffect(() => {
         const fetchData = async () => {
             let response = await GET("/api/buy/allproducts")
@@ -24,6 +22,33 @@ const BuyComponent = (props) => {
         }
         fetchData()
     }, [])
+
+        const filterHandler =(e)=>{
+    
+            e.preventDefault();
+            let colorValue      = parseInt(e.target.color.value)
+            let categoryValue   = parseInt(e.target.category.value)
+            let conditionValue  = parseInt(e.target.condition.value)
+            let priceValue      = parseInt(e.target.price.value)
+            setFilteredProducts(products
+                                    .filter(product=>{
+                                        if(categoryValue!==0) return product.category===categoryValue
+                                        else return true
+                                    })
+                                    .filter(product=>{
+                                        if(colorValue!==0) return product.color===colorValue
+                                        else return true
+                                    })
+                                    .filter(product=>{
+                                        if(conditionValue!==0) return product.condition===conditionValue
+                                        else return true
+                                    })
+                                    .filter(product=>{
+                                        if(priceValue!==0) return product.priceRange===priceValue
+                                        else return true
+                                    }))
+            
+        }
 
     const interProduct = (id) => {
         console.log('show', id, modalId)
@@ -38,18 +63,20 @@ const BuyComponent = (props) => {
     return (
         <div>
             <MyNavbar {...props} />
-            <SearchBar />
-            <div>
-                <SlideShow />
-            </div>
-
-            <div>
-                {console.log("products in main component after setstate", products)}
-                <Products
-                    products={products}
+            <SearchBar 
+                products={filteredProducts?filteredProducts:products}
+            />
+            <SlideShow/>
+            <FilterBar
+                filterHandler={filterHandler}
+            />
+            {console.log("filtered products", filteredProducts)}
+            {console.log("all products", products)}
+            
+            <Products
+                    products={filteredProducts?filteredProducts:products}
                     interProduct={interProduct}
                 />
-            </div>
             <div>
                 {showModal ?
                     <MyModal showModel={showModal} handleClose={handleClose}

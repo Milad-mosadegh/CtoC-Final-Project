@@ -5,8 +5,6 @@ import '../../../node_modules/font-awesome/css/font-awesome.min.css'
 
 export default function Products({ products, interProduct }) {
 
-    console.log("props in product", products)
-
     return (
         <div className="container mt-5">
             <h1 className="mb-5">You are on products</h1>
@@ -20,15 +18,15 @@ export default function Products({ products, interProduct }) {
                         </div>
                         <div className="myContent">
                             <div className="describ">
-                                <h5> Price : {product.price}$</h5>
-                                <h5> Price : {product.price}$</h5>
+                                <h5> Price : {product.price}€</h5>
+                                <h5> Price : {product.price}€</h5>
                             </div>
                             <h3>{product.title}</h3>
 
                         </div>
                     </div>) : null}
             </div>
-        </div >
+        </div>
     )
 }
 
