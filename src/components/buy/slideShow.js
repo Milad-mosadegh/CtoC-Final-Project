@@ -24,6 +24,8 @@ const SlideShow = () => {
         slidesToShow: 4,
         slidesToScroll: 4,
         initialSlide: 0,
+        vertical:true,
+        verticalSwiping:true,
         responsive: [
             {
                 breakpoint: 1024,
