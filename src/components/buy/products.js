@@ -12,13 +12,18 @@ export default function Products({ products, interProduct }) {
             <div className="myWrap">
                 {products ? products.map((product, index) =>
                     < div className="myCard" key={product.id} onClick={e => interProduct(index)}>
-                        <div className="imgBox">
+                        <div className="imgBox"
+                            style={{
+                                backgroundImage: `url(${`http://localhost:5000/avatars/${product.images ? product.images[0] : null}`})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat'
+                            }}>
+                            {/* <img src={`http://localhost:5000/avatars/${product.images ? product.images[0] : null}`} alt="nowimage" /> */}
                             <button className="btn fa fa-star"></button>
-                            <img src={`http://localhost:5000/avatars/${product.images ? product.images[0] : null}`} alt="nowimage" />
                         </div>
                         <div className="myContent">
                             <div className="describ">
-                                <h5> Price : {product.price}€</h5>
                                 <h5> Price : {product.price}€</h5>
                             </div>
                             <h3>{product.title}</h3>

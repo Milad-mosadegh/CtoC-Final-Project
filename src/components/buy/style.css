@@ -1,6 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+
 .cardImg{
     height: 200px;
 }
+
+.modal-image img{
+    width: 700px;
+    height: 700px;
+}
+
 
 .myWrap{
  
@@ -25,10 +35,13 @@
     height: 200px;
 }
 
-.imgBox img{
-    width: 100%;
-    height: 100%;
-     border-radius: 10px 10px 0 0 ;
+.imgBox button{
+    display: flex;
+    color: yellow;
+    font-size: 20px;
+    opacity: 0.9;
+    outline: none;
+    border: none;
 }
 
 .myWrap .myContent .describ{
@@ -58,14 +71,7 @@
 
 }
 
-.imgBox button{
-    position: absolute;
-    color: red;
-    padding: 10px;
-    font-size: 20px;
-    outline: none;
-    border: none;
-}
+
 
 @media only screen and (max-width: 960px) {
  .myWrap{
@@ -88,8 +94,13 @@
         display: flex;
     }
 
-    .imgBox img{
+    .myCard .imgBox{
+        flex: 70%;
         border-radius: 10px 0 0px 10px ;
+    }
+
+    .myCard .myContent{
+        flex: 30%;
     }
    
     

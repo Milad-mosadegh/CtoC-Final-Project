@@ -12,6 +12,7 @@ import SellItems from './components/sell/sellitems';
 import Home from './components/landingpage/home';
 import ResetPassword from './components/resetPassword/resetPassword';
 import BuyComponent from './components/buy/buy';
+import ProductDetails from './components/buy/productDetails';
 
 
 
@@ -22,10 +23,11 @@ function App() {
     <div className="App">
 
       <Router>
-        
+
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/account" component={MainAcc} />
+          <Route path="/productdetails" component={ProductDetails} />
           <Route path="/resetpass/:id/:token" component={ResetPassword} />
           <Route path="/sellitems" component={SellItems} />
           <Route path="/buyitems" component={BuyComponent} />
