@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import "./productstyles.css"
+import PictureSlider from './pictureSlider';
 
 
 
 
 const ProductDetails = ({ showModel, handleClose, title, description, images }) => {
 
-    console.log("images i got in product detail", images)
-
     const [bgImage, setBgImage] = useState(images.length > 0 ? images[0] : "noimage.png");
-
     const handleBgImage = (backgroundImage) => {
         console.log("backgroundImage Image", backgroundImage);
         setBgImage(backgroundImage)
@@ -42,28 +40,12 @@ const ProductDetails = ({ showModel, handleClose, title, description, images }) 
                 </div>
 
                 <div className="thumbNailImage">
-
-                    {images.map(image =>
-                        <div className="thumb"
-                            onClick={() => handleBgImage(image)}
-                            style={{
-                                backgroundImage: `url(${`http://localhost:5000/avatars/${image ? image : null}`})`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover',
-                                backgroundRepeat: 'no-repeat',
-                                cursor: "pointer"
-                            }}>
-
-                        </div>
-                    )}
-
-
-
+                        <PictureSlider
+                            images={images}
+                            handleBgImage={handleBgImage}
+                        />
                 </div>
-
-
             </div>
-
         </div>
     );
 }
