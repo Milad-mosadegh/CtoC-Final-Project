@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import "./productstyles.css"
-
 import Zoom from 'react-reveal/Zoom'
-import Slide from 'react-reveal/Slide'
 import Fade from 'react-reveal/Fade'
 
 import PictureSlider from './pictureSlider';
+import NewMessage from '../account/messages/newMessage';
 
 
 
@@ -59,7 +58,8 @@ const ProductDetails = ({ showModel, handleClose, title, description, images, co
 
                         <div className="myIcon">
                             <div className="myIcons fa fa-thumbs-o-up"></div>
-                            <div className="myIcons fa fa-envelope-o"></div>
+
+                            <NewMessage title={title}/>
                             <div className="myIcons fa fa-phone"></div>
 
                         </div>
@@ -70,31 +70,10 @@ const ProductDetails = ({ showModel, handleClose, title, description, images, co
 
 
                 <div className="thumbNailImage">
-                    {/*  <Slide right cascade>
-                        {images.map(image =>
-                            <div className="thumb"
-                                onClick={() => handleBgImage(image)}
-                                style={{
-                                    backgroundImage: `url(${`http://localhost:5000/avatars/${image ? image : null}`})`,
-                                    backgroundPosition: 'center',
-                                    backgroundSize: 'cover',
-                                    backgroundRepeat: 'no-repeat',
-                                    cursor: "pointer"
-                                }}
-                            >
-                               
-
-                            </div>
-                        )}
-                    </Slide> */}
-
                     <PictureSlider
                         images={images}
                         handleBgImage={handleBgImage}
-
                     />
-
-
                 </div>
             </div>
         </div>
