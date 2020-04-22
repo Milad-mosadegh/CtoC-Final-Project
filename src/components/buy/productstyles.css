@@ -66,13 +66,23 @@
     margin-left: 10px;
 }
 
-.thumbNailImage .thumb{
+/* .thumbNailImage .thumb{
     width: 150px;
     height: 150px;
     color: white;
     margin-top: 10px;
     border-radius: 20px;
-}
+} */
+
+ .thumbNailImage .myThumb{
+    width: 150px;
+    height: 150px;
+    color: white;
+    margin-top: 10px;
+    border-radius: 20px;
+} 
+
+
 
 .my-container .content{
     height: 300px;
@@ -104,7 +114,6 @@
     margin: 0 auto;
     border-bottom: 3px solid rgb(121, 120, 120);
     box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
-
 }
 .my-container .content .innerContent{
     display: flex; 
@@ -178,32 +187,60 @@ border-bottom: 3px solid rgb(179, 72, 72);
 
     .imageBox .largImage{
         flex: 80%;
-        width: 330px;
+        width: 350px;
         height: 200px;
     }
-    .thumbNailImage .thumb{
+    .thumbNailImage .myThumb {
         width: 50px;
-        height: 50px;
+
     }
+    .my-container .content{
+        width: 350px;
+   
+}
     
     .my-container .content h2{
-        width: 50%;
+
         margin: 0 auto;
         padding: 10px;
-        font-size: 28px;
+        font-size: 18px;
         font-weight: 500;
-        border-bottom: 2px solid rgb(121, 120, 120);
     }
         
     .content .innerContent h3{
         font-size: 15px;
-        border-bottom: 2px solid rgb(179, 72, 72);
+
     }
 
     .my-container .content h4{
-
         font-size: 13px;
         padding: 20px;
+    }
+
+    .myLine{
+        border-bottom: 2px solid rgb(121, 120, 120);
+        box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
+    }
+
+    .myLine2{
+        width: 70%;
+        border-bottom: 2px solid rgb(121, 120, 120);
+        box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
+    }
+    .myIcon{
+        width: 350px;
+    }
+    .myIcon .myIcons{
+    font-size: 20px;
+    }
+   
+    .myIcon .myIcons:hover{
+        font-size: 20px;
+        transform: translateY(-10px);
+    }
+
+     .but-big{text-align: center;
+        width: 350px;
     }
 
 

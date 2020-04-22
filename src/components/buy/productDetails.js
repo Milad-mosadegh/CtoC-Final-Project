@@ -23,6 +23,9 @@ const ProductDetails = ({ showModel, handleClose, title, description, images, co
 
     return (
         <div className="my-container" show={showModel} onHide={handleClose}>
+            <button className='btn' onClick={handleClose}>
+                X
+                    </button>
             <div className="imageBox">
                 <Zoom>
                     <div>
@@ -34,9 +37,6 @@ const ProductDetails = ({ showModel, handleClose, title, description, images, co
                                 backgroundRepeat: 'no-repeat'
                             }}
                         >
-                            <button className='btn' onClick={handleClose}>
-                                X
-                        </button>
                         </div>
                         <div className="content">
                             <h2>{title}</h2>
