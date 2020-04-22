@@ -9,6 +9,7 @@ import GET from '../lib/get';
 import SlideShow from '../buy/slideShow';
 
 
+
 const Home = (props) => {
     const [auth, setAuth] = useState(false)
 

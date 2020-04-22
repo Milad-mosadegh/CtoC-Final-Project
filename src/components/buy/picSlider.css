@@ -1,0 +1,22 @@
+.my{
+    width: 170px;
+    border-radius: 30px;
+    background: transparent;
+}
+
+.container .myThumb img{
+    width:150px;
+    height: 150px;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+
+.container .up, .down{
+    margin: 0 auto;
+    border: none;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 30px;
+    outline: none;
+}
+

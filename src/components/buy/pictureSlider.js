@@ -1,24 +1,26 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./productstyles.css"
+// import "./productstyles.css"
+import './picSlider.css';
+import Slide from 'react-reveal/Slide'
 
 const PictureSlider = (props) => {
-   const {images, handleBgImage}=props
-   let slider = useRef(null)
+    const { images, handleBgImage } = props
+    let slider = useRef(null)
 
-    const settings ={
+    const settings = {
         dots: false,
-        arrows:false,
+        arrows: false,
         infinite: false,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
         initialSlide: 0,
-        vertical:true,
-        verticalSwiping:true,
-        lazyLoad:true,
+        vertical: true,
+        verticalSwiping: true,
+        lazyLoad: true,
         responsive: [
             {
                 breakpoint: 1024,
@@ -50,21 +52,22 @@ const PictureSlider = (props) => {
 
     return (
         <div className="container">
-        <button className="btn" onClick={()=>slider.slickPrev()}><i class="fa fa-arrow-circle-o-up"></i></button>
-            <Slider ref={c=>slider=c} {...settings} className="shadow-lg ">
-            
-            {images.map(image =>
-                        <div className="thumb"
-                            onClick={()=>handleBgImage(image)}
+            <button className="up fa fa-arrow-circle-o-up" onClick={() => slider.slickPrev()}></button>
+            <Slide right cascade>
+                <Slider ref={c => slider = c} {...settings} className="shadow-lg my ">
+                    {images.map(image =>
+                        <div className="myThumb "
+                            onClick={() => handleBgImage(image)}
                             style={{
                                 cursor: "pointer"
-                            }}> 
-                      <img src={`http://localhost:5000/avatars/${image ? image : null}`} alt="Nothing" height="100%" width="100%"/>
+                            }}>
+                            <img src={`http://localhost:5000/avatars/${image ? image : null}`} alt="Nothing" height="100%" width="100%" />
                         </div>
                     )}
 
-            </Slider>
-            <button className="btn" onClick={()=>slider.slickNext()}><i class="fa fa-arrow-circle-o-down"></i></button>
+                </Slider>
+                <button className="down fa fa-arrow-circle-o-down" onClick={() => slider.slickNext()}></button>
+            </Slide>
         </div>
     );
 }

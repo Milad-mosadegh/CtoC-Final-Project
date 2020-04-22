@@ -70,7 +70,7 @@ const ProductDetails = ({ showModel, handleClose, title, description, images, co
 
 
                 <div className="thumbNailImage">
-                    <Slide right cascade>
+                    {/*  <Slide right cascade>
                         {images.map(image =>
                             <div className="thumb"
                                 onClick={() => handleBgImage(image)}
@@ -82,25 +82,19 @@ const ProductDetails = ({ showModel, handleClose, title, description, images, co
                                     cursor: "pointer"
                                 }}
                             >
-                                {/* <PrivateCarousel image={image} style={{
-                            backgroundImage: `url(${`http://localhost:5000/avatars/${image ? image : null}`})`,
-                            backgroundPosition: 'center',
-                            backgroundSize: 'cover',
-                            backgroundRepeat: 'no-repeat',
-                            cursor: "pointer"
-                        }} /> */}
+                               
 
                             </div>
                         )}
-                    </Slide>
+                    </Slide> */}
 
-                    <div className="thumbNailImage">
-                        <PictureSlider
-                            images={images}
-                            handleBgImage={handleBgImage}
-                        />
+                    <PictureSlider
+                        images={images}
+                        handleBgImage={handleBgImage}
 
-                    </div>
+                    />
+
+
                 </div>
             </div>
         </div>

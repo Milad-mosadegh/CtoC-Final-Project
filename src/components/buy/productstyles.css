@@ -4,7 +4,7 @@
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 45%; /* Full width */
+    width: 50%; /* Full width */
     height: 90%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(223, 232, 233, 0.972); /* Black w/ opacity */ 
@@ -51,7 +51,7 @@
 
 .imageBox .largImage{
     flex: 80%;
-    width: 629px;
+    width: 690px;
     height: 400px;
     /* margin: 0 auto; */
     margin-top: 10px;
