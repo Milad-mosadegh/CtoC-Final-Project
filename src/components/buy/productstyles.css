@@ -7,7 +7,7 @@
     width: 45%; /* Full width */
     height: 90%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(245, 245, 245, 0.767); /* Black w/ opacity */ 
+    background-color: rgba(223, 232, 233, 0.972); /* Black w/ opacity */ 
     border-radius: 30px;
     margin: 70px 500px ;
     box-shadow: -15px 10px 10px rgba(0, 0, 0, 0.637);
@@ -78,7 +78,7 @@
     height: 300px;
     margin-top: 10px;
     background: #eee;
-    color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);    
      border-radius: 20px ;
 }
 

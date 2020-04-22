@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import "./productstyles.css"
+
 import Zoom from 'react-reveal/Zoom'
 import Slide from 'react-reveal/Slide'
 import Fade from 'react-reveal/Fade'
+
+import PictureSlider from './pictureSlider';
+
 
 
 
 
 const ProductDetails = ({ showModel, handleClose, title, description, images, color, condition, quantity }) => {
 
-    console.log("images i got in product detail", images)
-
     const [bgImage, setBgImage] = useState(images.length > 0 ? images[0] : "noimage.png");
-
     const handleBgImage = (backgroundImage) => {
         console.log("backgroundImage Image", backgroundImage);
         setBgImage(backgroundImage)
@@ -55,6 +56,7 @@ const ProductDetails = ({ showModel, handleClose, title, description, images, co
                             <h4>{description}</h4>
                         </div>
 
+
                         <div className="myIcon">
                             <div className="myIcons fa fa-thumbs-o-up"></div>
                             <div className="myIcons fa fa-envelope-o"></div>
@@ -91,6 +93,14 @@ const ProductDetails = ({ showModel, handleClose, title, description, images, co
                             </div>
                         )}
                     </Slide>
+
+                    <div className="thumbNailImage">
+                        <PictureSlider
+                            images={images}
+                            handleBgImage={handleBgImage}
+                        />
+
+                    </div>
                 </div>
             </div>
         </div>
