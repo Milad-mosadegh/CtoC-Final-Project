@@ -1,5 +1,7 @@
 import React from 'react';
-import './style.css'
+
+import '../styles/main.css'
+// import './style.css'
 import '../../../node_modules/font-awesome/css/font-awesome.min.css'
 
 import Slide from 'react-reveal/Slide';
@@ -22,7 +24,8 @@ export default function Products({ products, interProduct }) {
                                     backgroundImage: `url(${`http://localhost:5000/avatars/${product.images.length > 0 ? product.images[0] : 'noimage.png'}`})`,
                                     backgroundPosition: 'center',
                                     backgroundSize: 'cover',
-                                    backgroundRepeat: 'no-repeat'
+                                    backgroundRepeat: 'no-repeat',
+                                    // borderRadius: "20px 20px 0 0 "
                                 }}>
                                 {/* <img src={`http://localhost:5000/avatars/${product.images ? product.images[0] : null}`} alt="nowimage" /> */}
                                 <button className="btn fa fa-star"></button>

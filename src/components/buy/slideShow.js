@@ -25,6 +25,7 @@ const SlideShow = () => {
         slidesToScroll: 4,
         initialSlide: 0,
         verticalSwiping: false,
+        useCSS: true,
         responsive: [
             {
                 breakpoint: 1024,
@@ -56,7 +57,7 @@ const SlideShow = () => {
 
     return (
         <div className="container">
-            <Slider {...settings} className="shadow-lg ">
+            <Slider {...settings} className="shadow-lg mySlideShow">
                 {categories ? categories.map(data =>
                     <Card >
                         <Card.Img variant="top" className='cardImg' src={require(`../../images/${data.imgName}`)} />

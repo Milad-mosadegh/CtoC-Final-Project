@@ -1,0 +1,107 @@
+@import './variables';
+
+
+.myWrap{
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px 200px 200px 200px;
+    grid-template-rows: 300px 300px 300px 300px 300px 300px 300px 300px  ;
+    grid-gap: 20px 5px ;
+    padding: 40px;
+    justify-content: space-around;
+
+    .myCard{
+        box-shadow: $lightBoxShadow;
+        transition: 0.3s;
+        // border-radius: 20px;
+        margin-bottom: 10px;
+        transition: 0.6s;
+    }
+    .myCard:hover {
+        box-shadow: $mediumBoxShadow;
+        margin-top: -10px;
+        transition: 0.6s;
+    }
+        .imgBox{
+            width: 100%;
+            height: 200px;
+        }
+
+        .imgBox button{
+            display: flex;
+            color: yellow;
+            font-size: 20px;
+            opacity: 0.9;
+            outline: none;
+            border: none;
+        }
+
+   .describ{
+        display: flex;
+    }
+
+   .myContent h3{
+        font-size: 15px;
+        font-weight: 700;
+        padding: 5px;
+        margin-bottom: 0;
+    }
+
+    .describ h5{
+        font-size: 14px;
+        font-weight: 600;
+        padding: 10px;
+        color: black;
+        margin-top: -10px;
+        margin-left: -10px;
+        background: greenyellow;
+        border-radius: 0 20px 20px 0;
+        box-shadow: $lightBoxShadow;
+    }
+
+    .fs{
+        height: 100%;
+        font-size: 15px;
+    }
+
+    .mySlideShow{
+        border-radius: 40px;
+    }
+}
+
+
+// Media Query
+
+@media only screen and (max-width: 960px) {
+    .myWrap{
+        grid-template-columns: 250px 250px 250px;  
+    }
+}
+
+
+@media only screen and (max-width: 800px) {
+    .myWrap{
+        grid-template-columns: 250px 250px;  
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .myWrap{
+        grid-template-columns: 300px ; 
+    }
+    /* .myCard{
+        display: flex;
+    } */
+
+    .describ{
+        display: block;
+    }
+
+    .myCard .imgBox{
+        border-radius: 10px 0 0px 10px ;
+    }
+
+  
+    
+    
+
+}
