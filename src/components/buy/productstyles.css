@@ -9,13 +9,12 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(245, 245, 245, 0.767); /* Black w/ opacity */ 
     border-radius: 30px;
-    margin: 50px 500px ;
+    margin: 70px 500px ;
     box-shadow: -15px 10px 10px rgba(0, 0, 0, 0.637);
 }
 .imageBox{
     display: flex;
     flex-direction: row;
-    
     padding: 30px;
 }
 
@@ -23,23 +22,40 @@
     display: flex;
     background: transparent;
     border-radius: 100%;
-    color: white;
-    transition: 0.4;
+    color: red;
+    transition: 0.6s;
 }
 .imageBox button:hover{
     background: rgba(255, 0, 0, 0.644);
+    box-shadow: 10px 10px 10px black;
+    color: white;
+    transition: 0.4;
+}
+
+ .but-big{text-align: center;
+    width: 629px;
+    background: rgba(255, 0, 0, 0.219);
+    color: whitesmoke;
+    border: none;
+    transition: 0.6s;
+}
+
+.but-big:hover{
+   background: rgba(255, 0, 0, 0.644);
+    box-shadow: 10px 10px 10px black;
+
     color: black;
     transition: 0.4;
-
-
 }
+
 
 .imageBox .largImage{
     flex: 80%;
-    width: 600px;
+    width: 629px;
     height: 400px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     margin-top: 10px;
+    border-radius: 20px;
     /* border: 2px solid red; */
 }
 
@@ -48,8 +64,6 @@
     flex: 20%;
     justify-content: center;
     margin-left: 10px;
-
-    /* border: 1px solid red; */
 }
 
 .thumbNailImage .thumb{
@@ -57,8 +71,149 @@
     height: 150px;
     color: white;
     margin-top: 10px;
+    border-radius: 20px;
 }
 
 .my-container .content{
+    height: 300px;
+    margin-top: 10px;
+    background: #eee;
     color: rgb(0, 0, 0);
+     border-radius: 20px ;
+}
+
+.my-container .content h2{
+
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 38px;
+    font-weight: 700;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.342);
+  
+}
+
+.myLine{
+    margin: 0 auto;
+    border-bottom: 3px solid rgb(121, 120, 120);
+    box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
+
+}
+
+.myLine2{
+    width: 70%;
+    margin: 0 auto;
+    border-bottom: 3px solid rgb(121, 120, 120);
+    box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
+
+}
+.my-container .content .innerContent{
+    display: flex; 
+    justify-content: space-between;
+}
+.content .innerContent h3{
+    font-size: 25px;
+    padding: 20px;
+    text-shadow: 5px 3px 2px rgba(136, 133, 133, 0.342);
+
+}
+
+.myIcon{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+
+}
+.myIcon .myIcons{
+    display: inline-block;
+    font-size: 30px;
+    transition: 0.4s;
+
+}
+
+.myIcons:nth-child(1):hover{
+    text-shadow: 10px 10px 10px grey;
+      color: blue;
+}
+.myIcons:nth-child(2):hover{
+    text-shadow: 10px 10px 10px grey;
+    color: red;
+}
+.myIcons:nth-child(3):hover{
+    text-shadow: 10px 10px 10px grey;
+     color: green;
+}
+
+.myIcon .myIcons:hover{
+
+    font-size: 60px;
+    transform: translateY(-20px);
+    transition: 0.6s;
+
+}
+
+
+/* .content .innerContent h3:nth-child(2){
+border-bottom: 3px solid rgb(179, 72, 72);
+} */
+
+.my-container .content h4{
+    display: flex;
+    font-size: 17px;
+    padding: 30px;
+}
+
+
+
+/* Media Query */
+@media only screen and (max-width: 600px) {
+    .my-container{
+        width: 90%; /* Full width */
+        height: 60%; /* Full height */
+        margin: 150px 30px ;
+    }
+    .imageBox{
+        padding: 0;
+    }
+
+    .imageBox .largImage{
+        flex: 80%;
+        width: 330px;
+        height: 200px;
+    }
+    .thumbNailImage .thumb{
+        width: 50px;
+        height: 50px;
+    }
+    
+    .my-container .content h2{
+        width: 50%;
+        margin: 0 auto;
+        padding: 10px;
+        font-size: 28px;
+        font-weight: 500;
+        border-bottom: 2px solid rgb(121, 120, 120);
+    }
+        
+    .content .innerContent h3{
+        font-size: 15px;
+        border-bottom: 2px solid rgb(179, 72, 72);
+    }
+
+    .my-container .content h4{
+
+        font-size: 13px;
+        padding: 20px;
+    }
+
+
+}
+
+
+@media only screen and (max-width: 800px) {
+
+}
+
+@media only screen and (max-width: 960px) {
+
 }

@@ -1,0 +1,32 @@
+/* .wrapper{
+    width: ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.mySlider{
+    width: 500px;
+    height: 300px;
+    position: relative;
+    background: white;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.637);
+    overflow: hidden;
+}
+
+.mySlide{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    animation: slideshow 100s linear infinite;
+}
+
+.mySlide img{
+    height: 70px;
+    padding: 0 30px 0 30px;
+}
+
+@keyframes slideshow {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-100%);}
+}

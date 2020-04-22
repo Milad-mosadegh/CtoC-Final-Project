@@ -8,32 +8,33 @@ import MyNavbar from '../navbar/navBar';
 import GET from '../lib/get';
 import SlideShow from '../buy/slideShow';
 
+
 const Home = (props) => {
     const [auth, setAuth] = useState(false)
 
     useEffect(() => {
-        if (localStorage.getItem("c2c-token")) 
-            {
-            const getData =async ()=>{
+        if (localStorage.getItem("c2c-token")) {
+            const getData = async () => {
                 let response = await GET("/api/auth/authenticated")
-                if(response.data){
-                    if(response.data.status==="success") setAuth(true)
-                    }
-                else setAuth(false)
+                if (response.data) {
+                    if (response.data.status === "success") setAuth(true)
                 }
-            getData()
+                else setAuth(false)
             }
+            getData()
+        }
     }, [])
     return (
         <div style={{ height: "100vh" }} >
             <MyNavbar {...props} />
+
             <div className="container" style={{ marginTop: "20px" }} >
                 <MyCarousel />
                 <SearchBar />
             </div>
             <PopularProduct />
             {auth ? <LastSeen /> : null}
-            <SlideShow/>
+            <SlideShow />
         </div>
     );
 }

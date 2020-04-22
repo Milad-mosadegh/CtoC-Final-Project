@@ -11,6 +11,8 @@ import ProductDetails from './productDetails';
 
 
 
+
+
 const BuyComponent = (props) => {
     const [products, setProducts] = useState("")
     const [showModal, setShowModal] = useState(false)
@@ -64,6 +66,7 @@ const BuyComponent = (props) => {
     }
     return (
         <div>
+
             <MyNavbar {...props} />
             <SearchBar
                 products={filteredProducts ? filteredProducts : products}

@@ -24,10 +24,13 @@
     transition: 0.3s;
     border-radius: 10px;
     margin-bottom: 10px;
+    transition: 0.6s;
 }
 
 .myCard:hover {
-  box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.472);
+  box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.472);
+  margin-top: -10px;
+  transition: 0.6s;
 }
 
 .imgBox{
