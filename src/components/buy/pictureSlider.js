@@ -63,7 +63,7 @@ const PictureSlider = (props) => {
                             style={{
                                 cursor: "pointer"
                             }}>
-                            <img src={`http://localhost:5000/avatars/${image ? `${image}+".thumb.jpg"` : null}`} alt="Nothing" height="100%" width="100%" />
+                            <img src={`http://localhost:5000/avatars/${image ? image+".thumb.jpg" : null}`} alt="Nothing" height="100%" width="100%" />
                         </div>
                     )}
 

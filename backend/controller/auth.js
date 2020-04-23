@@ -28,9 +28,11 @@ exports.signin=async (req,res)=>{
                    if(isPassCorrect) {
                         if(result.confirmed){
                                 const token = await createToken(result.id)
+                                const {id, firstName, lastName } = result
                                 res.json({
                                     status   :"success",
-                                    message  : "Welcome! you are successfully logged in. ", 
+                                    message  : "Welcome! you are successfully logged in. ",
+                                    data     : {id, firstName, lastName}, 
                                     token
                                      })
                                     }   else res.json({

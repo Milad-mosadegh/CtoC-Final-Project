@@ -5,9 +5,18 @@ const path    = require("path");
 const cp      = require('child_process');
 
 exports.newProduct = async (req,res)=>{
+    let priceRange;
+
 
     if(req.body.data){
-            const {title, category, condition, quantity, color, price, description} = req.body.data
+            const {title, category, condition, quantity, color, price, description, creator} = req.body.data
+            if(price>=250) priceRange=6
+            else if(price>=200) priceRange=5
+                else if(price>=150) priceRange=4
+                    else if(price>=100) priceRange=3
+                        else if(price>=50) priceRange=2
+                            else priceRange=1
+                            
             const newProduct = new product({
                 title,
                 category,
@@ -15,7 +24,16 @@ exports.newProduct = async (req,res)=>{
                 quantity,
                 color,
                 price,
-                description
+                description,
+                creator,
+                blocked:false,
+                sold:false,
+                active:true,
+                views:0,
+                watching:[],
+                priceRange
+
+
             })
         
             newProduct.save((err,doc)=>{
@@ -35,7 +53,7 @@ exports.newProduct = async (req,res)=>{
         })
         const upload = multer({storage:storageTarget}).array("files", 6)
         upload(req,res, async()=>{
-            const {title, category, condition, quantity, color, price, description} = req.body
+            const {title, category, condition, quantity, color, price, description, creator} = req.body
             let priceRange;
             if(price>=250) priceRange=6
                 else if(price>=200) priceRange=5
@@ -61,7 +79,13 @@ exports.newProduct = async (req,res)=>{
                 price,
                 description,
                 images,
-                priceRange
+                priceRange,
+                creator,
+                blocked:false,
+                sold:false,
+                active:true,
+                views:0,
+                watching:[]
             })
             await newProduct.save((err,doc)=>{
                 if(err) {res.json({status:"failed", message:err})}

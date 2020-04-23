@@ -29,16 +29,22 @@ const productSchema= new mongoose.Schema({
     views:{
         type:Number
     },
-    status:{
+    active:{
         type:Boolean
     },
     sold:{
+        type:Boolean
+    },
+    blocked:{
         type:Boolean
     },
     priceRange:{
         type:Number
     },
     images:{
+        type:Array
+    },
+    watching:{
         type:Array
     }
 })

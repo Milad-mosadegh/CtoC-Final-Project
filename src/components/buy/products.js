@@ -10,15 +10,13 @@ import Slide from 'react-reveal/Slide';
 
 
 export default function Products({ products, interProduct }) {
-
     return (
         <div className="container mt-5">
             <h1 className="mb-5">You are on products</h1>
-
             <div className="myWrap">
-                {products ? products.map((product, index) =>
+                {products ? products.map(product =>
                     <Slide left>
-                        <div className="myCard" key={product.id} onClick={e => interProduct(index)}>
+                        <div className="myCard" key={product._id} onClick={e => interProduct(product._id)}>
                             <div className="imgBox"
                                 style={{
                                     backgroundImage: `url(${`http://localhost:5000/avatars/${product.images.length > 0 ? product.images[0] : 'noimage.png'}`})`,
@@ -35,7 +33,6 @@ export default function Products({ products, interProduct }) {
                                     <h5> Price : {product.price}€</h5>
                                 </div>
                                 <h3>{product.title}</h3>
-
                             </div>
                         </div>
                     </Slide>

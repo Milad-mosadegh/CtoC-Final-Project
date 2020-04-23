@@ -16,7 +16,7 @@ import ProductDetails from './productDetails';
 const BuyComponent = (props) => {
     const [products, setProducts] = useState("")
     const [showModal, setShowModal] = useState(false)
-    const [modalId, setModalId] = useState(0)
+    const [productId, setProductId] = useState("")
     const [filteredProducts, setFilteredProducts] = useState("")
     useEffect(() => {
         const fetchData = async () => {
@@ -57,7 +57,7 @@ const BuyComponent = (props) => {
     const interProduct = (id) => {
 
         setShowModal(true)
-        setModalId(id)
+        setProductId(id)
     }
 
     const handleClose = () => {
@@ -85,7 +85,7 @@ const BuyComponent = (props) => {
             <div>
                 {showModal ?
                     <ProductDetails showModel={showModal} handleClose={handleClose}
-                        {...products[modalId]}
+                        id={productId}
                     /> : null}
             </div>
         </div>

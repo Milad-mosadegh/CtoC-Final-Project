@@ -16,7 +16,8 @@ const SellItems = (props) => {
         quantity: "",
         color: "",
         price: "",
-        description: ""
+        description: "",
+        creator:""
     })
 
 
@@ -28,8 +29,14 @@ const SellItems = (props) => {
     const authenticate = async () => {
         let response = await GET("/api/auth/authenticated")
         if (response.data) {
-            if (response.data.status === "success") setAuth(true)
-            else localStorage.removeItem("c2c-token")
+            if (response.data.status === "success") {
+                setAuth(true)
+                setProduct({ ...product, creator: JSON.parse(localStorage.getItem("c2c-profile")).id })
+            }
+            else {
+                localStorage.removeItem("c2c-token")
+                localStorage.removeItem("c2c-profile")
+            }
         }
     }
 

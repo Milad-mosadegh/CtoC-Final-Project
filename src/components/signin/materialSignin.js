@@ -84,7 +84,10 @@ export default function MaterialSignin(props) {
             const response = await POST("/api/auth/signin", formData, config)
             if (response.data.status === "success") {
                 localStorage.setItem("c2c-token", response.data.token)
+                localStorage.setItem("c2c-profile",JSON.stringify(response.data.data) )
+                console.log(localStorage.getItem("c2c-profile").firstName)
                 props.history.push(`/dashboard`)
+                
             }
             else setErrors({ ...errors, authentication: { ...errors.authentication, status: true } })
         }
