@@ -2,7 +2,7 @@ import React from 'react';
 import {OverlayTrigger, Popover, Button} from "react-bootstrap"
 
 const NewMessage = (props) => {
-    const {title}=props
+    const {title, productId, recipentId}=props
     return ( <>
     <OverlayTrigger
         trigger="click"
@@ -13,7 +13,7 @@ const NewMessage = (props) => {
             <Popover.Title as="h3">{title}</Popover.Title>
             <Popover.Content>
               <input type="text"/><br/>
-              <Button>Send</Button>
+              <Button onClick={()=>console.log("in new message",title,recipentId,productId)}>Send</Button>
             </Popover.Content>
           </Popover>
         }

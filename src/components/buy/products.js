@@ -1,7 +1,6 @@
 import React from 'react';
 
 import '../styles/main.css'
-// import './style.css'
 import '../../../node_modules/font-awesome/css/font-awesome.min.css'
 
 import Slide from 'react-reveal/Slide';

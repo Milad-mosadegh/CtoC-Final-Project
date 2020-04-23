@@ -3,14 +3,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Categories from "../lib/categories"
-
-
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import '../styles/main.css'
 
-const SlideShow = () => {
-
+const SlideShow = (props) => {
+    const {showMainComponent}=props
     const [categories, setCategories] = useState("")
     useEffect(() => {
         setCategories(Categories);
@@ -56,7 +54,7 @@ const SlideShow = () => {
 
 
     return (
-        <div className="container">
+        <div className="container" >
             <Slider {...settings} className="shadow-lg">
                 {categories ? categories.map(data =>
                     <Card>

@@ -69,7 +69,10 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
                             <div className="myIcon">
                                 <div className="myIcons fa fa-thumbs-o-up"></div>
 
-                                <NewMessage title={productDetail.title} />
+                                <NewMessage 
+                                    title={productDetail.title}
+                                    productId={productDetail._id}
+                                    recipentId={productDetail.creator} />
                                 <div className="myIcons fa fa-phone"></div>
 
                             </div>
