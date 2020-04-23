@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import ItemCard from '../landingpage/itemcard';
-import Categories from '../lib/categories';
+// import Categories from '../lib/categories';
 
+// import '../styles/main.css'
 
 const PopularProduct = (props) => {
 
@@ -38,21 +39,21 @@ const PopularProduct = (props) => {
     }, [])
 
     return (
-        <div className="container mt-5 text-center ">
+        <div className="container mt-5 mb-4 text-center ">
             <div >
                 <h2>Latest Product</h2>
             </div>
-            <div className="d-flex mb-4">
+            <div className="row">
                 {popProducts ? popProducts.map(data =>
-                    <ItemCard
-                        //image={data.image}
-                        title={data.title}
-                        description={data.description}
-                        addRefrence={data.addRefrence}
-                    />
-
+                    <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <ItemCard
+                            //image={data.image}
+                            title={data.title}
+                            description={data.description}
+                            addRefrence={data.addRefrence}
+                        />
+                    </div>
                 ) : <p> No proudcst</p>}
-
             </div>
 
         </div>

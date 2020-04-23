@@ -1,0 +1,250 @@
+@import './variables';
+
+.my-container{
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 70%; /* Full width */
+    height: 99%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(68, 68, 68, 0.822); /* Black w/ opacity */ 
+    border-radius: 30px;
+    margin: 5px 300px ;
+    box-shadow: 0 10px 120px rgb(0, 0, 0);
+    transition: 0.5s;
+
+
+    .myCenter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .imageBox{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .cancelBtn{
+        display: flex;
+        // margin-left: 20px;
+        background: transparent;
+        border-radius: 100%;
+        color: red;
+        transition: 0.6s;
+    } 
+    .cancelBtn:hover{
+        background: rgba(255, 0, 0, 0.644);
+        box-shadow: $hardBoxShadow;
+        color: white;
+        transition: 0.4;
+    }
+
+    .but-big{
+        text-align: center;
+        width: 100px;
+        background: rgba(255, 0, 0, 0.644);
+        box-shadow: $lightBoxShadow;
+        color: whitesmoke;
+        border: none;
+        transition:width 0.6s;
+    }
+
+    
+    
+    .but-big:hover{
+        width: 650px;
+        background: rgba(255, 0, 0, 0.644);
+        box-shadow: $hardBoxShadow;
+        color: whitesmoke;
+        // transition: 1s;
+        
+    }
+
+
+    .largImage{
+        flex: 80%;
+        width: 690px;
+        height: 400px;
+        /* margin: 0 auto; */
+        margin-top: 10px;
+        border-radius: 20px;
+        /* border: 2px solid red; */
+    }
+
+
+    .thumbNailImage{
+        flex: 20%;
+        justify-content: center;
+        margin-left: 10px;
+    }
+
+
+    .content{
+        height: 300px;
+        width: 690px;
+        margin-top: 10px;
+        background: #eee;
+        color: rgb(0, 0, 0);    
+        border-radius: 20px ;
+    }
+
+    .content h2{
+        margin: 0 auto;
+        padding: 20px;
+        font-size: 32px;
+        font-weight: 700;
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.342);
+    
+    }
+
+    .myLine{
+        margin: 0 auto;
+        border-bottom: 3px solid rgb(121, 120, 120);
+        box-shadow: $hardBoxShadow;
+
+    }
+
+    .myLine2{
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: 3px solid rgb(121, 120, 120);
+        box-shadow: $hardBoxShadow;
+    }
+    .innerContent{
+        display: flex; 
+        justify-content: space-around;
+    }
+
+    .innerContent h3{
+        font-size: 20px;
+        padding: 20px;
+        text-shadow: 5px 3px 2px rgba(136, 133, 133, 0.342);
+    }
+
+    .myIcon{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .myIcons{
+        display: inline-block;
+        font-size: 30px;
+        transition: 0.4s;
+        color: whitesmoke;
+
+    }
+
+    .myIcons:nth-child(1):hover{
+        text-shadow: $hardBoxShadow;
+        color: blue;
+    }
+    .myIcons:nth-child(2):hover{
+        text-shadow: $hardBoxShadow;
+        color: red;
+    }
+    .myIcons:nth-child(3):hover{
+        text-shadow: $hardBoxShadow;
+        color: green;
+    }
+
+    .myIcons:hover{
+        font-size: 60px;
+        transform: translateY(-20px);
+        transition: 0.6s;
+    }
+
+    .content h4{
+        display: flex;
+        font-size: 17px;
+        padding: 30px;
+    }
+}
+
+
+/* Media Query */
+@media only screen and (max-width: 600px) {
+    .my-container{
+        width: 100%; /* Full width */
+        height: 80%; /* Full height */
+        // margin: 10px auto;
+        margin: 50px auto ;
+   
+
+    .largImage{
+       width: 300px;
+       height: 200px;
+    }
+    .myThumb {
+        display: none;
+        width: 50px;
+    }
+    .content{
+        width: 300px;
+        height: 250px;
+    }
+    
+    .content h2{
+        padding: 10px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+        
+    .innerContent h3{
+        display: inline-block;
+        font-size: 8px;
+    }
+
+    .content h4{
+        font-size: 8px;
+        padding: 20px;
+    }
+
+    .myLine{
+        border-bottom: 2px solid rgb(121, 120, 120);
+        box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
+    }
+
+    .myLine2{
+        width: 70%;
+        border-bottom: 2px solid rgb(121, 120, 120);
+        box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
+    }
+    .myIcon{
+        width: 300px;
+        justify-content: space-around;
+    }
+    .myIcons{
+        font-size: 20px;
+    }
+   
+    .myIcons:hover{
+        font-size: 20px;
+        transform: translateY(-10px);
+    }
+    .but-big{
+        width: 50px;
+        font-size: 12px;
+    }
+    .but-big:hover{
+        width: 280px;
+        background: rgba(255, 0, 0, 0.644);
+        box-shadow: $hardBoxShadow;
+        color: whitesmoke;
+    }
+
+ }
+}
+
+
+@media only screen and (max-width: 800px) {
+
+}
+
+@media only screen and (max-width: 960px) {
+
+}

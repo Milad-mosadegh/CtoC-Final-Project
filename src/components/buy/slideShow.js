@@ -7,7 +7,7 @@ import Categories from "../lib/categories"
 
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
-import './style.css'
+import '../styles/main.css'
 
 const SlideShow = () => {
 
@@ -18,7 +18,7 @@ const SlideShow = () => {
     }, [])
 
     var settings = {
-        dots: true,
+        dots: false,
         infinite: false,
         speed: 500,
         slidesToShow: 4,
@@ -57,9 +57,9 @@ const SlideShow = () => {
 
     return (
         <div className="container">
-            <Slider {...settings} className="shadow-lg mySlideShow">
+            <Slider {...settings} className="shadow-lg">
                 {categories ? categories.map(data =>
-                    <Card >
+                    <Card>
                         <Card.Img variant="top" className='cardImg' src={require(`../../images/${data.imgName}`)} />
                         <Card.Body className="bg-dark">
                             <Card.Title >

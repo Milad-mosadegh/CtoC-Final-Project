@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import "./productstyles.css"
+import '../styles/main.css'
 import Zoom from 'react-reveal/Zoom'
 import Fade from 'react-reveal/Fade'
 
 import PictureSlider from './pictureSlider';
 import NewMessage from '../account/messages/newMessage';
 
-
+import '../styles/main.css';
 
 
 
@@ -22,58 +22,61 @@ const ProductDetails = ({ showModel, handleClose, title, description, images, co
 
     return (
         <div className="my-container" show={showModel} onHide={handleClose}>
-            <button className='btn' onClick={handleClose}>
+            <button className='btn cancelBtn' onClick={handleClose}>
                 X
-                    </button>
-            <div className="imageBox">
-                <Zoom>
-                    <div>
-                        <div className="largImage"
-                            style={{
-                                backgroundImage: `url(${`http://localhost:5000/avatars/${bgImage}`})`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover',
-                                backgroundRepeat: 'no-repeat'
-                            }}
-                        >
+            </button>
+            <div className="myCenter">
+                <div className="imageBox">
+                    <Zoom>
+                        <div>
+                            <div className="largImage"
+                                style={{
+                                    backgroundImage: `url(${`http://localhost:5000/avatars/${bgImage}`})`,
+                                    backgroundPosition: 'center',
+                                    backgroundSize: 'cover',
+                                    backgroundRepeat: 'no-repeat',
+                                    outline: "none"
+                                }}
+                            >
+                            </div>
+                            <div className="content">
+                                <h2>{title}</h2>
+                                <Zoom righ>
+                                    <div className="myLine"></div>
+                                </Zoom>
+                                <Fade right cascade duration={1000}>
+                                    <div className="innerContent">
+                                        <h3>Color :{color}</h3>
+                                        <h3>Condition :{condition}</h3>
+                                        <h3>Quantity : {quantity}</h3>
+                                    </div>
+                                </Fade>
+                                <Zoom righ duration={2500}>
+                                    <div className="myLine2"></div>
+                                </Zoom>
+                                <h4>{description}</h4>
+                            </div>
+
+
+                            <div className="myIcon">
+                                <div className="myIcons fa fa-thumbs-o-up"></div>
+
+                                <NewMessage title={title} />
+                                <div className="myIcons fa fa-phone"></div>
+
+                            </div>
+                            <a href="/" className='btn but-big'>Buy</a>
                         </div>
-                        <div className="content">
-                            <h2>{title}</h2>
-                            <Zoom righ>
-                                <div className="myLine"></div>
-                            </Zoom>
-                            <Fade right cascade duration={1000}>
-                                <div className="innerContent">
-                                    <h3>Color :{color}</h3>
-                                    <h3>Condition :{condition}</h3>
-                                    <h3>Quantity : {quantity}</h3>
-                                </div>
-                            </Fade>
-                            <Zoom righ duration={2500}>
-                                <div className="myLine2"></div>
-                            </Zoom>
-                            <h4>{description}</h4>
-                        </div>
+
+                    </Zoom>
 
 
-                        <div className="myIcon">
-                            <div className="myIcons fa fa-thumbs-o-up"></div>
-
-                            <NewMessage title={title}/>
-                            <div className="myIcons fa fa-phone"></div>
-
-                        </div>
-                        <a href="/" className='btn but-big'>Buy</a>
+                    <div className="thumbNailImage">
+                        <PictureSlider
+                            images={images}
+                            handleBgImage={handleBgImage}
+                        />
                     </div>
-
-                </Zoom>
-
-
-                <div className="thumbNailImage">
-                    <PictureSlider
-                        images={images}
-                        handleBgImage={handleBgImage}
-                    />
                 </div>
             </div>
         </div>

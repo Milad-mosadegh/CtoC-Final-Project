@@ -4,7 +4,9 @@ import MainSell from './mainsell';
 import GET from '../lib/get';
 import { POST, IMGPOST } from '../lib/post';
 import FormData from "form-data"
-import Fade from 'react-reveal/Fade';
+
+
+
 const SellItems = (props) => {
 
     const [images, setImages] = useState([])

@@ -12,7 +12,7 @@ import Slide from 'react-reveal/Slide';
 export default function Products({ products, interProduct }) {
 
     return (
-        <div className="container mt-5">
+        <div >
             <h1 className="mb-5">You are on products</h1>
 
             <div className="myWrap">
@@ -31,7 +31,7 @@ export default function Products({ products, interProduct }) {
                                 <button className="btn fa fa-star"></button>
                             </div>
                             <div className="myContent">
-                                <div className="describ">
+                                <div className="myPrice">
                                     <h5> Price : {product.price}€</h5>
                                 </div>
                                 <h3>{product.title}</h3>

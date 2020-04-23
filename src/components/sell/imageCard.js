@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { Button, Form } from 'react-bootstrap';
 import NoImage from "../../images/noimage.png"
 
@@ -38,11 +39,10 @@ const ImageCard = (props) => {
                 backgroundImage: `url(${image ? image : props.image ? `http://localhost:5000/avatars/${props.image}` : NoImage})`,
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'
+                backgroundRepeat: 'no-repeat',
             }}>
 
             <div style={{ height: "70%", width: "100%" }} >
-
                 <Form.File style={{ height: "100%", width: "100%" }} id="formcheck-api-custom" custom>
                     <Form.File.Input id={props.id}
                         style={{ display: "none" }}
