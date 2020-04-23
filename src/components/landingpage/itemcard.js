@@ -15,8 +15,8 @@ const ItemCard = (props) => {
     }, [])
 
     return (
-        <div className="mt-5 d-flex shadow-lg">
-            <Card style={{ width: '18rem' }}>
+        <div className="mt-5">
+            <Card >
                 <Card.Img className="cat-image" variant="top" src={image} />
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>

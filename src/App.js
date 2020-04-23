@@ -21,9 +21,7 @@ import ProductDetails from './components/buy/productDetails';
 function App() {
   return (
     <div className="App">
-
       <Router>
-
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/account" component={MainAcc} />

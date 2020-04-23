@@ -1,5 +1,13 @@
 @import './products';
 @import './variables';
+@import './slideShow';
+@import './productDetails';
+@import './pictureSlider';
+@import './landingPage';
+@import './sellComponent';
 
-
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

@@ -1,0 +1,16 @@
+
+.boxes{
+    width: 150px;
+    height: 150px;
+    box-shadow: 0 8px 10px grey;
+}
+
+
+
+@media only screen and (max-width: 600px){
+    .boxes{
+        width: 100px;
+        height: 100px;
+    }
+}
+

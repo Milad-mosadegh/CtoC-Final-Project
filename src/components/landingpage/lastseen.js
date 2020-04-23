@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import ItemCard from './itemcard';
 
+import '../styles/main.css';
+
 const LastSeen = (props) => {
     const [popProducts, setPopProducts] = useState("")
 
@@ -39,19 +41,20 @@ const LastSeen = (props) => {
             <div >
                 <h2>Last Seen Products</h2>
             </div>
-            <div className="d-flex">
+            <div className="row">
                 {popProducts ? popProducts.map(data =>
-                    <ItemCard
-                        //image={data.image}
-                        title={data.title}
-                        description={data.description}
-                        addRefrence={data.addRefrence}
-                    />
+                    <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <ItemCard
+                            //image={data.image}
+                            title={data.title}
+                            description={data.description}
+                            addRefrence={data.addRefrence}
+                        />
 
+                    </div>
                 ) : <p> No proudcst</p>}
 
             </div>
-
         </div>
     );
 }

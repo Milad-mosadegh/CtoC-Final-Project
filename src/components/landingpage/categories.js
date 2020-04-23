@@ -21,9 +21,10 @@ import toy from '../../images/toys.jpeg'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 
+import './cards.css'
 
 const Categories = (props) => {
-    
+
 
     const allCat = [
         { value: 1, type: "Antiques", name: antique },
@@ -64,12 +65,14 @@ const Categories = (props) => {
                 </div>
                 <Slider {...settings} className="shadow-lg ">
                     {allCat.map(data =>
-                        <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" className='cardImg' src={data.name} />
-                            <Card.Body className="bg-dark cbh">
-                                <Card.Title> <Link className="text-light fs" to={data.type}>{data.type}</Link></Card.Title>
-                            </Card.Body>
-                        </Card>
+                        <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <Card style={{ width: '18rem' }}>
+                                <Card.Img variant="top" className='cardImg' src={data.name} />
+                                <Card.Body className="bg-dark cbh">
+                                    <Card.Title> <Link className="text-light fs" to={data.type}>{data.type}</Link></Card.Title>
+                                </Card.Body>
+                            </Card>
+                        </div>
                     )}
 
                 </Slider>
