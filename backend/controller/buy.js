@@ -23,7 +23,24 @@ exports.allProucts=async (req,res)=>{
 }
 
 exports.productDetails=async(req, res)=>{
-    console.log(req.params.id)
-    res.json({status:"success", message:"you reached", data:{test:"test"}})
+    const id=req.params.id
+    let product= await products.findById(id, {
+        title:1,
+        category:1,
+        condition:1,
+        quantity:1,
+        color:1,
+        price:1,
+        description:1,
+        creator:1,
+        views:1,
+        images:1
+        })
+    if(!product)  res.json({status:"failed", message:"Internal Error please try again"})
+    else {
+        res.json({status:"success", message:"Successfully retrieved", data:product})
+    
+    }
+                
 
 }

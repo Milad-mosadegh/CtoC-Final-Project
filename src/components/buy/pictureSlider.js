@@ -1,12 +1,8 @@
 import React, { useRef } from "react";
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-
 import '../styles/main.css';
-
 import Slide from 'react-reveal/Slide'
 
 const PictureSlider = (props) => {
@@ -52,13 +48,12 @@ const PictureSlider = (props) => {
         ]
     }
 
-
     return (
         <div className="container">
             <button className=" up fa fa-arrow-circle-o-up" onClick={() => slider.slickPrev()}></button>
             <Slide right cascade>
                 <Slider ref={c => slider = c} {...settings} className="shadow-lg my ">
-                    {images.map(image =>
+                    {images?images.map(image =>
                         <div className="myThumb "
                             onClick={() => handleBgImage(image)}
                             style={{
@@ -66,7 +61,7 @@ const PictureSlider = (props) => {
                             }}>
                             <img src={`http://localhost:5000/avatars/${image ? image : null}`} alt="Nothing" height="100%" width="100%" />
                         </div>
-                    )}
+                    ):null}
 
                 </Slider>
                 <button className="down fa fa-arrow-circle-o-down" onClick={() => slider.slickNext()}></button>

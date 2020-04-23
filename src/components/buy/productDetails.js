@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/main.css'
 import Zoom from 'react-reveal/Zoom'
 import Fade from 'react-reveal/Fade'
-
 import PictureSlider from './pictureSlider';
 import NewMessage from '../account/messages/newMessage';
-
 import '../styles/main.css';
+import GET from '../lib/get';
+
+const ProductDetails = ({ id, showModel, handleClose }) => {
+    const [productDetail, setProductDetail]= useState("")
+    const [bgImage, setBgImage] = useState("noimage.png")
+    useEffect(()=>{
+        const getProductDetails=async()=>{
+            let response = await GET(`/api/buy/productDetails/${id}`)
+            setProductDetail(response.data.data)
+            if (response.data.data.images.length>0)setBgImage(response.data.data.images[0])
+            console.log(response, "response")
+        }
+        getProductDetails()
+    },[])
 
 
-
-const ProductDetails = ({ showModel, handleClose, title, description, images, color, condition, quantity }) => {
-
-    const [bgImage, setBgImage] = useState(images.length > 0 ? images[0] : "noimage.png");
     const handleBgImage = (backgroundImage) => {
         console.log("backgroundImage Image", backgroundImage);
         setBgImage(backgroundImage)
@@ -40,28 +48,28 @@ const ProductDetails = ({ showModel, handleClose, title, description, images, co
                             >
                             </div>
                             <div className="content">
-                                <h2>{title}</h2>
+                                <h2>{productDetail.title}</h2>
                                 <Zoom righ>
                                     <div className="myLine"></div>
                                 </Zoom>
                                 <Fade right cascade duration={1000}>
                                     <div className="innerContent">
-                                        <h3>Color :{color}</h3>
-                                        <h3>Condition :{condition}</h3>
-                                        <h3>Quantity : {quantity}</h3>
+                                        <h3>Color :{productDetail.color}</h3>
+                                        <h3>Condition :{productDetail.condition}</h3>
+                                        <h3>Quantity : {productDetail.quantity}</h3>
                                     </div>
                                 </Fade>
                                 <Zoom righ duration={2500}>
                                     <div className="myLine2"></div>
                                 </Zoom>
-                                <h4>{description}</h4>
+                                <h4>{productDetail.description}</h4>
                             </div>
 
 
                             <div className="myIcon">
                                 <div className="myIcons fa fa-thumbs-o-up"></div>
 
-                                <NewMessage title={title} />
+                                <NewMessage title={productDetail.title} />
                                 <div className="myIcons fa fa-phone"></div>
 
                             </div>
@@ -72,8 +80,8 @@ const ProductDetails = ({ showModel, handleClose, title, description, images, co
 
 
                     <div className="thumbNailImage">
-                        <PictureSlider
-                            images={images}
+                       <PictureSlider
+                            images={productDetail.images}
                             handleBgImage={handleBgImage}
                         />
                     </div>
