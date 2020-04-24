@@ -8,6 +8,7 @@ import GET from '../lib/get';
 
 import FilterBar from "../filterBar/filterBar"
 import ProductDetails from './productDetails';
+import { IfNotAuthenticated } from '../lib/auth';
 
 
 
@@ -68,8 +69,8 @@ const BuyComponent = (props) => {
     }
     return (
         <div>
-
             <MyNavbar {...props} />
+            
             <div style={{visibility: showMainComponent?"visible":"hidden",
                         opacity: 1,
                         transition: "visibility 0s 0.5s, opacity 0.5s linear"}}>

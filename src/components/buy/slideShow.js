@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import '../styles/main.css'
 
 const SlideShow = (props) => {
-    const {showMainComponent}=props
+
     const [categories, setCategories] = useState("")
     useEffect(() => {
         setCategories(Categories);
