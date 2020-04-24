@@ -42,6 +42,8 @@ const submitHandler = async (e) => {
             alert("you have succesfully changed your password, Please relogin")
             derenderModal()
             localStorage.removeItem("c2c-token")
+            localStorage.removeItem("c2c-profile")
+
             props.history.push("/signin")
 
 

@@ -10,6 +10,7 @@ const IfAuthenticated = async ({children}) => {
             .then(res=>JSON.parse(res))
             .catch(err=>{
                 localStorage.removeItem("c2c-token")
+                localStorage.removeItem("c2c-profile")
                 }
             )
         console.log("response in authentication", response)
@@ -29,6 +30,7 @@ const IfNotAuthenticated = async(props) => {
             .then(res=>res)
             .catch(err=>{
                 localStorage.removeItem("c2c-token")
+                localStorage.removeItem("c2c-profile")
                 })
         console.log(response)
         return(null)

@@ -43,6 +43,7 @@ const MyProfile = (props) => {
             }
             else {
                 localStorage.removeItem("c2c-token")
+                localStorage.removeItem("c2c-profile")
                 props.history.push("/signin")
             }
         }

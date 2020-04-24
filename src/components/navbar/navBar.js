@@ -11,6 +11,7 @@ const MyNavbar = (props) => {
 
     const logoutHandler = () => {
         localStorage.removeItem('c2c-token')
+        localStorage.removeItem("c2c-profile")
         setAuth(false)
         props.history.push("/")
 
@@ -38,6 +39,7 @@ const MyNavbar = (props) => {
                 else {
                     setAuth(false)
                     localStorage.removeItem("c2c-token")
+                    localStorage.removeItem("c2c-profile")
                 }
             }
             getData()

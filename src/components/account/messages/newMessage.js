@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import GET from '../../lib/get';
 import { Link } from "react-router-dom"
 import Input from '@material-ui/core/Input';
+import {POST} from "../../lib/post"
 
 
 const NewMessage = (props) => {
@@ -30,8 +31,25 @@ const NewMessage = (props) => {
     const changeHandler=(e)=>{
       setMessage(e.target.value)
     }
-    const submitHandler=()=>{
-      console.log("submit handler called", message)
+    const submitHandler=async()=>{
+      let senderId=JSON.parse(localStorage.getItem("c2c-profile")).id
+      console.log(props, "props in msg")
+      const {productId, recipentId, title} = props
+      const messageData ={
+        productId,
+        recipentId, 
+        title,
+        senderId,
+        message
+      }
+      console.log("mesg data", messageData)
+      const config={
+        headers:{
+        'x-auth-token':localStorage.getItem('c2c-token'),
+        'Content-Type': 'application/json'
+    }}
+      let response=await POST("/api/messages/sendmessage",messageData, config)
+      console.log("response in msge",response) 
     }
 
     const handleClick = (event) => {

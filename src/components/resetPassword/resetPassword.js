@@ -63,6 +63,7 @@ export default function ResetPassword(props) {
             if (response.data.status === "success") {
                 alert("you have succesfully changed your password")
                 localStorage.removeItem('c2creset-token')
+                localStorage.removeItem("c2c-profile")
                 props.history.push("/signin")
             }
             else if (response.data.status === "failed")

@@ -25,6 +25,10 @@ const ConversationSchema = new Schema({
       }
     }
   },
+  title:{
+          type:String,
+          required:true
+  },
   recipentId:{
           type:String,
           required:true
@@ -45,4 +49,4 @@ const ConversationSchema = new Schema({
    
 });
 
-module.exports = mongoose.model("conversations", ConversationSchema)
+module.exports = mongoose.model("c2cconversations", ConversationSchema)
