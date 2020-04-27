@@ -1,3 +1,10 @@
+@import './variables';
+
+.homeWrap{
+    display: flex;
+
+}
+
 .cardWrapper{
     display: grid;
     grid-template-columns: auto auto auto auto ;
@@ -6,10 +13,363 @@
 }
 
 
+
+.fixedBackground{
+    width: 100%;
+    height: 450px;
+    background-image: url('../../images/whiteGeray.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    h1{
+        color: $bestBlueColor;
+        font-size: 60px;
+        text-shadow: $mediumBoxShadow;
+    }
+    h3{
+        font-size: 30px;
+        float: right;
+        color: $lightTextGray;
+        border-bottom: 1px solid $lightTextGray;
+    }
+    .c{
+        color: $bestRedColor;
+    }
+}
+
+.popProBox{
+    width: 1100px;
+    height: 800px;
+    background: $bestRedColor;
+    margin-top: -150px;
+    box-shadow: $mediumBoxShadow;
+    .popProBox-content{
+        width: 80%;
+        padding: 20px;
+        h2{
+            margin-bottom: 40px;
+            font-size: 50px;
+            font-weight: 100;
+            color: whitesmoke;
+        }
+        .popProBox-cards{
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+}
+
+/* Last Seen  */
+.wrapAll{
+    width: 100%;
+    height: 750px;
+    background: $bestBlueColor;
+    box-shadow: $mediumBoxShadow;
+    padding: 20px;
+    h2{
+        margin-bottom: 40px;
+        font-size: 50px;
+        font-weight: 100;
+        color: whitesmoke;
+    }
+    .wrapAll-cads{
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+
+    }
+}
+
+.lastSeenBox{
+    width: 1200px;
+    margin-top: 10px;
+    margin-left: -200px;
+    margin-bottom: 70px;
+    .describ{
+        box-shadow: $mediumBoxShadow;
+        background: $bestBlueColor;
+         height: 500px;
+        h3{
+            font-size: 50px;
+            padding: 10px;
+            font-weight: 100;
+            color: whitesmoke;
+        }
+        
+        p{  
+            font-size: 22px;
+            padding: 30px;
+            color:$lightTextGray;
+        }
+    }
+    .extra{
+        width: 500px;
+        margin: 0 auto;
+        background: rgb(243, 241, 241);
+        height: 200px;
+        p{
+            font-size: 17px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            color: whitesmoke;
+            background: $bestBlueColor;
+            box-shadow: $lightBoxShadow;
+            border: none;
+            font-size: 30px;
+         
+        }
+    }
+
+}
+
+.homeBanner{
+    // margin-top: 100px;
+    width: 100%;
+    height: 600px;
+    background-image: url('../../images/onlineShop.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* THIS IS MEDIA QUERY 600px or les */
+
 @media only screen and (max-width: 600px){
+    .homeWrap{
+        flex-direction: column;
+        height: 350px;
+    
+}
     .cardWrapper{
         grid-template-columns: auto auto;
         grid-gap: 2px 2px;
         padding: 10px;
     }
+
+    .fixedBackground{
+        height: 150px;
+        h1{
+            font-size: 25px;
+        }
+        h3{
+            font-size: 10px;
+        }
+        .c{
+            color: $bestRedColor;
+        }
+    }
+
+
+   .popProBox{
+    width:100%;
+    height: 200px;
+    background: $bestRedColor;
+    margin-top: 0px;
+    box-shadow: $mediumBoxShadow;
+    .popProBox-content{
+        width: 100%;
+        padding: 30px;
+        h2{
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 100;
+
+        }
+        .popProBox-cards{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+
+   .wrapAll{
+    width: 100%;
+    height:150px;
+    background: $bestBlueColor;
+    box-shadow: $mediumBoxShadow;
+    padding: 10px;
+    margin-top: -30px;
+    h2{
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: 100;
+        color: whitesmoke;
+    }
+    .wrapAll-cads{
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+
+    }
+}
+
+.lastSeenBox{
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 70px;
+    .describ{
+        width: 80%;
+        margin: 0 auto;
+        margin-top: -40px;
+        box-shadow: $mediumBoxShadow;
+        background: $bestBlueColor;
+         height: 230px;
+        h3{
+            font-size: 20px;
+            margin: 0;
+        }
+        
+        p{  
+            font-size: 8px;
+            padding: 10px;
+            margin: 0;
+            color:$lightTextGray;
+        }
+    }
+    .extra{
+        width: 210px;
+        margin: 0 auto;
+        background: rgb(243, 241, 241);
+        height: 100px;
+        margin-top: 0px;
+        p{
+            font-size: 8px;
+        }
+        button{
+            width: 50px;
+            height: 10px;
+            color: whitesmoke;
+            background: $bestBlueColor;
+            box-shadow: $lightBoxShadow;
+            border: none;
+            font-size: 10px;
+         
+        }
+    }
+
+}
+
+    .homeBanner{
+        width: 100%;
+        height: 200px;
+        margin-top: 0px;
+    }
+
+}
+
+
+/* THIS IS MEDIA QUERY 600px or les */
+
+@media only screen and (max-width: 600px){
+    .homeWrap{
+        flex-direction: column;
+        height: 350px;
+    
+}
+    .cardWrapper{
+        grid-template-columns: auto auto;
+        grid-gap: 2px 2px;
+        padding: 10px;
+    }
+
+    .fixedBackground{
+        height: 150px;
+        h1{
+            font-size: 22px;
+        }
+        h3{
+            font-size: 10px;
+        }
+        .c{
+            color: $bestRedColor;
+        }
+    }
+
+
+   .popProBox{
+        .popProBox-content{
+            padding: 20px;
+        }
+    }
+
+
+   .wrapAll{
+    width: 100%;
+    height:150px;
+    background: $bestBlueColor;
+    box-shadow: $mediumBoxShadow;
+    padding: 10px;
+    margin-top: -30px;
+    h2{
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: 100;
+        color: whitesmoke;
+    }
+    .wrapAll-cads{
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+
+    }
+}
+
+.lastSeenBox{
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 70px;
+    .describ{
+        width: 80%;
+        margin: 0 auto;
+        margin-top: -40px;
+        box-shadow: $mediumBoxShadow;
+        background: $bestBlueColor;
+         height: 230px;
+        h3{
+            font-size: 20px;
+            margin: 0;
+        }
+        
+        p{  
+            font-size: 8px;
+            padding: 10px;
+            margin: 0;
+            color:$lightTextGray;
+        }
+    }
+    .extra{
+        width: 210px;
+        margin: 0 auto;
+        background: rgb(243, 241, 241);
+        height: 90px;
+        margin-top: 0px;
+        p{
+            font-size: 8px;
+        }
+        button{
+            width: 50px;
+            height: 11px;
+            color: whitesmoke;
+            background: $bestBlueColor;
+            box-shadow: $lightBoxShadow;
+            border: none;
+            font-size: 10px;
+         
+        }
+    }
+
+}
+
+    .homeBanner{
+        width: 100%;
+        height: 200px;
+        margin-top: 100px;
+    }
+
 }

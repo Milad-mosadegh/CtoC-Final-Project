@@ -1,5 +1,116 @@
 $btnRedColor : rgb(119, 20, 20);
 $btnPinkColor : pink;
-$lightBoxShadow : 0 8px 12px 0 rgba(0, 0, 0, 0.363);
-$mediumBoxShadow : 0 20px 30px 0 rgba(0, 0, 0, 0.472);
+
+$lightTextGray:rgb(122, 121, 121);
+
+$lightBoxShadow : 0 8px 12px  rgba(0, 0, 0, 0.363);
+$mediumBoxShadow : 0 20px 30px  rgba(0, 0, 0, 0.877);
 $hardBoxShadow : 10px 10px 10px black;
+
+$bestBlueColor : #11213b;
+$bestRedColor : #b72926;
+
+@mixin myButton($background,$color,$width,$height) {
+    width: $width;
+    height: $height;
+    color: $color;
+    background: $background;
+    // border-radius: 10px;
+}
+
+
+
+@mixin ItemCard($width,$height,$cardImage,$h2Size) {
+    
+    .myCard{
+        width: $width;//280px
+        height: $height;//280px
+        border: 1px solid rgba(0, 0, 0, 0.404);
+        box-shadow: $lightBoxShadow;
+        margin: 5px;
+        .myCardImage{
+            width: 100%;
+            height:$cardImage ;//150px
+        }
+    
+
+        h2{
+            font-size: $h2Size;//24px
+            margin: 5px;
+        }
+        p{     
+            margin: 10px;
+            font-size: 10px;
+            color: whitesmoke;
+        }
+
+        button{
+            font-size: 13px;
+            border: none;
+            padding: 5px;
+            background: $bestBlueColor;
+            color: whitesmoke;
+            margin: 10px;
+        }
+    }
+}
+
+
+.myBlueButton{
+    @include myButton($bestBlueColor,#fff,100px,30px);
+    border: none;
+    outline: none;
+    opacity: 0.8;
+    transition: 0.4s;
+    &:hover{
+        opacity: 1;
+        box-shadow: $mediumBoxShadow;
+        transform: translateY(-5px);
+        transition: 0.6s;
+    }
+}
+.myRedButton{
+    @include myButton($bestRedColor,#fff,100px,30px);
+    border: none;
+    outline: none;
+    opacity: 0.8;
+    transition: 0.4s;
+    &:hover{
+        opacity: 1;
+        box-shadow: $mediumBoxShadow;
+        transform: translateY(-5px);
+        transition: 0.6s;
+    }
+
+}
+
+.bigBlueButton{
+    @include myButton($bestBlueColor,#fff,80px,40px);
+    border: none;
+    outline: none;
+    opacity: 0.8;
+    transition: 0.4s;
+    font-size: 20px;
+    &:hover{
+        opacity: 1;
+        box-shadow: $mediumBoxShadow;
+        transform: translateY(-5px);
+        transition: 0.6s;
+    }
+}
+
+
+.bigRedButton{
+    @include myButton($bestRedColor,#fff,80px,40px);
+    border: none;
+    outline: none;
+    opacity: 0.8;
+    transition: 0.4s;
+    font-size: 20px;
+    &:hover{
+        opacity: 1;
+        box-shadow: $mediumBoxShadow;
+        transform: translateY(-5px);
+        transition: 0.6s;
+    }
+}

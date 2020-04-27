@@ -26,12 +26,13 @@ const SlideShow = () => {
         initialSlide: 0,
         verticalSwiping: false,
         useCSS: true,
+        arrows: false,
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
                     infinite: true,
                     dots: true
                 }
@@ -39,16 +40,16 @@ const SlideShow = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
                     initialSlide: 2
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToShow: 2,
+                    slidesToScroll: 2
                 }
             }
         ]
@@ -56,15 +57,15 @@ const SlideShow = () => {
 
 
     return (
-        <div className="container">
+        <div>
             <Slider {...settings} className="shadow-lg">
                 {categories ? categories.map(data =>
-                    <Card>
+                    <Card style={{ width: "200px" }}>
                         <Card.Img variant="top" className='cardImg' src={require(`../../images/${data.imgName}`)} />
-                        <Card.Body className="bg-dark">
+                        <Card.Body className="sliderBg">
                             <Card.Title >
-                                <Link className="text-light fs" to={data.value}>
-                                    {data.value}
+                                <Link to={data.value}>
+                                    <span className="sliderTitle">{data.value}</span>
                                 </Link>
                             </Card.Title>
                         </Card.Body>

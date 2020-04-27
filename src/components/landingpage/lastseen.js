@@ -4,6 +4,9 @@ import ItemCard from './itemcard';
 
 import '../styles/main.css';
 
+import pic1 from '../../images/it.jpg';
+
+
 const LastSeen = (props) => {
     const [popProducts, setPopProducts] = useState("")
 
@@ -11,41 +14,39 @@ const LastSeen = (props) => {
         setPopProducts([
             {
                 title: "product 1",
-                description: "blal bla ",
-                image: "jlkjlk",
-                addRefrence: "fdsfsdfdsf"
+                description: "Some Text one ",
+                image: pic1,
+                addRefrence: "Go More"
             },
             {
                 title: "product 2",
-                description: "blal bla ",
-                image: "jlkjlk",
-                addRefrence: "fdsfsdfdsf"
+                description: "Some Text Tow ",
+                image: pic1,
+                addRefrence: "Go More"
             },
             {
                 title: "product 3",
-                description: "blal bla ",
-                image: "jlkjlk",
-                addRefrence: "fdsfsdfdsf"
+                description: "Some Text Three",
+                image: pic1,
+                addRefrence: "Go More"
             },
             {
                 title: "product 4",
-                description: "blal bla ",
-                image: "jlkjlk",
-                addRefrence: "fdsfsdfdsf"
+                description: "Some Text Four ",
+                image: "Go More",
+                addRefrence: "Go More"
             }])
 
     }, [])
 
     return (
-        <div className="container mt-5 p-3 text-center">
-            <div >
-                <h2>Last Seen Products</h2>
-            </div>
-            <div className="row">
+        <div className="wrapAll ">
+            <h2>Last Seen Products</h2>
+            <div className="row wrapAll-cads ">
                 {popProducts ? popProducts.map(data =>
-                    <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <div>
                         <ItemCard
-                            //image={data.image}
+                            image={data.image}
                             title={data.title}
                             description={data.description}
                             addRefrence={data.addRefrence}

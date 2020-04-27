@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button } from 'react-bootstrap';
-import './cards.css'
+
+import '../styles/main.css'
+import pic1 from '../../images/it.jpg';
 const ItemCard = (props) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("")
@@ -15,8 +16,8 @@ const ItemCard = (props) => {
     }, [])
 
     return (
-        <div className="mt-5">
-            <Card >
+        <div>
+            {/*    <Card >
                 <Card.Img className="cat-image" variant="top" src={image} />
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
@@ -26,12 +27,37 @@ const ItemCard = (props) => {
                         </Card.Text>
                         : null}
                     {addRefrence ?
-                        <Button variant="primary">
+                        <button variant="primary">
                             {addRefrence}
-                        </Button>
+                        </button>
                         : null}
                 </Card.Body>
-            </Card>
+            </Card> */}
+
+            <div className="myCard">
+                <div className="myCardImage"
+                    style={{
+                        backgroundImage: `url(${pic1})`,
+                        backgroundPosition: "center",
+                        backgroundSize: "cover"
+                    }}
+                ></div>
+                <div className="myCardBody">
+                    <div>
+                        <h2>{title}</h2>
+                    </div>
+                    {description ?
+                        <p>
+                            {description}
+                        </p>
+                        : null}
+                    {addRefrence ?
+                        <button className="myBlueButton">
+                            {addRefrence} ->
+                        </button>
+                        : null}
+                </div>
+            </div>
 
         </div>
     );

@@ -1,19 +1,32 @@
 import React from 'react';
 
-import { ArrowRight } from 'react-bootstrap-icons'
+import '../styles/main.css';
+
 
 const Footer = (props) => {
     return (
-        <div className='fixed-bottom bg-dark text-light'>
-            <h3>You Can Find Us Here</h3>
-            <div className="d-flex justify-content-around">
+        <div className="footer">
 
-                <h3><a href="/">Milad Mosadegh</a></h3>
-                <h3><a href="/">Ather Ahmad</a></h3>
-
+            <div className="row footer-combine">
+                <div className="footer-info col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <h3>Milad Mosadegh</h3>
+                    <div className="footer-links">
+                        <a href="/" className="fa fa fa-envelope-o" />
+                        <a href="/" className="fa fa-instagram " />
+                        <a href="/" className="fa fa-facebook " />
+                    </div>
+                </div>
+                <div className="footer-info col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                    <h3>Ather Ahmad</h3>
+                    <div className="footer-links">
+                        <a href="/" className="fa fa fa-envelope-o" />
+                        <a href="/" className="fa fa-instagram " />
+                        <a href="/" className="fa fa-facebook " />
+                    </div>
+                </div>
             </div>
         </div>
-        
+
     );
 }
 

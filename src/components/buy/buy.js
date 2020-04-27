@@ -68,10 +68,12 @@ const BuyComponent = (props) => {
         <div>
 
             <MyNavbar {...props} />
-            <SearchBar
+            {/* <SearchBar
                 products={filteredProducts ? filteredProducts : products}
-            />
-            <SlideShow />
+            /> */}
+            <div className="container">
+                <SlideShow />
+            </div>
             <FilterBar
                 filterHandler={filterHandler}
             />

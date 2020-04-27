@@ -1,7 +1,28 @@
 @import './variables';
 
 
+
 .cardImg{
-    height: 200px;
+    height: 250px;
 }
 
+.sliderBg{
+    background: $bestBlueColor;
+
+    .sliderTitle{
+        color: whitesmoke;
+    }
+}
+
+
+@media only screen and (max-width: 600px){
+
+.cardImg{
+    height: 150px;
+}
+
+.sliderTitle{
+    font-size: 10px;
+}
+
+}

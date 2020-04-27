@@ -15,47 +15,47 @@ const PopularProduct = (props) => {
                 title: "product 1",
                 description: "blal bla ",
                 image: "jlkjlk",
-                addRefrence: "fdsfsdfdsf"
+                addRefrence: "Go More"
             },
             {
                 title: "product 2",
                 description: "blal bla ",
                 image: "jlkjlk",
-                addRefrence: "fdsfsdfdsf"
+                addRefrence: "Go More"
             },
             {
                 title: "product 3",
                 description: "blal bla ",
                 image: "jlkjlk",
-                addRefrence: "fdsfsdfdsf"
+                addRefrence: "Go More"
             },
             {
                 title: "product 4",
                 description: "blal bla ",
                 image: "jlkjlk",
-                addRefrence: "fdsfsdfdsf"
+                addRefrence: "Go More"
             }])
 
     }, [])
 
     return (
-        <div className="container mt-5 mb-4 text-center ">
-            <div >
+        <div className="popProBox">
+            <div className="popProBox-content ">
                 <h2>Latest Product</h2>
-            </div>
-            <div className="row">
-                {popProducts ? popProducts.map(data =>
-                    <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                        <ItemCard
-                            //image={data.image}
-                            title={data.title}
-                            description={data.description}
-                            addRefrence={data.addRefrence}
-                        />
-                    </div>
-                ) : <p> No proudcst</p>}
-            </div>
 
+                <div className="popProBox-cards row ">
+                    {popProducts ? popProducts.map(data =>
+                        <div>
+                            <ItemCard
+                                //image={data.image}
+                                title={data.title}
+                                description={data.description}
+                                addRefrence={data.addRefrence}
+                            />
+                        </div>
+                    ) : <p> No proudcst</p>}
+                </div>
+            </div>
         </div>
     );
 }

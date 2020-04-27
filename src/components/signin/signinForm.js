@@ -4,6 +4,8 @@ import { Link } from "react-router-dom"
 import Zoom from 'react-reveal/Zoom'
 import PasswordReset from './resetModal';
 
+import '../styles/main.css'
+
 
 
 export default function SigninForm(props) {
@@ -12,13 +14,14 @@ export default function SigninForm(props) {
 
     return (
         <div>
-            <div id="signin" className='App-header bg-full '>
+            <div id="signin" className='mySignin'>
                 <form className={classes.root} noValidate autoComplete="off" onSubmit={submitHandler}>
 
                     <Zoom >
-                        <div className="d-flex bg-full bg-light flex-column gerd">
-                            {/* <TextField required id="standard-required" label="Required" defaultValue="Hello World" /> */}
-                            <h2 className="mb-5 p-2 border-bottom" >Sign In</h2>
+                        <div className="mySignin-form">
+                            <div className="h2-box">
+                            </div>
+                            <h2 clsassName="mb-5 p-2" >Sign In</h2>
                             <TextField
                                 id="standard-email-input"
                                 label="Email"
@@ -37,15 +40,16 @@ export default function SigninForm(props) {
                                 name="pass"
                                 value={pass}
                                 onChange={changeHandler}
+
                             />
 
-                            <button className="btn btn-primary mt-4 mb-2" type="submit">Sign in</button>
+                            <button className="bigBlueButton" type="submit">Sign in</button>
                             {errors.form ? errors.form.status ? <smail className="sText"><p>{errors.form.value}</p></smail> : null : null}
                             {errors.authentication ? errors.authentication.status ? <smail className="sText"><p>{errors.authentication.value}</p></smail> : null : null}
 
-                            <small className="mt-3 myText">You are not registered yet? <Link to="/signup">Signup</Link></small>
+                            <small className="mt-3 myText">You are not registered yet? <Link to="/signup" className="L">Signup</Link></small>
                             <small className="mt-2 myText">Forgot Password?
-                            <strong className="text-danger" style={{ cursor: "pointer" }} onClick={handleOpen}> Click here</strong></small>
+                            <strong className="L" style={{ cursor: "pointer" }} onClick={handleOpen}> Click here</strong></small>
                             <PasswordReset handleClose={handleClose} handleOpen={handleOpen} show={show} classes={classes} />
 
                         </div>

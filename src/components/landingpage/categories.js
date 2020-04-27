@@ -58,27 +58,24 @@ const Categories = (props) => {
 
 
     return (
-        <div className="colorGray">
-            <div className="container">
-                <div className="mt-5">
-                    <h1>Categories</h1>
-                </div>
-                <Slider {...settings} className="shadow-lg ">
-                    {allCat.map(data =>
-                        <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                            <Card style={{ width: '18rem' }}>
-                                <Card.Img variant="top" className='cardImg' src={data.name} />
-                                <Card.Body className="bg-dark cbh">
-                                    <Card.Title> <Link className="text-light fs" to={data.type}>{data.type}</Link></Card.Title>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    )}
 
-                </Slider>
-            </div>
+        <div>
+            <Slider {...settings} className="shadow-lg ">
+                {allCat.map(data =>
+                    <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <Card style={{ width: '18rem' }}>
+                            <Card.Img variant="top" className='cardImg' src={data.name} />
+                            <Card.Body >
+                                <Card.Title> <Link className="text-light" to={data.type}>{data.type}</Link></Card.Title>
+                            </Card.Body>
+                        </Card>
+                    </div>
+                )}
 
+            </Slider>
         </div>
+
+
 
     );
 }
