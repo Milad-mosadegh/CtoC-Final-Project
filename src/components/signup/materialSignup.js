@@ -39,7 +39,9 @@ export default function MaterialSignup(props) {
                 if(response.data){
                     if(response.data.status==="success") props.history.push("/dashboard")
                     }
-                else localStorage.removeItem("c2c-token")
+                else {
+                    localStorage.removeItem("c2c-token")
+                    localStorage.removeItem("c2c-profile")}
                 }
             getData()
             }

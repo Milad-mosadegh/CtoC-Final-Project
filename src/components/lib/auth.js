@@ -10,31 +10,32 @@ const IfAuthenticated = async ({children}) => {
             .then(res=>JSON.parse(res))
             .catch(err=>{
                 localStorage.removeItem("c2c-token")
+                localStorage.removeItem("c2c-profile")
                 }
             )
-        console.log("rsponsedded", response)
+        console.log("response in authentication", response)
         if(response.data.status==="success") return children
         
     }
     
     return ( null );
 }
-const IfNotAuthenticated = (props) => {
+const IfNotAuthenticated = async(props) => {
     const token = localStorage.getItem("c2c-token")
-    console.log("these are props  in authenticated", props)
     if(token){
-        let response = get("api/auth/authenticated",{
+        let response = await get("api/auth/authenticated",{
                 headers:{
                     'x-auth-token':token
                 }})
             .then(res=>res)
             .catch(err=>{
                 localStorage.removeItem("c2c-token")
+                localStorage.removeItem("c2c-profile")
                 })
         console.log(response)
         return(null)
     }
-    
+    console.log("accessed not authenticated")
     return ( props.children );
 }
  

@@ -1,7 +1,18 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { Table } from 'react-bootstrap'
+import GET from '../../lib/get';
 
 const Inbox = (props) => {
+    const [conversations, setConversations]=useState("")
+
+    useEffect(()=>{
+        const getMessages=async()=>{
+            let response = await GET("/api/messages/messageslist")
+            setConversations(response.data.data)
+        }
+        getMessages()
+
+    },[])
     const myDate = new Date().toLocaleTimeString()
     return (
         <div>
@@ -14,12 +25,17 @@ const Inbox = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>{myDate}</td>
-                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</td>
+                {conversations? conversations.map(data=>
+                    {
+                        let myDate = new Date(data.timeStamp)
+                        return <tr>
+                        <td>{data.senderId===JSON.parse(localStorage.getItem("c2c-profile")).id?"Me":data.senderId}</td>
+                        <td>{myDate.toLocaleString()}</td>
+                        <td>{data.title}</td>
                         <button className="btn btn-danger">Reply</button>
-                    </tr>
+                    </tr>}
+                ):null}
+                    
 
                 </tbody>
             </Table>

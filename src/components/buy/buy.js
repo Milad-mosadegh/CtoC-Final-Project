@@ -8,6 +8,7 @@ import GET from '../lib/get';
 
 import FilterBar from "../filterBar/filterBar"
 import ProductDetails from './productDetails';
+import { IfNotAuthenticated } from '../lib/auth';
 
 
 
@@ -18,6 +19,7 @@ const BuyComponent = (props) => {
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
     const [filteredProducts, setFilteredProducts] = useState("")
+    const [showMainComponent, setShowMainComponents] = useState(true)
     useEffect(() => {
         const fetchData = async () => {
             let response = await GET("/api/buy/allproducts")
@@ -55,41 +57,51 @@ const BuyComponent = (props) => {
     }
 
     const interProduct = (id) => {
-
+        setShowMainComponents(false)
         setShowModal(true)
         setProductId(id)
     }
 
     const handleClose = () => {
-
         setShowModal(false)
+        setShowMainComponents(true)
+
     }
     return (
         <div>
-
             <MyNavbar {...props} />
+
             {/* <SearchBar
                 products={filteredProducts ? filteredProducts : products}
             /> */}
             <div className="container">
                 <SlideShow />
             </div>
-            <FilterBar
-                filterHandler={filterHandler}
-            />
-            {console.log("filtered products", filteredProducts)}
-            {console.log("all products", products)}
 
-            <Products
-                products={filteredProducts ? filteredProducts : products}
-                interProduct={interProduct}
-            />
-            <div>
-                {showModal ?
-                    <ProductDetails showModel={showModal} handleClose={handleClose}
-                        id={productId}
-                    /> : null}
+
+            <div style={{
+                visibility: showMainComponent ? "visible" : "hidden",
+                opacity: 1,
+                transition: "visibility 0s 0.5s, opacity 0.5s linear"
+            }}>
+                <SearchBar
+                    products={filteredProducts ? filteredProducts : products}
+                />
+
+                <FilterBar
+                    filterHandler={filterHandler}
+                />
+
+                <Products
+                    products={filteredProducts ? filteredProducts : products}
+                    interProduct={interProduct}
+                />
             </div>
+
+            {showModal ?
+                <ProductDetails showModel={showModal} handleClose={handleClose}
+                    id={productId}
+                /> : null}
         </div>
     );
 }

@@ -29,7 +29,6 @@ else items = [
     "aram",
     "art"
   ]
-
   const [suggestions, setSuggestions]       = useState("")
   const [text, setText]                     = useState("")
   const [searchText, setSearchText]         = useState("")

@@ -35,9 +35,6 @@ const userSchema = new mongoose.Schema({
             },
             zipCode:{
                 type:Number,
-            },
-            city:{
-                type:String,
             }
         }
 

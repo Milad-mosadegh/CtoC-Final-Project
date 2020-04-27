@@ -11,6 +11,7 @@ const MyNavbar = (props) => {
 
     const logoutHandler = () => {
         localStorage.removeItem('c2c-token')
+        localStorage.removeItem("c2c-profile")
         setAuth(false)
         props.history.push("/")
 
@@ -38,6 +39,7 @@ const MyNavbar = (props) => {
                 else {
                     setAuth(false)
                     localStorage.removeItem("c2c-token")
+                    localStorage.removeItem("c2c-profile")
                 }
             }
             getData()
@@ -112,7 +114,11 @@ const MyNavbar = (props) => {
                     <Nav>
                         <Nav.Link>
                             <Badge className='text-danger'>
+
                                 <span style={{ fontSize: "20px", marginRight: "-10px", fontFamily: 'Girassol, cursive' }}>10</span>
+
+                                <span className="badge badge-primary " style={{ verticalAlign: "super" }}>10</span>
+
                                 <Link to="/">
                                     <svg className="bi bi-bell navTitle" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M8 16a2 2 0 002-2H6a2 2 0 002 2z" />

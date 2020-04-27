@@ -1,26 +1,111 @@
-import React from 'react';
-import {OverlayTrigger, Popover, Button} from "react-bootstrap"
+import React,{useRef,useEffect, useState} from 'react';
+import {Overlay, Popover} from "react-bootstrap"
+import Button from '@material-ui/core/Button';
+import GET from '../../lib/get';
+import { Link } from "react-router-dom"
+import Input from '@material-ui/core/Input';
+import {POST} from "../../lib/post"
+
 
 const NewMessage = (props) => {
-    const {title}=props
-    return ( <>
-    <OverlayTrigger
-        trigger="click"
-        key="top"
-        placement="top"
-        overlay={
-          <Popover id={`popover-positioned-top`}>
-            <Popover.Title as="h3">{title}</Popover.Title>
-            <Popover.Content>
-              <input type="text"/><br/>
-              <Button>Send</Button>
-            </Popover.Content>
-          </Popover>
+    const {title, productId, recipentId}=props
+    const [show, setShow] = useState(false);
+    const [target, setTarget] = useState(null);
+    const [auth, setAuth] = useState(false)
+    const [message,setMessage]= useState("")
+    const ref = useRef(null);
+
+    useEffect(()=>{
+      const token = localStorage.getItem("c2c-token")
+      const checkAuth=async()=>{
+
+        if(token){
+          let response = await GET("api/auth/authenticated")
+          console.log("response in authentication", response)
+          if(response.data.status==="success") setAuth(true)
+            else setAuth(false)
         }
-      >
-        <div className="myIcons fa fa-envelope-o" variant="secondary"></div>
-      </OverlayTrigger>{' '}
-    </> );
+      }
+      checkAuth()
+    }, [])
+    const changeHandler=(e)=>{
+      setMessage(e.target.value)
+    }
+    const submitHandler=async()=>{
+      let senderId=JSON.parse(localStorage.getItem("c2c-profile")).id
+      console.log(props, "props in msg")
+      const {productId, recipentId, title} = props
+      const messageData ={
+        productId,
+        recipentId, 
+        title,
+        senderId,
+        message
+      }
+      console.log("mesg data", messageData)
+      const config={
+        headers:{
+        'x-auth-token':localStorage.getItem('c2c-token'),
+        'Content-Type': 'application/json'
+    }}
+      let response=await POST("/api/messages/sendmessage",messageData, config)
+      console.log("response in msge",response) 
+    }
+
+    const handleClick = (event) => {
+      setShow(!show);
+      setTarget(event.target);
+    };
+  
+    return (
+      <div ref={ref}>
+        <div className="myIcons fa fa-envelope-o" variant="secondary" onClick={handleClick}></div>
+        
+        <Overlay
+          show={show}
+          target={target}
+          placement="top"
+          container={ref.current}
+          containerPadding={20}
+        >
+          <Popover id="popover-contained">
+
+            {auth?
+              <div>
+              <Popover.Title as="h3">Inquire about product</Popover.Title>
+              <Popover.Content>
+              <Input
+                multiline="true"
+                placeholder="Message"
+                value={message}
+                onChange={changeHandler}
+                
+              />
+                 <Button
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    onClick={submitHandler}
+                  >
+                  <i class="fa fa-angle-double-right"></i>
+                  </Button>
+                </Popover.Content>
+              </div>
+              :<div>
+              <Popover.Title as="h3">Request failed!</Popover.Title>
+              <Popover.Content>
+              <small className="mt-3 myText">You are not logged in please <Link to="/signin">Signin</Link></small>
+                </Popover.Content>
+              </div>
+}
+            
+            
+          </Popover>
+        </Overlay>
+        
+      </div>
+    );
+      
 }
  
 export default NewMessage;

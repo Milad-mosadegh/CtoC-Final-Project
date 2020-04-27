@@ -3,13 +3,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Categories from "../lib/categories"
-
-
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import '../styles/main.css'
 
-const SlideShow = () => {
+const SlideShow = (props) => {
 
     const [categories, setCategories] = useState("")
     useEffect(() => {
@@ -57,22 +55,27 @@ const SlideShow = () => {
 
 
     return (
-        <div>
-            <Slider {...settings} className="shadow-lg">
-                {categories ? categories.map(data =>
-                    <Card style={{ width: "200px" }}>
-                        <Card.Img variant="top" className='cardImg' src={require(`../../images/${data.imgName}`)} />
-                        <Card.Body className="sliderBg">
-                            <Card.Title >
-                                <Link to={data.value}>
-                                    <span className="sliderTitle">{data.value}</span>
-                                </Link>
-                            </Card.Title>
-                        </Card.Body>
-                    </Card>
-                ) : null}
 
-            </Slider>
+        <div>
+
+            <div className="" >
+
+                <Slider {...settings} className="shadow-lg">
+                    {categories ? categories.map(data =>
+                        <Card style={{ width: "200px" }}>
+                            <Card.Img variant="top" className='cardImg' src={require(`../../images/${data.imgName}`)} />
+                            <Card.Body className="sliderBg">
+                                <Card.Title >
+                                    <Link to={data.value}>
+                                        <span className="sliderTitle">{data.value}</span>
+                                    </Link>
+                                </Card.Title>
+                            </Card.Body>
+                        </Card>
+                    ) : null}
+
+                </Slider>
+            </div>
         </div>
     );
 }
