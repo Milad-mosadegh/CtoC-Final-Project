@@ -8,7 +8,7 @@ import GET from '../lib/get';
 
 import FilterBar from "../filterBar/filterBar"
 import ProductDetails from './productDetails';
-import { IfNotAuthenticated } from '../lib/auth';
+// import { IfNotAuthenticated } from '../lib/auth';
 
 
 

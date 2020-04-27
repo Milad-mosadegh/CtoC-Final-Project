@@ -2263,6 +2263,233 @@
   }
 }
 
+.myBlueButton {
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  background: #11213b;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.myBlueButton:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton {
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  background: #b72926;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.myRedButton:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.bigBlueButton {
+  width: 80px;
+  height: 40px;
+  color: #fff;
+  background: #11213b;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+}
+
+.bigBlueButton:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.bigRedButton {
+  width: 80px;
+  height: 40px;
+  color: #fff;
+  background: #b72926;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+}
+
+.bigRedButton:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.message-wrapper {
+  display: block;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 40%;
+  /* Full width */
+  height: 90%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(68, 68, 68, 0.822);
+  /* Black w/ opacity */
+  border-radius: 0px;
+  margin: 50px 550px;
+  -webkit-box-shadow: 0 10px 120px black;
+          box-shadow: 0 10px 120px black;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.message-wrapper .message-header {
+  height: 100px;
+  background: #11213b;
+  color: whitesmoke;
+  padding: 38px;
+}
+
+.message-wrapper .message-header button {
+  float: left;
+  background: red;
+  width: 30px;
+  padding: 4px;
+  border: none;
+  border-radius: 10px;
+  font-size: 19px;
+}
+
+.message-wrapper .message-header h2 {
+  font-size: 25px;
+  font-weight: 200;
+}
+
+.message-wrapper .p-id {
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #cacaca;
+  border-bottom: 1px solid black;
+}
+
+.message-wrapper .message-box {
+  height: 70vh;
+  background: #cacaca;
+}
+
+.message-wrapper .message-box .sender-box {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.message-wrapper .message-box .sender-box .sender {
+  background: #11213b;
+  width: 200px;
+  margin: 10px;
+  border-radius: 30px 30px 0 30px;
+  color: whitesmoke;
+  padding: 10px;
+}
+
+.message-wrapper .message-box .reciver-box {
+  width: 100%;
+}
+
+.message-wrapper .message-box .reciver-box .reciver {
+  background: #b72926;
+  width: 200px;
+  margin: 10px;
+  border-radius: 30px 30px 30px 0;
+  color: whitesmoke;
+  padding: 10px;
+}
+
+.message-wrapper .message-write {
+  background: #11213b;
+  height: 4vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 90% 10%;
+      grid-template-columns: 90% 10%;
+}
+
+.message-wrapper .message-write input {
+  border: none;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  padding-left: 20px;
+}
+
+.message-wrapper .message-write button {
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+  background: #11213b;
+  color: whitesmoke;
+  border: none;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.message-wrapper .message-write button:focus {
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+}
+
+.message-wrapper .message-write button:hover {
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+}
+
 * {
   margin: 0;
   padding: 0;

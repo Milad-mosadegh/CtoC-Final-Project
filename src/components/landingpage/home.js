@@ -13,6 +13,7 @@ import Fade from 'react-reveal/Fade';
 
 import '../styles/main.css'
 import Footer from '../footer/footer';
+import MessagePopup from '../account/messages/messagePopup';
 
 const Home = (props) => {
     const [auth, setAuth] = useState(false)
@@ -32,7 +33,7 @@ const Home = (props) => {
     return (
         <div>
             <MyNavbar {...props} />
-
+            <MessagePopup />
             <div className="fixedBackground">
                 <div className="container">
                     <h1>WelcomE To <span className="c">C</span>-To-<span className="c">C</span> OnlinE ShoP</h1>
