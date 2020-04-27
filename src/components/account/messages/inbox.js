@@ -26,12 +26,14 @@ const Inbox = (props) => {
                 </thead>
                 <tbody>
                 {conversations? conversations.map(data=>
-                    <tr>
+                    {
+                        let myDate = new Date(data.timeStamp)
+                        return <tr>
                         <td>{data.senderId===JSON.parse(localStorage.getItem("c2c-profile")).id?"Me":data.senderId}</td>
-                        <td>{data.timeStamp}</td>
+                        <td>{myDate.toLocaleString()}</td>
                         <td>{data.title}</td>
                         <button className="btn btn-danger">Reply</button>
-                    </tr>
+                    </tr>}
                 ):null}
                     
 
