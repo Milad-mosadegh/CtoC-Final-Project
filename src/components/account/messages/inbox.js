@@ -4,6 +4,8 @@ import GET from '../../lib/get';
 
 const Inbox = (props) => {
     const [conversations, setConversations]=useState("")
+    const {showPopUp,setTargetId} = props
+
 
     useEffect(()=>{
         const getMessages=async()=>{
@@ -13,13 +15,14 @@ const Inbox = (props) => {
         getMessages()
 
     },[])
-    const myDate = new Date().toLocaleTimeString()
     return (
         <div>
+           
             <Table striped bordered hover >
+          
                 <thead>
                     <tr>
-                        <th>{props.of}</th>
+                        <th>From</th>
                         <th>Date</th>
                         <th>Subject</th>
                     </tr>
@@ -31,12 +34,13 @@ const Inbox = (props) => {
                         return <tr>
                         <td>{data.senderId===JSON.parse(localStorage.getItem("c2c-profile")).id?"Me":data.senderId}</td>
                         <td>{myDate.toLocaleString()}</td>
-                        <td>{data.title}</td>
+                        <td onClick={()=>{setTargetId(data._id)
+                                         showPopUp()}}>{data.title}</td>
                         <button className="btn btn-danger">Reply</button>
                     </tr>}
                 ):null}
                     
-
+                            
                 </tbody>
             </Table>
         </div>

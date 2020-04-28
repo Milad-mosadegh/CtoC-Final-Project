@@ -20,7 +20,7 @@ const MyProfile = (props) => {
         zipCode: ""
 
     })
-    const [auth, setAuth] = useState(false)
+    const [auth, setAuth] = useState(false) 
     const [edit, setEdit] = useState(false)
     const [avatarChanged, setAvatarChange] = useState(false)
     const [image, setImage] = useState("")
@@ -129,7 +129,7 @@ const MyProfile = (props) => {
     const imageChangeHandler = (image) => {
         setProfile({ ...profile, profileImage: image.image })
         setAvatarChange(true)
-    }
+}
 
 
     return (

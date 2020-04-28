@@ -85,6 +85,7 @@ export default function MainAcc(props) {
                                 <Tab label="Message" {...a11yProps(1)} />
                                 <Tab label="Activity" {...a11yProps(2)} />
                                 <Tab label="Favorit" {...a11yProps(3)} />
+                                <Tab label="activeChat" {...a11yProps(4)} />
                             </Tabs>
                         </AppBar>
                         <SwipeableViews
