@@ -5,14 +5,14 @@ import GET from '../lib/get';
 import { POST } from '../lib/post';
 
 const ActiveConversation = (props) => {
-    const { hidePopUp, activeChatId} = props
-    const [newMessage, setNewMessage] = useState("")
+    const { hidePopUp, conversationId} = props
+    const [message, setMessage] = useState("")
     const [prevMessages, setPrevMessages] = useState("")
 
     useEffect(()=>{
         const getConversation=async ()=>{
             console.log("message pop  stac rted")
-            let res = await GET(`/api/messages/getconversation/${activeChatId}`)
+            let res = await GET(`/api/messages/getconversation/${conversationId}`)
             if(res.data.data) setPrevMessages(res.data.data)
         }
         getConversation()
@@ -22,16 +22,23 @@ const ActiveConversation = (props) => {
 
 
     const changeHandler = (e) => {
-        setNewMessage(e.target.value )
+        setMessage(e.target.value )
     }
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        if(newMessage==="") return
+        if(message==="") return
             else{
-                let res = await POST("/")
+                const config={
+                    headers:{
+                    'x-auth-token':localStorage.getItem('c2c-token'),
+                    'Content-Type': 'application/json'
+                }}
+                const messageData ={conversationId,message}
+                let res = await POST("/api/messages/updateconversation",messageData,config)
+                console.log(res)
             }
-                console.log(newMessage);
+                console.log(message);
     }
     let userId=JSON.parse(localStorage.getItem("c2c-profile")).id
 
@@ -60,7 +67,7 @@ const ActiveConversation = (props) => {
             </div>
 
             <div className="message-write" onSubmit={submitHandler}>
-                <input type="text" onChange={changeHandler} value={newMessage}/>
+                <input type="text" onChange={changeHandler} value={message}/>
                 <button className="fa fa-send-o" onClick={submitHandler}></button>
             </div>
         </div>

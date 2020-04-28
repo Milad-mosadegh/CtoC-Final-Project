@@ -2,9 +2,9 @@ import React,{useState,useEffect} from 'react';
 import { Table } from 'react-bootstrap'
 import GET from '../lib/get';
 
-const Conversations = (props) => {
+const AllConversations = (props) => {
     const [conversations, setConversations]=useState("")
-    const {showPopUp,setTargetId} = props
+    const {showPopUp,setTargetConversation} = props
 
 
     useEffect(()=>{
@@ -33,7 +33,7 @@ const Conversations = (props) => {
                         return <tr>
                         <td>{data.senderId===JSON.parse(localStorage.getItem("c2c-profile")).id?"Me":data.senderId}</td>
                         <td>{myDate.toLocaleString()}</td>
-                        <td onClick={()=>{setTargetId(data._id)
+                        <td onClick={()=>{setTargetConversation(data._id)
                                          showPopUp()}}>{data.title}</td>
                         <button className="btn btn-danger">Reply</button>
                     </tr>}
@@ -46,4 +46,4 @@ const Conversations = (props) => {
     );
 }
 
-export default Conversations;
+export default AllConversations;

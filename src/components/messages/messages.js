@@ -1,15 +1,15 @@
 import React,{useState} from 'react';
-import Conversations from "./conversations"
+import AllConversations from "./allConversations"
 import ActiveConversation from "./activeConversation"
 import { Navbar } from 'react-bootstrap';
 
 const Messages = (props) => {
 
-    const [activeChatId, setActiveChatId]=useState("")
+    const [conversationId, setConversationId]=useState("")
     const [showConversation, setShowConversation]=useState(false)
 
-    const setTargetId=(id)=>{
-        setActiveChatId(id)
+    const setTargetConversation=(id)=>{
+        setConversationId(id)
         console.log(id, "in messages")
     }
 
@@ -23,17 +23,16 @@ const Messages = (props) => {
             <Navbar  {...props}/>
             </div>
             <div>
-            <Conversations
+            <AllConversations
                 showPopUp           ={showPopUp}
-                setActiveChatId     ={setActiveChatId}
-                setTargetId         ={setTargetId}
+                setTargetConversation         ={setTargetConversation}
             />
             </div>
             
             {showConversation?
             <ActiveConversation
                 hidePopUp    = {hidePopUp}
-                activeChatId = {activeChatId}
+                conversationId = {conversationId}
             />
             :null}
             <div>
