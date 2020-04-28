@@ -2418,6 +2418,7 @@
 .message-wrapper .message-box {
   height: 70vh;
   background: #cacaca;
+  overflow-y: auto;
 }
 
 .message-wrapper .message-box .sender-box {
@@ -2428,10 +2429,16 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .message-wrapper .message-box .sender-box .sender {
   background: #11213b;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
   width: 200px;
   margin: 10px;
   border-radius: 30px 30px 0 30px;
@@ -2444,6 +2451,8 @@
 }
 
 .message-wrapper .message-box .reciver-box .reciver {
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
   background: #b72926;
   width: 200px;
   margin: 10px;
