@@ -33,7 +33,7 @@ const Home = (props) => {
     return (
         <div>
             <MyNavbar {...props} />
-            <MessagePopup />
+            {/* <MessagePopup /> */}
             <div className="fixedBackground">
                 <div className="container">
                     <h1>WelcomE To <span className="c">C</span>-To-<span className="c">C</span> OnlinE ShoP</h1>

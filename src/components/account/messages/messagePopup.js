@@ -13,7 +13,7 @@ const MessagePopup = () => {
 
     const handleAddMessage = (e) => {
         e.preventDefault();
-        console.log(send);
+
     }
 
 
@@ -40,10 +40,10 @@ const MessagePopup = () => {
                 </div>
             </div>
 
-            <div className="message-write" onSubmit={handleAddMessage}>
+            <form className="message-write" onSubmit={handleAddMessage}>
                 <input type="text" onChange={changeHandler} />
-                <button className="fa fa-send-o" onClick={handleAddMessage}></button>
-            </div>
+                <button className="fa fa-send-o" ></button>
+            </form>
         </div>
     );
 }

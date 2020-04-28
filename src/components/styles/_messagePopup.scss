@@ -15,6 +15,7 @@
     box-shadow: 0 10px 120px rgb(0, 0, 0);
     transition: 0.5s;
 
+
     .message-header{
         height: 100px;
         background: $bestBlueColor;
@@ -51,6 +52,7 @@
             width: 100%;
             display: flex;
             justify-content: flex-end;
+            flex-direction: row;
 
             .sender{
                 background: $bestBlueColor;
@@ -101,5 +103,4 @@
             }
         }
     }
-
 }
