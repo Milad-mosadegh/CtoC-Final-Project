@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import '../../styles/main.css';
 
-const MessagePopup = () => {
+const MessagePopup = (props) => {
     const [send, setSend] = useState({
         message: {}
     })
@@ -31,8 +31,6 @@ const MessagePopup = () => {
                     <div className="sender">
                         Sender
                     </div>
-
-
                 </div>
 
                 <div className="reciver-box">

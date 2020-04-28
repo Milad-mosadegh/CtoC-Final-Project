@@ -4,6 +4,7 @@ const User = require("../model/userModel")
 
 exports.createMessage=async(req,res)=>{
     const {message, senderId, productId, recipentId, title}=req.body.data
+    if(!message) return
     let conversationResult = await Coversation
                                 .findOne({$and:[{senderId, productId}]})
     if(!conversationResult){
@@ -18,7 +19,7 @@ exports.createMessage=async(req,res)=>{
             title})
         await newConversation.save((err,doc)=>{
             if(err) {
-                res.json({status:"failed", message:"Currently unable to send your meesage please try again"})
+                res.json({status:"failed", message:"Currently unable to send your meesage please try again", data:err})
                 throw err
             }
             else{
@@ -34,7 +35,7 @@ exports.createMessage=async(req,res)=>{
                senderId,
                message
              }}},(err,doc)=>{
-                 if(err) res.json({status:"failed", message:"Unable to send your message, please try again",doc:err})
+                 if(err) res.json({status:"failed", message:"Unable to send your message, please try again",data:err})
                     else res.json({status:'success', message:"added in previous conversation", data:doc})
              })
            
@@ -45,14 +46,11 @@ exports.createMessage=async(req,res)=>{
 exports.messagesList=async(req,res)=>{
     let senderId=req.userId
     let recipentId=req.userId
-    console.log(req.userId, "use id")
     let conversationResult = await Coversation
     .find({$or:[{senderId}, {recipentId}]})
     if(!conversationResult)  {
-        console.log("nothing found")
         res.json({status:"failed", message:"You have no active conversation", data:[]})}
         else {
-            console.log(conversationResult,"conversation result")
             res.json({status:"success", message:"successfully retrieved", data:conversationResult})
         }
 
@@ -60,6 +58,38 @@ exports.messagesList=async(req,res)=>{
 exports.deleteMessage=async(req,res)=>{
 
 }
-exports.retrieveMessage=async(req,res)=>{
+exports.getConversation=async(req,res)=>{
+    let conversationResult = await Coversation.findById(req.params.id,{messages:1})
+    console.log(conversationResult)
+    res.json({status:"success", message:"you reached getconversation", data:conversationResult.messages})
     
 }
+
+exports.updateConversation=async(req,res)=>{
+    const {conversationId,message}=req.body.data
+    await Coversation.findOneAndUpdate(
+        {
+                $and:[{_id:conversationId}, {$or:[{senderId:req.userId},{recipentId:req.userId}]}]
+            },
+                    {"$push":{messages:{
+                                senderId:req.userId,
+                                message:message
+                            }}}
+                ,{
+                    new:true
+
+                    },(err,doc)=>{
+                    if(err) res.json({status:"failed", message:"Unable to send your message, please try again",data:err})
+                        else {res.json({status:'success', message:"added in previous conversation", data:doc})
+                        console.log("show",doc, "after updating conversation")}
+                })
+}
+
+
+
+//findOne({$and:[{senderId, productId}]})
+
+/* $or:[
+    {$and:[{_id:conversationId}, {senderId:req.userId}]},
+    {$and:[{_id:conversationId}, {recipentId:req.userId}]}
+] */

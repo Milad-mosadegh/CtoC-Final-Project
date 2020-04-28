@@ -88,7 +88,11 @@ const MyNavbar = (props) => {
                     {auth ?
 
                         <Nav>
-
+                        <Nav.Link>
+                            <Link className="text-light text-uppercase" to="/messages">
+                                <span className="navTitle">Messages</span>
+                            </Link>
+                            </Nav.Link>
                             <Nav.Link>
                                 <Link className="text-light text-uppercase" to="/account">
                                     <span className="navTitle">Account</span>

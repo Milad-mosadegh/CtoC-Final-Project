@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import MyNavbar from '../navbar/navBar';
 import MyProfile from './profile/mainProfile';
-import Messages from './messages/messages';
 import '../../App.css'
 import MainActivity from './activity/activity.js';
 import ItemCard from '../landingpage/itemcard';
@@ -82,9 +81,8 @@ export default function MainAcc(props) {
                                 aria-label="full width tabs example"
                             >
                                 <Tab label="Profile" {...a11yProps(0)} />
-                                <Tab label="Message" {...a11yProps(1)} />
-                                <Tab label="Activity" {...a11yProps(2)} />
-                                <Tab label="Favorit" {...a11yProps(3)} />
+                                <Tab label="Activity" {...a11yProps(1)} />
+                                <Tab label="Favorit" {...a11yProps(2)} />
                             </Tabs>
                         </AppBar>
                         <SwipeableViews
@@ -96,13 +94,10 @@ export default function MainAcc(props) {
                                 <MyProfile {...props} />
                             </TabPanel>
                             <TabPanel value={value} index={1} dir={theme.direction}>
-                                <Messages {...props} />
-                            </TabPanel>
-                            <TabPanel value={value} index={2} dir={theme.direction}>
                                 <MainActivity {...props} />
                             </TabPanel>
 
-                            <TabPanel value={value} index={3} dir={theme.direction}>
+                            <TabPanel value={value} index={2} dir={theme.direction}>
                                 <Zoom>
                                     <div className="d-flex">
                                         <div className="row text-center">
