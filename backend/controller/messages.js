@@ -60,35 +60,51 @@ exports.deleteMessage=async(req,res)=>{
 }
 exports.getConversation=async(req,res)=>{
     let conversationResult = await Coversation.findById(req.params.id,{messages:1})
-    console.log(conversationResult)
     res.json({status:"success", message:"you reached getconversation", data:conversationResult.messages})
     
 }
 
 exports.updateConversation=async(req,res)=>{
     const {conversationId,message}=req.body.data
+    if(message==="") return console.log("empty msg")
+    else
     await Coversation.findOneAndUpdate(
         {
                 $and:[{_id:conversationId}, {$or:[{senderId:req.userId},{recipentId:req.userId}]}]
             },
-                    {"$push":{messages:{
+                    {$addToSet:{messages:{
                                 senderId:req.userId,
                                 message:message
                             }}}
                 ,{
                     new:true
-
+    
                     },(err,doc)=>{
                     if(err) res.json({status:"failed", message:"Unable to send your message, please try again",data:err})
-                        else {res.json({status:'success', message:"added in previous conversation", data:doc})
+                        else {res.json({status:'success', message:"added in previous conversation", data:doc.messages})
                         console.log("show",doc, "after updating conversation")}
                 })
 }
 
 
 
-//findOne({$and:[{senderId, productId}]})
+/* await Coversation.findOneAndUpdate(
+    {
+            $and:[{_id:conversationId}, {$or:[{senderId:req.userId},{recipentId:req.userId}]}]
+        },
+                {"$push":{messages:{
+                            senderId:req.userId,
+                            message:message
+                        }}}
+            ,{
+                new:true
 
+                },(err,doc)=>{
+                if(err) res.json({status:"failed", message:"Unable to send your message, please try again",data:err})
+                    else {res.json({status:'success', message:"added in previous conversation", data:doc})
+                    console.log("show",doc, "after updating conversation")}
+            })
+ */
 /* $or:[
     {$and:[{_id:conversationId}, {senderId:req.userId}]},
     {$and:[{_id:conversationId}, {recipentId:req.userId}]}
