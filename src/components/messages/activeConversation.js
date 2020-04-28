@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import '../../styles/main.css';
-import GET from '../../lib/get';
+import '../styles/main.css';
+import GET from '../lib/get';
+import { POST } from '../lib/post';
 
-const MessagePopup = (props) => {
+const ActiveConversation = (props) => {
     const { hidePopUp, activeChatId} = props
     const [newMessage, setNewMessage] = useState("")
     const [prevMessages, setPrevMessages] = useState("")
@@ -24,9 +25,13 @@ const MessagePopup = (props) => {
         setNewMessage(e.target.value )
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        console.log(newMessage);
+        if(newMessage==="") return
+            else{
+                let res = await POST("/")
+            }
+                console.log(newMessage);
     }
     let userId=JSON.parse(localStorage.getItem("c2c-profile")).id
 
@@ -62,4 +67,4 @@ const MessagePopup = (props) => {
     );
 }
 
-export default MessagePopup;
+export default ActiveConversation;

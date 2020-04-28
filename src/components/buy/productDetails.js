@@ -3,7 +3,7 @@ import '../styles/main.css'
 import Zoom from 'react-reveal/Zoom'
 import Fade from 'react-reveal/Fade'
 import PictureSlider from './pictureSlider';
-import NewMessage from '../account/messages/newMessage';
+import NewMessage from "../messages/newMessage";
 import '../styles/main.css';
 import GET from '../lib/get';
 

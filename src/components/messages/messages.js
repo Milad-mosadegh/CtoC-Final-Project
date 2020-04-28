@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
-import Inbox from './inbox';
-import MessagePopup from './messagePopup';
+import Conversations from "./conversations"
+import ActiveConversation from "./activeConversation"
+import { Navbar } from 'react-bootstrap';
 
 const Messages = (props) => {
 
@@ -18,19 +19,26 @@ const Messages = (props) => {
     return (
 
         <div>
-            
-            <Inbox
+            <div className="mt-1 mb-2">
+            <Navbar  {...props}/>
+            </div>
+            <div>
+            <Conversations
                 showPopUp           ={showPopUp}
                 setActiveChatId     ={setActiveChatId}
                 setTargetId         ={setTargetId}
             />
+            </div>
             
             {showConversation?
-            <MessagePopup
+            <ActiveConversation
                 hidePopUp    = {hidePopUp}
                 activeChatId = {activeChatId}
             />
             :null}
+            <div>
+           
+            </div>
         </div>
 
 

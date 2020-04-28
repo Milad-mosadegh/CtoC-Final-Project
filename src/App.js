@@ -12,7 +12,7 @@ import SellItems from './components/sell/sellitems';
 import Home from './components/landingpage/home';
 import ResetPassword from './components/resetPassword/resetPassword';
 import BuyComponent from './components/buy/buy';
-import Messages from './components/account/messages/messages';
+import Messages from './components/messages/messages';
 
 
 

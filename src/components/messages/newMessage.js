@@ -1,10 +1,10 @@
 import React,{useRef,useEffect, useState} from 'react';
 import {Overlay, Popover} from "react-bootstrap"
 import Button from '@material-ui/core/Button';
-import GET from '../../lib/get';
+import GET from '../lib/get';
 import { Link } from "react-router-dom"
 import Input from '@material-ui/core/Input';
-import {POST} from "../../lib/post"
+import {POST} from "../lib/post"
 
 
 const NewMessage = (props) => {

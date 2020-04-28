@@ -1,8 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import { Table } from 'react-bootstrap'
-import GET from '../../lib/get';
+import GET from '../lib/get';
 
-const Inbox = (props) => {
+const Conversations = (props) => {
     const [conversations, setConversations]=useState("")
     const {showPopUp,setTargetId} = props
 
@@ -17,7 +17,6 @@ const Inbox = (props) => {
     },[])
     return (
         <div>
-           
             <Table striped bordered hover >
           
                 <thead>
@@ -47,4 +46,4 @@ const Inbox = (props) => {
     );
 }
 
-export default Inbox;
+export default Conversations;
