@@ -5,12 +5,14 @@ import Slide from 'react-reveal/Slide';
 
 
 
-const UnitedCards = ({ title, price, id, images }) => {
+const UnitedCards = ({ title, price, id, images, interProduct }) => {
+    console.log("id in the United Card", id)
     return (
-        <div >
+
+        < div >
             <div className="unitedWrap mt-5">
                 <Slide left>
-                    <div className="unitedCards" key={id} >
+                    <div className="unitedCards" key={id} onClick={() => interProduct(id)}>
                         <div className="unitedImgBox"
                             style={{
                                 backgroundImage: `url(${`http://localhost:5000/avatars/${images}`})`,
@@ -32,7 +34,7 @@ const UnitedCards = ({ title, price, id, images }) => {
                 </Slide>
 
             </div>
-        </div>
+        </div >
     );
 }
 

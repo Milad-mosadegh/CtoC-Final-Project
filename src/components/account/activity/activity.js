@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Tab, Col, Nav, Row } from 'react-bootstrap'
-import ItemCard from '../../landingpage/itemcard';
+
 import Zoom from 'react-reveal/Zoom';
 
-import UnitedCards from '../../landingpage/unitedCards';
 
 import GET from '../../lib/get';
 import ProductDetails from '../../buy/productDetails';
+import Products from '../../buy/products';
 
 
 const Activity = (props) => {
@@ -17,18 +17,6 @@ const Activity = (props) => {
     const [productId, setProductId] = useState("")
 
 
-    const interProduct = (id) => {
-        setShowMainComponents(false)
-        setShowModal(true)
-        setProducts(id)
-    }
-
-
-    const handleClose = () => {
-        setShowModal(false)
-        setShowMainComponents(true)
-
-    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -39,19 +27,32 @@ const Activity = (props) => {
         fetchData()
     }, [])
 
+    const interProduct = (id) => {
+        setShowMainComponents(false)
+        setShowModal(true)
+        setProductId(id)
+    }
+
+
+    const handleClose = () => {
+        setShowModal(false)
+        setShowMainComponents(true)
+
+    }
+
     return (
 
-        <div>
+        <div className="border shadow">
+
             <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                 <Row>
                     <Col sm={3}>
-                        <Nav variant="pills" className="flex-column">
+                        <Nav variant="pills" className="flex-column mt-5">
                             <Nav.Item>
-                                <Nav.Link eventKey="first">My Adds</Nav.Link>
+                                <Nav.Link eventKey="first">My Products</Nav.Link>
                             </Nav.Item>
-
                             <Nav.Item>
-                                <Nav.Link eventKey="third">Sold Products</Nav.Link>
+                                <Nav.Link eventKey="second">Sold Products</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Col>
@@ -62,59 +63,28 @@ const Activity = (props) => {
                                     <div className=' text-center'>
                                         <div className="d-flex">
                                             <div className="row">
-                                                {products ? products.map(add =>
-                                                    <UnitedCards
-                                                        images={add.images.length > 0 ? add.images[0] : 'noimage.png'}
-                                                        title={add.title}
-                                                        price={add.price}
-                                                    />
-                                                ) : null}
-                                                {/* <UnitedCards myAdds={myAdds ? myAdds : null}
+                                                <Products
+                                                    products={products}
                                                     interProduct={interProduct}
-                                                /> */}
+                                                />
                                             </div>
-                                            {showModal ?
-                                                <ProductDetails showModel={showModal} handleClose={handleClose}
-                                                    id={productId}
-                                                /> : null}
+
                                         </div>
+                                        {showModal ?
+                                            <ProductDetails showModel={showModal} handleClose={handleClose}
+                                                id={productId}
+                                            /> : null}
                                     </div>
                                 </Zoom>
                             </Tab.Pane>
-
-
-
-                            <Tab.Pane eventKey="third">
-                                <Zoom>
-                                    <div className=' text-center'>
-                                        <div className="d-flex">
-                                            <div className="row">
-                                                {products ? products.map(add =>
-                                                    <UnitedCards
-                                                        images={add.images.length > 0 ? add.images[0] : 'noimage.png'}
-                                                        title={add.title}
-                                                        price={add.price}
-                                                    />
-                                                ) : null}
-                                                {/* <UnitedCards myAdds={myAdds ? myAdds : null}
-                                                    interProduct={interProduct}
-                                                /> */}
-                                            </div>
-                                            {showModal ?
-                                                <ProductDetails showModel={showModal} handleClose={handleClose}
-                                                    id={productId}
-                                                /> : null}
-                                        </div>
-                                    </div>
-                                </Zoom>
+                            <Tab.Pane eventKey="second">
 
                             </Tab.Pane>
-
-
                         </Tab.Content>
                     </Col>
                 </Row>
             </Tab.Container>
+
         </div>
 
 

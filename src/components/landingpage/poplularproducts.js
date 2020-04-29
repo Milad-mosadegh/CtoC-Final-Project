@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import ItemCard from '../landingpage/itemcard';
+import UnitedCards from './unitedCards';
 // import Categories from '../lib/categories';
 
 // import '../styles/main.css'
@@ -46,7 +47,7 @@ const PopularProduct = (props) => {
                 <div className="popProBox-cards row ">
                     {popProducts ? popProducts.map(data =>
                         <div>
-                            <ItemCard
+                            <UnitedCards
                                 //image={data.image}
                                 title={data.title}
                                 description={data.description}

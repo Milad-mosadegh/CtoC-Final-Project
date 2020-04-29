@@ -8,17 +8,19 @@ import '../styles/main.css';
 import GET from '../lib/get';
 
 const ProductDetails = ({ id, showModel, handleClose }) => {
-    const [productDetail, setProductDetail]= useState("")
+    const [productDetail, setProductDetail] = useState("")
     const [bgImage, setBgImage] = useState("noimage.png")
-    useEffect(()=>{
-        const getProductDetails=async()=>{
+    useEffect(() => {
+        const getProductDetails = async () => {
             let response = await GET(`/api/buy/productDetails/${id}`)
             setProductDetail(response.data.data)
-            if (response.data.data.images.length>0)setBgImage(response.data.data.images[0])
+            if (response.data.data.images.length > 0) setBgImage(response.data.data.images[0])
             console.log(response, "response")
         }
         getProductDetails()
-    },[])
+        console.log("Product id :", id);
+
+    }, [])
 
 
     const handleBgImage = (backgroundImage) => {
@@ -69,7 +71,7 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
                             <div className="myIcon">
                                 <div className="myIcons fa fa-thumbs-o-up"></div>
 
-                                <NewMessage 
+                                <NewMessage
                                     title={productDetail.title}
                                     productId={productDetail._id}
                                     recipentId={productDetail.creator} />
@@ -83,7 +85,7 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
 
 
                     <div className="thumbNailImage">
-                       <PictureSlider
+                        <PictureSlider
                             images={productDetail.images}
                             handleBgImage={handleBgImage}
                         />

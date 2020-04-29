@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import '../styles/main.css'
 import pic1 from '../../images/it.jpg';
+
 const ItemCard = (props) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("")
@@ -17,24 +18,9 @@ const ItemCard = (props) => {
 
     return (
         <div>
-            {/*    <Card >
-                <Card.Img className="cat-image" variant="top" src={image} />
-                <Card.Body>
-                    <Card.Title>{title}</Card.Title>
-                    {description ?
-                        <Card.Text>
-                            {description}
-                        </Card.Text>
-                        : null}
-                    {addRefrence ?
-                        <button variant="primary">
-                            {addRefrence}
-                        </button>
-                        : null}
-                </Card.Body>
-            </Card> */}
 
-            <div className="myCard">
+
+            {/* <div className="myCard">
                 <div className="myCardImage"
                     style={{
                         backgroundImage: `url(${pic1})`,
@@ -57,7 +43,11 @@ const ItemCard = (props) => {
                         </button>
                         : null}
                 </div>
-            </div>
+            </div> */}
+
+            {/* <UnitedCards 
+
+            /> */}
 
         </div>
     );

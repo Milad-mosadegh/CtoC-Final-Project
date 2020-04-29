@@ -5,6 +5,7 @@ import ItemCard from './itemcard';
 import '../styles/main.css';
 
 import pic1 from '../../images/it.jpg';
+import UnitedCards from './unitedCards';
 
 
 const LastSeen = (props) => {
@@ -45,7 +46,7 @@ const LastSeen = (props) => {
             <div className="row wrapAll-cads ">
                 {popProducts ? popProducts.map(data =>
                     <div>
-                        <ItemCard
+                        <UnitedCards
                             image={data.image}
                             title={data.title}
                             description={data.description}

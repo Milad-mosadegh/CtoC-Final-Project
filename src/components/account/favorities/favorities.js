@@ -1,21 +1,56 @@
-import React from 'react';
-import Swiper from 'react-id-swiper';
+import React, { useEffect, useState } from 'react';
 
+import Products from '../../buy/products';
+import ProductDetails from '../../buy/productDetails';
+import GET from '../../lib/get';
 const Favorites = (props) => {
-   
 
-        return (
-            <div>
-                <Swiper>
-                    <div>Slide 1</div>
-                    <div>Slide 2</div>
-                    <div>Slide 3</div>
-                    <div>Slide 4</div>
-                    <div>Slide 5</div>
-                </Swiper>
-            </div>
-        )
+    const [products, setProducts] = useState("")
+    const [showMainComponent, setShowMainComponents] = useState(true)
+    const [showModal, setShowModal] = useState(false)
+    const [productId, setProductId] = useState("")
+
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            let response = await GET("/api/account/myproducts")
+            console.log("response from buy", response)
+            setProducts(response.data.data)
+        }
+        fetchData()
+    }, [])
+
+    const interProduct = (id) => {
+        setShowMainComponents(false)
+        setShowModal(true)
+        setProductId(id)
     }
+
+
+    const handleClose = () => {
+        setShowModal(false)
+        setShowMainComponents(true)
+
+    }
+
+    return (
+        <div>
+            <div className="d-flex">
+                <div className="row">
+                    <Products
+                        products={products}
+                        interProduct={interProduct}
+                    />
+                </div>
+            </div>
+            {showModal ?
+                <ProductDetails showModel={showModal} handleClose={handleClose}
+                    id={productId}
+                /> : null}
+        </div>
+    )
+}
 
 
 export default Favorites;
