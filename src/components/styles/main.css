@@ -2516,6 +2516,73 @@
           transform: translateY(3px);
 }
 
+.unitedWrap {
+  margin: 10px;
+}
+
+.unitedWrap .unitedCards {
+  width: 200px;
+  height: 300px;
+  background: #11213b;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+  color: #7a7979;
+  margin-bottom: 10px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.unitedWrap:hover {
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  color: whitesmoke;
+  margin-top: -10px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.unitedWrap .unitedImgBox {
+  width: 200px;
+  height: 200px;
+}
+
+.unitedWrap .unitedImgBox button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: yellow;
+  font-size: 20px;
+  opacity: 0.9;
+  outline: none;
+  border: none;
+}
+
+.unitedWrap .unitedPrice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.unitedWrap .unitedContent h3 {
+  font-size: 15px;
+  font-weight: 700;
+  padding: 5px;
+  margin-bottom: 0;
+}
+
+.unitedWrap .unitedPrice h5 {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
+  color: whitesmoke;
+  margin-top: -20px;
+  margin-left: -10px;
+  background: #b72926;
+  border-radius: 0 20px 20px 0;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
 * {
   margin: 0;
   padding: 0;

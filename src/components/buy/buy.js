@@ -12,8 +12,6 @@ import ProductDetails from './productDetails';
 
 
 
-
-
 const BuyComponent = (props) => {
     const [products, setProducts] = useState("")
     const [showModal, setShowModal] = useState(false)
