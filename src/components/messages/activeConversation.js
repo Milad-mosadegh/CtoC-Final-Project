@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect , useRef} from 'react';
 import '../styles/main.css';
 import GET from '../lib/get';
 import { POST } from '../lib/post';
@@ -10,18 +9,40 @@ const ActiveConversation = (props) => {
     const { hidePopUp, conversationId } = props
     const [message, setMessage] = useState("")
     const [prevMessages, setPrevMessages] = useState("")
+    const chatEndRef = useRef(null)
+    const inputRef = useRef(null)
 
-    useEffect(() => {
+
+    /* useEffect(() => {
         const getConversation = async () => {
-            console.log("message pop  stac rted")
             let res = await GET(`/api/messages/getconversation/${conversationId}`)
-            if (res.data.data) setPrevMessages(res.data.data)
+            if (res.data.data) {setPrevMessages(res.data.data)
+                scrollToBottom()}
         }
+        setTimeout(getConversation, 500);
         getConversation()
+        
+      
+    }, []) */
+    useEffect(() => {
+        const interval = setInterval(async() => {
+            let res = await GET(`/api/messages/getconversation/${conversationId}`)
+            if (res.data.data) {setPrevMessages(res.data.data)
+                scrollToBottom()}
+            console.log("i am being called")
+        }, 500);
+        return () => clearInterval(interval);
+      }, []);
 
-    }, [])
+    const focusInput = ()=>{
+        inputRef.current.focus()
 
+    }
 
+    const scrollToBottom = () => {
+        chatEndRef.current.scrollIntoView({ behavior: "smooth" })
+      }
+    
 
     const changeHandler = (e) => {
         setMessage(e.target.value)
@@ -39,9 +60,15 @@ const ActiveConversation = (props) => {
             }
             const messageData = { conversationId, message }
             let res = await POST("/api/messages/updateconversation", messageData, config)
-            console.log(res)
+            if(res.data.status==="success") 
+                    {
+                        setPrevMessages(res.data.data)
+                        setMessage("")
+                        focusInput()
+                        scrollToBottom()
+                    }
         }
-        console.log(message);
+        
     }
     let userId = JSON.parse(localStorage.getItem("c2c-profile")).id
 
@@ -61,21 +88,23 @@ const ActiveConversation = (props) => {
                             <div className="reciver-box">
                                 <div className="reciver">{msg.message}</div>
                             </div>
-                            : <div className="sender-box">
+                            : <div className="sender-box"  >
                                 <div className="sender">{msg.message}</div>
                             </div>
 
                     ) : null}
+                    <div ref={chatEndRef} />
 
                 </div>
 
-                <div className="message-write" onSubmit={submitHandler}>
-                    <input type="text" onChange={changeHandler} value={message} />
-                    <button className="fa fa-send-o" onClick={submitHandler}></button>
-                </div>
+                <form className="message-write" onSubmit={submitHandler}>
+                    <input type="text" onChange={changeHandler} value={message} ref={inputRef}/>
+                    <button className="fa fa-send-o" type="submit"></button>
+                </form>
             </div>
         </Fade>
     );
 }
 
 export default ActiveConversation;
+
