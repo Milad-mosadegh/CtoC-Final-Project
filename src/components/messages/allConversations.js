@@ -10,7 +10,9 @@ const AllConversations = (props) => {
     useEffect(() => {
         const getMessages = async () => {
             let response = await GET("/api/messages/messageslist")
+            if(response.data.status==="success")
             setConversations(response.data.data)
+            else props.history.push("/signin")
         }
         getMessages()
 

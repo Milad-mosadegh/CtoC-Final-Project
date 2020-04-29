@@ -1,8 +1,6 @@
 const user = require("../model/userModel")
 const multer= require("multer")
 const path = require("path")
-const avatarSchema = require("../model/avatarModel")
-const fs = require("fs")
 exports.getProfile=(req,res)=>{
 
     user.findById(req.userId,(err, doc)=>{
