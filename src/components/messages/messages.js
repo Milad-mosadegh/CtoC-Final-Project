@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AllConversations from "./allConversations"
 import ActiveConversation from "./activeConversation"
 import MyNavbar from '../navbar/navBar';
+import { CheckAuthentication } from '../lib/auth';
 
 
 const Messages = (props) => {
@@ -9,8 +10,14 @@ const Messages = (props) => {
     const [conversationId, setConversationId] = useState("")
     const [showConversation, setShowConversation] = useState(false)
     useEffect(() => {
-
+        const confirmAuth = async()=>{
+            let response=await CheckAuthentication()
+            console.log("there is erro", response)
+            if(response.data.status!=="success") props.history.push("/signin")
+        }
+        confirmAuth()
     }, [])
+
     const setTargetConversation = (id) => {
         setConversationId(id)
         console.log(id, "in messages")
@@ -29,6 +36,7 @@ const Messages = (props) => {
                 <AllConversations
                     showPopUp={showPopUp}
                     setTargetConversation={setTargetConversation}
+                    {...props}
                 />
             </div>
 
@@ -36,6 +44,7 @@ const Messages = (props) => {
                 <ActiveConversation
                     hidePopUp={hidePopUp}
                     conversationId={conversationId}
+                    {...props}
                 />
                 : null}
             <div>

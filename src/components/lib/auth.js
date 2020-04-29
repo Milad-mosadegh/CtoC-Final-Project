@@ -1,5 +1,27 @@
 import {get} from "axios"
 
+const CheckAuthentication = async()=>{
+    if(localStorage.getItem("c2c-token")){
+        const token=localStorage.getItem("c2c-token")
+        let response=await get("api/auth/authenticated",{
+                headers:{
+                    "x-auth-token":token
+                }
+        })
+        .then(res=>{
+            if(res.data.status!=="succes"){
+                localStorage.removeItem("c2c-token")
+                localStorage.removeItem("c2c-profile")
+                }
+            return res})
+        .catch(err=>{
+            localStorage.removeItem("c2c-token")
+            localStorage.removeItem("c2c-profile")
+            return {data:{status:"failed"}}})
+        return response}
+    else return {data:{status:"failed"}}
+}
+
 const IfAuthenticated = async ({children}) => {
     const token = localStorage.getItem("c2c-token")
     if(token){
@@ -39,4 +61,4 @@ const IfNotAuthenticated = async(props) => {
     return ( props.children );
 }
  
-export {IfAuthenticated, IfNotAuthenticated} ;
+export {IfAuthenticated, IfNotAuthenticated, CheckAuthentication} ;

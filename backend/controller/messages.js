@@ -86,26 +86,3 @@ exports.updateConversation=async(req,res)=>{
                 })
 }
 
-
-
-/* await Coversation.findOneAndUpdate(
-    {
-            $and:[{_id:conversationId}, {$or:[{senderId:req.userId},{recipentId:req.userId}]}]
-        },
-                {"$push":{messages:{
-                            senderId:req.userId,
-                            message:message
-                        }}}
-            ,{
-                new:true
-
-                },(err,doc)=>{
-                if(err) res.json({status:"failed", message:"Unable to send your message, please try again",data:err})
-                    else {res.json({status:'success', message:"added in previous conversation", data:doc})
-                    console.log("show",doc, "after updating conversation")}
-            })
- */
-/* $or:[
-    {$and:[{_id:conversationId}, {senderId:req.userId}]},
-    {$and:[{_id:conversationId}, {recipentId:req.userId}]}
-] */
