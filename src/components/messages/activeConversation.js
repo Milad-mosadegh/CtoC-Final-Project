@@ -1,4 +1,4 @@
-import React, { useState, useEffect , useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../styles/main.css';
 import GET from '../lib/get';
 import { POST } from '../lib/post';
@@ -25,24 +25,26 @@ const ActiveConversation = (props) => {
       
     }, []) */
     useEffect(() => {
-        const interval = setInterval(async() => {
+        const interval = setInterval(async () => {
             let res = await GET(`/api/messages/getconversation/${conversationId}`)
-            if (res.data.data) {setPrevMessages(res.data.data)
-                scrollToBottom()}
+            if (res.data.data) {
+                setPrevMessages(res.data.data)
+                scrollToBottom()
+            }
             console.log("i am being called")
-        }, 500);
+        }, 2000);
         return () => clearInterval(interval);
-      }, []);
+    }, []);
 
-    const focusInput = ()=>{
+    const focusInput = () => {
         inputRef.current.focus()
 
     }
 
     const scrollToBottom = () => {
         chatEndRef.current.scrollIntoView({ behavior: "smooth" })
-      }
-    
+    }
+
 
     const changeHandler = (e) => {
         setMessage(e.target.value)
@@ -60,18 +62,17 @@ const ActiveConversation = (props) => {
             }
             const messageData = { conversationId, message }
             let res = await POST("/api/messages/updateconversation", messageData, config)
-            if(res.data.status==="success") 
-                    {
-                        setPrevMessages(res.data.data)
-                        setMessage("")
-                        focusInput()
-                        scrollToBottom()
-                    }
+            if (res.data.status === "success") {
+                setPrevMessages(res.data.data)
+                setMessage("")
+                focusInput()
+                scrollToBottom()
+            }
         }
-        
+
     }
     let userId = JSON.parse(localStorage.getItem("c2c-profile")).id
-
+    console.log(prevMessages)
     return (
         <Fade top cascade duration={500}>
             <div className="message-wrapper">
@@ -79,14 +80,20 @@ const ActiveConversation = (props) => {
                     <button onClick={hidePopUp}>X</button>
                     <h2>Milad Mosadegh</h2>
                 </div>
-                <div className="p-id">
-                    Product ID : 123456778
-            </div>
+                <div className="p-id" >
+                    <p>
+                        Product Title :
+                    </p>
+                    <p>
+                        Product ID : 123456778
+                    </p>
+                </div>
                 <div className="message-box">
                     {prevMessages ? prevMessages.map(msg =>
                         msg.senderId === userId ?
                             <div className="reciver-box">
-                                <div className="reciver">{msg.message}</div>
+                                <div className="reciver" >{msg.message}</div>
+                                <p>{msg.timeStamp}</p>
                             </div>
                             : <div className="sender-box"  >
                                 <div className="sender">{msg.message}</div>
@@ -98,7 +105,7 @@ const ActiveConversation = (props) => {
                 </div>
 
                 <form className="message-write" onSubmit={submitHandler}>
-                    <input type="text" onChange={changeHandler} value={message} ref={inputRef}/>
+                    <input type="text" onChange={changeHandler} value={message} ref={inputRef} />
                     <button className="fa fa-send-o" type="submit"></button>
                 </form>
             </div>

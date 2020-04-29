@@ -2405,20 +2405,21 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   background: #cacaca;
   border-bottom: 1px solid black;
+  margin: 0;
 }
 
 .message-wrapper .message-box {
   height: 70vh;
   background: #cacaca;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .message-wrapper .message-box .sender-box {
@@ -2448,9 +2449,19 @@
 
 .message-wrapper .message-box .reciver-box {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
-.message-wrapper .message-box .reciver-box .reciver {
+.message-wrapper .message-box .reciver {
   -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
           box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
   background: #b72926;
@@ -2459,6 +2470,12 @@
   border-radius: 30px 30px 30px 0;
   color: whitesmoke;
   padding: 10px;
+}
+
+.message-wrapper .message-box p {
+  width: 100px;
+  padding: 0;
+  margin: 0em;
 }
 
 .message-wrapper .message-write {

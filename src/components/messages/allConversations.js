@@ -22,20 +22,25 @@ const AllConversations = (props) => {
                 <thead>
                     <tr>
                         <th>From</th>
-                        <th>Date</th>
+                        <th>To</th>
                         <th>Subject</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     {conversations ? conversations.map(data => {
                         let myDate = new Date(data.timeStamp)
-                        return <tr>
+                        return <tr style={{ cursor: "pointer" }} onClick={() => {
+                            setTargetConversation(data._id)
+                            showPopUp()
+                        }}>
                             <td>{data.senderId === JSON.parse(localStorage.getItem("c2c-profile")).id ? "Me" : data.senderId}</td>
-                            <td>{myDate.toLocaleTimeString()}</td>
+                            <td>{data.recipentId === JSON.parse(localStorage.getItem("c2c-profile")).id ? "Me" : data.recipentId}</td>
                             <td onClick={() => {
                                 setTargetConversation(data._id)
                                 showPopUp()
                             }}>{data.title}</td>
+                            <td>{myDate.toLocaleTimeString()}</td>
                             {/* <button className="btn btn-danger">Reply</button> */}
                         </tr>
                     }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AllConversations from "./allConversations"
 import ActiveConversation from "./activeConversation"
 import MyNavbar from '../navbar/navBar';
@@ -8,7 +8,9 @@ const Messages = (props) => {
 
     const [conversationId, setConversationId] = useState("")
     const [showConversation, setShowConversation] = useState(false)
+    useEffect(() => {
 
+    }, [])
     const setTargetConversation = (id) => {
         setConversationId(id)
         console.log(id, "in messages")
