@@ -4,7 +4,7 @@ import GET from '../lib/get';
 
 const AllConversations = (props) => {
     const [conversations, setConversations] = useState("")
-    const { showPopUp, setTargetConversation } = props
+    const { showPopUp, setTargetConversation, setConversationRecipent } = props
 
 
     useEffect(() => {
@@ -18,6 +18,14 @@ const AllConversations = (props) => {
         getMessages()
 
     }, [])
+    let currentUserId=JSON.parse(localStorage.getItem("c2c-profile")).id
+    const setConversationDetails=(data) => {
+        setTargetConversation(data._id)
+        data.senderId._id===currentUserId?
+        setConversationRecipent(data.recipentId.firstName)
+        :setConversationRecipent(data.senderId.firstName)
+        showPopUp()
+    }
     return (
         <div>
             <Table striped bordered hover >
@@ -34,13 +42,11 @@ const AllConversations = (props) => {
                 {console.log(conversations,"in list ")}
                     {conversations ? conversations.map(data => {
                         let myDate = new Date(data.timeStamp)
-                        return <tr style={{ cursor: "pointer" }} onClick={() => {
-                            setTargetConversation(data._id)
-                            showPopUp()
-                        }}>
-                            <td>{data.senderId._id === JSON.parse(localStorage.getItem("c2c-profile")).id ? "Me" : data.senderId.firstName}</td>
-                            <td>{data.recipentId._id === JSON.parse(localStorage.getItem("c2c-profile")).id ? "Me" : data.recipentId.firstName}</td>
+                        return <tr style={{ cursor: "pointer" }} onClick={()=>setConversationDetails(data)}>
+                            <td>{data.senderId._id === currentUserId? "Me" : data.senderId.firstName}</td>
+                            <td>{data.recipentId._id === currentUserId? "Me" : data.recipentId.firstName}</td>
                             <td onClick={() => {
+
                                 setTargetConversation(data._id)
                                 showPopUp()
                             }}>{data.title}</td>

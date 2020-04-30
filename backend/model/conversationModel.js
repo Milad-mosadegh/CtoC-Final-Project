@@ -2,6 +2,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const User = require("./userModel")
+const Product = require("./productModel")
 
 const ConversationSchema = new Schema({
 
@@ -32,10 +33,7 @@ const ConversationSchema = new Schema({
   },
   recipentId:{type: mongoose.Schema.Types.ObjectId, ref: User},
   senderId:{type: mongoose.Schema.Types.ObjectId, ref: User},
-  productId:{
-          type:String,
-          required:true
-  },
+  productId:{type: mongoose.Schema.Types.ObjectId, ref: Product},
   timeStamp:{
     type : Date,
     default:Date.now

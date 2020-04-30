@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
-import ItemCard from '../landingpage/itemcard';
 import UnitedCards from './unitedCards';
-// import Categories from '../lib/categories';
 
-// import '../styles/main.css'
 
 const PopularProduct = (props) => {
 
