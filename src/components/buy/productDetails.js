@@ -57,7 +57,8 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
                                 </Zoom>
                                 <Fade right cascade duration={1000}>
                                     <div className="innerContent">
-                                        <h4>Posted By :{productDetail.creator?productDetail.creator.firstName:null}</h4>
+                                        <h4>Posted By :{productDetail?productDetail.creator.firstName:null}</h4>
+                                        <h4>Product Id :{productDetail?productDetail.creator._id:null}</h4>
                                         <h4>Color :{productDetail.color}</h4>
                                         <h4>Condition :{productDetail.condition}</h4>
                                         <h4>Quantity :{productDetail.quantity}</h4>
@@ -68,7 +69,7 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
                                 </Zoom>
                                 <h4>{productDetail.description}</h4>
                             </div>
-                {productDetail.creator?
+                {productDetail?
                     productDetail.creator._id===JSON.parse(localStorage.getItem("c2c-profile")).id?
                         <button className='btn btn-warning'>Edit</button>
                         :<div>
@@ -78,7 +79,7 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
                                 <NewMessage
                                     title={productDetail.title}
                                     productId={productDetail._id}
-                                    recipentId={productDetail.creator?productDetail.creator._id:null} />
+                                    recipentId={productDetail?productDetail.creator._id:null} />
                                 <div className="myIcons fa fa-phone"></div>
 
                             </div>

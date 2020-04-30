@@ -76,7 +76,9 @@ const ProfileData = (props) => {
 
                     <Form.Group controlId="formGridAddress1">
                         <Form.Label>Street</Form.Label>
-                        <Form.Control name="street" value={profile.street} onChange={changeHandler} />
+                        <Form.Control name="street" value={profile.street} onChange={changeHandler} 
+                        styles={{background:"none", border:"none"}}/>
+                       
                         <smail className="sText">{error === "street" ?
                             <p>Attention! street can only consist of alphabets and more than two.</p>
                             : null}</smail>
@@ -117,6 +119,7 @@ const ProfileData = (props) => {
             </Button>
                 }
             </Form>
+            
             {showModal?
                 <PasswordChange
                 showModal={showModal}
