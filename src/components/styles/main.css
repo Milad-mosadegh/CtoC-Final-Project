@@ -8,6 +8,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myBlueButton:hover {
@@ -30,6 +34,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myRedButton:hover {
@@ -53,6 +61,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigBlueButton:hover {
@@ -76,6 +88,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigRedButton:hover {
@@ -241,6 +257,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myBlueButton:hover {
@@ -263,6 +283,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myRedButton:hover {
@@ -286,6 +310,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigBlueButton:hover {
@@ -309,6 +337,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigRedButton:hover {
@@ -331,6 +363,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myBlueButton:hover {
@@ -353,6 +389,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myRedButton:hover {
@@ -376,6 +416,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigBlueButton:hover {
@@ -399,6 +443,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigRedButton:hover {
@@ -442,6 +490,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myBlueButton:hover {
@@ -464,6 +516,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myRedButton:hover {
@@ -487,6 +543,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigBlueButton:hover {
@@ -510,6 +570,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigRedButton:hover {
@@ -538,28 +602,18 @@
   /* Sit on top */
   left: 0;
   top: 0;
-  width: 40%;
+  width: 70%;
   /* Full width */
   height: 98%;
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
-  background-color: rgba(68, 68, 68, 0.822);
-  /* Black w/ opacity */
+  background: #eee;
   margin: 5px 300px;
   -webkit-box-shadow: 0 10px 120px black;
           box-shadow: 0 10px 120px black;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  /* .myCenter{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    } */
-  /* .imageBox{
-        display: flex;
-        flex-direction: row;
-    } */
 }
 
 .my-container .cancelBtn {
@@ -571,6 +625,7 @@
   color: #b72926;
   -webkit-transition: 0.6s;
   transition: 0.6s;
+  margin: 10px;
 }
 
 .my-container .cancelBtn:hover {
@@ -583,7 +638,6 @@
 }
 
 .my-container .pd-row-1 {
-  border: 3px solid black;
   width: 100%;
   height: 450px;
   display: -webkit-box;
@@ -598,7 +652,6 @@
 .my-container .pd-row-1 .largImage {
   width: 100%;
   height: 100%;
-  border: 3px solid black;
 }
 
 .my-container .pd-row-1 .largImage img {
@@ -606,6 +659,16 @@
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.my-container .pd-row-1 .thumbNailImage {
+  -webkit-box-flex: 20%;
+      -ms-flex: 20%;
+          flex: 20%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 10px;
 }
 
 .my-container .but-big {
@@ -630,23 +693,13 @@
   opacity: 1;
 }
 
-.my-container .thumbNailImage {
-  -webkit-box-flex: 20%;
-      -ms-flex: 20%;
-          flex: 20%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-left: 10px;
-}
-
 .my-container .content {
-  height: 300px;
-  width: 690px;
+  width: 100%;
   margin-top: 10px;
   background: #eee;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
   color: black;
-  border-radius: 20px;
 }
 
 .my-container .content h2 {
@@ -657,33 +710,67 @@
   text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.342);
 }
 
-.my-container .myLine {
-  margin: 0 auto;
-  border-bottom: 3px solid #797878;
-  -webkit-box-shadow: 10px 10px 10px black;
-          box-shadow: 10px 10px 10px black;
-}
-
-.my-container .myLine2 {
-  width: 70%;
-  margin: 0 auto;
-  border-bottom: 3px solid #797878;
-  -webkit-box-shadow: 10px 10px 10px black;
-          box-shadow: 10px 10px 10px black;
-}
-
-.my-container .innerContent {
+.my-container .p-d-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-top: 20px;
+  height: 250px;
 }
 
-.my-container .innerContent h3 {
-  font-size: 20px;
+.my-container .innerContent {
+  -webkit-box-flex: 55%;
+      -ms-flex: 55%;
+          flex: 55%;
+  text-align: left;
+  padding: 10px;
+}
+
+.my-container .innerContent div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 15px 0;
+}
+
+.my-container .innerContent span {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.my-container .p-d-input {
+  border: none;
+  width: 300px;
+  background: none;
+}
+
+.my-container .des {
+  -webkit-box-flex: 45%;
+      -ms-flex: 45%;
+          flex: 45%;
+  padding: 10px;
+}
+
+.my-container .des span {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.my-container .des p {
+  font-size: 14px;
   padding: 20px;
-  text-shadow: 5px 3px 2px rgba(136, 133, 133, 0.342);
+}
+
+.my-container .myLine {
+  width: 400px;
+  margin: 0 auto;
+  border-bottom: 3px solid #797878;
+  -webkit-box-shadow: 10px 10px 10px black;
+          box-shadow: 10px 10px 10px black;
 }
 
 .my-container .myIcon {
@@ -818,6 +905,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myBlueButton:hover {
@@ -840,6 +931,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myRedButton:hover {
@@ -863,6 +958,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigBlueButton:hover {
@@ -886,6 +985,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigRedButton:hover {
@@ -898,93 +1001,94 @@
   transition: 0.6s;
 }
 
+.p-s-show {
+  width: 100%;
+}
+
 .myThumb {
-  width: 100px;
-  height: 120px;
-  color: white;
-  margin-top: 10px;
-  border-radius: 20px;
+  width: 100%;
   outline: none;
 }
 
 .my {
-  height: 360px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  background: transparent;
-}
-
-.myThumb img {
   width: 100%;
-  height: 120px;
-  margin: 0 auto;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.container .up {
-  display: block;
-  border: none;
-  font-size: 40px;
-  outline: none;
-  margin: 0 auto;
-  padding: 10px;
-  color: #b72926;
+  height: 360px;
   background: transparent;
-  opacity: 0.9;
-  outline: none;
+  overflow: hidden;
 }
 
-.container .up:hover {
-  color: #b72926;
-  opacity: 1;
-}
-
-.container .down {
+/* .myThumb img{
+    width:100%;
+    height: 100px;
+    object-fit: cover;
+}  */
+.up {
   display: block;
   border: none;
-  font-size: 40px;
+  font-size: 60px;
   outline: none;
   margin: 0 auto;
   padding: 10px;
+  cursor: pointer;
   color: #b72926;
   background: transparent;
   opacity: 0.9;
 }
 
-.container .down:hover {
+.up:hover {
   color: #b72926;
   opacity: 1;
 }
 
+.down {
+  display: block;
+  border: none;
+  font-size: 60px;
+  outline: none;
+  margin: 0 auto;
+  padding: 10px;
+  cursor: pointer;
+  color: #b72926;
+  background: transparent;
+  opacity: 0.9;
+}
+
+.down:hover {
+  color: #b72926;
+  opacity: 1;
+}
+
+/*  */
 @media only screen and (max-width: 600px) {
-  .container .up {
+  .up {
     display: block;
     border: none;
     font-size: 20px;
     outline: none;
     margin: 0 auto;
     padding: 10px;
+    cursor: pointer;
     color: #b72926;
     background: transparent;
     opacity: 0.9;
   }
-  .container .up:hover {
+  .up:hover {
     color: #b72926;
     opacity: 1;
   }
-  .container .down {
+  .down {
     display: block;
     border: none;
     font-size: 20px;
     outline: none;
     margin: 0 auto;
     padding: 10px;
+    cursor: pointer;
     color: #b72926;
     background: transparent;
     opacity: 0.9;
   }
-  .container .down:hover {
+  .down:hover {
     color: #b72926;
     opacity: 1;
   }
@@ -1018,6 +1122,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myBlueButton:hover {
@@ -1040,6 +1148,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myRedButton:hover {
@@ -1063,6 +1175,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigBlueButton:hover {
@@ -1086,6 +1202,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigRedButton:hover {
@@ -1507,6 +1627,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myBlueButton:hover {
@@ -1529,6 +1653,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myRedButton:hover {
@@ -1552,6 +1680,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigBlueButton:hover {
@@ -1575,6 +1707,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigRedButton:hover {
@@ -1753,6 +1889,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myBlueButton:hover {
@@ -1775,6 +1915,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myRedButton:hover {
@@ -1798,6 +1942,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigBlueButton:hover {
@@ -1821,6 +1969,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigRedButton:hover {
@@ -1897,6 +2049,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myBlueButton:hover {
@@ -1919,6 +2075,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myRedButton:hover {
@@ -1942,6 +2102,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigBlueButton:hover {
@@ -1965,6 +2129,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigRedButton:hover {
@@ -2053,6 +2221,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myBlueButton:hover {
@@ -2075,6 +2247,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myRedButton:hover {
@@ -2098,6 +2274,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigBlueButton:hover {
@@ -2121,6 +2301,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigRedButton:hover {
@@ -2287,6 +2471,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myBlueButton:hover {
@@ -2309,6 +2497,10 @@
   opacity: 0.8;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .myRedButton:hover {
@@ -2332,6 +2524,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigBlueButton:hover {
@@ -2355,6 +2551,10 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .bigRedButton:hover {
@@ -2595,6 +2795,116 @@
   border-radius: 0 20px 20px 0;
   -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
           box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myBlueButton {
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  background: #11213b;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.myBlueButton:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton {
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  background: #b72926;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.myRedButton:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.bigBlueButton {
+  width: 80px;
+  height: 40px;
+  color: #fff;
+  background: #11213b;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.bigBlueButton:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.bigRedButton {
+  width: 80px;
+  height: 40px;
+  color: #fff;
+  background: #b72926;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.bigRedButton:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.t {
+  color: red;
 }
 
 * {

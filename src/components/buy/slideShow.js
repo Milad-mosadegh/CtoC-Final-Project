@@ -62,7 +62,7 @@ const SlideShow = (props) => {
 
                 <Slider {...settings} className="shadow-lg">
                     {categories ? categories.map(data =>
-                        <Card style={{ width: "200px" }}>
+                        <Card >
                             <Card.Img variant="top" className='cardImg' src={require(`../../images/${data.imgName}`)} />
                             <Card.Body className="sliderBg">
                                 <Card.Title >
