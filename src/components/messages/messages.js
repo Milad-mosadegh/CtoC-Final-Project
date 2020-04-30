@@ -9,6 +9,7 @@ const Messages = (props) => {
 
     const [conversationId, setConversationId] = useState("")
     const [showConversation, setShowConversation] = useState(false)
+    const [recipentName, setRecipentName] = useState("testing")
     useEffect(() => {
         const confirmAuth = async()=>{
             let response=await CheckAuthentication()
@@ -18,10 +19,9 @@ const Messages = (props) => {
         confirmAuth()
     }, [])
 
-    const setTargetConversation = (id) => {
-        setConversationId(id)
-        console.log(id, "in messages")
-    }
+    const setTargetConversation = id => setConversationId(id)
+    const setConversationRecipent = name =>setRecipentName(name)
+    
 
     const showPopUp = () => setShowConversation(true)
     const hidePopUp = () => setShowConversation(false)
@@ -36,6 +36,7 @@ const Messages = (props) => {
                 <AllConversations
                     showPopUp={showPopUp}
                     setTargetConversation={setTargetConversation}
+                    setConversationRecipent={setConversationRecipent}
                     {...props}
                 />
             </div>
@@ -45,16 +46,13 @@ const Messages = (props) => {
                     hidePopUp={hidePopUp}
                     conversationId={conversationId}
                     {...props}
+                    recipentName={recipentName}
+
                 />
                 : null}
             <div>
-
-            </div>
         </div>
-
-
-
+    </div>
     );
 }
-
 export default Messages;

@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-import ItemCard from './itemcard';
-
 import '../styles/main.css';
-
 import pic1 from '../../images/it.jpg';
 import UnitedCards from './unitedCards';
 

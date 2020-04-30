@@ -65,18 +65,18 @@ const ActiveConversation = (props) => {
             <div className="message-wrapper">
                 <div className="message-header">
                     <button onClick={hidePopUp}>X</button>
-                    <h2>Milad Mosadegh</h2>
+                    <h2>{props.recipentName}</h2>
                 </div>
                 <div className="p-id" >
                     <p>
-                        Product Title :
+                        Product Title : {prevMessages?prevMessages.productId.title:null}
                     </p>
                     <p>
-                        Product ID : 123456778
+                        Product ID :{prevMessages?prevMessages.productId._id:null}
                     </p>
                 </div>
                 <div className="message-box">
-                    {prevMessages ? prevMessages.map(msg =>
+                    {prevMessages ? prevMessages.messages.map(msg =>
                         msg.senderId === userId ?
                             <div className="reciver-box">
                                 <div className="reciver" >{msg.message}</div>
