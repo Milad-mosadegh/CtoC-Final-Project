@@ -21,7 +21,7 @@ export default function MainAcc(props) {
             <div className="container">
                 <Zoom>
                     <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-                        <Tab eventKey="profile" title="Profile" className="t">
+                        <Tab eventKey="profile" title="Profile" >
                             <MyProfile {...props} />
                         </Tab>
                         <Tab eventKey="activities" title="Activities">
