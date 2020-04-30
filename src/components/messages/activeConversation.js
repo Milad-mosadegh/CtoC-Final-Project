@@ -67,12 +67,12 @@ const ActiveConversation = (props) => {
                     <button onClick={hidePopUp}>X</button>
                     <h2>{props.recipentName}</h2>
                 </div>
-                <div className="p-id" >
+                <div className="p-id justify-content-around" >
                     <p>
-                        Product Title : {prevMessages?prevMessages.productId.title:null}
+                        Product Title : {prevMessages ? prevMessages.productId.title : null}
                     </p>
                     <p>
-                        Product ID :{prevMessages?prevMessages.productId._id:null}
+                        Product ID :{prevMessages ? prevMessages.productId._id : null}
                     </p>
                 </div>
                 <div className="message-box">

@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import '../styles/main.css'
 import Zoom from 'react-reveal/Zoom'
 import Fade from 'react-reveal/Fade'
 import PictureSlider from './pictureSlider';
+import NewMessage from '../messages/newMessage';
+import { CheckAuthentication } from '../lib/auth'
 
+const ProductDetailsForm = ({ productDetail, handleBgImage, images, description, postedBy, productId, color, condition, quantity, title, bgImage }) => {
 
-const ProductDetailsForm = ({ handleBgImage, images, description, postedBy, productId, color, condition, quantity, title, bgImage }) => {
+    const [auth, setAuth] = useState(false)
+
+    useEffect(() => {
+        const checkAuth = async () => {
+            let res = await CheckAuthentication();
+            if (res.data.status === 'success') setAuth(true)
+            else setAuth(false)
+        }
+        checkAuth()
+    }, [])
+    let currentUserId = auth ? JSON.parse(localStorage.getItem("c2c-profile")).id : null
     return (
         <div>
             <div className="pd-row-1">
+
                 <div className="largImage">
                     <img src={`http://localhost:5000/avatars/${bgImage}`} alt="" />
                 </div>
+
 
                 <div className="thumbNailImage">
                     <PictureSlider
@@ -27,58 +42,76 @@ const ProductDetailsForm = ({ handleBgImage, images, description, postedBy, prod
                 <Zoom righ>
                     <div className="myLine"></div>
                 </Zoom>
-                <Fade right cascade duration={1000}>
-                    <div className="innerContent">
-                        <h4>Posted By :{postedBy}</h4>
-                        <h4>Product Id :{productId}</h4>
-                        <h4>Color :{color}</h4>
-                        <h4>Condition :{condition}</h4>
-                        <h4>Quantity :{quantity}</h4>
+                <div className="p-d-content">
+                    <Fade right cascade duration={1000}>
+                        <div className="innerContent">
+                            <div>
+                                <span>
+                                    Posted By :
+                                </span>
+                                <input className="p-d-input" type="text" value={postedBy} />
+                            </div>
+                            <div>
+                                <span>
+                                    Product ID :
+                                </span>
+                                <input className="p-d-input" type="text" value={productId} />
+                            </div>
+                            <div>
+                                <span>
+                                    Color :
+                                </span>
+                                <input className="p-d-input" type="text" value={color} />
+                            </div>
+                            <div>
+                                <span>
+                                    Condition :
+                                </span>
+                                <input className="p-d-input" type="text" value={condition} />
+                            </div>
+                            <div>
+                                <span>
+                                    Quantity :
+                                </span>
+                                <input className="p-d-input" type="text" value={quantity} />
+                            </div>
+
+                        </div>
+                    </Fade>
+
+                    <div className="des">
+                        <span>Description</span>
+                        <p>{description}</p>
                     </div>
-                </Fade>
-                <Zoom righ duration={2500}>
-                    <div className="myLine2"></div>
-                </Zoom>
-                <h4>{description}</h4>
+                </div>
+
+                {productDetail ?
+                    productDetail.creator._id === currentUserId ?
+                        <div>
+                            <button className='bigBlueButton'>Edit</button>
+                            <button className='bigRedButton ml-1'>Delete</button>
+                            <button className='bigBlueButton ml-1'>Deactive</button>
+                        </div>
+                        : <div>
+                            <div className="myIcon">
+                                <div className="myIcons fa fa-thumbs-o-up"></div>
+
+                                <NewMessage
+                                    title={productDetail.title}
+                                    productId={productDetail._id}
+                                    recipentId={productDetail ? productDetail.creator._id : null} />
+                                <div className="myIcons fa fa-phone"></div>
+
+                            </div>
+                            <a href="/" className='btn but-big'>Buy</a>
+                        </div>
+                    : null}
             </div>
         </div>
     );
 }
 
 export default ProductDetailsForm;
-
-
-{/* <div className="largImage"
-    style={{
-        backgroundImage: `url(${`http://localhost:5000/avatars/${bgImage}`})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        outline: "none"
-    }}
->
-</div>
-    <div className="content">
-        <h2>{productDetail.title}</h2>
-        <Zoom righ>
-            <div className="myLine"></div>
-        </Zoom>
-        <Fade right cascade duration={1000}>
-            <div className="innerContent">
-                <h4>Posted By :{productDetail ? productDetail.creator.firstName : null}</h4>
-                <h4>Product Id :{productDetail ? productDetail.creator._id : null}</h4>
-                <h4>Color :{productDetail.color}</h4>
-                <h4>Condition :{productDetail.condition}</h4>
-                <h4>Quantity :{productDetail.quantity}</h4>
-            </div>
-        </Fade>
-        <Zoom righ duration={2500}>
-            <div className="myLine2"></div>
-        </Zoom>
-        <h4>{productDetail.description}</h4>
-    </div> */}
-
-
 
 
 

@@ -10,6 +10,7 @@ import Zoom from 'react-reveal/Zoom';
 import { Tabs, Tab } from 'react-bootstrap'
 import Favorites from './favorities/favorities';
 
+import '../styles/main.css'
 
 export default function MainAcc(props) {
 
@@ -20,7 +21,7 @@ export default function MainAcc(props) {
             <div className="container">
                 <Zoom>
                     <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-                        <Tab eventKey="profile" title="Profile">
+                        <Tab eventKey="profile" title="Profile" className="t">
                             <MyProfile {...props} />
                         </Tab>
                         <Tab eventKey="activities" title="Activities">

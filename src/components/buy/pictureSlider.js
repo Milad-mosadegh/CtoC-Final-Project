@@ -49,7 +49,7 @@ const PictureSlider = (props) => {
     }
 
     return (
-        <div>
+        <div className="p-s-show">
             <button className=" up fa fa-arrow-circle-o-up" onClick={() => slider.slickPrev()}></button>
             <Slide right cascade>
                 <Slider ref={c => slider = c} {...settings} className="shadow-lg my ">
@@ -59,7 +59,7 @@ const PictureSlider = (props) => {
                             style={{
                                 cursor: "pointer"
                             }}>
-                            <img src={`http://localhost:5000/avatars/${image ? image : null}`} alt="Nothing" height="100%" width="100%" />
+                            <img src={`http://localhost:5000/avatars/${image ? image : null}`} alt="Nothing" className="img-thumbnail" />
                         </div>
                     ) : null}
 
