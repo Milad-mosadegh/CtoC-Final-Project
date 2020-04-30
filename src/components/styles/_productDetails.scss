@@ -1,4 +1,10 @@
 @import './variables';
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 
 .my-container{
     display: block; /* Hidden by default */
@@ -6,40 +12,60 @@
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 70%; /* Full width */
+    width: 40%; /* Full width */
     height: 98%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(68, 68, 68, 0.822); /* Black w/ opacity */ 
-    border-radius: 30px;
     margin: 5px 300px ;
     box-shadow: 0 10px 120px rgb(0, 0, 0);
     transition: 0.5s;
 
 
-    .myCenter{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .imageBox{
-        display: flex;
-        flex-direction: row;
-    }
-
     .cancelBtn{
         display: flex;
-        // margin-left: 20px;
         background: transparent;
         border-radius: 100%;
         color: $bestRedColor;
         transition: 0.6s;
     } 
+
     .cancelBtn:hover{
         background: $bestRedColor;
         box-shadow: $hardBoxShadow;
         color: white;
         transition: 0.4;
+    }
+    
+    /* .myCenter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } */
+
+    /* .imageBox{
+        display: flex;
+        flex-direction: row;
+    } */
+
+    .pd-row-1{
+        border: 3px solid black;
+        width: 100%;
+        height: 450px;
+        display: flex;
+        flex-direction: row;
+
+
+        .largImage{
+            width: 100%;
+            height: 100%;
+            border: 3px solid black;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
     }
 
     .but-big{
@@ -66,15 +92,7 @@
     }
 
 
-    .largImage{
-        flex: 80%;
-        width: 690px;
-        height: 460px;
-        /* margin: 0 auto; */
-        margin-top: 10px;
-        border-radius: 20px;
-        /* border: 2px solid red; */
-    }
+    
 
 
     .thumbNailImage{

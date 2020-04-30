@@ -28,7 +28,6 @@
 } 
 
 .my{
-    width: 130px;
     height: 360px;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -39,8 +38,8 @@
 .myThumb img{
     width:100%;
     height: 120px;
-    border-radius: 20px;
     margin: 0 auto;
+    object-fit: cover;
 } 
 
 .container .up{

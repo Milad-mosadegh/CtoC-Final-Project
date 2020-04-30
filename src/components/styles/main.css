@@ -522,6 +522,13 @@
   transition: 0.6s;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .my-container {
   display: block;
   /* Hidden by default */
@@ -531,7 +538,7 @@
   /* Sit on top */
   left: 0;
   top: 0;
-  width: 70%;
+  width: 40%;
   /* Full width */
   height: 98%;
   /* Full height */
@@ -539,34 +546,20 @@
   /* Enable scroll if needed */
   background-color: rgba(68, 68, 68, 0.822);
   /* Black w/ opacity */
-  border-radius: 30px;
   margin: 5px 300px;
   -webkit-box-shadow: 0 10px 120px black;
           box-shadow: 0 10px 120px black;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-}
-
-.my-container .myCenter {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.my-container .imageBox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  /* .myCenter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } */
+  /* .imageBox{
+        display: flex;
+        flex-direction: row;
+    } */
 }
 
 .my-container .cancelBtn {
@@ -589,6 +582,32 @@
   transition: 0.4;
 }
 
+.my-container .pd-row-1 {
+  border: 3px solid black;
+  width: 100%;
+  height: 450px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.my-container .pd-row-1 .largImage {
+  width: 100%;
+  height: 100%;
+  border: 3px solid black;
+}
+
+.my-container .pd-row-1 .largImage img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .my-container .but-big {
   text-align: center;
   width: 100px;
@@ -609,18 +628,6 @@
           box-shadow: 10px 10px 10px black;
   color: whitesmoke;
   opacity: 1;
-}
-
-.my-container .largImage {
-  -webkit-box-flex: 80%;
-      -ms-flex: 80%;
-          flex: 80%;
-  width: 690px;
-  height: 460px;
-  /* margin: 0 auto; */
-  margin-top: 10px;
-  border-radius: 20px;
-  /* border: 2px solid red; */
 }
 
 .my-container .thumbNailImage {
@@ -901,7 +908,6 @@
 }
 
 .my {
-  width: 130px;
   height: 360px;
   margin-bottom: 20px;
   border-radius: 10px;
@@ -911,8 +917,9 @@
 .myThumb img {
   width: 100%;
   height: 120px;
-  border-radius: 20px;
   margin: 0 auto;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .container .up {
@@ -1089,6 +1096,13 @@
           transform: translateY(-5px);
   -webkit-transition: 0.6s;
   transition: 0.6s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .homeWrap {
