@@ -10,6 +10,7 @@ const AllConversations = (props) => {
     useEffect(() => {
         const getMessages = async () => {
             let response = await GET("/api/messages/messageslist")
+            console.log(response, "in all conversaions")
             if(response.data.status==="success")
             setConversations(response.data.data)
             else props.history.push("/signin")
@@ -30,19 +31,20 @@ const AllConversations = (props) => {
                     </tr>
                 </thead>
                 <tbody>
+                {console.log(conversations,"in list ")}
                     {conversations ? conversations.map(data => {
                         let myDate = new Date(data.timeStamp)
                         return <tr style={{ cursor: "pointer" }} onClick={() => {
                             setTargetConversation(data._id)
                             showPopUp()
                         }}>
-                            <td>{data.senderId === JSON.parse(localStorage.getItem("c2c-profile")).id ? "Me" : data.senderId}</td>
-                            <td>{data.recipentId === JSON.parse(localStorage.getItem("c2c-profile")).id ? "Me" : data.recipentId}</td>
+                            <td>{data.senderId._id === JSON.parse(localStorage.getItem("c2c-profile")).id ? "Me" : data.senderId.firstName}</td>
+                            <td>{data.recipentId._id === JSON.parse(localStorage.getItem("c2c-profile")).id ? "Me" : data.recipentId.firstName}</td>
                             <td onClick={() => {
                                 setTargetConversation(data._id)
                                 showPopUp()
                             }}>{data.title}</td>
-                            <td>{myDate.toLocaleTimeString()}</td>
+                            <td>{myDate.toLocaleString()}</td>
                             {/* <button className="btn btn-danger">Reply</button> */}
                         </tr>
                     }

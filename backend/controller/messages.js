@@ -48,9 +48,11 @@ exports.messagesList=async(req,res)=>{
     let recipentId=req.userId
     let conversationResult = await Coversation
     .find({$or:[{senderId}, {recipentId}]})
+    .populate([{path:"senderId",select:"firstName", model:User},{path:"recipentId",select:"firstName", model:User}])
     if(!conversationResult)  {
         res.json({status:"failed", message:"You have no active conversation", data:[]})}
         else {
+            console.log(conversationResult)
             res.json({status:"success", message:"successfully retrieved", data:conversationResult})
         }
 

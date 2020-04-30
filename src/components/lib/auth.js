@@ -9,7 +9,7 @@ const CheckAuthentication = async()=>{
                 }
         })
         .then(res=>{
-            if(res.data.status!=="succes"){
+            if(res.data.status!=="success"){
                 localStorage.removeItem("c2c-token")
                 localStorage.removeItem("c2c-profile")
                 }

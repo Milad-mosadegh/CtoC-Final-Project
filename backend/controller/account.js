@@ -32,7 +32,6 @@ exports.getProfile = (req, res) => {
                 zipCode = ""
             }
             const profile = { firstName, lastName, email, paypalId, phoneNumber, street, city, zipCode, profileImage }
-            console.log(profile)
             res.json({
                 status: "success",
                 data: profile

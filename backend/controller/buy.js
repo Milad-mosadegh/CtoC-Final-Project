@@ -1,4 +1,5 @@
 const products = require("../model/productModel")
+const User = require("../model/userModel")
 exports.allProucts = async (req, res) => {
     products.find({}, {
         _id: 1,
@@ -36,8 +37,10 @@ exports.productDetails = async (req, res) => {
         views: 1,
         images: 1
     })
+    .populate([{path:"creator",select:"firstName", model:User}])
     if (!product) res.json({ status: "failed", message: "Internal Error please try again" })
     else {
+        console.log(product)
         res.json({ status: "success", message: "Successfully retrieved", data: product })
 
     }

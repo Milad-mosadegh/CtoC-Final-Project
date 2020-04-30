@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-
+const User = require("./userModel")
 const productSchema= new mongoose.Schema({
 
     title:{
@@ -23,12 +23,7 @@ const productSchema= new mongoose.Schema({
     description:{
         type:String
     },
-    creator:{
-        type:String
-    },
-    views:{
-        type:Number
-    },
+    creator:{type: mongoose.Schema.Types.ObjectId, ref: User},
     active:{
         type:Boolean
     },

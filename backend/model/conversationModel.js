@@ -1,6 +1,7 @@
 
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const User = require("./userModel")
 
 const ConversationSchema = new Schema({
 
@@ -29,14 +30,8 @@ const ConversationSchema = new Schema({
           type:String,
           required:true
   },
-  recipentId:{
-          type:String,
-          required:true
-        },
-  senderId:{
-          type:String,
-          required:true
-  },
+  recipentId:{type: mongoose.Schema.Types.ObjectId, ref: User},
+  senderId:{type: mongoose.Schema.Types.ObjectId, ref: User},
   productId:{
           type:String,
           required:true

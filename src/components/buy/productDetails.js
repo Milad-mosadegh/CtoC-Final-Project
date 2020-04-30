@@ -15,7 +15,7 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
             let response = await GET(`/api/buy/productDetails/${id}`)
             setProductDetail(response.data.data)
             if (response.data.data.images.length > 0) setBgImage(response.data.data.images[0])
-            console.log(response, "response")
+            
         }
         getProductDetails()
         console.log("Product id :", id);
@@ -29,8 +29,9 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
     }
 
 
-
+    console.log(productDetail, "in details")
     return (
+        
         <div className="my-container" show={showModel} onHide={handleClose}>
             <button className='btn cancelBtn' onClick={handleClose}>
                 X
@@ -56,9 +57,10 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
                                 </Zoom>
                                 <Fade right cascade duration={1000}>
                                     <div className="innerContent">
-                                        <h3>Color :{productDetail.color}</h3>
-                                        <h3>Condition :{productDetail.condition}</h3>
-                                        <h3>Quantity : {productDetail.quantity}</h3>
+                                        <h4>Posted By :{productDetail.creator?productDetail.creator.firstName:null}</h4>
+                                        <h4>Color :{productDetail.color}</h4>
+                                        <h4>Condition :{productDetail.condition}</h4>
+                                        <h4>Quantity :{productDetail.quantity}</h4>
                                     </div>
                                 </Fade>
                                 <Zoom righ duration={2500}>
@@ -66,20 +68,24 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
                                 </Zoom>
                                 <h4>{productDetail.description}</h4>
                             </div>
-
-
+                {productDetail.creator?
+                    productDetail.creator._id===JSON.parse(localStorage.getItem("c2c-profile")).id?
+                        <button className='btn btn-warning'>Edit</button>
+                        :<div>
                             <div className="myIcon">
                                 <div className="myIcons fa fa-thumbs-o-up"></div>
 
                                 <NewMessage
                                     title={productDetail.title}
                                     productId={productDetail._id}
-                                    recipentId={productDetail.creator} />
+                                    recipentId={productDetail.creator?productDetail.creator._id:null} />
                                 <div className="myIcons fa fa-phone"></div>
 
                             </div>
                             <a href="/" className='btn but-big'>Buy</a>
                         </div>
+                :null}
+                    </div>
 
                     </Zoom>
 

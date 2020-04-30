@@ -13,17 +13,6 @@ const ActiveConversation = (props) => {
     const inputRef = useRef(null)
 
 
-    /* useEffect(() => {
-        const getConversation = async () => {
-            let res = await GET(`/api/messages/getconversation/${conversationId}`)
-            if (res.data.data) {setPrevMessages(res.data.data)
-                scrollToBottom()}
-        }
-        setTimeout(getConversation, 500);
-        getConversation()
-        
-      
-    }, []) */
     useEffect(() => {
         const interval = setInterval(async () => {
             let res = await GET(`/api/messages/getconversation/${conversationId}`)
@@ -31,8 +20,7 @@ const ActiveConversation = (props) => {
                 setPrevMessages(res.data.data)
                 scrollToBottom()
             }
-            console.log("i am being called")
-        }, 2000);
+        }, 1000);
         return () => clearInterval(interval);
     }, []);
 
@@ -72,7 +60,6 @@ const ActiveConversation = (props) => {
 
     }
     let userId = JSON.parse(localStorage.getItem("c2c-profile")).id
-    console.log(prevMessages)
     return (
         <Fade top cascade duration={500}>
             <div className="message-wrapper">
