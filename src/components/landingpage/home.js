@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import MyCarousel from '../carousel/carousel';
-import PopularProduct from './poplularproducts';
 import LastSeen from './lastseen';
 import SearchBar from '../searchBar/searchbar';
 import MyNavbar from '../navbar/navBar';
@@ -13,6 +11,7 @@ import Fade from 'react-reveal/Fade';
 
 import '../styles/main.css'
 import Footer from '../footer/footer';
+import LatestProducts from './latestProducts';
 
 const Home = (props) => {
     const [auth, setAuth] = useState(false)
@@ -47,7 +46,7 @@ const Home = (props) => {
             <div className="homeWrap">
                 <Zoom duration={1000}>
                     <div>
-                        <PopularProduct />
+                        <LatestProducts/>
                     </div>
                 </Zoom>
 

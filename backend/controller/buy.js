@@ -1,7 +1,7 @@
-const products = require("../model/productModel")
+const Products = require("../model/productModel")
 const User = require("../model/userModel")
 exports.allProucts = async (req, res) => {
-    products.find({}, {
+    Products.find({}, {
         _id: 1,
         title: 1,
         category: 1,
@@ -25,7 +25,7 @@ exports.allProucts = async (req, res) => {
 
 exports.productDetails = async (req, res) => {
     const id = req.params.id
-    let product = await products.findById(id, {
+    let product = await Products.findById(id, {
         title: 1,
         category: 1,
         condition: 1,
@@ -45,5 +45,24 @@ exports.productDetails = async (req, res) => {
 
     }
 
+
+}
+
+exports.latestProducts =async(req,res)=>{
+
+    let latest= await Products.find({},{
+        _id: 1,
+        title: 1,
+        category: 1,
+        condition: 1,
+        color: 1,
+        price: 1,
+        images: 1,
+        priceRange: 1,
+
+    }).sort({'_id':-1}).limit(4)
+
+    if(latest) return res.json({status:"success",data:latest})
+        else res.json({status:"failed",message:"request failed"})
 
 }

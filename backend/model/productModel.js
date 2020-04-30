@@ -41,6 +41,10 @@ const productSchema= new mongoose.Schema({
     },
     watching:{
         type:Array
-    }
+    },
+    timeStamp:{
+        type : Date,
+        default: Date.now 
+      }
 })
 module.exports = mongoose.model("products", productSchema)

@@ -55,7 +55,15 @@ const userSchema = new mongoose.Schema({
     },
     profileImage:{
         type:String
-    }
+    },
+    liked:{
+        type: Array,
+        required: true, 
+      },
+    lastSeen:{
+        type: Array,
+        required: true, 
+      }
 
 })
 
