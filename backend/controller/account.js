@@ -1,4 +1,4 @@
-const user = require("../model/userModel")
+const User = require("../model/userModel")
 
 const multer = require("multer")
 const path = require("path")
@@ -12,7 +12,7 @@ const SoldSchema = require('../model/productModel')
 
 exports.getProfile = (req, res) => {
 
-    user.findById(req.userId, (err, doc) => {
+    User.findById(req.userId, (err, doc) => {
 
         if (err) return res.status(501).json({
             status: "failed",
@@ -57,7 +57,7 @@ exports.editProfile = async (req, res) => {
                 zipCode
             }
         }
-        await user.findByIdAndUpdate(req.userId, profileData, (err, doc) => {
+        await User.findByIdAndUpdate(req.userId, profileData, (err, doc) => {
             if (err) res.json({ status: "failed", message: err })
             else res.json({ status: "success", message: "Records updated successfully" })
         })
@@ -92,7 +92,7 @@ exports.editProfile = async (req, res) => {
             },
             profileImage: fileName
         }
-        await user.findByIdAndUpdate(req.userId, profileData, (err, doc) => {
+        await User.findByIdAndUpdate(req.userId, profileData, (err, doc) => {
             if (err) res.json({ status: "failed", message: err })
             else res.json({ status: "success", message: "Records updated successfully" })
         })
@@ -133,4 +133,19 @@ exports.getMySoldProducts = async (req, res) => {
     }
 }
 
+exports.lastSeen =async(req,res)=>{
 
+    let condition = {
+        $cond:{
+            if: {$isArray:"lastSeen"},
+            then:{$addToSet :{lastSeen:req.body.data}},
+            else: "NA"
+        }
+    }
+    await User.findByIdAndUpdate(req.userId,condition,(err,doc)=>{
+        console.log(doc, "after last seen updat3e")
+        res.json({status:"success", comments:"you reached last seen"})
+    })
+    
+}
+//{$addToSet:{lastSeen:req.body.data}}
