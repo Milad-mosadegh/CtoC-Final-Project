@@ -88,10 +88,10 @@ const MyNavbar = (props) => {
                     {auth ?
 
                         <Nav>
-                        <Nav.Link>
-                            <Link className="text-light text-uppercase" to="/messages">
-                                <span className="navTitle">Messages</span>
-                            </Link>
+                            <Nav.Link>
+                                <Link className="text-light text-uppercase" to="/messages">
+                                    <span className="navTitle">Messages</span>
+                                </Link>
                             </Nav.Link>
                             <Nav.Link>
                                 <Link className="text-light text-uppercase" to="/account">
@@ -119,9 +119,9 @@ const MyNavbar = (props) => {
                         <Nav.Link>
                             <Badge className='text-danger'>
 
-                                <span style={{ fontSize: "20px", marginRight: "-10px", fontFamily: 'Girassol, cursive' }}>10</span>
+                                {/* <span style={{ fontSize: "20px", marginRight: "-10px", fontFamily: 'Girassol, cursive' }}>10</span> */}
 
-                                <span className="badge badge-primary " style={{ verticalAlign: "super" }}>10</span>
+                                <span className="badge badge-danger " style={{ verticalAlign: "super" }}>10</span>
 
                                 <Link to="/">
                                     <svg className="bi bi-bell navTitle" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

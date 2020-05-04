@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './../styles.css'
-import { Form, Button, Col } from 'react-bootstrap';
+import { Form, Col } from 'react-bootstrap';
 import ImageCard from '../../sell/imageCard';
 import PasswordChange from './changepassword';
 
 const ProfileData = (props) => {
     const [error, setError] = useState("")
 
-    const {submitHandler,imageChangeHandler,changeHandler,cancelHandler,editHandler,profile,edit,showModal,renderModal,derenderModal} = props
+    const { submitHandler, imageChangeHandler, changeHandler, cancelHandler, editHandler, profile, edit, showModal, renderModal, derenderModal } = props
 
 
     return (
@@ -59,10 +59,10 @@ const ProfileData = (props) => {
                         <Form.Group as={Col} controlId="formGridAddress1">
                             <Form.Label>Password</Form.Label>
                             <Form.Control name="password" type="password" value="*********" onChange={changeHandler} />
-                            {edit?
+                            {edit ?
                                 <smail className="sText"
                                     onClick={renderModal}
-                                    style={{cursor:"pointer"}}>click here to change your password</smail>:null}
+                                    style={{ cursor: "pointer" }}>click here to change your password</smail> : null}
 
                         </Form.Group>
                         <Form.Group as={Col} controlId="formGridAddress1">
@@ -76,9 +76,9 @@ const ProfileData = (props) => {
 
                     <Form.Group controlId="formGridAddress1">
                         <Form.Label>Street</Form.Label>
-                        <Form.Control name="street" value={profile.street} onChange={changeHandler} 
-                        styles={{background:"none", border:"none"}}/>
-                       
+                        <Form.Control name="street" value={profile.street} onChange={changeHandler}
+                            styles={{ background: "none", border: "none" }} />
+
                         <smail className="sText">{error === "street" ?
                             <p>Attention! street can only consist of alphabets and more than two.</p>
                             : null}</smail>
@@ -106,26 +106,26 @@ const ProfileData = (props) => {
                 </fieldset>
                 {edit ?
                     <div>
-                        <Button variant="success" type="submit">
+                        <button className='bigBlueButton' type="submit">
                             Update
-                    </Button>
-                        <Button variant="danger" className="ml-1" onClick={cancelHandler} >
+                    </button>
+                        <button className="ml-1 bigRedButton" onClick={cancelHandler} >
                             Cancel
-                    </Button>
+                    </button>
                     </div>
                     :
-                    <Button variant="primary" onClick={editHandler}>
+                    <button className="bigBlueButton" onClick={editHandler}>
                         Edit
-            </Button>
+            </button>
                 }
             </Form>
-            
-            {showModal?
+
+            {showModal ?
                 <PasswordChange
-                showModal={showModal}
-                derenderModal={derenderModal}
-                {...props}
-            />:null}
+                    showModal={showModal}
+                    derenderModal={derenderModal}
+                    {...props}
+                /> : null}
         </div>
     );
 }

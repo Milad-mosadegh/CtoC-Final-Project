@@ -4,6 +4,7 @@ import GET from '../lib/get';
 import { POST } from '../lib/post';
 
 import Fade from 'react-reveal/Fade'
+import Zoom from 'react-reveal/Zoom'
 
 const ActiveConversation = (props) => {
     const { hidePopUp, conversationId } = props
@@ -61,7 +62,7 @@ const ActiveConversation = (props) => {
     }
     let userId = JSON.parse(localStorage.getItem("c2c-profile")).id
     return (
-        <Fade top cascade duration={500}>
+        <Fade top cascade duration={300}>
             <div className="message-wrapper">
                 <div className="message-header">
                     <button onClick={hidePopUp}>X</button>
@@ -78,13 +79,17 @@ const ActiveConversation = (props) => {
                 <div className="message-box">
                     {prevMessages ? prevMessages.messages.map(msg =>
                         msg.senderId === userId ?
-                            <div className="reciver-box">
-                                <div className="reciver" >{msg.message}</div>
-                                <p>{msg.timeStamp}</p>
-                            </div>
-                            : <div className="sender-box"  >
-                                <div className="sender">{msg.message}</div>
-                            </div>
+                            <Zoom cascade duration={100}>
+                                <div className="reciver-box">
+                                    <div className="reciver" >{msg.message}</div>
+                                    <p>{msg.timeStamp}</p>
+                                </div>
+                            </Zoom>
+                            : <Zoom cascade duration={100}>
+                                <div className="sender-box"  >
+                                    <div className="sender">{msg.message}</div>
+                                </div>
+                            </Zoom>
 
                     ) : null}
                     <div ref={chatEndRef} />

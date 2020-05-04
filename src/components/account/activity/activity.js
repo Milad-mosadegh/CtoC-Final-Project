@@ -46,8 +46,8 @@ const Activity = (props) => {
 
             <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                 <Row>
-                    <Col sm={3}>
-                        <Nav variant="pills" className="flex-column mt-5">
+                    <Col sm={12}>
+                        <Nav variant="pills" justify="false" className="flex-column mt-5">
                             <Nav.Item>
                                 <Nav.Link eventKey="first">My Products</Nav.Link>
                             </Nav.Item>
@@ -56,20 +56,15 @@ const Activity = (props) => {
                             </Nav.Item>
                         </Nav>
                     </Col>
-                    <Col sm={9}>
+                    <Col sm={12} md={12} lg={12}>
                         <Tab.Content>
                             <Tab.Pane eventKey="first">
                                 <Zoom>
-                                    <div className=' text-center'>
-                                        <div className="d-flex">
-                                            <div className="row">
-                                                <Products
-                                                    products={products}
-                                                    interProduct={interProduct}
-                                                />
-                                            </div>
-
-                                        </div>
+                                    <div className=''>
+                                        <Products
+                                            products={products}
+                                            interProduct={interProduct}
+                                        />
                                         {showModal ?
                                             <ProductDetails showModel={showModal} handleClose={handleClose}
                                                 id={productId}
