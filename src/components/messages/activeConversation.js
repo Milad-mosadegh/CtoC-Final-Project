@@ -70,14 +70,14 @@ const ActiveConversation = (props) => {
                 </div>
                 <div className="p-id justify-content-around" >
                     <p>
-                        Product Title : {prevMessages ? prevMessages.productId.title : null}
+                        Product Title : {prevMessages.productId ? prevMessages.productId.title : null}
                     </p>
                     <p>
-                        Product ID :{prevMessages ? prevMessages.productId._id : null}
+                        Product ID :{prevMessages.productId ? prevMessages.productId._id : null}
                     </p>
                 </div>
                 <div className="message-box">
-                    {prevMessages ? prevMessages.messages.map(msg =>
+                    {prevMessages.productId ? prevMessages.messages.map(msg =>
                         msg.senderId === userId ?
                             <Zoom cascade duration={100}>
                                 <div className="reciver-box">

@@ -56,27 +56,27 @@ const Activity = (props) => {
                             </Nav.Item>
                         </Nav>
                     </Col>
-                    <Col sm={12} md={12} lg={12}>
-                        <Tab.Content>
-                            <Tab.Pane eventKey="first">
-                                <Zoom>
-                                    <div className=''>
-                                        <Products
-                                            products={products}
-                                            interProduct={interProduct}
-                                        />
-                                        {showModal ?
-                                            <ProductDetails showModel={showModal} handleClose={handleClose}
-                                                id={productId}
-                                            /> : null}
-                                    </div>
-                                </Zoom>
-                            </Tab.Pane>
-                            <Tab.Pane eventKey="second">
 
-                            </Tab.Pane>
-                        </Tab.Content>
-                    </Col>
+                    <Tab.Content>
+                        <Tab.Pane eventKey="first">
+                            <Zoom>
+                                <div>
+                                    <Products
+                                        products={products}
+                                        interProduct={interProduct}
+                                    />
+                                    {showModal ?
+                                        <ProductDetails showModel={showModal} handleClose={handleClose}
+                                            id={productId}
+                                        /> : null}
+                                </div>
+                            </Zoom>
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="second">
+
+                        </Tab.Pane>
+                    </Tab.Content>
+
                 </Row>
             </Tab.Container>
 

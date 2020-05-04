@@ -3,14 +3,15 @@
 
 
 .cardImg{
-    height: 250px;
+    height: 200px;
 }
 
 .sliderBg{
     background: $bestBlueColor;
-
+    height: 100px;
     .sliderTitle{
         color: whitesmoke;
+        font-size: 18px;
     }
 }
 

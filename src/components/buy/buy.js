@@ -95,11 +95,11 @@ const BuyComponent = (props) => {
                     interProduct={interProduct}
                 />
             </div>
-
             {showModal ?
                 <ProductDetails showModel={showModal} handleClose={handleClose}
                     id={productId}
-                /> : null}
+                />
+                : null}
         </div>
     );
 }

@@ -46,7 +46,7 @@ const Home = (props) => {
             <div className="homeWrap">
                 <Zoom duration={1000}>
                     <div>
-                        <LatestProducts/>
+                        <LatestProducts />
                     </div>
                 </Zoom>
 
@@ -70,9 +70,11 @@ const Home = (props) => {
                 </Zoom>
             </div>
             {/* <MyCarousel /> */}
-            <Fade right>
-                <SlideShow />
-            </Fade>
+            <div className="mt-5">
+                <Fade right>
+                    <SlideShow />
+                </Fade>
+            </div>
             <div className="homeBanner"></div>
 
             <div>

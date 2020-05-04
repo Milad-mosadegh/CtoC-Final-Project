@@ -9,7 +9,7 @@ const UnitedCards = ({ title, price, id, images, interProduct }) => {
     console.log("id in the United Card", id)
     return (
 
-        < div >
+        <div >
             <div className="unitedWrap mt-5">
                 <Slide left>
                     <div className="unitedCards" key={id} onClick={() => interProduct(id)}>

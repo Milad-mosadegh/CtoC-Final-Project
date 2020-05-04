@@ -23,9 +23,9 @@ const LatestProduct = (props) => {
     }
 
     useEffect(() => {
-        const getData=async()=>{
-            let response=await GET("api/buy/latestprdoucts")
-            if(response.data.status==="success") setLatestProducts(response.data.data)
+        const getData = async () => {
+            let response = await GET("api/buy/latestprdoucts")
+            if (response.data.status === "success") setLatestProducts(response.data.data)
         }
         getData()
     }, [])
@@ -34,18 +34,17 @@ const LatestProduct = (props) => {
         <div className="popProBox">
             <div className="popProBox-content ">
                 <h2>Latest Product</h2>
-
                 <div className="popProBox-cards row ">
-                        <Products
-                            products={latestProducts}
-                            interProduct={interProduct}
-                        />
+                    <Products
+                        products={latestProducts}
+                        interProduct={interProduct}
+                    />
                 </div>
                 <div>
-                {showModal ?
+                    {showModal ?
                         <ProductDetails showModel={showModal} handleClose={handleClose}
                             id={productId}
-                            /> : null}
+                        /> : null}
                 </div>
             </div>
         </div>
