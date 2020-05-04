@@ -11,7 +11,7 @@ import UnitedCards from '../landingpage/unitedCards';
 
 export default function Products({ products, interProduct }) {
     return (
-        <div >
+        <div className="container">
             <div className="myWrap mt-5">
                 {products ? products.map(product =>
                     <UnitedCards

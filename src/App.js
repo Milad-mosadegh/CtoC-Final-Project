@@ -13,6 +13,7 @@ import Home from './components/landingpage/home';
 import ResetPassword from './components/resetPassword/resetPassword';
 import BuyComponent from './components/buy/buy';
 import Messages from './components/messages/messages';
+import Contact from './components/contact/contact';
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/account" component={MainAcc} />
+          <Route path="/contact" component={Contact} />
           <Route path="/messages" component={Messages} />
           <Route path="/resetpass/:id/:token" component={ResetPassword} />
           <Route path="/sellitems" component={SellItems} />

@@ -81,7 +81,7 @@ export default function SearchBar(props) {
 
           </div>
           <div className="col-lg-3 col-md-3 col-sm-12 p-2">
-            <button type="submit" className="btn btn-block bigBlueButton">Search</button>
+            <button type="submit" className="myBlueButton wrn-btn">Search</button>
           </div>
         </div>
 

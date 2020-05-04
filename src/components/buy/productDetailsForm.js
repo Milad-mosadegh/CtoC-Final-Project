@@ -95,16 +95,14 @@ const ProductDetailsForm = ({ productDetail, handleBgImage, images, description,
                         : <div>
                             <div className="myIcon">
                                 <div className="myIcons fa fa-thumbs-o-up"></div>
-
                                 <NewMessage
                                     title={productDetail.title}
                                     productId={productDetail._id}
                                     recipentId={productDetail ? productDetail.creator._id : null} />
-                                <div className="myIcons fa fa-phone"></div>
-
                             </div>
-                            <a href="/" className='btn but-big'>Buy</a>
                         </div>
+
+
                     : null}
             </div>
         </div>
