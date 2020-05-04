@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import LastSeen from './lastseen';
-import SearchBar from '../searchBar/searchbar';
+
 import MyNavbar from '../navbar/navBar';
 import GET from '../lib/get';
 import SlideShow from '../buy/slideShow';
@@ -12,9 +12,24 @@ import Fade from 'react-reveal/Fade';
 import '../styles/main.css'
 import Footer from '../footer/footer';
 import LatestProducts from './latestProducts';
+import ProductDetails from '../buy/productDetails';
 
 const Home = (props) => {
     const [auth, setAuth] = useState(false)
+    const [showModal, setShowModal] = useState(false)
+    const [productId, setProductId] = useState("")
+    const [showMainComponent, setShowMainComponents] = useState(true)
+    const interProduct = (id) => {
+        setShowMainComponents(false)
+        setShowModal(true)
+        setProductId(id)
+    }
+
+    const handleClose = () => {
+        setShowModal(false)
+        setShowMainComponents(true)
+
+    }
 
     useEffect(() => {
         if (localStorage.getItem("c2c-token")) {
@@ -30,56 +45,50 @@ const Home = (props) => {
     }, [])
     return (
         <div>
-            <MyNavbar {...props} />
-            <div className="fixedBackground">
-                <div className="container">
-                    <h1>WelcomE To <span className="c">C</span>-To-<span className="c">C</span> OnlinE ShoP</h1>
-                    <h3>With Us - Take The BesT</h3>
-                </div>
-            </div>
-            <div className="container" style={{ marginTop: "20px" }} >
-                {/* <SearchBar /> */}
-            </div>
-
-
-            {/* Popular Side */}
-            <div className="homeWrap">
-                <Zoom duration={1000}>
-                    <div>
-                        <LatestProducts />
+            {showModal ?
+                <ProductDetails showModel={showModal} handleClose={handleClose}
+                    id={productId}
+                /> :
+                < div >
+                    <MyNavbar {...props} />
+                    <div className="fixedBackground">
+                        <div className="container">
+                            <h1>WelcomE To <span className="c">C</span>-To-<span className="c">C</span> OnlinE ShoP</h1>
+                            <h3>With Us - Take The BesT</h3>
+                        </div>
                     </div>
-                </Zoom>
+                    <div className="container" style={{ marginTop: "20px" }} >
+                        {/* <SearchBar /> */}
+                    </div>
 
-                {/* Last Seen */}
-                <Zoom top delay={200}>
 
-                    <div className="lastSeenBox ">
-                        {auth ? <LastSeen /> :
-                            <div className="describ">
-                                <h3>What You Can Do Here ?!</h3>
-                                <p>
-                                    modi soluta maxime ab dolorum repellendus eius corporis necessitatibus assumenda incidunt vel delectus reprehenderit voluptatem suscipit nesciunt possimus officia. Doloribus commodi necessitatibus qui ab illo sed vitae in, amet cupiditate aliquid. Dolore voluptates inventore magnam architecto exercitationem. Ab ipsam repellendus laborum atque at amet nemo, consequuntur tempora deserunt eligendi vero alias sequi, debitis voluptatibus veniam suscipit aperiam. Quo sint veniam fuga enim ex perspiciatis cum fugiat, reiciendis quas aut, maiores tempore architecto obcaecati, nam cupiditate delectus! Autem rerum corrupti ipsum maiores pariatur reiciendis?
-                                </p>
-                                <div className="extra">
-                                    <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe exercitationem nam vitae laborum autem quis illum perspiciatis, </p>
-                                    <button value="Go" className="fa fa-long-arrow-right" />
-                                </div>
+                    {/* Popular Side */}
+                    <div className="homeWrap">
+                        <Zoom duration={1000}>
+                            <div>
+                                <LatestProducts interProduct={interProduct} />
                             </div>
-                        }
-                    </div>
-                </Zoom>
-            </div>
-            {/* <MyCarousel /> */}
-            <div className="mt-5">
-                <Fade right>
-                    <SlideShow />
-                </Fade>
-            </div>
-            <div className="homeBanner"></div>
+                        </Zoom>
 
-            <div>
-                <Footer />
-            </div>
+                        {/* Last Seen */}
+                        <Zoom top delay={200}>
+                            <LastSeen auth={auth} />
+                        </Zoom>
+                    </div>
+                    {/* <MyCarousel /> */}
+                    <div className="mt-5">
+                        <Fade right>
+                            <SlideShow />
+                        </Fade>
+                    </div>
+                    <div className="homeBanner"></div>
+
+                    <div>
+                        <Footer />
+                    </div>
+                </div>
+            }
+
         </div>
     );
 }

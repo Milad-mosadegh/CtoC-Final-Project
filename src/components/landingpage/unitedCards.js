@@ -10,7 +10,7 @@ const UnitedCards = ({ title, price, id, images, interProduct }) => {
     return (
 
         <div >
-            <div className="unitedWrap mt-5">
+            <div className="unitedWrap">
                 <Slide left>
                     <div className="unitedCards" key={id} onClick={() => interProduct(id)}>
                         <div className="unitedImgBox"
