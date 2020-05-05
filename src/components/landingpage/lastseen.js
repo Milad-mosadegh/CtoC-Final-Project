@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/main.css';
-//import LastSeenDescription from './lastseenDescription';
+import LastSeenDescription from './lastSeenDescription';
 import GET from "../lib/get"
 import Products from "../buy/products"
 
@@ -37,7 +37,7 @@ const LastSeen = (props) => {
                         />
                     </div>
                 </div>
-                :"hfjakslhfkjldasklfhjadkshfjkldaskjfhadjshfl" // <LastSeenDescription />
+                : <LastSeenDescription />
             }
         </div>
 
