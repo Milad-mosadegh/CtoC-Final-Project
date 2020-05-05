@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/main.css';
 import pic1 from '../../images/it.jpg';
 import UnitedCards from './unitedCards';
+import LastSeenForm from './lastseenDescription';
 
 
 const LastSeen = (props) => {
@@ -37,23 +38,29 @@ const LastSeen = (props) => {
     }, [])
 
     return (
-        <div className="wrapAll ">
-            <h2>Last Seen Products</h2>
-            <div className="row wrapAll-cads ">
-                {popProducts ? popProducts.map(data =>
-                    <div>
-                        <UnitedCards
+
+        <div>
+            {props.auth ?
+                <div className="wrapAll ">
+                    <div className="row wrapAll-cads ">
+                        <h2>Last Seen Products</h2>
+                        {popProducts.map(data => <UnitedCards
                             image={data.image}
                             title={data.title}
                             description={data.description}
                             addRefrence={data.addRefrence}
                         />
-
+                        )}
                     </div>
-                ) : <p> No proudcst</p>}
-
-            </div>
+                </div>
+                : <LastSeenForm />
+            }
         </div>
+
+
+
+
+
     );
 }
 

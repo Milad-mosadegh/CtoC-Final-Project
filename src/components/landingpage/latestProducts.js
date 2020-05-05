@@ -37,15 +37,15 @@ const LatestProduct = (props) => {
                 <div className="popProBox-cards row ">
                     <Products
                         products={latestProducts}
-                        interProduct={interProduct}
+                        interProduct={props.interProduct}
                     />
                 </div>
-                <div>
+                {/*  <div >
                     {showModal ?
                         <ProductDetails showModel={showModal} handleClose={handleClose}
                             id={productId}
                         /> : null}
-                </div>
+                </div> */}
             </div>
         </div>
     );
