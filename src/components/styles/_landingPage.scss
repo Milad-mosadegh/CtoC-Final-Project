@@ -8,15 +8,8 @@
 
 .homeWrap{
     display: flex;
-
 }
 
-.cardWrapper{
-    display: grid;
-    grid-template-columns: auto auto auto auto ;
-    grid-template-rows:none;
-    grid-gap: 10px 10px;
-}
 
 
 
@@ -44,9 +37,23 @@
     }
 }
 
+/* _________________ HOME CARDS ____________________________ */
+
+.homeCard{  
+    display: flex;
+    margin-bottom: 10px;
+    .leftCard{
+        flex: 60%;
+    }
+    .rightCard{
+        flex: 40%;
+    }
+
+}
+
 .popProBox{
-    width: 1100px;
-    height: 600px;
+    width: 100%;
+    height: 550px;
     background: $bestRedColor;
     margin-top: -150px;
     box-shadow: $mediumBoxShadow;
@@ -67,31 +74,31 @@
 }
 
 /* Last Seen  */
+
 .wrapAll{
-    width: 100%;
-    height: 600px;
     background: $bestBlueColor;
-    box-shadow: $mediumBoxShadow;
-    padding: 20px;
-    margin-top: 200px;
+    margin-left: -200px;
+    height: 550px;
+    padding: 30px;
     h2{
-        margin-bottom: 40px;
-        font-size: 50px;
-        font-weight: 100;
-        color: whitesmoke;
+        margin-bottom: 0px;
+            font-size: 50px;
+            font-weight: 100;
+            color: whitesmoke;
     }
+
     .wrapAll-cads{
-        margin: 0 auto;
+        margin-top:60px ;
         display: flex;
         justify-content: space-around;
     }
 }
 
 .lastSeenBox{
-    width: 1200px;
+
     margin-top: 10px;
     margin-left: -200px;
-    margin-bottom: 70px;
+    margin-bottom: 130px;
     .describ{
         box-shadow: $mediumBoxShadow;
         background: $bestBlueColor;
@@ -140,3 +147,149 @@
     background-attachment: fixed;
 }
 
+/* ============================= MEDIA QUERY 600PX ============================ */
+
+@media only screen and (max-width:600px){
+
+    .fixedBackground{
+
+        height: 180px;
+
+        h1{
+            color: $bestBlueColor;
+            font-size: 26px;
+            text-shadow: $mediumBoxShadow;
+        }
+        h3{
+            font-size: 10px;
+        }
+    }
+
+
+    .homeCard{  
+        display: flex;
+        flex-direction: column;
+
+        .leftCard{
+            flex: 100%;
+        }
+        .rightCard{
+            flex: 100%;
+        }
+
+    }
+
+
+    .popProBox{
+        margin-top: -20px;
+        box-shadow: $mediumBoxShadow;
+        .popProBox-content{
+            width: 100%;
+            h2{
+                margin-bottom: 0px;
+                font-size: 30px;
+                font-weight: 100;
+                color: whitesmoke;
+            }
+            .popProBox-cards{
+                flex-wrap: wrap;
+            }
+        }
+    }
+
+
+    .wrapAll{
+
+        margin-left: 0px;
+        height: 580px;
+        padding: 30px;
+        h2{
+            margin-bottom: 0px;
+                font-size: 30px;
+                font-weight: 100;
+                color: whitesmoke;
+        }
+
+        .wrapAll-cads{
+            margin-top:60px ;
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+
+    .homeBanner{
+        width: 100%;
+        height: 400px;
+        background-position: -700px;
+        background-repeat: no-repeat;
+
+    }
+
+
+}
+
+
+
+
+/* ============================= MEDIA QUERY 480PX ============================ */
+
+@media only screen and (max-width:480px){
+
+
+    .fixedBackground{
+
+        height: 180px;
+        h1{
+            font-size: 22px;
+        }
+        h3{
+            font-size: 8px;
+        }
+    }
+
+
+    .popProBox{
+        margin-top: -20px;
+
+        .popProBox-content{
+            padding: 0;
+            h2{
+                padding-top: 20px;
+                font-size: 30px;
+                font-weight: 100;
+            }
+            .popProBox-cards{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+
+
+    .wrapAll{
+
+        margin-left: 0px;
+        height: 580px;
+        padding: 30px;
+        h2{
+            margin-bottom: 0px;
+                font-size: 30px;
+                font-weight: 100;
+        }
+
+        .wrapAll-cads{
+            margin-top:60px ;
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+
+    .homeBanner{
+        width: 100%;
+        height: 400px;
+        background-position: -700px;
+        background-repeat: no-repeat;
+
+    }
+
+}

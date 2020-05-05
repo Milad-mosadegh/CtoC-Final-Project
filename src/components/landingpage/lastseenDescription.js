@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+import '../styles/main.css'
 const LastSeenForm = () => {
     return (
         <div className="lastSeenBox ">

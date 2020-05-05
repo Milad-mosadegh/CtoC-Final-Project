@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Products from '../buy/products';
 import GET from '../lib/get';
-import ProductDetails from "../buy/productDetails"
+
 
 
 const LatestProduct = (props) => {

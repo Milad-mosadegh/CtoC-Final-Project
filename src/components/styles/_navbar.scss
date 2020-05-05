@@ -43,15 +43,25 @@
 
 @media only screen and (max-width: 600px){
 
-  .navLogo{
-    font-size: 29px;
-    color: whitesmoke;
-    background: $bestRedColor;
-    padding: 27px;
-    border-radius: 0 0 40px ;
-    box-shadow: $hardBoxShadow;
-    border: none;
-    outline: none;
-}
+    .navLogo{
+      font-size: 29px;
+      color: whitesmoke;
+      background: $bestRedColor;
+      padding: 27px;
+      border-radius: 0 0 40px ;
+      box-shadow: $hardBoxShadow;
+      border: none;
+      outline: none;
+  }
+
+  .navTitle{
+      letter-spacing: 2px;
+      font-size: 14px;
+    &:hover{
+      letter-spacing: 4px;
+    }
+
+  }
+
 
 }

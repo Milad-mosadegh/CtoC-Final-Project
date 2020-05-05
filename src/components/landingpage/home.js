@@ -30,7 +30,7 @@ const Home = (props) => {
         setShowMainComponents(true)
 
     }
-
+    const unAuthenticated = () => setAuth(false)
     useEffect(() => {
         if (localStorage.getItem("c2c-token")) {
             const getData = async () => {
@@ -57,26 +57,25 @@ const Home = (props) => {
                             <h3>With Us - Take The BesT</h3>
                         </div>
                     </div>
-                    <div className="container" style={{ marginTop: "20px" }} >
-                        {/* <SearchBar /> */}
-                    </div>
 
 
-                    {/* Popular Side */}
-                    <div className="homeWrap">
-                        <Zoom duration={1000}>
-                            <div>
+                    <div className="homeCard">
+                        <div className="leftCard">
+                            <Zoom duration={1000}>
                                 <LatestProducts interProduct={interProduct} />
-                            </div>
-                        </Zoom>
+                            </Zoom>
+                        </div>
 
-                        {/* Last Seen */}
-                        <Zoom top delay={200}>
-                            <LastSeen auth={auth} />
-                        </Zoom>
+                        <div className="rightCard">
+                            <Zoom top delay={200}>
+                                <LastSeen auth={auth}
+                                    interProduct={interProduct}
+                                    unAuthenticated={unAuthenticated} /> 
+                            </Zoom>
+                        </div>
                     </div>
-                    {/* <MyCarousel /> */}
-                    <div className="mt-5">
+
+                    <div className="darkWhite p-5">
                         <Fade right>
                             <SlideShow />
                         </Fade>

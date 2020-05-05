@@ -16,14 +16,21 @@
 }
 
 
+/* ======================= MEDIA QUERY ===================== */
+
 @media only screen and (max-width: 600px){
+    .buySlider{
+        margin-top: 20px;
+        .sliderBg{
+            height: 75px;
+        }
+        .cardImg{
+            height: 130px;
+        }
 
-.cardImg{
-    height: 150px;
-}
+        .sliderTitle{
+            font-size: 13px;
+        }
 
-.sliderTitle{
-    font-size: 10px;
-}
-
+    }
 }

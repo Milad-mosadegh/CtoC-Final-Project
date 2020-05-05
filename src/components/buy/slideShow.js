@@ -17,14 +17,17 @@ const SlideShow = (props) => {
 
     var settings = {
         dots: false,
+        touchMove: true,
         infinite: false,
-        speed: 500,
+        speed: 1000,
+        arrows: false,
         slidesToShow: 4,
         slidesToScroll: 4,
         initialSlide: 0,
         verticalSwiping: false,
         useCSS: true,
-        arrows: false,
+        focusOnSelect: true,
+
         responsive: [
             {
                 breakpoint: 1024,
@@ -56,26 +59,22 @@ const SlideShow = (props) => {
 
     return (
 
-        <div>
+        <div className="buySlider">
+            <Slider {...settings} className="shadow-lg">
+                {categories ? categories.map(data =>
+                    <Card>
+                        <Card.Img variant="top" className='cardImg' src={require(`../../images/${data.imgName}`)} />
+                        <Card.Body className="sliderBg">
+                            <Card.Title >
+                                <Link to={data.value}>
+                                    <span className="sliderTitle">{data.value}</span>
+                                </Link>
+                            </Card.Title>
+                        </Card.Body>
+                    </Card>
+                ) : null}
 
-            <div className="" >
-
-                <Slider {...settings} className="shadow-lg">
-                    {categories ? categories.map(data =>
-                        <Card >
-                            <Card.Img variant="top" className='cardImg' src={require(`../../images/${data.imgName}`)} />
-                            <Card.Body className="sliderBg">
-                                <Card.Title >
-                                    <Link to={data.value}>
-                                        <span className="sliderTitle">{data.value}</span>
-                                    </Link>
-                                </Card.Title>
-                            </Card.Body>
-                        </Card>
-                    ) : null}
-
-                </Slider>
-            </div>
+            </Slider>
         </div>
     );
 }
