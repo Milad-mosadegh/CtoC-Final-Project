@@ -14,10 +14,10 @@ export default function ResetPassword(props) {
     let [inputErrors, setInputErrors] = useState("");
 
     useEffect(() => {
-        const verifyParams=async()=>{
+        const verifyParams = async () => {
 
-            const {id, token} = props.match.params
-            console.log("id ", id, " token ",token)
+            const { id, token } = props.match.params
+            console.log("id ", id, " token ", token)
             const formData = {
                 id,
                 token
@@ -27,17 +27,18 @@ export default function ResetPassword(props) {
                     'Content-Type': 'application/json'
                 }
             }
-            const response =  await POST("/api/recovery/resetcheck", formData, config)
-            if(response.data.status!=="success") props.history.push("/")
-            if(response.data.status==="success") localStorage.setItem("c2creset-token", response.data.token)
+            const response = await POST("/api/recovery/resetcheck", formData, config)
+            if (response.data.status !== "success") props.history.push("/")
+            if (response.data.status === "success") localStorage.setItem("c2creset-token", response.data.token)
         }
         verifyParams();
-        setInputErrors(Errors)}, [])
+        setInputErrors(Errors)
+    }, [])
 
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        const {id} = props.match.params
+        const { id } = props.match.params
         const formData = {
             pass: pass,
             confirmPass: confirmPass
@@ -52,13 +53,14 @@ export default function ResetPassword(props) {
             return setInputErrors({ ...inputErrors, confirmPass: { ...inputErrors.confirmPass, status: true } })
 
         if (inputErrors.form.status) return
-        if(!localStorage.getItem("c2creset-token")) return props.push.history("/")
+        if (!localStorage.getItem("c2creset-token")) return props.push.history("/")
         else {
-            const config={
-                headers:{
-                'x-auth-token':localStorage.getItem('c2creset-token'),
-                'Content-Type': 'application/json'
-            }}
+            const config = {
+                headers: {
+                    'x-auth-token': localStorage.getItem('c2creset-token'),
+                    'Content-Type': 'application/json'
+                }
+            }
             const response = await POST(`/api/recovery/resetpass/${id}`, formData, config)
             if (response.data.status === "success") {
                 alert("you have succesfully changed your password")
@@ -66,10 +68,10 @@ export default function ResetPassword(props) {
                 localStorage.removeItem("c2c-profile")
                 props.history.push("/signin")
             }
-            else if (response.data.status === "failed")
-                {setInputErrors({ ...inputErrors, backend: { ...inputErrors.backend, status: true, value: response.data.message } })
+            else if (response.data.status === "failed") {
+                setInputErrors({ ...inputErrors, backend: { ...inputErrors.backend, status: true, value: response.data.message } })
                 alert("sorry request failedn try again later")
-        }
+            }
         }
 
     }
