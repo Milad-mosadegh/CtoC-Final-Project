@@ -91,15 +91,19 @@ const ProductDetailsForm = ({ productDetail, handleBgImage, images, description,
                             <button className='bigBlueButton'>Edit</button>
                             <button className='bigRedButton ml-1'>Delete</button>
                             <button className='bigBlueButton ml-1'>Deactive</button>
+                            <button className='bigRedButton ml-1'>Sold</button>
                         </div>
                         : <div>
+
                             <div className="myIcon">
-                                <div className="myIcons fa fa-thumbs-o-up"></div>
+                                <div className="myIcons fa fa-star-o"></div>
+                                <div className="myIcons fa fa-ban"></div>
                                 <NewMessage
                                     title={productDetail.title}
                                     productId={productDetail._id}
                                     recipentId={productDetail ? productDetail.creator._id : null} />
                             </div>
+
                         </div>
 
 

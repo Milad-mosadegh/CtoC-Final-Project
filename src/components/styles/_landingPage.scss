@@ -63,8 +63,8 @@
         h2{
             margin-bottom: 0px;
             font-size: 50px;
-            font-weight: 100;
-            color: whitesmoke;
+            font-weight: 200;
+            color: $bestBlueColor;
         }
         .popProBox-cards{
             display: flex;
@@ -95,7 +95,6 @@
 }
 
 .lastSeenBox{
-
     margin-top: 10px;
     margin-left: -200px;
     margin-bottom: 130px;
@@ -105,9 +104,9 @@
          height: 500px;
         h3{
             font-size: 50px;
-            padding: 10px;
-            font-weight: 100;
-            color: whitesmoke;
+            padding: 20px;
+            font-weight: 200;
+            color: $bestRedColor;
         }
         
         p{  

@@ -1301,8 +1301,8 @@
 .popProBox .popProBox-content h2 {
   margin-bottom: 0px;
   font-size: 50px;
-  font-weight: 100;
-  color: whitesmoke;
+  font-weight: 200;
+  color: #11213b;
 }
 
 .popProBox .popProBox-content .popProBox-cards {
@@ -1352,9 +1352,9 @@
 
 .lastSeenBox .describ h3 {
   font-size: 50px;
-  padding: 10px;
-  font-weight: 100;
-  color: whitesmoke;
+  padding: 20px;
+  font-weight: 200;
+  color: #b72926;
 }
 
 .lastSeenBox .describ p {
