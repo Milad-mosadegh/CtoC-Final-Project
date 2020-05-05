@@ -144,7 +144,7 @@ exports.lastSeen =async(req,res)=>{
     } */
     let result = await User.findById(req.userId, {lastSeen:1})
     let lastSeen = [...result.lastSeen]
-        if(lastSeen.includes(productId)) return res.json({status:"success"})
+        if(lastSeen.includes(productId)) return res.json({status:"success", message:"already there"})
          else {
              if(lastSeen.length>=4) {
                  lastSeen.shift()
@@ -155,7 +155,7 @@ exports.lastSeen =async(req,res)=>{
 
         await User.findByIdAndUpdate(req.userId, {lastSeen},(err,doc)=>{
             if(err) throw err
-            else res.json({status:"success"})
+            else res.json({status:"success", message:"successfully added"})
         })  
     /* await User.findByIdAndUpdate(req.userId,condition,(err,doc)=>{
         console.log(doc, "after last seen updat3e")

@@ -7,6 +7,7 @@ import NewMessage from "../messages/newMessage";
 import '../styles/main.css';
 import GET from '../lib/get';
 import ProductDetailsForm from './productDetailsForm';
+import { POST } from '../lib/post';
 
 const ProductDetails = ({ id, showModel, handleClose }) => {
     const [productDetail, setProductDetail] = useState("")
@@ -19,7 +20,16 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
 
         }
         getProductDetails()
-        console.log("Product id :", id);
+        return (async()=>{
+            const config = {
+                headers:{
+                    'x-auth-token':localStorage.getItem('c2c-token'),
+                    'Content-Type': 'application/json'
+                }
+            }
+            let response = await POST("/api/account/lastseen",id,config )
+            console.log(response)
+        })
 
     }, [])
 
