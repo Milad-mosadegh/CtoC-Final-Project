@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const LastSeenForm = () => {
+const LastSeenDescription = () => {
     return (
         <div className="lastSeenBox ">
             <div className="describ">
@@ -19,4 +19,4 @@ const LastSeenForm = () => {
     );
 }
 
-export default LastSeenForm;
+export default LastSeenDescription;

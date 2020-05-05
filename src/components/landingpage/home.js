@@ -30,6 +30,7 @@ const Home = (props) => {
         setShowMainComponents(true)
 
     }
+    const unAuthenticated=()=>setAuth(false)
 
     useEffect(() => {
         if (localStorage.getItem("c2c-token")) {
@@ -62,7 +63,7 @@ const Home = (props) => {
                     </div>
 
 
-                    {/* Popular Side */}
+
                     <div className="homeWrap">
                         <Zoom duration={1000}>
                             <div>
@@ -70,12 +71,16 @@ const Home = (props) => {
                             </div>
                         </Zoom>
 
-                        {/* Last Seen */}
+
                         <Zoom top delay={200}>
-                            <LastSeen auth={auth} />
+                            <LastSeen 
+                                auth={auth} 
+                                interProduct={interProduct}
+                                unAuthenticated={unAuthenticated}
+                                />
                         </Zoom>
                     </div>
-                    {/* <MyCarousel /> */}
+               
                     <div className="mt-5">
                         <Fade right>
                             <SlideShow />

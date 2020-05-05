@@ -4,7 +4,7 @@ const multer = require("multer")
 const path = require("path")
 const avatarSchema = require("../model/avatarModel")
 const fs = require("fs")
-const ProductsSchema = require('../model/productModel')
+const Products = require('../model/productModel')
 const SoldSchema = require('../model/productModel')
 
 
@@ -100,7 +100,7 @@ exports.editProfile = async (req, res) => {
 }
 
 exports.getMyProducts = async (req, res) => {
-    let products = await ProductsSchema.find({ creator: req.userId },
+    let products = await Products.find({ creator: req.userId },
         {
             _id: 1,
             title: 1,
@@ -161,6 +161,28 @@ exports.lastSeen =async(req,res)=>{
         console.log(doc, "after last seen updat3e")
         res.json({status:"success", comments:"you reached last seen"})
     }) */
+    //{$addToSet:{lastSeen:req.body.data}}
     
 }
-//{$addToSet:{lastSeen:req.body.data}}
+
+
+exports.getLastSeen=async(req,res)=>{
+    let result = await User.findById(req.userId, {lastSeen:1})
+    if(!result) return res.json({status:"failed", message:"No items to show", data:[] })
+
+    let lastSeen = await Products.find({
+        "_id" : {
+          "$in" :result.lastSeen
+         }
+      },{_id: 1,
+        title: 1,
+        category: 1,
+        condition: 1,
+        color: 1,
+        price: 1,
+        images: 1,
+        priceRange: 1,});
+    console.log(lastSeen, "after array query")
+    if(!lastSeen) return res.json({status:"failed", message:"No product to show", data:[]})
+    res.json({status:"success", data:lastSeen})
+}

@@ -66,8 +66,3 @@ exports.latestProducts =async(req,res)=>{
         else res.json({status:"failed",message:"request failed"})
 
 }
-/* 
-exports.lastSeen = async(req,res)=>{
-    let result = await User.findById(req.userId, {lastSeen:1})
-    if(!result) return res.json({status:"failed"})
-} */

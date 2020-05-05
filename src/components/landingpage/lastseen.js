@@ -1,59 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/main.css';
-import pic1 from '../../images/it.jpg';
-import UnitedCards from './unitedCards';
-import LastSeenForm from './lastseenDescription';
+import LastSeenDescription from './lastseenDescription';
+import GET from "../lib/get"
+import Products from "../buy/products"
 
 
 const LastSeen = (props) => {
-    const [popProducts, setPopProducts] = useState("")
+    const [lastSeenProducts, setLastSeenProducts] = useState([])
 
     useEffect(() => {
-        setPopProducts([
-            {
-                title: "product 1",
-                description: "Some Text one ",
-                image: pic1,
-                addRefrence: "Go More"
-            },
-            {
-                title: "product 2",
-                description: "Some Text Tow ",
-                image: pic1,
-                addRefrence: "Go More"
-            },
-            {
-                title: "product 3",
-                description: "Some Text Three",
-                image: pic1,
-                addRefrence: "Go More"
-            },
-            {
-                title: "product 4",
-                description: "Some Text Four ",
-                image: "Go More",
-                addRefrence: "Go More"
-            }])
+        const getProducts =async()=>{
+            let response = await GET("/api/account/lastseen")
+            if (response.data.status==="success") setLastSeenProducts(response.data.data)
+            else {
+                localStorage.removeItem("c2c-token")
+                localStorage.removeItem("c2c-profile")
+                props.unAuthenticated()
+            }
+        
+        }
+        if (localStorage.getItem("c2c-token")) getProducts();
+        else props.unAuthenticated()
+        
 
     }, [])
 
     return (
-
         <div>
             {props.auth ?
-                <div className="wrapAll ">
-                    <div className="row wrapAll-cads ">
-                        <h2>Last Seen Products</h2>
-                        {popProducts.map(data => <UnitedCards
-                            image={data.image}
-                            title={data.title}
-                            description={data.description}
-                            addRefrence={data.addRefrence}
-                        />
-                        )}
-                    </div>
+                <div className="wrapAll">
+                <h2>Last Seen</h2>
+                <div className="row wrapAll-cads">
+                    <Products
+                        products={lastSeenProducts}
+                        interProduct={props.interProduct}
+                    />
                 </div>
-                : <LastSeenForm />
+            </div>
+                : <LastSeenDescription />
             }
         </div>
 

@@ -40,12 +40,6 @@ const LatestProduct = (props) => {
                         interProduct={props.interProduct}
                     />
                 </div>
-                {/*  <div >
-                    {showModal ?
-                        <ProductDetails showModel={showModal} handleClose={handleClose}
-                            id={productId}
-                        /> : null}
-                </div> */}
             </div>
         </div>
     );
