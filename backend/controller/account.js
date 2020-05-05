@@ -134,18 +134,33 @@ exports.getMySoldProducts = async (req, res) => {
 }
 
 exports.lastSeen =async(req,res)=>{
-
-    let condition = {
+    let productId= req.body.data;
+/*     let condition = {
         $cond:{
             if: {$isArray:"lastSeen"},
             then:{$addToSet :{lastSeen:req.body.data}},
             else: "NA"
         }
-    }
-    await User.findByIdAndUpdate(req.userId,condition,(err,doc)=>{
+    } */
+    let result = await User.findById(req.userId, {lastSeen:1})
+    let lastSeen = [...result.lastSeen]
+        if(lastSeen.includes(productId)) return res.json({status:"success"})
+         else {
+             if(lastSeen.length>=4) {
+                 lastSeen.shift()
+                 lastSeen.push(productId)
+                }
+                else lastSeen.push(productId)
+         }
+
+        await User.findByIdAndUpdate(req.userId, {lastSeen},(err,doc)=>{
+            if(err) throw err
+            else res.json({status:"success"})
+        })  
+    /* await User.findByIdAndUpdate(req.userId,condition,(err,doc)=>{
         console.log(doc, "after last seen updat3e")
         res.json({status:"success", comments:"you reached last seen"})
-    })
+    }) */
     
 }
 //{$addToSet:{lastSeen:req.body.data}}
