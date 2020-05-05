@@ -13,6 +13,7 @@
 @import './unitedCard';
 @import './account';
 @import './contact';
+@import './resetModal';
 
 *{
     margin: 0;
@@ -22,7 +23,7 @@
 
 .sText{
     color: $bestRedColor;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .darkWhite{
