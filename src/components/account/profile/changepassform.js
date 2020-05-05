@@ -7,7 +7,7 @@ export default function ChangePassform(props) {
 
     const { derenderModal, showModal, submitHandler, changeHandler, pass, confirmPass, inputErrors, oldPass } = props
     return (
-        <Modal size="lg" show={showModal} onHide={derenderModal} animation={true} centered>
+        <Modal size="sm" show={showModal} onHide={derenderModal} animation={true} centered>
 
             <Modal.Body >
                 <form noValidate autoComplete="off" onSubmit={submitHandler}>
