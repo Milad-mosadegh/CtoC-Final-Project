@@ -97,6 +97,9 @@ const MyProfile = (props) => {
             }
             else {
                 // alert("An error occured while you were updating records, please try again")
+                setAlertId("A")
+                setAlertText("An error occured while you were updating records, please try again")
+                setShowAlert(true)
             }
             return
         }

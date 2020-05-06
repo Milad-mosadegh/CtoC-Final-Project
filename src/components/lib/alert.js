@@ -1,30 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const MyAlert = ({ id, alertText }) => {
+const MyAlert = (props) => {
+    const { id, alertText, derenderModal } = props
+    toast.success(alertText, { containerId: "A", autoClose: 1000 })
+    toast.warn(alertText, { containerId: "B", autoClose: 1000 })
+    toast.info(alertText, { containerId: "C", autoClose: 1000 })
 
-    toast.success(alertText, { containerId: "A" })
-    toast.warn(alertText, { containerId: "B" })
-    toast.info(alertText, { containerId: "C" })
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            derenderModal()
+            localStorage.removeItem("c2c-token")
+            props.history.push('./signin')
+        }, 1000);
+        return () => clearTimeout(timer);
 
+    }, []);
 
     return (
-        <ToastContainer
-            enableMultiContainer
-            containerId={id}
-            position={toast.POSITION.TOP_RIGHT} />
-
+        <>
+            <ToastContainer
+                enableMultiContainer
+                containerId={id}
+                position={toast.POSITION.TOP_CENTER} />
+        </>
     );
 }
 
 export default MyAlert;
 
-/* const [alertId, setAlertId] = useState("")
-const [showAlert, setShowAlert] = useState(false) */
-
-/* setAlertId("B")
-setShowAlert(true) */
-
-/* { showAlert ? <MyAlert id={alertId} alertText="sorry request failedn try again later" /> : null } */

@@ -20,6 +20,11 @@ export default function PasswordChange(props) {
 
     useEffect(() => {
         setInputErrors(Errors)
+
+        /*   const timer = setTimeout(() => {
+              derenderModal()
+          }, 3000);
+          return () => clearTimeout(timer); */
     }, [])
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -50,11 +55,12 @@ export default function PasswordChange(props) {
                 setAlertId("A")
                 setAlertText("you have succesfully changed your password, Please relogin")
                 setShowAlert(true)
-                derenderModal()
-                localStorage.removeItem("c2c-token")
-                localStorage.removeItem("c2c-profile")
 
-                props.history.push("/signin")
+                // derenderModal()
+                // localStorage.removeItem("c2c-token")
+                // localStorage.removeItem("c2c-profile")
+
+                // props.history.push("/signin")
 
 
             }
@@ -116,7 +122,7 @@ export default function PasswordChange(props) {
                 oldPass={oldPass}
 
             />
-            {showAlert ? <MyAlert id={alertId} alertText={alertText} /> : null}
+            {showAlert ? <MyAlert id={alertId} alertText={alertText} derenderModal={derenderModal} {...props} /> : null}
         </>
     );
 }
