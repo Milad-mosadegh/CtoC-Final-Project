@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import MyNavbar from '../navbar/navBar';
-import MainSell from './mainsell';
 import GET from '../lib/get';
 import { POST, IMGPOST } from '../lib/post';
 import FormData from "form-data"
+import SellDetails from './sellDetails';
 
 
 
@@ -94,7 +94,7 @@ const SellItems = (props) => {
             <MyNavbar {...props} />
 
 
-            <MainSell
+            <SellDetails
                 {...props}
                 imageChangeHandler={imageChangeHandler}
                 changeHandler={changeHandler}

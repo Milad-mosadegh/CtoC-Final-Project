@@ -38,7 +38,7 @@
 
 }
 .AutoComplete li:hover{
-  background-color:rgb(255, 230, 230);
+  background-color: rgba(4, 6, 34, 0.993);
 }
 /*search box css start here*/
 .search-sec{

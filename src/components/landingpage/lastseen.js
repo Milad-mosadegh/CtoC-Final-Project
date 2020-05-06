@@ -33,7 +33,7 @@ const LastSeen = (props) => {
                     <div className="row wrapAll-cads">
                         <Products
                             products={lastSeenProducts}
-                            interProduct={props.interProduct}
+                            setTargetProduct={props.setTargetProduct}
                         />
                     </div>
                 </div>

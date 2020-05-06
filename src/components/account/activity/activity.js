@@ -27,7 +27,7 @@ const Activity = (props) => {
         fetchData()
     }, [])
 
-    const interProduct = (id) => {
+    const setTargetProduct = (id) => {
         setShowMainComponents(false)
         setShowModal(true)
         setProductId(id)
@@ -63,7 +63,7 @@ const Activity = (props) => {
                                 <div>
                                     <Products
                                         products={products}
-                                        interProduct={interProduct}
+                                        setTargetProduct={setTargetProduct}
                                     />
                                     {showModal ?
                                         <ProductDetails showModel={showModal} handleClose={handleClose}

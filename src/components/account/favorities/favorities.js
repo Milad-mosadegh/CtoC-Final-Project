@@ -21,7 +21,7 @@ const Favorites = (props) => {
         fetchData()
     }, [])
 
-    const interProduct = (id) => {
+    const setTargetProduct = (id) => {
         setShowMainComponents(false)
         setShowModal(true)
         setProductId(id)
@@ -40,7 +40,7 @@ const Favorites = (props) => {
                 <div className="row">
                     <Products
                         products={products}
-                        interProduct={interProduct}
+                        setTargetProduct={setTargetProduct}
                     />
                 </div>
             </div>
