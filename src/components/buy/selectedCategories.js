@@ -17,15 +17,10 @@ const SelectedCategories = (props) => {
     useEffect(() => {
         const getProducts = async () => {
             let response = await GET(`/api/buy/${targetCategory}`)
-
             if (response.data.status === "success") setProducts(response.data.products)
         }
         getProducts()
     }, [])
-
-
-
-
 
     const interProduct = (id) => {
         setShowMainComponents(false)
