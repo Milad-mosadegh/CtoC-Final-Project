@@ -1,9 +1,6 @@
 const User = require("../model/userModel")
-
 const multer = require("multer")
 const path = require("path")
-const avatarSchema = require("../model/avatarModel")
-const fs = require("fs")
 const Products = require('../model/productModel')
 const SoldSchema = require('../model/productModel')
 
@@ -168,7 +165,7 @@ exports.lastSeen =async(req,res)=>{
 
 exports.getLastSeen=async(req,res)=>{
     let result = await User.findById(req.userId, {lastSeen:1})
-    if(!result) return res.json({status:"failed", message:"No items to show", data:[] })
+    if(!result) return res.json({status:"failed" })
 
     let lastSeen = await Products.find({
         "_id" : {
@@ -182,7 +179,30 @@ exports.getLastSeen=async(req,res)=>{
         price: 1,
         images: 1,
         priceRange: 1,});
-    console.log(lastSeen, "after array query")
     if(!lastSeen) return res.json({status:"failed", message:"No product to show", data:[]})
     res.json({status:"success", data:lastSeen})
 }
+
+exports.setFavourities=async(req,res)=>{
+    let id=req.userId
+    let productId=req.body.data
+    let result = await User.findById(id, {liked:1})
+    if(!result) return res.json({status:"failed"})
+    let favourities = [...result.liked]
+
+    let index= favourities.indexOf(productId)
+    if(index===-1) favourities.push(productId)
+        else favourities.splice(index,1)
+    await User.findByIdAndUpdate(id,{liked:favourities}, (err, doc)=>{
+        if(err) throw err
+        else res.json({status:"success"})}
+ )}
+
+ exports.getFavourities=async(req,res)=>{
+    
+    let id=req.userId
+    let result = await User.findById(id, {liked:1})
+    if(!result)  res.json({status:"failed"})
+    else res.json({status:"success", favourities:result.liked})  
+
+   }
