@@ -1,21 +1,15 @@
 import React from 'react';
-
 import '../styles/main.css'
 import '../../../node_modules/font-awesome/css/font-awesome.min.css'
+import ItemCard from '../landingpage/itemCard';
 
-
-import UnitedCards from '../landingpage/unitedCards';
-
-
-
-
-export default function Products({ products, interProduct }) {
+export default function Products({ products, setTargetProduct }) {
     return (
         <div className="container">
             <div className="myWrap mt-5">
                 {products ? products.map(product =>
-                    <UnitedCards
-                        interProduct={interProduct}
+                    <ItemCard
+                        setTargetProduct={setTargetProduct}
                         title={product.title}
                         price={product.price}
                         id={product._id}

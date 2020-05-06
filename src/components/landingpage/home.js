@@ -19,7 +19,7 @@ const Home = (props) => {
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
     const [showMainComponent, setShowMainComponents] = useState(true)
-    const interProduct = (id) => {
+    const setTargetProduct = (id) => {
         setShowMainComponents(false)
         setShowModal(true)
         setProductId(id)
@@ -62,14 +62,14 @@ const Home = (props) => {
                     <div className="homeCard">
                         <div className="leftCard">
                             <Zoom duration={1000}>
-                                <LatestProducts interProduct={interProduct} />
+                                <LatestProducts setTargetProduct={setTargetProduct} />
                             </Zoom>
                         </div>
 
                         <div className="rightCard">
                             <Zoom top delay={200}>
                                 <LastSeen auth={auth}
-                                    interProduct={interProduct}
+                                    setTargetProduct={setTargetProduct}
                                     unAuthenticated={unAuthenticated} /> 
                             </Zoom>
                         </div>

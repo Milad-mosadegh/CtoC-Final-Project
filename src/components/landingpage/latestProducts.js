@@ -10,7 +10,7 @@ const LatestProduct = (props) => {
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
     const [showMainComponent, setShowMainComponents] = useState(true)
-    const interProduct = (id) => {
+    const setTargetProduct = (id) => {
         setShowMainComponents(false)
         setShowModal(true)
         setProductId(id)
@@ -37,7 +37,7 @@ const LatestProduct = (props) => {
                 <div className="popProBox-cards row ">
                     <Products
                         products={latestProducts}
-                        interProduct={props.interProduct}
+                        setTargetProduct={props.setTargetProduct}
                     />
                 </div>
             </div>

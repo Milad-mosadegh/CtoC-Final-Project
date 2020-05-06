@@ -22,7 +22,15 @@ const SelectedCategories = (props) => {
         getProducts()
     }, [])
 
-    const interProduct = (id) => {
+
+
+
+
+
+
+
+    const setTargetProduct = (id) => {
+
         setShowMainComponents(false)
         setShowModal(true)
         setProductId(id)
@@ -34,7 +42,7 @@ const SelectedCategories = (props) => {
             <div className='container'>
                 <SearchBar />
                 <FilterBar />
-                <Products products={products} interProduct={interProduct} />
+                <Products products={products} setTargetProduct={setTargetProduct} />
 
             </div>
         </div>

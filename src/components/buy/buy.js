@@ -54,7 +54,7 @@ const BuyComponent = (props) => {
 
     }
 
-    const interProduct = (id) => {
+    const setTargetProduct = (id) => {
         setShowMainComponents(false)
         setShowModal(true)
         setProductId(id)
@@ -92,7 +92,7 @@ const BuyComponent = (props) => {
 
                 <Products
                     products={filteredProducts ? filteredProducts : products}
-                    interProduct={interProduct}
+                    setTargetProduct={setTargetProduct}
                 />
             </div>
             {showModal ?

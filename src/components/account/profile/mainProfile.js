@@ -4,6 +4,8 @@ import GET from '../../lib/get';
 import FormData from "form-data"
 import { IMGPOST, POST } from '../../lib/post';
 import ProfileData from './profile';
+import MyAlert from '../../lib/alert';
+
 
 const MyProfile = (props) => {
 
@@ -20,12 +22,17 @@ const MyProfile = (props) => {
         zipCode: ""
 
     })
-    const [auth, setAuth] = useState(false) 
+    const [auth, setAuth] = useState(false)
     const [edit, setEdit] = useState(false)
     const [avatarChanged, setAvatarChange] = useState(false)
     const [image, setImage] = useState("")
     const [pass, setPass] = useState("")
     const [showModal, setShowModal] = useState(false)
+
+
+    const [alertId, setAlertId] = useState("")
+    const [showAlert, setShowAlert] = useState(false)
+    const [alertText, setAlertText] = useState('')
 
     useEffect(() => {
 
@@ -79,13 +86,18 @@ const MyProfile = (props) => {
             let response = await IMGPOST("/api/account/profile", formData, config)
 
             if ((response.data) && (response.data.status === "success")) {
-                alert("You have successfully update profile")
+                // alert("You have successfully update profile")
+                setAlertId("A")
+                setAlertText("You have successfully update profile")
+                setShowAlert(true)
+
                 setEdit(false)
                 setAvatarChange(false)
                 document.getElementById("fieldset").disabled = true
             }
-            else alert("An error occured while you were updating records, please try again")
-
+            else {
+                // alert("An error occured while you were updating records, please try again")
+            }
             return
         }
 
@@ -97,12 +109,21 @@ const MyProfile = (props) => {
         }
         let response = await POST("/api/account/profile", profile, config)
         if ((response.data) && (response.data.status === "success")) {
-            alert("You have successfully update Your records")
+            // alert("You have successfully update Your records")
+            setAlertId("A")
+            setAlertText("You have successfully update Your records")
+            setShowAlert(true)
+
             setEdit(false)
             document.getElementById("fieldset").disabled = true
 
         }
-        else alert("An error occured while you were updating records, please try again")
+        else {
+            // alert("An error occured while you were updating records, please try again")
+            setAlertId("B")
+            setAlertText("An error occured while you were updating records, please try again")
+            setShowAlert(true)
+        }
 
     }
 
@@ -129,7 +150,7 @@ const MyProfile = (props) => {
     const imageChangeHandler = (image) => {
         setProfile({ ...profile, profileImage: image.image })
         setAvatarChange(true)
-}
+    }
 
 
     return (
@@ -147,6 +168,7 @@ const MyProfile = (props) => {
                 derenderModal={derenderModal}
                 {...props}
             />
+            {showAlert ? <MyAlert id={alertId} alertText={alertText} /> : null}
         </div>
     );
 }

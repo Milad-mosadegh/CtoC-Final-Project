@@ -1,18 +1,15 @@
 import React from 'react';
-
-
-// import { Link } from "react-router-dom"
-import { Button, Form, Col, InputGroup, FormControl } from 'react-bootstrap'
+import { Form, Col, InputGroup, FormControl } from 'react-bootstrap'
 import Categories from "../lib/categories"
 import ImageCard from "./imageCard"
 import Colors from "../lib/colors"
 import Conditions from "../lib/condition"
-
 import Fade from 'react-reveal/Fade';
-
 import '../styles/main.css'
 
-const MainSell = (props) => {
+const SellDetails = (props) => {
+
+
 
     const { imageChangeHandler, changeHandler, submitHandler, product } = props
 
@@ -33,7 +30,7 @@ const MainSell = (props) => {
                                     </Form.Group>
                                 </Form.Row>
 
-                                {/*  */}
+
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="formGridState">
                                         <Form.Label>Categories</Form.Label>
@@ -44,7 +41,7 @@ const MainSell = (props) => {
                                 </Form.Row>
 
 
-                                {/*  */}
+
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="formGridState">
                                         <Form.Label>Condition</Form.Label>
@@ -52,14 +49,14 @@ const MainSell = (props) => {
                                             {Conditions.map((key, index) => <option value={key.id}>{key.value}</option>)}
                                         </Form.Control>
                                     </Form.Group>
-                                    {/*  */}
+
                                     <Form.Group controlId="formGridAddress1">
                                         <Form.Label>Quantity</Form.Label>
                                         <Form.Control type="text" placeholder="Quantity" name="quantity" value={product.quantity} onChange={changeHandler} />
                                     </Form.Group>
 
                                 </Form.Row>
-                                {/*  */}
+
 
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="formGridState">
@@ -89,7 +86,7 @@ const MainSell = (props) => {
                     </Fade>
 
 
-                    {/*  */}
+
                     <Fade right cascade delay={1000}>
                         <div className=" boxRight">
                             <div >
@@ -116,4 +113,4 @@ const MainSell = (props) => {
     );
 }
 
-export default MainSell;
+export default SellDetails;

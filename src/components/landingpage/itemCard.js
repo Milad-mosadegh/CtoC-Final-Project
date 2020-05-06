@@ -5,7 +5,7 @@ import Slide from 'react-reveal/Slide';
 
 
 
-const UnitedCards = ({ title, price, id, images, interProduct }) => {
+const ItemCard = ({ title, price, id, images, setTargetProduct }) => {
     const setFvourities=async()=> console.log("fav called")
     return (
 
@@ -13,16 +13,16 @@ const UnitedCards = ({ title, price, id, images, interProduct }) => {
             <div className="unitedWrap ">
                 <Slide left>
             
-                    <div className="unitedCards" key={id} onClick={() => interProduct(id)}>
-                        
-                        <div className="unitedImgBox"
+                    <div className="unitedCards" key={id} >
+                        <button className="btn btn-warning fa fa-star" onClick={setFvourities}></button>
+                        <div className="unitedImgBox" onClick={() => setTargetProduct(id)}
                             style={{
                                 backgroundImage: `url(${`http://localhost:5000/avatars/${images}`})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat',
                             }}>
-                        <button className="btn fa fa-star" onClick={setFvourities}></button>
+                        
                         </div>
                         <div className="unitedContent">
                         
@@ -42,4 +42,4 @@ const UnitedCards = ({ title, price, id, images, interProduct }) => {
     );
 }
 
-export default UnitedCards;
+export default ItemCard;

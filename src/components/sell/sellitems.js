@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import MyNavbar from '../navbar/navBar';
-import MainSell from './mainsell';
 import GET from '../lib/get';
 import { POST, IMGPOST } from '../lib/post';
 import FormData from "form-data"
+import SellDetails from './sellDetails';
+import MyAlert from '../lib/alert';
+
 
 
 
 const SellItems = (props) => {
+
 
     const [images, setImages] = useState([])
     const [aut, setAuth] = useState(false)
@@ -19,8 +22,12 @@ const SellItems = (props) => {
         color: "",
         price: "",
         description: "",
-        creator:""
+        creator: ""
     })
+
+    const [alertId, setAlertId] = useState("")
+    const [alertText, setAlertText] = useState("")
+    const [showAlert, setShowAlert] = useState(false)
 
 
     useEffect(() => {
@@ -71,7 +78,11 @@ const SellItems = (props) => {
 
             const response = await IMGPOST("/api/sell/newproduct", formData, config)
             if (response.data && response.data.status === "success") {
-                alert("You have successfuly posted your product")
+                // alert("You have successfuly posted your product")
+                setAlertId("A")
+                setAlertText('You have successfuly posted your product')
+                setShowAlert(true)
+
             }
         }
         else {
@@ -83,7 +94,12 @@ const SellItems = (props) => {
             }
             const response = await POST("/api/sell/newproduct", product, config)
             if (response.data && response.data.status === "success") {
-                alert("You have successfuly posted your product")
+                // alert("You have successfuly posted your product")
+                setAlertId("A")
+                setAlertText('You have successfuly posted your product')
+                setShowAlert(true)
+
+
             }
         }
 
@@ -94,7 +110,7 @@ const SellItems = (props) => {
             <MyNavbar {...props} />
 
 
-            <MainSell
+            <SellDetails
                 {...props}
                 imageChangeHandler={imageChangeHandler}
                 changeHandler={changeHandler}
@@ -102,8 +118,7 @@ const SellItems = (props) => {
                 product={product}
             />
 
-
-
+            {showAlert ? <MyAlert id={alertId} alertText={alertText} /> : null}
         </div>
     );
 }

@@ -5,6 +5,8 @@ import Errors from "../lib/errors"
 
 import '../signin/style.css'
 import ResetForm from './resetForm';
+import MyAlert from '../lib/alert';
+
 
 
 export default function ResetPassword(props) {
@@ -13,6 +15,9 @@ export default function ResetPassword(props) {
     const [confirmPass, setconfirmPass] = useState("")
     let [inputErrors, setInputErrors] = useState("");
 
+    const [alertId, setAlertId] = useState("")
+    const [alertText, setAlertText] = useState("")
+    const [showAlert, setShowAlert] = useState(false)
     useEffect(() => {
         const verifyParams = async () => {
 
@@ -63,14 +68,22 @@ export default function ResetPassword(props) {
             }
             const response = await POST(`/api/recovery/resetpass/${id}`, formData, config)
             if (response.data.status === "success") {
-                alert("you have succesfully changed your password")
+                // alert("you have succesfully changed your password")
+                setAlertId("A")
+                setAlertText('you have succesfully changed your password')
+                setShowAlert(true)
+
+
                 localStorage.removeItem('c2creset-token')
                 localStorage.removeItem("c2c-profile")
                 props.history.push("/signin")
             }
             else if (response.data.status === "failed") {
                 setInputErrors({ ...inputErrors, backend: { ...inputErrors.backend, status: true, value: response.data.message } })
-                alert("sorry request failedn try again later")
+                // alert("sorry request failedn try again later")
+                setAlertId("B")
+                setAlertText('Sorry request failedn try again later')
+                setShowAlert(true)
             }
         }
 
@@ -121,6 +134,7 @@ export default function ResetPassword(props) {
                     confirmPass={confirmPass}
                 />
             </div>
+            {showAlert ? <MyAlert id={alertId} alertText={alertText} /> : null}
         </div>
     )
 }
