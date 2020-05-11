@@ -2,17 +2,70 @@ import React,{useState, useEffect} from 'react';
 import Slide from 'react-reveal/Slide';
 import {POST} from "../lib/post"
 
+// redux/favorites.js
+
+/* import { connect } from 'react-redux'
+
+export const reducer = ( state={list:[]}, action )=>{
+    switch(action.type){
+        case "fav/set": return {...state, list:action.list, loaded:true };
+        case "fav/add": return {...state, list:state.list.concat([action.id]) };
+        case "fav/del": return {...state, list:state.list.filter( item => item != action.id ) };
+        default: return state;
+    }
+};
+
+const setFavorite = async (id)=> {
+    if ( localStorage.getItem("c2c-token") ){
+        const config={
+            headers:{
+                'x-auth-token':localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        }
+        let response = await POST("/api/account/setfavourities", id, config)
+    }
+}
+
+export const actions = ( dispatch ) => ({ favoriteActions: {
+    fetch: async () => {
+        if( ! localStorage.getItem("c2c-token") ) return;
+        let response = await GET("/api/account/getfavourities")
+        if ( response.data.status === "success" )
+            dispatch({type:'fav/set',list:response.data.favourities})
+    },
+    set: list => dispatch({type:'fav/set',list}),
+    add:   id => { setFavorite(id); dispatch({type:'fav/add',id}) },
+    del:   id => { setFavorite(id); dispatch({type:'fav/del',id}) },
+}});
+
+export const withFavorites = connect(
+    state => { favorites: state.favorites.list },
+    actions
+);
+
+// useCase
+import { withFavorites } from '../redux/favourites'
+
+withComponents ( function({productId,favorites,favoriteActions}){
+    if ( ! favorites.loaded ) favoriteActions.fetch();
+    return favorites.includes(productId)
+    ? <Button onClick={favoriteActions.add(productId)}>yay</Button>
+    : <Button onClick={favoriteActions.del(productId)}>nay</Button>
+    ;
+})  */
 
 
-const ItemCard = ({ title, price, id, images, setTargetProduct, favourities }) => {
+
+const ItemCard = ({ title, price, id, images, setTargetProduct, favourit }) => {
 
     const [favouritized, setFavouritized] =useState(false)
 
     useEffect(()=>{
-        if(favourities.includes(id)) setFavouritized(true)
-    },[])
-    if(favourities) console.log("i got fav", favourities)
-    else console.log("no favoour", favourities)
+        if(favourit.includes(id)) setFavouritized(true)
+    },[favourit]);
+   
+
     const setFvourities=async()=> {
         if(localStorage.getItem("c2c-token")){
             const config={

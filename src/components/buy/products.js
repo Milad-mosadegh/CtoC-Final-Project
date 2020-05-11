@@ -5,13 +5,14 @@ import ItemCard from '../landingpage/itemCard';
 import GET from "../lib/get"
 
 export default function Products({ products, setTargetProduct }) {
-    const [favourities, setFavourities]=useState([])
+    const [favourit, setFavourit]=useState([])
     useEffect(()=>{
         const getFavourities = async()=>{
             if(!localStorage.getItem("c2c-token")) return
             let response= await GET("/api/account/getfavourities")
             if(response.data.status==="success")
-            setFavourities(response.data.favourities)
+            console.log(response.data.favourities)
+            setFavourit(response.data.favourities)
         }
         getFavourities()
     },[])
@@ -25,7 +26,7 @@ export default function Products({ products, setTargetProduct }) {
                         price={product.price}
                         id={product._id}
                         images={product.images.length > 0 ? product.images[0] : 'noimage.png'}
-                        favourities={favourities}
+                        favourit={favourit}
                     />
 
                 ) : null}
