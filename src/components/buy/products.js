@@ -9,7 +9,7 @@ export default function Products({ products, setTargetProduct }) {
     useEffect(()=>{
         const getFavourities = async()=>{
             if(!localStorage.getItem("c2c-token")) return
-            let response= await GET("/api/account/getfavourities")
+            let response= await GET("/api/account/getfavoritelist")
             if(response.data.status==="success")
             console.log(response.data.favourities)
             setFavourit(response.data.favourities)

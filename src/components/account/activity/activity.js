@@ -44,7 +44,7 @@ const Activity = (props) => {
 
         <div className="border shadow">
 
-            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+            <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
                 <Row>
                     <Col sm={12}>
                         <Nav variant="pills" justify="false" className="flex-column mt-5">
@@ -58,7 +58,7 @@ const Activity = (props) => {
                     </Col>
 
                     <Tab.Content>
-                        <Tab.Pane eventKey="first">
+                        <Tab.Pane eventKey="first" >
                             <Zoom>
                                 <div>
                                     <Products

@@ -63,7 +63,7 @@ const ItemCard = ({ title, price, id, images, setTargetProduct, favourit }) => {
 
     useEffect(()=>{
         if(favourit.includes(id)) setFavouritized(true)
-    },[favourit]);
+    },[favourit, id]);
    
 
     const setFvourities=async()=> {
@@ -74,7 +74,7 @@ const ItemCard = ({ title, price, id, images, setTargetProduct, favourit }) => {
                     'Content-Type': 'application/json'
                 }
             }
-            let response= await POST("/api/account/setfavourities", id, config)
+            let response= await POST("/api/account/setfavorities", id, config)
             if(response.data.status==="success") setFavouritized(!favouritized)
         }
     }

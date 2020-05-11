@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 import Products from '../../buy/products';
 import ProductDetails from '../../buy/productDetails';
 import GET from '../../lib/get';
+import axios from "axios"
 const Favorites = (props) => {
 
-    const [products, setProducts] = useState("")
+    const [products, setProducts] = useState([])
     const [showMainComponent, setShowMainComponents] = useState(true)
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
@@ -13,13 +14,14 @@ const Favorites = (props) => {
 
 
     useEffect(() => {
-        const fetchData = async () => {
-            let response = await GET("/api/account/myproducts")
-            console.log("response from buy", response)
-            setProducts(response.data.data)
-        }
-        fetchData()
-    }, [])
+     
+            axios.get("/api/account/getfavoriteproducts", {headers:{
+                'x-auth-token':localStorage.getItem("c2c-token")
+            }})
+            .then(res=>setProducts(res.data.products))
+            .catch(err=>err)
+     
+    },[])
 
     const setTargetProduct = (id) => {
         setShowMainComponents(false)

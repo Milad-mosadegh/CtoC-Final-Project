@@ -172,7 +172,7 @@ exports.getLastSeen=async(req,res)=>{
           "$in" :result.lastSeen
          }
       },{_id: 1,
-        title: 1,
+        title: 1,   
         category: 1,
         condition: 1,
         color: 1,
@@ -183,7 +183,7 @@ exports.getLastSeen=async(req,res)=>{
     res.json({status:"success", data:lastSeen})
 }
 
-exports.setFavourities=async(req,res)=>{
+exports.setFavorities=async(req,res)=>{
     let id=req.userId
     let productId=req.body.data
     let result = await User.findById(id, {liked:1})
@@ -198,7 +198,7 @@ exports.setFavourities=async(req,res)=>{
         else res.json({status:"success"})}
  )}
 
- exports.getFavourities=async(req,res)=>{
+ exports.getFavoritiesList=async(req,res)=>{
     
     let id=req.userId
     let result = await User.findById(id, {liked:1})
@@ -206,3 +206,28 @@ exports.setFavourities=async(req,res)=>{
     else res.json({status:"success", favourities:result.liked})  
 
    }
+
+exports.getFavoriteProducts=async(req,res)=>{
+
+
+    let id=req.userId
+    let result = await User.findById(id, {liked:1})
+    if(!result) return  res.json({status:"failed"})
+    let favoriteProducts = await Products.find({
+        "_id" : {
+          "$in" :result.liked
+         }
+      },{_id: 1,
+        title: 1,   
+        category: 1,
+        condition: 1,
+        color: 1,
+        price: 1,
+        images: 1,
+        priceRange: 1,});
+    
+    if(!favoriteProducts) return res.json({status:"failed", message:"No product to show", products:[]})
+    res.json({status:"success", products:favoriteProducts})
+   
+
+}

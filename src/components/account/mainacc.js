@@ -19,8 +19,13 @@ export default function MainAcc(props) {
         <div >
             <MyNavbar {...props} />
             <div className="container">
-                <Zoom>
-                    <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+
+                    <Tabs 
+                        defaultActiveKey="profile" 
+                        id="uncontrolled-tab-example" 
+                        mountOnEnter={true}
+                        unmountOnExit={true}>
+                        
                         <Tab eventKey="profile" title="Profile" >
                             <MyProfile {...props} />
                         </Tab>
@@ -28,11 +33,11 @@ export default function MainAcc(props) {
                             <MainActivity {...props} />
                         </Tab>
                         <Tab eventKey="favorities" title="Favorities">
-                            <Favorites />
+                            <Favorites {...props} />
                         </Tab>
 
                     </Tabs>
-                </Zoom>
+
             </div>
         </div>
     );

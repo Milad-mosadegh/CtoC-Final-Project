@@ -8,8 +8,10 @@ router.get("/myproducts", auth.checkToken, account.getMySoldProducts)
 router.get("/lastseen", auth.checkToken, account.getLastSeen)
 router.post("/profile", auth.checkToken, account.editProfile)
 router.post("/lastseen", auth.checkToken, account.lastSeen)
-router.post("/setfavourities", auth.checkToken, account.setFavourities)
-router.get("/getfavourities", auth.checkToken, account.getFavourities)
+router.post("/setfavorities", auth.checkToken, account.setFavorities)
+router.get("/getfavoritelist", auth.checkToken, account.getFavoritiesList)
+router.get("/getfavoriteproducts", auth.checkToken, account.getFavoriteProducts)
+
 
 
 
