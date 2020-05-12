@@ -9,6 +9,7 @@ import ProductDetails from '../../buy/productDetails';
 import Products from '../../buy/products';
 
 
+
 const Activity = (props) => {
 
     const [products, setProducts] = useState("")
@@ -49,10 +50,13 @@ const Activity = (props) => {
                     <Col sm={12}>
                         <Nav variant="pills" justify="false" className="flex-column mt-5">
                             <Nav.Item>
-                                <Nav.Link eventKey="first">My Products</Nav.Link>
+                                <Nav.Link eventKey="first">Active Products</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey="second">Sold Products</Nav.Link>
+                                <Nav.Link eventKey="second">Inactive Products</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link eventKey="third">Sold Products</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Col>
@@ -73,6 +77,9 @@ const Activity = (props) => {
                             </Zoom>
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">
+                            
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="third">
 
                         </Tab.Pane>
                     </Tab.Content>

@@ -6,11 +6,39 @@ import Fade from 'react-reveal/Fade'
 import PictureSlider from './pictureSlider';
 import NewMessage from '../messages/newMessage';
 import { CheckAuthentication } from '../lib/auth'
+import SigninModal from "../signin/signinModal/signinModal"
+import { makeStyles } from '@material-ui/core/styles';
+import PasswordReset from '../signin/resetModal';
+
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '25ch',
+        },
+    },
+}));
 
 const ProductDetailsForm = ({ productDetail, handleBgImage, images, description, postedBy, productId, color, condition, quantity, title, bgImage }) => {
 
     const [auth, setAuth] = useState(false)
+    const [showSignin, setShowSignin]= useState(false)
+    const [showReset, setShowReset]= useState(false)
 
+    const openShowSignin=()=>setShowSignin(true)
+    const closeShowSignin=()=>setShowSignin(false)
+    const classes = useStyles();
+
+    const handleOpenReset =()=>{
+        setShowSignin(false)
+        setShowReset(true)
+    }
+    const handleCloseReset =()=>{
+        setShowReset(false)
+        setShowSignin(true)
+    }
+    const submitHandler=()=>console.log("it is for fun  ")
     useEffect(() => {
         const checkAuth = async () => {
             let res = await CheckAuthentication();
@@ -101,7 +129,8 @@ const ProductDetailsForm = ({ productDetail, handleBgImage, images, description,
                                 <NewMessage
                                     title={productDetail.title}
                                     productId={productDetail._id}
-                                    recipentId={productDetail ? productDetail.creator._id : null} />
+                                    recipentId={productDetail ? productDetail.creator._id : null}
+                                    openShowSignin={openShowSignin}  />
                             </div>
 
                         </div>
@@ -109,6 +138,23 @@ const ProductDetailsForm = ({ productDetail, handleBgImage, images, description,
 
                     : null}
             </div>
+            {showSignin?<SigninModal 
+                        handleClose={closeShowSignin}
+                        show={showSignin} 
+                        classes={classes}
+                        handleCloseReset={handleCloseReset}
+                        handleOpenReset={handleOpenReset}
+                        showReset={showReset}
+                        productSubmitHandler={submitHandler}
+                        />
+                        :null}
+            {showReset? <PasswordReset 
+                            handleClose={handleCloseReset} 
+                            handleOpen={handleOpenReset} 
+                            show={showReset} classes={classes} 
+                            /> 
+                            :null}       
+                                    
         </div>
     );
 }

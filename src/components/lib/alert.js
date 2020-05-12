@@ -11,9 +11,8 @@ const MyAlert = (props) => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            derenderModal()
-            localStorage.removeItem("c2c-token")
-            props.history.push('./signin')
+
+            props.history.push({pathname:'/account',mykey:"activities"})
         }, 1000);
         return () => clearTimeout(timer);
 

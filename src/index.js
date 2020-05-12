@@ -3,9 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Axios from 'axios';
+
+// import store from 'store.js'
+
+Axios.defaults.headers['x-auth-token'] = localStorage.getItem("c2c-token");
+Axios.interceptors.response.use( (response=>response), function (error) {
+  if ( 401 === error.response.status ) {
+    window.location = '/login';
+    // store.dispatch({type:'a/logout'});
+  } else { return Promise.reject(error) }
+});
 
 ReactDOM.render(
+  // <Provider store={store}>
   <React.StrictMode>
     <App />
   </React.StrictMode>,

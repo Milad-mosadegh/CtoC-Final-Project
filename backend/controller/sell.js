@@ -7,9 +7,11 @@ const cp      = require('child_process');
 exports.newProduct = async (req,res)=>{
     let priceRange;
 
-
+    console.log(req.body.data, "in new product")
     if(req.body.data){
-            const {title, category, condition, quantity, color, price, description, creator} = req.body.data
+            const {title, category, condition, quantity, color, price, description} = req.body.data
+            const creator= req.userId
+
             if(price>=250) priceRange=6
             else if(price>=200) priceRange=5
                 else if(price>=150) priceRange=4
@@ -53,7 +55,8 @@ exports.newProduct = async (req,res)=>{
         })
         const upload = multer({storage:storageTarget}).array("files", 6)
         upload(req,res, async()=>{
-            const {title, category, condition, quantity, color, price, description, creator} = req.body
+            const {title, category, condition, quantity, color, price, description} = req.body
+            const creator= req.userId
             let priceRange;
             if(price>=250) priceRange=6
                 else if(price>=200) priceRange=5

@@ -1,19 +1,16 @@
 import React from 'react';
-
 import MyNavbar from '../navbar/navBar';
 import MyProfile from './profile/mainProfile';
 import '../../App.css'
 import MainActivity from './activity/activity.js';
-
-import Zoom from 'react-reveal/Zoom';
-
 import { Tabs, Tab } from 'react-bootstrap'
 import Favorites from './favorities/favorities';
-
 import '../styles/main.css'
 
 export default function MainAcc(props) {
+    console.log(props, "in account")
 
+    const mykey= props.location.mykey? props.location.mykey:"profile"
 
     return (
         <div >
@@ -21,7 +18,7 @@ export default function MainAcc(props) {
             <div className="container">
 
                     <Tabs 
-                        defaultActiveKey="profile" 
+                        defaultActiveKey={mykey}
                         id="uncontrolled-tab-example" 
                         mountOnEnter={true}
                         unmountOnExit={true}>

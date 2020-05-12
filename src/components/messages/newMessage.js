@@ -5,10 +5,11 @@ import GET from '../lib/get';
 import { Link } from "react-router-dom"
 import Input from '@material-ui/core/Input';
 import {POST} from "../lib/post"
+import SigninModal from '../signin/signinModal/signinModal';
 
 
 const NewMessage = (props) => {
-    const {title, productId, recipentId}=props
+    const {title, productId, recipentId, openShowSignin}=props
     const [show, setShow] = useState(false);
     const [target, setTarget] = useState(null);
     const [auth, setAuth] = useState(false)
@@ -91,13 +92,16 @@ const NewMessage = (props) => {
                   </Button>
                 </Popover.Content>
               </div>
-              :<div>
+              :
+              <div>
               <Popover.Title as="h3">Request failed!</Popover.Title>
               <Popover.Content>
-              <small className="mt-3 myText">You are not logged in please <Link to="/signin">Signin</Link></small>
+              <small className="mt-3 myText">You are not logged in please <Link onClick={openShowSignin}>Signin</Link></small>
                 </Popover.Content>
               </div>
+              
 }
+            
             
             
           </Popover>
