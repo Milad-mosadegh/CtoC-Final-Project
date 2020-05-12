@@ -1,8 +1,8 @@
 const User = require("../model/userModel")
 const multer = require("multer")
 const path = require("path")
-const Products = require('../model/productModel')
-const SoldSchema = require('../model/productModel')
+const ActiveProducts = require('../model/activeProductModel')
+const SoldProducts = require('../model/soldProductModel')
 
 
 
@@ -97,7 +97,7 @@ exports.editProfile = async (req, res) => {
 }
 
 exports.getMyProducts = async (req, res) => {
-    let products = await Products.find({ creator: req.userId },
+    let products = await ActiveProducts.find({ creator: req.userId },
         {
             _id: 1,
             title: 1,
@@ -114,7 +114,7 @@ exports.getMyProducts = async (req, res) => {
 }
 
 exports.getMySoldProducts = async (req, res) => {
-    let products = await SoldSchema.find({ creator: req.userId },
+    let products = await SoldProducts.find({ creator: req.userId },
         {
             _id: 1,
             title: 1,
@@ -167,7 +167,7 @@ exports.getLastSeen=async(req,res)=>{
     let result = await User.findById(req.userId, {lastSeen:1})
     if(!result) return res.json({status:"failed" })
 
-    let lastSeen = await Products.find({
+    let lastSeen = await ActiveProducts.find({
         "_id" : {
           "$in" :result.lastSeen
          }
@@ -213,7 +213,7 @@ exports.getFavoriteProducts=async(req,res)=>{
     let id=req.userId
     let result = await User.findById(id, {liked:1})
     if(!result) return  res.json({status:"failed"})
-    let favoriteProducts = await Products.find({
+    let favoriteProducts = await ActiveProducts.find({
         "_id" : {
           "$in" :result.liked
          }

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/main.css'
 import Zoom from 'react-reveal/Zoom'
-
-
-import NewMessage from "../messages/newMessage";
 import '../styles/main.css';
 import GET from '../lib/get';
 import ProductDetailsForm from './productDetailsForm';
@@ -39,8 +36,15 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
         setBgImage(backgroundImage)
     }
 
+    const deactivateHandler =(id)=>console.log("deactivate handler called",id)
+    const activateHandler   =(id)=>console.log("activate handler called",id)
+    const deleteHandler     =(id)=>console.log("delete handler called", id)
+    const editHandler       =(id)=>console.log("edit handler called", id)
+    const soldHandler       =(id)=>console.log("edit handler called" , id)
+    const reportHandler     =(id)=>console.log("Report handler called" , id)
+    const favoriteHandler   =(id)=>console.log("favorite handler called" , id)
 
-    console.log(productDetail, "in details")
+
     return (
 
         <div className="my-container" show={showModel} onHide={handleClose}>
@@ -51,17 +55,24 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
             <Zoom>
                 <div>
                     <ProductDetailsForm
-                        description={productDetail.description}
-                        postedBy={productDetail ? productDetail.creator.firstName : null}
-                        productId={productDetail ? productDetail.creator._id : null}
-                        color={productDetail.color}
-                        condition={productDetail.condition}
-                        quantity={productDetail.quantity}
-                        title={productDetail.title}
-                        bgImage={bgImage}
-                        images={productDetail.images}
-                        handleBgImage={handleBgImage}
-                        productDetail={productDetail}
+                        description         ={productDetail.description}
+                        postedBy            ={productDetail ? productDetail.creator.firstName : null}
+                        productId           ={productDetail ? productDetail.creator._id : null}
+                        color               ={productDetail.color}
+                        condition           ={productDetail.condition}
+                        quantity            ={productDetail.quantity}
+                        title               ={productDetail.title}
+                        bgImage             ={bgImage}
+                        images              ={productDetail.images}
+                        handleBgImage       ={handleBgImage}
+                        productDetail       ={productDetail}
+                        deactivateHandler   ={deactivateHandler}
+                        activateHandler     ={activateHandler}
+                        deleteHandler       ={deleteHandler}
+                        editHandler         ={editHandler}
+                        soldHandler         ={soldHandler}
+                        reportHandler       ={reportHandler}
+                        favoriteHandler     ={favoriteHandler}
                     />
 
                 </div>

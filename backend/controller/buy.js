@@ -1,7 +1,7 @@
-const Products = require("../model/productModel")
+const ActiveProducts = require("../model/activeProductModel")
 const User = require("../model/userModel")
 exports.allProucts = async (req, res) => {
-    Products.find({}, {
+    ActiveProducts.find({}, {
         _id: 1,
         title: 1,
         category: 1,
@@ -25,7 +25,7 @@ exports.allProucts = async (req, res) => {
 
 exports.productDetails = async (req, res) => {
     const id = req.params.id
-    let product = await Products.findById(id, {
+    let product = await ActiveProducts.findById(id, {
         title: 1,
         category: 1,
         condition: 1,
@@ -50,7 +50,7 @@ exports.productDetails = async (req, res) => {
 
 exports.latestProducts =async(req,res)=>{
 
-    let latest= await Products.find({},{
+    let latest= await ActiveProducts.find({},{
         _id: 1,
         title: 1,
         category: 1,

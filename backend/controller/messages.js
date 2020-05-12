@@ -1,6 +1,6 @@
 const Coversation = require("../model/conversationModel")
 const User = require("../model/userModel")
-const Product= require("../model/productModel")
+const ActiveProduct= require("../model/activeProductModel")
 
 
 exports.createMessage=async(req,res)=>{
@@ -65,7 +65,7 @@ exports.deleteMessage=async(req,res)=>{
 }
 exports.getConversation=async(req,res)=>{
     let conversationResult = await Coversation.findById(req.params.id,{messages:1,productId:1})
-                                              .populate([{path:"productId",select:"title", model:Product}])
+                                              .populate([{path:"productId",select:"title", model:ActiveProduct}])
                                               console.log(conversationResult)
     res.json({status:"success", message:"you reached getconversation", data:conversationResult})
     

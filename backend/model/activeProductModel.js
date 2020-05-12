@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const User = require("./userModel")
-const productSchema= new mongoose.Schema({
+const ActiveProductSchema= new mongoose.Schema({
 
     title:{
         type:String
@@ -47,4 +47,4 @@ const productSchema= new mongoose.Schema({
         default: Date.now 
       }
 })
-module.exports = mongoose.model("products", productSchema)
+module.exports = mongoose.model("activeproducts", ActiveProductSchema)

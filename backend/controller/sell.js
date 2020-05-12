@@ -1,5 +1,5 @@
 
-const product = require("../model/productModel");
+const ActiveProduct = require("../model/activeProductModel");
 const multer  = require("multer");
 const path    = require("path");
 const cp      = require('child_process');
@@ -19,7 +19,7 @@ exports.newProduct = async (req,res)=>{
                         else if(price>=50) priceRange=2
                             else priceRange=1
                             
-            const newProduct = new product({
+            const newProduct = new ActiveProduct({
                 title,
                 category,
                 condition,
@@ -73,7 +73,7 @@ exports.newProduct = async (req,res)=>{
                 cp.spawnSync('convert',[f.path,'-resize','500x',thumbPath]);
             })
             let images=req.files.map(values=>values.filename)
-            const newProduct = new product({
+            const newProduct = new ActiveProduct({
                 title,
                 category,
                 condition,

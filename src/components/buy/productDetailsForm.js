@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import '../styles/main.css'
 import Zoom from 'react-reveal/Zoom'
 import Fade from 'react-reveal/Fade'
@@ -20,7 +19,26 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const ProductDetailsForm = ({ productDetail, handleBgImage, images, description, postedBy, productId, color, condition, quantity, title, bgImage }) => {
+const ProductDetailsForm = (props) => {
+
+    const { favoriteHandler,
+            reportHandler,
+            productDetail,
+            soldHandler,
+            deleteHandler, 
+            editHandler, 
+            handleBgImage, 
+            images, 
+            description, 
+            postedBy, 
+            productId, 
+            color, 
+            condition, 
+            quantity, 
+            title, 
+            bgImage,
+            deactivateHandler, 
+            activateHandler } = props
 
     const [auth, setAuth] = useState(false)
     const [showSignin, setShowSignin]= useState(false)
@@ -116,21 +134,21 @@ const ProductDetailsForm = ({ productDetail, handleBgImage, images, description,
                 {productDetail ?
                     productDetail.creator._id === currentUserId ?
                         <div>
-                            <button className='bigBlueButton'>Edit</button>
-                            <button className='bigRedButton ml-1'>Delete</button>
-                            <button className='bigBlueButton ml-1'>Deactive</button>
-                            <button className='bigRedButton ml-1'>Sold</button>
+                            <button className='bigBlueButton'       onClick={()=>editHandler(productId)}>       Edit    </button>
+                            <button className='bigRedButton ml-1'   onClick={()=>deleteHandler(productId)}>     Delete  </button>
+                            <button className='bigBlueButton ml-1'  onClick={()=>deactivateHandler(productId)}> Deactive</button>
+                            <button className='bigRedButton ml-1'   onClick={()=>soldHandler(productId)}>       Sold    </button>
                         </div>
                         : <div>
 
                             <div className="myIcon">
-                                <div className="myIcons fa fa-star-o"></div>
-                                <div className="myIcons fa fa-ban"></div>
+                                <div className="myIcons fa fa-star-o"   onClick={()=>favoriteHandler(productId)}>   </div>
+                                <div className="myIcons fa fa-ban"      onClick={()=>reportHandler(productId)}>     </div>
                                 <NewMessage
-                                    title={productDetail.title}
-                                    productId={productDetail._id}
-                                    recipentId={productDetail ? productDetail.creator._id : null}
-                                    openShowSignin={openShowSignin}  />
+                                    title           ={productDetail.title}
+                                    productId       ={productDetail._id}
+                                    recipentId      ={productDetail ? productDetail.creator._id : null}
+                                    openShowSignin  ={openShowSignin}  />
                             </div>
 
                         </div>
@@ -139,19 +157,19 @@ const ProductDetailsForm = ({ productDetail, handleBgImage, images, description,
                     : null}
             </div>
             {showSignin?<SigninModal 
-                        handleClose={closeShowSignin}
-                        show={showSignin} 
-                        classes={classes}
-                        handleCloseReset={handleCloseReset}
-                        handleOpenReset={handleOpenReset}
-                        showReset={showReset}
+                        handleClose         ={closeShowSignin}
+                        show                ={showSignin} 
+                        classes             ={classes}
+                        handleCloseReset    ={handleCloseReset}
+                        handleOpenReset     ={handleOpenReset}
+                        showReset           ={showReset}
                         productSubmitHandler={submitHandler}
                         />
                         :null}
             {showReset? <PasswordReset 
-                            handleClose={handleCloseReset} 
-                            handleOpen={handleOpenReset} 
-                            show={showReset} classes={classes} 
+                            handleClose     ={handleCloseReset} 
+                            handleOpen      ={handleOpenReset} 
+                            show            ={showReset} classes={classes} 
                             /> 
                             :null}       
                                     
@@ -164,11 +182,3 @@ export default ProductDetailsForm;
 
 
 
-/*
-style = {{
-    backgroundImage: `url(${`http://localhost:5000/avatars/${bgImage}`})`,
-        backgroundPosition: 'center',
-            backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                    outline: "none"
-}} */

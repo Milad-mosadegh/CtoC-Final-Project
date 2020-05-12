@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const passRecoveryModel = new mongoose.Schema({
+const PassRecoveryModel = new mongoose.Schema({
 
     userId:{
         type:String
@@ -21,4 +21,4 @@ const passRecoveryModel = new mongoose.Schema({
     }
 
 })
-module.exports = mongoose.model("passrecovery",passRecoveryModel)
+module.exports = mongoose.model("passrecovery",PassRecoveryModel)

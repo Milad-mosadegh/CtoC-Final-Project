@@ -1,8 +1,8 @@
-const user= require("../model/userModel")
+const User= require("../model/userModel")
 const bcrypt =require("bcrypt")
 const jwt = require("jsonwebtoken")
 const emailCheck = require("../middleware/nodemailer")
-const passRecovery = require("../model/passRecoveryModel")
+const PassRecovery = require("../model/passRecoveryModel")
 
 //Password Recovery Token
 const passResetToken = (payload,pass) =>jwt.sign(payload, pass, {expiresIn:3600})
@@ -11,7 +11,7 @@ const passResetToken = (payload,pass) =>jwt.sign(payload, pass, {expiresIn:3600}
 
 exports.resetLink = async(req,res)=>{
     const {email} =req.body.data
-    let userCheck= await user.findOne({email})
+    let userCheck= await User.findOne({email})
     if(!userCheck) return res.json({status:"failed", message:"Invalid email address"})
 
     const payload ={
@@ -21,7 +21,7 @@ exports.resetLink = async(req,res)=>{
 
     const resetToken = await passResetToken(payload, userCheck.pass)
     console.log(resetToken)
-    const newPassRcovery= new passRecovery({
+    const newPassRcovery= new PassRecovery({
         userId : userCheck._id,
         recovered:false,
         requestTimeStamp:Date.now(),
@@ -47,7 +47,7 @@ exports.resetLink = async(req,res)=>{
 
 exports.recoverPassword = async(req,res)=>{
     const {token} = req.body.data
-    let tokenCheck= await passRecovery.findOne({tokenId:token})
+    let tokenCheck= await PassRecovery.findOne({tokenId:token})
     if(!tokenCheck) return res.json({status:"failed", message:"invalid token"})
     if(tokenCheck.recovered) return res.json({status:"failed", message:"invalid token"})
         else res.json({
@@ -71,7 +71,7 @@ exports.resetPassword=async(req,res)=>{
     
     if(pass!==confirmPass) return res.json({status:"failed", message:"Passwords mismatch please check your inputs"})
     
-    let targetUser = await user.findById(id)
+    let targetUser = await User.findById(id)
 
     if(!targetUser) return res.json({status:"failed", message:"Authentication failed"})
 
@@ -100,12 +100,12 @@ exports.resetPassword=async(req,res)=>{
         pass:hashedPass
     }
     console.log(id, profileData)
-    console.log(await user.findById(id))
-    await user.findByIdAndUpdate(id, profileData,async (err, doc)=>{
+    console.log(await User.findById(id))
+    await User.findByIdAndUpdate(id, profileData,async (err, doc)=>{
         if(err) return res.json({status:"failed", message:err})
         else {
 
-            await passRecovery.findOneAndUpdate({tokenId:token}, {recovered:true}, (err,doc)=>{
+            await PassRecovery.findOneAndUpdate({tokenId:token}, {recovered:true}, (err,doc)=>{
                 if(err) res.json({status:"failed", message:err})
                     else res.json({status:"success", message:"You have succesfully cahnged your password"})
             })

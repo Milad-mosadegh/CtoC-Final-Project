@@ -1,4 +1,4 @@
-const user= require("../model/userModel")
+const User= require("../model/userModel")
 const bcrypt =require("bcrypt")
 const jwt = require("jsonwebtoken")
 const jwtSecretKey = process.env.JWT_SECRET_KEY
@@ -14,7 +14,7 @@ const createToken =  id => jwt.sign({id}, jwtSecretKey, {expiresIn:3600})
 exports.signin=async (req,res)=>{
 
     const {email, pass} = req.body.data;
-    await user.findOne({email},(err,result)=>{
+    await User.findOne({email},(err,result)=>{
         if(err) return res.status(500).json({
             status:"failed",
             message:"Sorry, we are unable to process your request please try again"})
@@ -52,7 +52,7 @@ exports.signup=async (req,res)=>{
 
     const {firstName,lastName,email,pass} = req.body.data
 
-    let userCheck= await user.findOne({email})
+    let userCheck= await User.findOne({email})
 
     if(userCheck){
         return res.json({status:"failed", message:"Sorry! this email is already registered with us"})
@@ -61,7 +61,7 @@ exports.signup=async (req,res)=>{
     let hashedPass = await bcrypt.hash(pass, 10)
     console.log(hashedPass)
     if(!hashedPass) return res.status(501).json({status:"failed", message:"Technical Erro 501, Please contact support team!"})
-    const newUser = new user({
+    const newUser = new User({
                 firstName,
                 lastName,
                 email,
@@ -81,7 +81,7 @@ exports.signup=async (req,res)=>{
 //Checking Authentication of user
 
 exports.authenticated=async(req,res)=>{
-    await user.findById(req.userId, (err, doc)=>{
+    await User.findById(req.userId, (err, doc)=>{
         if(err) return res.json({status:"failed", message:"Unable to retrieve your data please try again"})
         const {firstName, lastName, email, address, paypalId, phoneNumber, profileImage} = doc 
         let profileData={
@@ -101,7 +101,7 @@ exports.changePassword =async(req,res)=>{
 
     if(pass!==confirmPass) return res.json({status:"failed", message:"Request Failed, Please check your inputs"})
 
-    await user.findById(req.userId,(err,result)=>{
+    await User.findById(req.userId,(err,result)=>{
         if(err) return res.status(500).json({
             status:"failed",
             message:"Sorry, we are unable to process your request please try again"})
@@ -116,7 +116,7 @@ exports.changePassword =async(req,res)=>{
                     if(isPassCorrect){
                         let hashedPass = await bcrypt.hash(pass, 10)
                         const profileData = {pass:hashedPass};
-                        await user.findByIdAndUpdate(req.userId, profileData,async (err, doc)=>{
+                        await User.findByIdAndUpdate(req.userId, profileData,async (err, doc)=>{
                             if(err) return res.json({status:"failed", message:err})
                             else {
                                 
