@@ -4,7 +4,7 @@ const auth = require("../middleware/checkAuthentication")
 
 router.get("/profile", auth.checkToken, account.getProfile)
 router.get("/myproducts", auth.checkToken, account.getMyProducts)
-router.get("/myproducts", auth.checkToken, account.getMySoldProducts)
+router.get("/soldproducts", auth.checkToken, account.getSoldProducts)
 router.get("/inactiveproducts", auth.checkToken, account.getInactiveProducts)
 router.get("/lastseen", auth.checkToken, account.getLastSeen)
 router.post("/profile", auth.checkToken, account.editProfile)

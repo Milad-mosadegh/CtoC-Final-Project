@@ -237,9 +237,16 @@ exports.getInactiveProducts = async(req,res)=>{
 
     let id=req.userId
     let result = await InActiveProducts.find({creator:id},{_id:1, title:1, images:1, price:1})
-    console.log(result,"jinactive products")
     if(!result) return  res.json({failed:"You have no Inactive Products"})
     res.json({success:"You have successfully retrieved", products:result})
-   
+
+}
+
+exports.getSoldProducts = async(req,res)=>{
+
+    let id=req.userId
+    let result = await SoldProducts.find({creator:id},{_id:1, title:1, images:1, price:1})
+    if(!result) return  res.json({failed:"You have no Sold Products"})
+    if(result) res.json({success:"You have successfully retrieved", products:result})
 
 }

@@ -18,6 +18,8 @@ const Activity = (props) => {
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
     const [inActiveProducts, setInActiveProducts] = useState("")
+    const [soldProducts, setSoldProducts] = useState("")
+
 
 
 
@@ -28,6 +30,8 @@ const Activity = (props) => {
             setProducts(response.data.data)
             let res = await GET("/api/account/inactiveproducts")
             setInActiveProducts(res.data.products)
+            let sold = await GET("/api/account/soldproducts")
+            setSoldProducts(sold.data.products)
         }
         fetchData()
     }, [])
@@ -103,7 +107,7 @@ const Activity = (props) => {
                             <Zoom>
                                 <div>
                                     <Products
-                                        products={products}
+                                        products={soldProducts}
                                         setTargetProduct={setTargetProduct}
                                     />
                                     {showModal ?
