@@ -2,5 +2,13 @@
 
 
 nav > .nav-link {
-    color: red !important ;
+    color: $bestBlueColor ;
 }
+
+.milad .nav-link {
+    color: whitesmoke ;
+    background: $bestRedColor;
+    margin-top: 10px;
+}
+
+

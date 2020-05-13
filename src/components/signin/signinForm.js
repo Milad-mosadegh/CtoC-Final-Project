@@ -43,7 +43,7 @@ export default function SigninForm(props) {
 
                             />
 
-                            <button className="bigBlueButton" type="submit">Sign in</button>
+                            <button className="myBlueButton-lg" type="submit">Sign in</button>
                             {errors.form ? errors.form.status ? <smail className="sText"><p>{errors.form.value}</p></smail> : null : null}
                             {errors.authentication ? errors.authentication.status ? <smail className="sText"><p>{errors.authentication.value}</p></smail> : null : null}
 

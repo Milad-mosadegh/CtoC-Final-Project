@@ -49,11 +49,11 @@ const Activity = (props) => {
 
     return (
 
-        <div className="border shadow">
+        <div className="border shadow milad">
 
             <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
                 <Row>
-                    <Col sm={12}>
+                    <Col sm={2}>
                         <Nav variant="pills" justify="false" className="flex-column mt-5">
                             <Nav.Item>
                                 <Nav.Link eventKey="first">Active Products</Nav.Link>

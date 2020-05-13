@@ -55,10 +55,10 @@ export default function ChangePassform(props) {
 
                                 <div className="mt-5 d-flex">
                                     <div className="col-md-6 co-sm-12">
-                                        <button className="bigBlueButton btn-block" type="submit">Submit</button>
+                                        <button className="myBlueButton-lg btn-block" type="submit">Submit</button>
                                     </div>
                                     <div className="col-md-6 co-sm-12">
-                                        <button onClick={derenderModal} className="bigRedButton btn-block" type="submit">
+                                        <button onClick={derenderModal} className="myRedButton-lg btn-block" type="submit">
                                             Cancel
                                      </button>
                                     </div>

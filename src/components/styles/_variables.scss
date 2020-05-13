@@ -10,13 +10,8 @@ $hardBoxShadow : 10px 10px 10px black;
 $bestBlueColor : #11213b;
 $bestRedColor : #b72826;
 
-@mixin myButton($background,$color,$width,$height) {
-    width: $width;
-    height: $height;
-    color: $color;
-    background: $background;
-    // border-radius: 10px;
-}
+$bestOrangeColor:rgb(255, 139, 13);
+$bestGreenColor:rgb(126 , 197, 68);
 
 
 
@@ -56,14 +51,23 @@ $bestRedColor : #b72826;
     }
 }
 
+@mixin myButton($background,$color,$width,$height) {
+    width: $width;
+    height: $height;
+    color: $color;
+    background: $background;
+    // border-radius: 10px;
+}
 
-.myBlueButton{
+
+.myBlueButton-sm{
     @include myButton($bestBlueColor,#fff,100px,30px);
     border: none;
     outline: none;
     opacity: 0.8;
     transition: 0.4s;
     user-select: none;
+        box-shadow: $lightBoxShadow;
     &:hover{
         opacity: 1;
         box-shadow: $mediumBoxShadow;
@@ -71,30 +75,14 @@ $bestRedColor : #b72826;
         transition: 0.6s;
     }
 }
-.myRedButton{
+.myRedButton-sm{
     @include myButton($bestRedColor,#fff,100px,30px);
     border: none;
     outline: none;
     opacity: 0.8;
     transition: 0.4s;
     user-select: none;
-    &:hover{
-        opacity: 1;
-        box-shadow: $mediumBoxShadow;
-        transform: translateY(-5px);
-        transition: 0.6s;
-    }
-
-}
-
-.bigBlueButton{
-    @include myButton($bestBlueColor,#fff,80px,40px);
-    border: none;
-    outline: none;
-    opacity: 0.8;
-    transition: 0.4s;
-    font-size: 20px;
-    user-select: none;
+    box-shadow: $lightBoxShadow;
     &:hover{
         opacity: 1;
         box-shadow: $mediumBoxShadow;
@@ -103,15 +91,68 @@ $bestRedColor : #b72826;
     }
 }
 
-
-.bigRedButton{
-    @include myButton($bestRedColor,#fff,80px,40px);
+.myBlueButton-lg{
+    @include myButton($bestBlueColor,#fff,120px,40px);
     border: none;
     outline: none;
     opacity: 0.8;
     transition: 0.4s;
     font-size: 20px;
     user-select: none;
+    box-shadow: $lightBoxShadow;
+    &:hover{
+        opacity: 1;
+        box-shadow: $mediumBoxShadow;
+        transform: translateY(-5px);
+        transition: 0.6s;
+    }
+}
+
+.myOrabgeButton-lg{
+    @include myButton($bestOrangeColor,#fff,120px,40px);
+    border: none;
+    outline: none;
+    opacity: 0.8;
+    transition: 0.4s;
+    font-size: 20px;
+    user-select: none;
+    box-shadow: $lightBoxShadow;
+    &:hover{
+        opacity: 1;
+        box-shadow: $mediumBoxShadow;
+        transform: translateY(-5px);
+        transition: 0.6s;
+    }
+}
+
+.myGreenButton-lg {
+    @include myButton($bestGreenColor,#fff,120px,40px);
+    border: none;
+    outline: none;
+    opacity: 0.8;
+    transition: 0.4s;
+    font-size: 20px;
+    user-select: none;
+    box-shadow: $lightBoxShadow;
+    &:hover{
+        opacity: 1;
+        box-shadow: $mediumBoxShadow;
+        transform: translateY(-5px);
+        transition: 0.6s;
+    }
+}
+
+
+.myRedButton-lg{
+    @include myButton($bestRedColor,#fff,120px,40px);
+    border: none;
+    outline: none;
+    opacity: 0.8;
+    transition: 0.4s;
+    font-size: 20px;
+    user-select: none;
+    box-shadow: $lightBoxShadow;
+
     &:hover{
         opacity: 1;
         box-shadow: $mediumBoxShadow;

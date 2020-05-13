@@ -75,7 +75,7 @@ export default function SignupForm(props) {
                             />
                             <smail className="sText">{inputErrors.confirmPass ? inputErrors.confirmPass.status ? inputErrors.confirmPass.value : null : null}</smail>
 
-                            <button className="bigRedButton mt-4" type='submit'>Submit</button>
+                            <button className="myRedButton-lg mt-4" type='submit'>Submit</button>
                             <small className="sText">{inputErrors.form ? inputErrors.form.status ? inputErrors.form.value : null : null}</small>
                             <small className="sText">{inputErrors.backend ? inputErrors.backend.status ? inputErrors.backend.value : null : null}</small>
                             <small className="mt-5 myText text-dark">Are you already registered with us? <Link to="/signin" className="L2">Signin</Link> </small>
