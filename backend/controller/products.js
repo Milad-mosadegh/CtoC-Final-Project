@@ -1,7 +1,8 @@
 
 const ActiveProduct = require("../model/activeProductModel");
 const InActiveProduct = require("../model/inactiveProductModel")
-const mongoose=require("mongoose")
+const SoldProduct = require("../model/soldProductModel")
+const DeletedProduct = require("../model/deletedProductModel")
 const multer  = require("multer");
 const path    = require("path");
 const cp      = require('child_process');
@@ -102,40 +103,63 @@ exports.newProduct = async (req,res)=>{
 
 exports.inactiveProduct=async(req,res)=>{
     const productId= req.body.data.id  
-    await ActiveProduct.findById(productId,(err,result)=>{
-    result.remove()
-    result=result.toObject()
-    let swap = new InActiveProduct(result)
-
+    await ActiveProduct.findOne({_id:productId, creator:req.userId},(err,result)=>{
+    if(err) return res.json({failed:"Sorry! your request is failed"})
+    if(result){
+        result.remove()
+        result=result.toObject()
+        result.active=false
+        let swap = new InActiveProduct(result)
+        swap.save()
+        res.json({success:"You have successfully deactivated the Product"})
+        }
+    })
     
-    swap.save()
-    
-})
-
-    res.json({success:"You have successfully inactivated the Product"})
 }
 
 exports.soldProduct=async(req,res)=>{
-    console.log("you reached soldProduct", req.userId, "data ;", req.body.data)
-    res.json({success:"you reached sold"})
+    const productId= req.body.data.id  
+    await ActiveProduct.findOne({_id:productId, creator:req.userId},(err,result)=>{
+        if(err) return res.json({failed:"Sorry! your request is failed"})
+        if(result){
+            result.remove()
+            result=result.toObject()
+            result.sold=true
+            let swap = new SoldProduct(result)
+            swap.save()
+            res.json({success:"You have successfully marked the Product Sold"})
+        }
 
+    })
 }
-exports.deleteProduct=async(req,res)=>{
-    console.log("you reached deleteProduct", req.userId, "data ;", req.body.data)
-    res.json({success:"you reached delete"})
 
+exports.deleteProduct=async(req,res)=>{
+    const productId= req.body.data.id  
+    await ActiveProduct.findOne({_id:productId, creator:req.userId},(err,result)=>{
+        if(err) return res.json({failed:"Sorry! your request is failed"})
+        if(result){
+            result.remove()
+            result=result.toObject()
+            let swap = new DeletedProduct(result)
+            swap.save()
+            res.json({success:"You have deleted the Product successfully"})
+        }
+})
 }
 
 exports.activateProduct=async(req,res)=>{
-    const productId= req.body.data.id
-    let activeProduct= new ActiveProduct()
-    await InActiveProduct.findById(productId,(err,result)=>{
-        console.log(result)
-        activeProduct.save(result)
-        result.remove() });
-
-    res.json({success:"You have successfully activated the Product"})
-
+    const productId= req.body.data.id  
+    await InActiveProduct.findOne({_id:productId, creator:req.userId},(err,result)=>{
+        if(err) return res.json({failed:"Sorry! your request is failed"})
+        if(result){
+            result.remove()
+            result=result.toObject()
+            result.active=true
+            let swap = new ActiveProduct(result)
+            swap.save();
+            res.json({success:"You have successfully Activated the Product"})
+        }
+    })
 }
 
 exports.editProduct=async(req,res)=>{

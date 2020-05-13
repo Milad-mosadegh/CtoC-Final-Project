@@ -2,7 +2,9 @@ const mongoose = require("mongoose")
 const User = require("./userModel")
 
 const InActiveProductSchema= new mongoose.Schema({
-    _id:{type:mongoose.Types.ObjectId},
+    _id:{
+        type:mongoose.Types.ObjectId
+    },
     title:{
         type:String
     },
