@@ -14,14 +14,16 @@ const Favorites = (props) => {
 
 
     useEffect(() => {
-     
-            axios.get("/api/account/getfavoriteproducts", {headers:{
-                'x-auth-token':localStorage.getItem("c2c-token")
-            }})
-            .then(res=>setProducts(res.data.products))
-            .catch(err=>err)
-     
-    },[])
+
+        axios.get("/api/account/getfavoriteproducts", {
+            headers: {
+                'x-auth-token': localStorage.getItem("c2c-token")
+            }
+        })
+            .then(res => setProducts(res.data.products))
+            .catch(err => err)
+
+    }, [])
 
     const setTargetProduct = (id) => {
         setShowMainComponents(false)
@@ -37,7 +39,7 @@ const Favorites = (props) => {
     }
 
     return (
-        <div>
+        <div className='shadow'>
             <div className="d-flex">
                 <div className="row">
                     <Products

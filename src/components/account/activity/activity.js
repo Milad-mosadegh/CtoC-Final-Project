@@ -8,6 +8,7 @@ import GET from '../../lib/get';
 import ProductDetails from '../../buy/productDetails';
 import Products from '../../buy/products';
 
+import '../../styles/main.css'
 
 
 const Activity = (props) => {
@@ -44,6 +45,8 @@ const Activity = (props) => {
 
     }
 
+
+
     return (
 
         <div className="border shadow">
@@ -53,10 +56,10 @@ const Activity = (props) => {
                     <Col sm={12}>
                         <Nav variant="pills" justify="false" className="flex-column mt-5">
                             <Nav.Item>
-                                <Nav.Link className="bigBlueButton btn btn-block" eventKey="first">Active Products</Nav.Link>
+                                <Nav.Link eventKey="first">Active Products</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link className="bigBlueButton btn btn-block" eventKey="second">Inactive Products</Nav.Link>
+                                <Nav.Link eventKey="second">Inactive Products</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link eventKey="third">Sold Products</Nav.Link>

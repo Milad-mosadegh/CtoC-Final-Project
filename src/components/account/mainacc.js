@@ -23,15 +23,17 @@ export default function MainAcc(props) {
                     mountOnEnter={true}
                     unmountOnExit={true}>
 
-                    <Tab eventKey="profile" title="Profile" >
+
+                    <Tab eventKey="profile" title="Profile"  >
                         <MyProfile {...props} />
                     </Tab>
-                    <Tab eventKey="activities" title="Activities">
+                    <Tab eventKey="activities" title="Activities" >
                         <MainActivity {...props} />
                     </Tab>
-                    <Tab eventKey="favorities" title="Favorities">
+                    <Tab eventKey="favorities" title="Favorities" >
                         <Favorites {...props} />
                     </Tab>
+
 
                 </Tabs>
 

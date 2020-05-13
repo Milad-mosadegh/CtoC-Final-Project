@@ -28,7 +28,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -81,7 +81,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -178,7 +178,7 @@
   color: whitesmoke;
   margin-top: -20px;
   margin-left: -10px;
-  background: #b72926;
+  background: #b72826;
   border-radius: 0 20px 20px 0;
   -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
           box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
@@ -276,7 +276,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -329,7 +329,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -382,7 +382,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -435,7 +435,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -518,7 +518,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -571,7 +571,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -617,7 +617,7 @@
   overflow: auto;
   /* Enable scroll if needed */
   background: #eee;
-  margin: 0px 450px;
+  margin: 0px 400px;
   -webkit-box-shadow: 0 10px 120px black;
           box-shadow: 0 10px 120px black;
   -webkit-transition: 0.5s;
@@ -628,7 +628,7 @@
   width: 100%;
   height: 120px;
   margin-top: -10px;
-  background: #b72926;
+  background: #11213b;
   -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
           box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
@@ -645,7 +645,7 @@
           align-items: center;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
-  width: 70%;
+  width: 60%;
   height: 90px;
   background: whitesmoke;
   margin: 0 auto;
@@ -671,7 +671,7 @@
 }
 
 .my-container .cancelBtn:hover {
-  background: #b72926;
+  background: #b72826;
   -webkit-box-shadow: 10px 10px 10px black;
           box-shadow: 10px 10px 10px black;
   color: white;
@@ -716,7 +716,7 @@
 .my-container .but-big {
   text-align: center;
   width: 100px;
-  background: #b72926;
+  background: #b72826;
   -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
           box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
   color: whitesmoke;
@@ -812,7 +812,7 @@
 }
 
 .my-container .content .myIcons:nth-child(2) {
-  color: #b72926;
+  color: #b72826;
 }
 
 .my-container .content .myIcons:hover {
@@ -933,7 +933,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -986,7 +986,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -1038,13 +1038,13 @@
   margin: 0 auto;
   padding: 10px;
   cursor: pointer;
-  color: #b72926;
+  color: #b72826;
   background: transparent;
   opacity: 0.9;
 }
 
 .up:hover {
-  color: #b72926;
+  color: #b72826;
   opacity: 1;
 }
 
@@ -1056,13 +1056,13 @@
   margin: 0 auto;
   padding: 10px;
   cursor: pointer;
-  color: #b72926;
+  color: #b72826;
   background: transparent;
   opacity: 0.9;
 }
 
 .down:hover {
-  color: #b72926;
+  color: #b72826;
   opacity: 1;
 }
 
@@ -1076,12 +1076,12 @@
     margin: 0 auto;
     padding: 10px;
     cursor: pointer;
-    color: #b72926;
+    color: #b72826;
     background: transparent;
     opacity: 0.9;
   }
   .up:hover {
-    color: #b72926;
+    color: #b72826;
     opacity: 1;
   }
   .down {
@@ -1092,12 +1092,12 @@
     margin: 0 auto;
     padding: 10px;
     cursor: pointer;
-    color: #b72926;
+    color: #b72826;
     background: transparent;
     opacity: 0.9;
   }
   .down:hover {
-    color: #b72926;
+    color: #b72826;
     opacity: 1;
   }
   .myThumb {
@@ -1150,7 +1150,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -1203,7 +1203,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -1267,7 +1267,7 @@
 }
 
 .fixedBackground .c {
-  color: #b72926;
+  color: #b72826;
 }
 
 /* _________________ HOME CARDS ____________________________ */
@@ -1293,7 +1293,7 @@
 .popProBox {
   width: 100%;
   height: 550px;
-  background: #b72926;
+  background: #cecece;
   margin-top: -150px;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1360,7 +1360,7 @@
   font-size: 50px;
   padding: 20px;
   font-weight: 200;
-  color: #b72926;
+  color: #b72826;
 }
 
 .lastSeenBox .describ p {
@@ -1563,7 +1563,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -1616,7 +1616,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -1716,7 +1716,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   margin-left: 10px;
@@ -1790,7 +1790,7 @@
     width: 100px;
     height: 30px;
     color: #fff;
-    background: #b72926;
+    background: #b72826;
     font-size: 14px;
   }
 }
@@ -1825,7 +1825,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -1878,7 +1878,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -1921,13 +1921,13 @@
 }
 
 .navB .navBRed {
-  color: #b72926;
+  color: #b72826;
 }
 
 .navLogo {
   font-size: 50px;
   color: whitesmoke;
-  background: #b72926;
+  background: #b72826;
   padding: 45px;
   -webkit-box-shadow: 10px 10px 10px black;
           box-shadow: 10px 10px 10px black;
@@ -1943,7 +1943,7 @@
   .navLogo {
     font-size: 29px;
     color: whitesmoke;
-    background: #b72926;
+    background: #b72826;
     padding: 27px;
     border-radius: 0 0 40px;
     -webkit-box-shadow: 10px 10px 10px black;
@@ -1990,7 +1990,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -2043,7 +2043,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -2162,7 +2162,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -2215,7 +2215,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -2277,7 +2277,7 @@
 }
 
 .mySignin .mySignin-form .h2-box-signup {
-  background: #b72926;
+  background: #b72826;
   -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
           box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
   height: 130px;
@@ -2310,7 +2310,7 @@
 
 .mySignin .mySignin-form .myText {
   font-size: 16px;
-  color: #b72926;
+  color: #b72826;
 }
 
 .mySignin .mySignin-form .L {
@@ -2319,7 +2319,7 @@
 }
 
 .mySignin .mySignin-form .L2 {
-  color: #b72926;
+  color: #b72826;
 }
 
 .footer {
@@ -2408,7 +2408,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -2461,7 +2461,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -2620,7 +2620,7 @@
 .message-wrapper .message-box .reciver {
   -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
           box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
-  background: #b72926;
+  background: #b72826;
   width: 200px;
   margin: 10px;
   border-radius: 30px 30px 30px 0;
@@ -2733,7 +2733,7 @@
   color: whitesmoke;
   margin-top: -20px;
   margin-left: -10px;
-  background: #b72926;
+  background: #b72826;
   border-radius: 0 20px 20px 0;
   -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
           box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
@@ -2796,7 +2796,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -2849,7 +2849,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -2870,6 +2870,10 @@
           transform: translateY(-5px);
   -webkit-transition: 0.6s;
   transition: 0.6s;
+}
+
+nav > .nav-link {
+  color: red !important;
 }
 
 .myBlueButton {
@@ -2902,7 +2906,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -2955,7 +2959,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -3037,7 +3041,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -3090,7 +3094,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -3141,14 +3145,14 @@
 }
 
 .resetModal .resetModal-form .h2-box {
-  background: #b72926;
+  background: #b72826;
   -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
           box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
   height: 130px;
 }
 
 .resetModal .resetModal-form .h2-box-signup {
-  background: #b72926;
+  background: #b72826;
   -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
           box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
   height: 130px;
@@ -3235,7 +3239,7 @@
   width: 100px;
   height: 30px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -3288,7 +3292,7 @@
   width: 80px;
   height: 40px;
   color: #fff;
-  background: #b72926;
+  background: #b72826;
   border: none;
   outline: none;
   opacity: 0.8;
@@ -3355,7 +3359,7 @@
 }
 
 .sText {
-  color: #b72926;
+  color: #b72826;
   font-size: 12px;
 }
 
