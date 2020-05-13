@@ -62,46 +62,49 @@ const ActiveConversation = (props) => {
     }
     let userId = JSON.parse(localStorage.getItem("c2c-profile")).id
     return (
-        <Fade top cascade duration={300}>
-            <div className="message-wrapper">
-                <div className="message-header">
+        // <Fade top cascade duration={100}>
+        <div className="message-wrapper">
+
+            <div className="message-header">
+                <div className="m-h-b ">
                     <button onClick={hidePopUp}>X</button>
-                    <h2>{props.recipentName}</h2>
                 </div>
-                <div className="p-id justify-content-around" >
-                    <p>
-                        Product Title : {prevMessages.productId ? prevMessages.productId.title : null}
-                    </p>
-                    <p>
-                        Product ID :{prevMessages.productId ? prevMessages.productId._id : null}
-                    </p>
+                <div className="m-h-t text-center ">
+                    <h2 className="text-center">{props.recipentName}</h2>
                 </div>
-                <div className="message-box">
-                    {prevMessages.productId ? prevMessages.messages.map(msg =>
-                        msg.senderId === userId ?
-                            <Zoom cascade duration={100}>
-                                <div className="reciver-box">
-                                    <div className="reciver" >{msg.message}</div>
-                                    <p>{msg.timeStamp}</p>
-                                </div>
-                            </Zoom>
-                            : <Zoom cascade duration={100}>
-                                <div className="sender-box"  >
-                                    <div className="sender">{msg.message}</div>
-                                </div>
-                            </Zoom>
-
-                    ) : null}
-                    <div ref={chatEndRef} />
-
-                </div>
-
-                <form className="message-write" onSubmit={submitHandler}>
-                    <input type="text" onChange={changeHandler} value={message} ref={inputRef} />
-                    <button className="fa fa-send-o" type="submit"></button>
-                </form>
             </div>
-        </Fade>
+
+            <div className="p-id justify-content-around" >
+                <p>
+                    Product Title : {prevMessages.productId ? prevMessages.productId.title : null}
+                </p>
+                <p>
+                    Product ID :{prevMessages.productId ? prevMessages.productId._id : null}
+                </p>
+            </div>
+            <div className="message-box">
+                {prevMessages.productId ? prevMessages.messages.map(msg =>
+                    msg.senderId === userId ?
+
+                        <div className="reciver-box">
+                            <div className="reciver" >{msg.message}</div>
+                            <p>{msg.timeStamp}</p>
+                        </div>
+                        :
+                        <div className="sender-box"  >
+                            <div className="sender">{msg.message}</div>
+                        </div>
+                ) : null}
+                <div ref={chatEndRef} />
+
+            </div>
+
+            <form className="message-write" onSubmit={submitHandler}>
+                <input type="text" onChange={changeHandler} value={message} ref={inputRef} />
+                <button className="fa fa-send-o" type="submit"></button>
+            </form>
+        </div>
+        // </Fade>
     );
 }
 

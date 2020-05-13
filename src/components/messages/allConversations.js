@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap'
 import GET from '../lib/get';
 
+import '../styles/main.css'
+
 const AllConversations = (props) => {
     const [conversations, setConversations] = useState("")
     const { showPopUp, setTargetConversation, setConversationRecipent } = props
@@ -11,25 +13,28 @@ const AllConversations = (props) => {
         const getMessages = async () => {
             let response = await GET("/api/messages/messageslist")
             console.log(response, "in all conversaions")
-            if(response.data.status==="success")
-            setConversations(response.data.data)
+            if (response.data.status === "success")
+                setConversations(response.data.data)
             else props.history.push("/signin")
         }
         getMessages()
 
     }, [])
-    let currentUserId=JSON.parse(localStorage.getItem("c2c-profile")).id
-    const setConversationDetails=(data) => {
+    let currentUserId = JSON.parse(localStorage.getItem("c2c-profile")).id
+    const setConversationDetails = (data) => {
         setTargetConversation(data._id)
-        data.senderId._id===currentUserId?
-        setConversationRecipent(data.recipentId.firstName)
-        :setConversationRecipent(data.senderId.firstName)
+        data.senderId._id === currentUserId ?
+            setConversationRecipent(data.recipentId.firstName)
+            : setConversationRecipent(data.senderId.firstName)
         showPopUp()
     }
     return (
         <div>
+            <div className="active-message-head"></div>
+            <div className="active-message-text">
+                <h1>Message</h1>
+            </div>
             <Table striped bordered hover >
-
                 <thead>
                     <tr>
                         <th>From</th>
@@ -39,12 +44,12 @@ const AllConversations = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                {console.log(conversations,"in list ")}
+                    {console.log(conversations, "in list ")}
                     {conversations ? conversations.map(data => {
                         let myDate = new Date(data.timeStamp)
-                        return <tr style={{ cursor: "pointer" }} onClick={()=>setConversationDetails(data)}>
-                            <td>{data.senderId._id === currentUserId? "Me" : data.senderId.firstName}</td>
-                            <td>{data.recipentId._id === currentUserId? "Me" : data.recipentId.firstName}</td>
+                        return <tr style={{ cursor: "pointer" }} onClick={() => setConversationDetails(data)}>
+                            <td>{data.senderId._id === currentUserId ? "Me" : data.senderId.firstName}</td>
+                            <td>{data.recipentId._id === currentUserId ? "Me" : data.recipentId.firstName}</td>
                             <td onClick={() => {
 
                                 setTargetConversation(data._id)

@@ -59,7 +59,7 @@ const Categories = (props) => {
 
     return (
 
-        <div>
+        <div className="container">
             <Slider {...settings} className="shadow-lg ">
                 {allCat.map(data =>
                     <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">

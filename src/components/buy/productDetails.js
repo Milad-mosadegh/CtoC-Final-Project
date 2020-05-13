@@ -18,14 +18,14 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
 
         }
         getProductDetails()
-        return (async()=>{
+        return (async () => {
             const config = {
-                headers:{
-                    'x-auth-token':localStorage.getItem('c2c-token'),
+                headers: {
+                    'x-auth-token': localStorage.getItem('c2c-token'),
                     'Content-Type': 'application/json'
                 }
             }
-            let response = await POST("/api/account/lastseen",id,config )
+            let response = await POST("/api/account/lastseen", id, config)
             console.log(response)
         })
 
@@ -37,51 +37,52 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
         setBgImage(backgroundImage)
     }
 
-    const deactivateHandler =(id)=>{
-        let response=Axios.post("/api/products/inactiveproduct",{data:{id}},{headers:{
-            'x-auth-token':localStorage.getItem('c2c-token'),
-                    'Content-Type': 'application/json'
-        }})
-                            .then(res=>res)
-                            .catch(err=>err)
-        console.log(response)    
+    const deactivateHandler = (id) => {
+        let response = Axios.post("/api/products/inactiveproduct", { data: { id } }, {
+            headers: {
+                'x-auth-token': localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res)
+            .catch(err => err)
+        console.log(response)
     }
-    const activateHandler   =(id)=>console.log("activate handler called",id)
-    const deleteHandler     =(id)=>console.log("delete handler called", id)
-    const editHandler       =(id)=>console.log("edit handler called", id)
-    const soldHandler       =(id)=>console.log("edit handler called" , id)
-    const reportHandler     =(id)=>console.log("Report handler called" , id)
-    const favoriteHandler   =(id)=>console.log("favorite handler called" , id)
+    const activateHandler = (id) => console.log("activate handler called", id)
+    const deleteHandler = (id) => console.log("delete handler called", id)
+    const editHandler = (id) => console.log("edit handler called", id)
+    const soldHandler = (id) => console.log("edit handler called", id)
+    const reportHandler = (id) => console.log("Report handler called", id)
+    const favoriteHandler = (id) => console.log("favorite handler called", id)
 
 
     return (
 
         <div className="my-container" show={showModel} onHide={handleClose}>
-            <button className='btn cancelBtn' onClick={handleClose}>
-                X
-            </button>
+
 
             <Zoom>
                 <div>
                     <ProductDetailsForm
-                        description         ={productDetail.description}
-                        postedBy            ={productDetail?productDetail.creator.firstName:null}
-                        creatorId           ={productDetail?productDetail.creator._id:null}
-                        productId           ={productDetail._id}
-                        color               ={productDetail.color}
-                        condition           ={productDetail.condition}
-                        quantity            ={productDetail.quantity}
-                        title               ={productDetail.title}
-                        bgImage             ={bgImage}
-                        images              ={productDetail.images}
-                        handleBgImage       ={handleBgImage}
-                        deactivateHandler   ={deactivateHandler}
-                        activateHandler     ={activateHandler}
-                        deleteHandler       ={deleteHandler}
-                        editHandler         ={editHandler}
-                        soldHandler         ={soldHandler}
-                        reportHandler       ={reportHandler}
-                        favoriteHandler     ={favoriteHandler}
+                        description={productDetail.description}
+                        postedBy={productDetail ? productDetail.creator.firstName : null}
+                        creatorId={productDetail ? productDetail.creator._id : null}
+                        productId={productDetail._id}
+                        color={productDetail.color}
+                        condition={productDetail.condition}
+                        quantity={productDetail.quantity}
+                        title={productDetail.title}
+                        bgImage={bgImage}
+                        images={productDetail.images}
+                        handleBgImage={handleBgImage}
+                        deactivateHandler={deactivateHandler}
+                        activateHandler={activateHandler}
+                        deleteHandler={deleteHandler}
+                        editHandler={editHandler}
+                        soldHandler={soldHandler}
+                        reportHandler={reportHandler}
+                        favoriteHandler={favoriteHandler}
+                        handleClose={handleClose}
                     />
 
                 </div>

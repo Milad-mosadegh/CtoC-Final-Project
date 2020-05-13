@@ -14,6 +14,7 @@ import Footer from '../footer/footer';
 import LatestProducts from './latestProducts';
 import ProductDetails from '../buy/productDetails';
 
+
 const Home = (props) => {
     const [auth, setAuth] = useState(false)
     const [showModal, setShowModal] = useState(false)
@@ -49,7 +50,7 @@ const Home = (props) => {
                 <ProductDetails showModel={showModal} handleClose={handleClose}
                     id={productId}
                 /> :
-                < div >
+                <div>
                     <MyNavbar {...props} />
                     <div className="fixedBackground">
                         <div className="container">
@@ -61,27 +62,23 @@ const Home = (props) => {
 
                     <div className="homeCard">
                         <div className="leftCard">
-                            <Zoom duration={1000}>
-                                <LatestProducts setTargetProduct={setTargetProduct} />
-                            </Zoom>
+                            <LatestProducts setTargetProduct={setTargetProduct} />
                         </div>
 
                         <div className="rightCard">
-                            <Zoom top delay={200}>
-                                <LastSeen auth={auth}
-                                    setTargetProduct={setTargetProduct}
-                                    unAuthenticated={unAuthenticated} /> 
-                            </Zoom>
+                            <LastSeen auth={auth}
+                                setTargetProduct={setTargetProduct}
+                                unAuthenticated={unAuthenticated} /> 
                         </div>
                     </div>
 
                     <div className="darkWhite p-5">
-                        <Fade right>
-                            <SlideShow />
-                        </Fade>
+                        <h2 className='mb-5'> See What we Have in Categories</h2>
+                        <div className="container">
+                        <SlideShow />
+                                                </div>
                     </div>
-                    <div className="homeBanner"></div>
-
+                        <div className="homeBanner"></div>
                     <div>
                         <Footer />
                     </div>

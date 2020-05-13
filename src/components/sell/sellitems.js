@@ -24,7 +24,7 @@ const SellItems = (props) => {
     const [images, setImages] = useState([])
     const [aut, setAuth] = useState(false)
     const [showSignin, setShowSignin] = useState(false)
-    const [showReset, setShowReset]= useState(false)
+    const [showReset, setShowReset] = useState(false)
 
     const [product, setProduct] = useState({
         title: "",
@@ -41,15 +41,15 @@ const SellItems = (props) => {
     const [alertText, setAlertText] = useState("")
     const [showAlert, setShowAlert] = useState(false)
 
-    const handleOpenReset =()=>{
+    const handleOpenReset = () => {
         setShowSignin(false)
         setShowReset(true)
     }
-    const handleCloseReset =()=>{
+    const handleCloseReset = () => {
         setShowReset(false)
         setShowSignin(true)
     }
-    const handleOpen = () =>setShowSignin(true)
+    const handleOpen = () => setShowSignin(true)
     const handleClose = () => setShowSignin(false);
 
     useEffect(() => {
@@ -82,9 +82,9 @@ const SellItems = (props) => {
     const changeHandler = (e) => setProduct({ ...product, [e.target.name]: e.target.value })
 
     const submitHandler = async () => {
-    
-        if(!localStorage.getItem("c2c-token")) return handleOpen()
-        if(showSignin) handleClose()
+
+        if (!localStorage.getItem("c2c-token")) return handleOpen()
+        if (showSignin) handleClose()
         let config;
         if (images.length > 0) {
             const formData = new FormData();
@@ -95,7 +95,8 @@ const SellItems = (props) => {
                 headers: {
                     'x-auth-token': localStorage.getItem('c2c-token'),
                     'Content-type': 'multipart/form-data'
-                }            }
+                }
+            }
 
             const response = await IMGPOST("/api/products/newproduct", formData, config)
             if (response.data && response.data.status === "success") {
@@ -125,9 +126,7 @@ const SellItems = (props) => {
     }
     return (
         <div>
-
             <MyNavbar {...props} />
-
 
             <SellDetails
                 {...props}
@@ -137,17 +136,17 @@ const SellItems = (props) => {
                 product={product}
             />
 
-            {showAlert ? <MyAlert id={alertId} alertText={alertText} {...props}/> : null}
-            {showSignin? <SigninModal 
-                        handleClose={handleClose}
-                        show={showSignin} 
-                        classes={classes}
-                        handleCloseReset={handleCloseReset}
-                        handleOpenReset={handleOpenReset}
-                        showReset={showReset}
-                        productSubmitHandler={submitHandler}
-                        />: null}
-            {showReset? <PasswordReset handleClose={handleCloseReset} handleOpen={handleOpenReset} show={showReset} classes={classes} /> :null}
+            {showAlert ? <MyAlert id={alertId} alertText={alertText} {...props} /> : null}
+            {showSignin ? <SigninModal
+                handleClose={handleClose}
+                show={showSignin}
+                classes={classes}
+                handleCloseReset={handleCloseReset}
+                handleOpenReset={handleOpenReset}
+                showReset={showReset}
+                productSubmitHandler={submitHandler}
+            /> : null}
+            {showReset ? <PasswordReset handleClose={handleCloseReset} handleOpen={handleOpenReset} show={showReset} classes={classes} /> : null}
         </div>
     );
 }
