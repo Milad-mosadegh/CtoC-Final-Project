@@ -6,8 +6,7 @@ import MyNavbar from '../navbar/navBar';
 import GET from '../lib/get';
 import SlideShow from '../buy/slideShow';
 
-import Zoom from 'react-reveal/Zoom';
-import Fade from 'react-reveal/Fade';
+
 
 import '../styles/main.css'
 import Footer from '../footer/footer';
@@ -76,10 +75,10 @@ const Home = (props) => {
                         <h2 className='mb-5'> See What we Have in Categories</h2>
                         <div className="container">
                         <SlideShow />
-                                                </div>
-                    </div>
+                                                    </div>
+                        
                         <div className="homeBanner"></div>
-                    <div>
+                    >
                         <Footer />
                     </div>
                 </div>

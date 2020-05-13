@@ -3342,6 +3342,11 @@
   font-weight: 300;
 }
 
+.t-head {
+  background: #11213b;
+  color: whitesmoke;
+}
+
 * {
   margin: 0;
   padding: 0;

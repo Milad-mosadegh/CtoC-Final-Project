@@ -37,6 +37,7 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
         setBgImage(backgroundImage)
     }
 
+
     const deactivateHandler = (id) => {
         let response = Axios.post("/api/products/inactiveproduct", { data: { id } }, {
             headers: {
@@ -47,6 +48,18 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
             .then(res => res)
             .catch(err => err)
         console.log(response)
+
+        const deactivateHandler = (id) => {
+            Axios.post("/api/products/inactiveproduct", { data: { id } }, {
+                headers: {
+                    'x-auth-token': localStorage.getItem('c2c-token'),
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res)
+                .catch(err => err)
+
+        }
     }
     const activateHandler = (id) => console.log("activate handler called", id)
     const deleteHandler = (id) => console.log("delete handler called", id)
@@ -57,10 +70,7 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
 
 
     return (
-
         <div className="my-container" show={showModel} onHide={handleClose}>
-
-
             <Zoom>
                 <div>
                     <ProductDetailsForm
@@ -84,13 +94,8 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
                         favoriteHandler={favoriteHandler}
                         handleClose={handleClose}
                     />
-
                 </div>
-
             </Zoom>
-
-
-
         </div>
 
     );

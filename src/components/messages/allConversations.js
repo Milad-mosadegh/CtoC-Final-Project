@@ -35,7 +35,7 @@ const AllConversations = (props) => {
                 <h1>Message</h1>
             </div>
             <Table striped bordered hover >
-                <thead>
+                <thead className="t-head">
                     <tr>
                         <th>From</th>
                         <th>To</th>

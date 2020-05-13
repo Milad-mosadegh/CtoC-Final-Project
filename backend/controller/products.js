@@ -101,13 +101,18 @@ exports.newProduct = async (req,res)=>{
 }
 
 exports.inactiveProduct=async(req,res)=>{
-    const productId= req.body.data.id
-    let inactiveProduct= new InActiveProduct()
+    const productId= req.body.data.id  
     await ActiveProduct.findById(productId,(err,result)=>{
-        console.log(result)
-        inactiveProduct.save(result) });
+    result.remove()
+    result=result.toObject()
+    let swap = new InActiveProduct(result)
 
-    res.json({success:"you reached inactive"})
+    
+    swap.save()
+    
+})
+
+    res.json({success:"You have successfully inactivated the Product"})
 }
 
 exports.soldProduct=async(req,res)=>{
@@ -122,8 +127,14 @@ exports.deleteProduct=async(req,res)=>{
 }
 
 exports.activateProduct=async(req,res)=>{
-    console.log("you reached activateProduct", req.userId, "data ;", req.body.data)
-    res.json({success:"you reached activate"})
+    const productId= req.body.data.id
+    let activeProduct= new ActiveProduct()
+    await InActiveProduct.findById(productId,(err,result)=>{
+        console.log(result)
+        activeProduct.save(result)
+        result.remove() });
+
+    res.json({success:"You have successfully activated the Product"})
 
 }
 
