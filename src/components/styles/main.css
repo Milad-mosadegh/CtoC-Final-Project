@@ -1,4 +1,4 @@
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -12,9 +12,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -24,7 +26,7 @@
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -38,9 +40,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -50,8 +54,8 @@
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -65,9 +69,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -77,8 +83,66 @@
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -92,9 +156,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -246,7 +312,7 @@
   }
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -260,9 +326,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -272,7 +340,7 @@
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -286,9 +354,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -298,8 +368,8 @@
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -313,9 +383,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -325,8 +397,66 @@
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -340,9 +470,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -352,7 +484,7 @@
   transition: 0.6s;
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -366,9 +498,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -378,7 +512,7 @@
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -392,9 +526,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -404,8 +540,8 @@
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -419,9 +555,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -431,8 +569,66 @@
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -446,9 +642,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -488,7 +686,7 @@
   }
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -502,9 +700,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -514,7 +714,7 @@
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -528,9 +728,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -540,8 +742,8 @@
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -555,9 +757,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -567,8 +771,66 @@
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -582,9 +844,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -903,7 +1167,7 @@
   }
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -917,9 +1181,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -929,7 +1195,7 @@
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -943,9 +1209,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -955,8 +1223,8 @@
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -970,9 +1238,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -982,8 +1252,66 @@
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -997,9 +1325,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1120,7 +1450,7 @@
   }
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -1134,9 +1464,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1146,7 +1478,7 @@
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -1160,9 +1492,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1172,8 +1506,8 @@
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -1187,9 +1521,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1199,8 +1535,66 @@
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -1214,9 +1608,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1293,10 +1689,10 @@
 .popProBox {
   width: 100%;
   height: 550px;
-  background: #cecece;
+  background: #f3f1f1;
   margin-top: -150px;
-  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
-          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
 .popProBox .popProBox-content {
@@ -1325,6 +1721,8 @@
   margin-left: -200px;
   height: 550px;
   padding: 30px;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
 }
 
 .wrapAll h2 {
@@ -1533,7 +1931,7 @@
   }
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -1547,9 +1945,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1559,7 +1959,7 @@
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -1573,9 +1973,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1585,8 +1987,8 @@
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -1600,9 +2002,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1612,8 +2016,66 @@
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -1627,9 +2089,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1690,51 +2154,38 @@
   margin-top: 200px;
 }
 
-.blueButton {
-  width: 100px;
-  height: 30px;
-  color: #fff;
-  background: #11213b;
-  border: none;
-  outline: none;
-  opacity: 0.8;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+/* .blueButton{
+    @include myButton($bestBlueColor,#fff);
+    border: none;
+    outline: none;
+    opacity: 0.8;
+    transition: 0.4s;
+    width: 100px;
+    padding: 30px;
+    &:hover{
+        opacity: 1;
+        box-shadow: $mediumBoxShadow;
+        transform: translateY(-5px);
+        transition: 0.6s;
+    }
 }
+.redButton{
+    @include myButton($bestRedColor,#fff);
+    border: none;
+      width: 100px;
+    padding: 30px;
+    outline: none;
+    margin-left: 10px;
+    opacity: 0.8;
+    transition: 0.4s;
+    &:hover{
+        opacity: 1;
+        box-shadow: $mediumBoxShadow;
+        transform: translateY(-5px);
+        transition: 0.6s;
+    }
 
-.blueButton:hover {
-  opacity: 1;
-  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
-          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
-  -webkit-transform: translateY(-5px);
-          transform: translateY(-5px);
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
-}
-
-.redButton {
-  width: 100px;
-  height: 30px;
-  color: #fff;
-  background: #b72826;
-  border: none;
-  outline: none;
-  margin-left: 10px;
-  opacity: 0.8;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.redButton:hover {
-  opacity: 1;
-  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
-          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
-  -webkit-transform: translateY(-5px);
-          transform: translateY(-5px);
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
-}
-
+} */
 @media only screen and (max-width: 600px) {
   .sellWrapAll {
     margin: 40px auto;
@@ -1779,23 +2230,21 @@
     margin-right: 40px;
     margin-top: -30px;
   }
-  .blueButton {
-    width: 100px;
-    height: 30px;
-    color: #fff;
-    background: #11213b;
+  /* .blueButton{
+    @include myButton($bestBlueColor,#fff);
     font-size: 14px;
-  }
-  .redButton {
-    width: 100px;
-    height: 30px;
-    color: #fff;
-    background: #b72826;
+      width: 100px;
+    padding: 30px;
+}
+.redButton{
+    @include myButton($bestRedColor,#fff);
     font-size: 14px;
-  }
+    width: 100px;
+    padding: 30px;
+} */
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -1809,9 +2258,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1821,7 +2272,7 @@
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -1835,9 +2286,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1847,8 +2300,8 @@
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -1862,9 +2315,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1874,8 +2329,66 @@
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -1889,9 +2402,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1960,7 +2475,7 @@
   }
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -1974,9 +2489,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -1986,7 +2503,7 @@
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -2000,9 +2517,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2012,8 +2531,8 @@
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -2027,9 +2546,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2039,8 +2560,66 @@
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -2054,9 +2633,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2132,7 +2713,7 @@
   }
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -2146,9 +2727,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2158,7 +2741,7 @@
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -2172,9 +2755,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2184,8 +2769,8 @@
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -2199,9 +2784,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2211,8 +2798,66 @@
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -2226,9 +2871,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2378,7 +3025,7 @@
   }
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -2392,9 +3039,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2404,7 +3053,7 @@
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -2418,9 +3067,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2430,8 +3081,8 @@
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -2445,9 +3096,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2457,8 +3110,66 @@
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -2472,9 +3183,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2766,7 +3479,7 @@
   }
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -2780,9 +3493,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2792,7 +3507,7 @@
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -2806,9 +3521,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2818,8 +3535,8 @@
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -2833,9 +3550,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2845,8 +3564,66 @@
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -2860,9 +3637,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2873,10 +3652,16 @@
 }
 
 nav > .nav-link {
-  color: red !important;
+  color: #11213b;
 }
 
-.myBlueButton {
+.milad .nav-link {
+  color: whitesmoke;
+  background: #b72826;
+  margin-top: 10px;
+}
+
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -2890,9 +3675,11 @@ nav > .nav-link {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2902,7 +3689,7 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -2916,9 +3703,11 @@ nav > .nav-link {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2928,8 +3717,8 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -2943,9 +3732,11 @@ nav > .nav-link {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -2955,8 +3746,66 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -2970,9 +3819,11 @@ nav > .nav-link {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -3011,7 +3862,7 @@ nav > .nav-link {
   }
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -3025,9 +3876,11 @@ nav > .nav-link {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -3037,7 +3890,7 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -3051,9 +3904,11 @@ nav > .nav-link {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -3063,8 +3918,8 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -3078,9 +3933,11 @@ nav > .nav-link {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -3090,8 +3947,66 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -3105,9 +4020,11 @@ nav > .nav-link {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -3209,7 +4126,7 @@ nav > .nav-link {
   color: #11213b;
 }
 
-.myBlueButton {
+.myBlueButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -3223,9 +4140,11 @@ nav > .nav-link {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myBlueButton:hover {
+.myBlueButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -3235,7 +4154,7 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
-.myRedButton {
+.myRedButton-sm {
   width: 100px;
   height: 30px;
   color: #fff;
@@ -3249,9 +4168,11 @@ nav > .nav-link {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.myRedButton:hover {
+.myRedButton-sm:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -3261,8 +4182,8 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
-.bigBlueButton {
-  width: 80px;
+.myBlueButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #11213b;
@@ -3276,9 +4197,11 @@ nav > .nav-link {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigBlueButton:hover {
+.myBlueButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
@@ -3288,8 +4211,66 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
-.bigRedButton {
-  width: 80px;
+.myOrabgeButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #ff8b0d;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myOrabgeButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myGreenButton-lg {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background: #7ec544;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+}
+
+.myGreenButton-lg:hover {
+  opacity: 1;
+  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.myRedButton-lg {
+  width: 120px;
   height: 40px;
   color: #fff;
   background: #b72826;
@@ -3303,9 +4284,11 @@ nav > .nav-link {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
 }
 
-.bigRedButton:hover {
+.myRedButton-lg:hover {
   opacity: 1;
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);

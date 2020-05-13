@@ -102,8 +102,8 @@ const SellDetails = (props) => {
                             </div>
                         </div>
                         <div style={{ marginTop: "60px" }}>
-                            <button className="blueButton" type="submit" onClick={submitHandler}>Submit</button>
-                            <button className="redButton" onClick={cancelHandler}>Cancel</button>
+                            <button className="myBlueButton-sm" type="submit" onClick={submitHandler}>Submit</button>
+                            <button className="myRedButton-sm ml-2" onClick={cancelHandler}>Cancel</button>
                         </div>
                     </div>
                 </Fade>

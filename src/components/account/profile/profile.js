@@ -106,15 +106,15 @@ const ProfileData = (props) => {
                 </fieldset>
                 {edit ?
                     <div>
-                        <button className='bigBlueButton' type="submit">
+                        <button className='myBlueButton-lg' type="submit">
                             Update
                     </button>
-                        <button className="ml-1 bigRedButton" onClick={cancelHandler} >
+                        <button className="ml-1 myRedButton-lg" onClick={cancelHandler} >
                             Cancel
                     </button>
                     </div>
                     :
-                    <button className="bigBlueButton" onClick={editHandler}>
+                    <button className="myBlueButton-lg" onClick={editHandler}>
                         Edit
             </button>
                 }

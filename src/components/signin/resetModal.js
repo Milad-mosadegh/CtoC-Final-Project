@@ -77,8 +77,8 @@ export default function PasswordReset(props) {
 
               </div>
               <div className="resetModal-btn">
-                <button className="bigRedButton" onClick={handleClose}>Close</button>
-                <button className="bigBlueButton ml-1" onClick={resetPassword}>Send </button>
+                <button className="myRedButton-lg" onClick={handleClose}>Close</button>
+                <button className="myBlueButton-lg ml-1" onClick={resetPassword}>Send </button>
               </div>
             </div>
           </form>

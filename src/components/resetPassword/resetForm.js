@@ -39,9 +39,9 @@ const ResetForm = (props) => {
                         <smail className="sText">{inputErrors.confirmPass ? inputErrors.confirmPass.status ? inputErrors.confirmPass.value : null : null}</smail>
                         <div className="mt-5 d-flex">
                             <div className="resetModal-btn">
-                                <button className="bigBlueButton" type="submit">Submit</button>
+                                <button className="myBlueButton-lg" type="submit">Submit</button>
 
-                                <button className="bigRedButton ml-1 " type="submit"> <Link style={{ color: "white", textDecoration: "none" }} to={"/"} >
+                                <button className="myRedButton-lg ml-1 " type="submit"> <Link style={{ color: "white", textDecoration: "none" }} to={"/"} >
                                     Cancel
                                     </Link></button>
                             </div>

@@ -126,10 +126,10 @@ const ProductDetailsForm = (props) => {
                         {creatorId ?
                             creatorId === currentUserId ?
                                 <div>
-                                    <button className='bigBlueButton' onClick={() => editHandler(productId)}>       Edit    </button>
-                                    <button className='bigRedButton ml-1' onClick={() => deleteHandler(productId)}>     Delete  </button>
-                                    <button className='bigBlueButton ml-1' onClick={() => deactivateHandler(productId)}> Deactive</button>
-                                    <button className='bigRedButton ml-1' onClick={() => soldHandler(productId)}>       Sold    </button>
+                                    <button className='myBlueButton-lg' onClick={() => editHandler(productId)}>       Edit    </button>
+                                    <button className='myRedButton-lg ml-1' onClick={() => deleteHandler(productId)}>     Delete  </button>
+                                    <button className='myOrabgeButton-lg ml-1' onClick={() => deactivateHandler(productId)}> In-Active</button>
+                                    <button className='myGreenButton-lg ml-1' onClick={() => soldHandler(productId)}>       Sold    </button>
                                 </div>
                                 : <div>
 

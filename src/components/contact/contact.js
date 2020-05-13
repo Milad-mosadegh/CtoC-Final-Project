@@ -73,7 +73,7 @@ const Contact = (props) => {
                             </form>
 
                             <div className="text-center text-md-left mt-3">
-                                <button className="bigBlueButton btn-block"> Send </button>
+                                <button className="myBlueButton-lg btn-block"> Send </button>
                             </div>
                             <div className="status"></div>
                         </div>
