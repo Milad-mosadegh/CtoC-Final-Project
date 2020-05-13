@@ -97,7 +97,7 @@ const SellItems = (props) => {
                     'Content-type': 'multipart/form-data'
                 }            }
 
-            const response = await IMGPOST("/api/sell/newproduct", formData, config)
+            const response = await IMGPOST("/api/products/newproduct", formData, config)
             if (response.data && response.data.status === "success") {
                 setAlertId("A")
                 setAlertText('You have successfuly posted your product')
@@ -112,7 +112,7 @@ const SellItems = (props) => {
                     'Content-Type': 'application/json'
                 }
             }
-            const response = await POST("/api/sell/newproduct", product, config)
+            const response = await POST("/api/products/newproduct", product, config)
             if (response.data && response.data.status === "success") {
                 setAlertId("A")
                 setAlertText('You have successfuly posted your product')

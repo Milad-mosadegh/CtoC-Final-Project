@@ -14,7 +14,7 @@ app.use("/api/auth",require("./router/auth"))
 app.use("/api/recovery", require("./router/recovery"))
 app.use("/api/dashboard",require("./router/dashboard"))
 app.use("/api/account", require("./router/account"))
-app.use("/api/sell", require("./router/sell"))
+app.use("/api/products", require("./router/products"))
 app.use("/api/buy", require("./router/buy"))
 app.use("/api/messages", require("./router/messages"))
 

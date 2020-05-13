@@ -23,7 +23,6 @@ const ProductDetailsForm = (props) => {
 
     const { favoriteHandler,
             reportHandler,
-            productDetail,
             soldHandler,
             deleteHandler, 
             editHandler, 
@@ -31,7 +30,8 @@ const ProductDetailsForm = (props) => {
             images, 
             description, 
             postedBy, 
-            productId, 
+            productId,
+            creatorId, 
             color, 
             condition, 
             quantity, 
@@ -131,8 +131,8 @@ const ProductDetailsForm = (props) => {
                     </div>
                 </div>
 
-                {productDetail ?
-                    productDetail.creator._id === currentUserId ?
+                {creatorId ?
+                    creatorId === currentUserId ?
                         <div>
                             <button className='bigBlueButton'       onClick={()=>editHandler(productId)}>       Edit    </button>
                             <button className='bigRedButton ml-1'   onClick={()=>deleteHandler(productId)}>     Delete  </button>
@@ -145,9 +145,9 @@ const ProductDetailsForm = (props) => {
                                 <div className="myIcons fa fa-star-o"   onClick={()=>favoriteHandler(productId)}>   </div>
                                 <div className="myIcons fa fa-ban"      onClick={()=>reportHandler(productId)}>     </div>
                                 <NewMessage
-                                    title           ={productDetail.title}
-                                    productId       ={productDetail._id}
-                                    recipentId      ={productDetail ? productDetail.creator._id : null}
+                                    title           ={title}
+                                    productId       ={productId}
+                                    recipentId      ={creatorId ? creatorId : null}
                                     openShowSignin  ={openShowSignin}  />
                             </div>
 

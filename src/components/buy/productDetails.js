@@ -5,6 +5,7 @@ import '../styles/main.css';
 import GET from '../lib/get';
 import ProductDetailsForm from './productDetailsForm';
 import { POST } from '../lib/post';
+import Axios from 'axios';
 
 const ProductDetails = ({ id, showModel, handleClose }) => {
     const [productDetail, setProductDetail] = useState("")
@@ -36,7 +37,15 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
         setBgImage(backgroundImage)
     }
 
-    const deactivateHandler =(id)=>console.log("deactivate handler called",id)
+    const deactivateHandler =(id)=>{
+        let response=Axios.post("/api/products/inactiveproduct",{data:{id}},{headers:{
+            'x-auth-token':localStorage.getItem('c2c-token'),
+                    'Content-Type': 'application/json'
+        }})
+                            .then(res=>res)
+                            .catch(err=>err)
+        console.log(response)    
+    }
     const activateHandler   =(id)=>console.log("activate handler called",id)
     const deleteHandler     =(id)=>console.log("delete handler called", id)
     const editHandler       =(id)=>console.log("edit handler called", id)
@@ -56,8 +65,9 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
                 <div>
                     <ProductDetailsForm
                         description         ={productDetail.description}
-                        postedBy            ={productDetail ? productDetail.creator.firstName : null}
-                        productId           ={productDetail ? productDetail.creator._id : null}
+                        postedBy            ={productDetail?productDetail.creator.firstName:null}
+                        creatorId           ={productDetail?productDetail.creator._id:null}
+                        productId           ={productDetail._id}
                         color               ={productDetail.color}
                         condition           ={productDetail.condition}
                         quantity            ={productDetail.quantity}
@@ -65,7 +75,6 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
                         bgImage             ={bgImage}
                         images              ={productDetail.images}
                         handleBgImage       ={handleBgImage}
-                        productDetail       ={productDetail}
                         deactivateHandler   ={deactivateHandler}
                         activateHandler     ={activateHandler}
                         deleteHandler       ={deleteHandler}

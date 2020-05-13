@@ -1,5 +1,7 @@
 
 const ActiveProduct = require("../model/activeProductModel");
+const InActiveProduct = require("../model/inactiveProductModel")
+const mongoose=require("mongoose")
 const multer  = require("multer");
 const path    = require("path");
 const cp      = require('child_process');
@@ -95,7 +97,44 @@ exports.newProduct = async (req,res)=>{
                     else res.json({status:"success", message:"you have successfuly posted your product", data:doc})
             }) 
         })
-
-
     }
+}
+
+exports.inactiveProduct=async(req,res)=>{
+    const productId= req.body.data.id
+    let inactiveProduct= new InActiveProduct()
+    await ActiveProduct.findById(productId,(err,result)=>{
+        console.log(result)
+        inactiveProduct.save(result) });
+
+    res.json({success:"you reached inactive"})
+}
+
+exports.soldProduct=async(req,res)=>{
+    console.log("you reached soldProduct", req.userId, "data ;", req.body.data)
+    res.json({success:"you reached sold"})
+
+}
+exports.deleteProduct=async(req,res)=>{
+    console.log("you reached deleteProduct", req.userId, "data ;", req.body.data)
+    res.json({success:"you reached delete"})
+
+}
+
+exports.activateProduct=async(req,res)=>{
+    console.log("you reached activateProduct", req.userId, "data ;", req.body.data)
+    res.json({success:"you reached activate"})
+
+}
+
+exports.editProduct=async(req,res)=>{
+    console.log("you reached editProduct", req.userId, "data ;", req.body.data)
+    res.json({success:"you reached edit"})
+
+}
+
+exports.blockProduct=async(req,res)=>{
+    console.log("you reached blocked", req.userId, "data ;", req.body.data)
+    res.json({success:"you reached blocked"})
+
 }
