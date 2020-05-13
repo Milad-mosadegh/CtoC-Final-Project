@@ -16,6 +16,7 @@ const Activity = (props) => {
     const [showMainComponent, setShowMainComponents] = useState(true)
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
+    const [inActiveProducts, setInActiveProducts] = useState("")
 
 
 
@@ -24,6 +25,8 @@ const Activity = (props) => {
             let response = await GET("/api/account/myproducts")
             console.log("response from buy", response)
             setProducts(response.data.data)
+            let res=await GET("/api/account/inactiveproducts")
+            setInActiveProducts(res.data.products)
         }
         fetchData()
     }, [])
@@ -77,10 +80,35 @@ const Activity = (props) => {
                             </Zoom>
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">
+
+                        <Zoom>
+                                <div>
+                                {console.log(inActiveProducts,"in activities")}
+                                    <Products
+                                        products={inActiveProducts}
+                                        setTargetProduct={setTargetProduct}
+                                    />
+                                    {showModal ?
+                                        <ProductDetails showModel={showModal} handleClose={handleClose}
+                                            id={productId}
+                                        /> : null}
+                                </div>
+                            </Zoom>
                             
                         </Tab.Pane>
                         <Tab.Pane eventKey="third">
-
+                        <Zoom>
+                                <div>
+                                    <Products
+                                        products={products}
+                                        setTargetProduct={setTargetProduct}
+                                    />
+                                    {showModal ?
+                                        <ProductDetails showModel={showModal} handleClose={handleClose}
+                                            id={productId}
+                                        /> : null}
+                                </div>
+                            </Zoom>
                         </Tab.Pane>
                     </Tab.Content>
 

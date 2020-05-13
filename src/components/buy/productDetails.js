@@ -38,13 +38,12 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
     }
 
     const deactivateHandler =(id)=>{
-        let response=Axios.post("/api/products/inactiveproduct",{data:{id}},{headers:{
+        Axios.post("/api/products/inactiveproduct",{data:{id}},{headers:{
             'x-auth-token':localStorage.getItem('c2c-token'),
                     'Content-Type': 'application/json'
         }})
                             .then(res=>res)
                             .catch(err=>err)
-        console.log(response)    
     }
     const activateHandler   =(id)=>console.log("activate handler called",id)
     const deleteHandler     =(id)=>console.log("delete handler called", id)

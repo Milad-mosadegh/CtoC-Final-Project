@@ -3,6 +3,7 @@ const multer = require("multer")
 const path = require("path")
 const ActiveProducts = require('../model/activeProductModel')
 const SoldProducts = require('../model/soldProductModel')
+const InActiveProducts = require("../model/inactiveProductModel")
 
 
 
@@ -228,6 +229,17 @@ exports.getFavoriteProducts=async(req,res)=>{
     
     if(!favoriteProducts) return res.json({status:"failed", message:"No product to show", products:[]})
     res.json({status:"success", products:favoriteProducts})
+   
+
+}
+
+exports.getInactiveProducts = async(req,res)=>{
+
+    let id=req.userId
+    let result = await InActiveProducts.find({creator:id},{_id:1, title:1, images:1, price:1})
+    console.log(result,"jinactive products")
+    if(!result) return  res.json({failed:"You have no Inactive Products"})
+    res.json({success:"You have successfully retrieved", products:result})
    
 
 }
