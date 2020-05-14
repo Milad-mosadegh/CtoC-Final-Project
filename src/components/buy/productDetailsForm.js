@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/main.css'
-import Zoom from 'react-reveal/Zoom'
-import Fade from 'react-reveal/Fade'
+
 import PictureSlider from './pictureSlider';
 import NewMessage from '../messages/newMessage';
 import { CheckAuthentication } from '../lib/auth'
@@ -9,6 +7,7 @@ import SigninModal from "../signin/signinModal/signinModal"
 import { makeStyles } from '@material-ui/core/styles';
 import PasswordReset from '../signin/resetModal';
 
+import '../styles/main.css'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -122,33 +121,34 @@ const ProductDetailsForm = (props) => {
                         <p>{description}</p>
                     </div>
 
-                    <div>
-                        {creatorId ?
-                            creatorId === currentUserId ?
-                                <div>
-                                    <button className='myBlueButton-lg' onClick={() => editHandler(productId)}>       Edit    </button>
-                                    <button className='myRedButton-lg ml-1' onClick={() => deleteHandler(productId)}>     Delete  </button>
-                                    <button className='myOrabgeButton-lg ml-1' onClick={() => deactivateHandler(productId)}> In-Active</button>
-                                    <button className='myGreenButton-lg ml-1' onClick={() => soldHandler(productId)}>       Sold    </button>
-                                </div>
-                                : <div>
 
-                                    <div className="myIcon">
-                                        <div className="myIcons fa fa-star-o" onClick={() => favoriteHandler(productId)}>   </div>
-                                        <div className="myIcons fa fa-ban" onClick={() => reportHandler(productId)}>     </div>
-                                        <NewMessage
-                                            title={title}
-                                            productId={productId}
-                                            recipentId={creatorId ? creatorId : null}
-                                            openShowSignin={openShowSignin} />
-                                    </div>
-
-                                </div>
-
-
-                            : null}
-                    </div>
                 </div>
+            </div>
+            <div>
+                {creatorId ?
+                    creatorId === currentUserId ?
+                        <div>
+                            <button className='myBlueButton-lg' onClick={() => editHandler(productId)}>       Edit    </button>
+                            <button className='myRedButton-lg ml-1' onClick={() => deleteHandler(productId)}>     Delete  </button>
+                            <button className='myOrabgeButton-lg ml-1' onClick={() => deactivateHandler(productId)}> In-Active</button>
+                            <button className='myGreenButton-lg ml-1' onClick={() => soldHandler(productId)}>       Sold    </button>
+                        </div>
+                        : <div>
+
+                            <div className="myIcon">
+                                <div className="myIcons fa fa-star-o" onClick={() => favoriteHandler(productId)}>   </div>
+                                <div className="myIcons fa fa-ban" onClick={() => reportHandler(productId)}>     </div>
+                                <NewMessage
+                                    title={title}
+                                    productId={productId}
+                                    recipentId={creatorId ? creatorId : null}
+                                    openShowSignin={openShowSignin} />
+                            </div>
+
+                        </div>
+
+
+                    : null}
             </div>
             {showSignin ? <SigninModal
                 handleClose={closeShowSignin}

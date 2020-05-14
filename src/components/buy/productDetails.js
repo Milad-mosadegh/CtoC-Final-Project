@@ -7,12 +7,15 @@ import ProductDetailsForm from './productDetailsForm';
 import { POST } from '../lib/post';
 import Axios from 'axios';
 
-const ProductDetails = ({ id, showModel, handleClose , url}) => {
+const ProductDetails = (props) => {
+
+    const { id, showModel, handleClose, url } = props
+
     const [productDetail, setProductDetail] = useState("")
     const [bgImage, setBgImage] = useState("noimage.png")
     useEffect(() => {
         const getProductDetails = async () => {
-            let response = await GET(`${url?url:`/api/buy/activeproductdetails`}/${id}`)
+            let response = await GET(`${url ? url : `/api/buy/activeproductdetails`}/${id}`)
             setProductDetail(response.data.data)
             if (response.data.data.images.length > 0) setBgImage(response.data.data.images[0])
 
@@ -50,7 +53,7 @@ const ProductDetails = ({ id, showModel, handleClose , url}) => {
             .catch(err => err)
         console.log(response)
 
-        
+
     }
     const soldHandler = (id) => {
         Axios.post("/api/products/soldproduct", { data: { id } }, {
@@ -65,7 +68,9 @@ const ProductDetails = ({ id, showModel, handleClose , url}) => {
     }
     const activateHandler = (id) => console.log("activate handler called", id)
     const deleteHandler = (id) => console.log("delete handler called", id)
-    const editHandler = (id) => console.log("edit handler called", id)
+
+    const editHandler = (id) => props.history.push(`./editproduct/${id}`)
+
     const reportHandler = (id) => console.log("Report handler called", id)
     const favoriteHandler = (id) => console.log("favorite handler called", id)
 

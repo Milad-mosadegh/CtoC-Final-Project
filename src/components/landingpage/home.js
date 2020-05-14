@@ -47,7 +47,7 @@ const Home = (props) => {
         <div>
             {showModal ?
                 <ProductDetails showModel={showModal} handleClose={handleClose}
-                    id={productId}
+                    id={productId} {...props}
                 /> :
                 <div>
                     <MyNavbar {...props} />
@@ -75,9 +75,9 @@ const Home = (props) => {
                         <h2 className='mb-5'> See What we Have in Categories</h2>
                         <div className="container">
                         <SlideShow />
-                                                    </div>
+                                                        </div>
                         
-                        <div className="homeBanner"></div>
+<div className="homeBanner"></div>
                     >
                         <Footer />
                     </div>

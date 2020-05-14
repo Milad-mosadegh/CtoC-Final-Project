@@ -26,16 +26,20 @@ const SellItems = (props) => {
     const [showSignin, setShowSignin] = useState(false)
     const [showReset, setShowReset] = useState(false)
 
-    const [product, setProduct] = useState({
-        title: "",
-        category: "",
-        condition: "",
-        quantity: "",
-        color: "",
-        price: "",
-        description: "",
-        creator: ""
-    })
+    const [product, setProduct] = useState(
+        {
+            title: "",
+            category: "",
+            condition: "",
+            quantity: "",
+            color: "",
+            price: "",
+            description: "",
+            creator: ""
+        }
+
+    )
+    console.log("product comming ", props.product);
     const classes = useStyles();
     const [alertId, setAlertId] = useState("")
     const [alertText, setAlertText] = useState("")
@@ -53,10 +57,12 @@ const SellItems = (props) => {
     const handleClose = () => setShowSignin(false);
 
     useEffect(() => {
-
         if (localStorage.getItem("c2c-token")) authenticate();
-
+        if (props.product) setProduct(props.product)
     }, [])
+
+
+
     const authenticate = async () => {
         let response = await GET("/api/auth/authenticated")
         if (response.data) {
@@ -127,7 +133,7 @@ const SellItems = (props) => {
     return (
         <div>
             <MyNavbar {...props} />
-
+            {console.log(product, "it's coming from state")}
             <SellDetails
                 {...props}
                 imageChangeHandler={imageChangeHandler}

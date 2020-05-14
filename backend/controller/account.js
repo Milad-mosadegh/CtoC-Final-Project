@@ -110,135 +110,141 @@ exports.getMyProducts = async (req, res) => {
     if (!result) {
         res.json({ failed: "Your have no Products" })
     } else {
-        res.json({ success:"You have successfully retrieved your products", products:result })
+        res.json({ success: "You have successfully retrieved your products", products: result })
     }
 }
 
 
 
-exports.lastSeen =async(req,res)=>{
-    let productId= req.body.data;
-/*     let condition = {
-        $cond:{
-            if: {$isArray:"lastSeen"},
-            then:{$addToSet :{lastSeen:req.body.data}},
-            else: "NA"
-        }
-    } */
-    let result = await User.findById(req.userId, {lastSeen:1})
+exports.lastSeen = async (req, res) => {
+    let productId = req.body.data;
+    /*     let condition = {
+            $cond:{
+                if: {$isArray:"lastSeen"},
+                then:{$addToSet :{lastSeen:req.body.data}},
+                else: "NA"
+            }
+        } */
+    let result = await User.findById(req.userId, { lastSeen: 1 })
     let lastSeen = [...result.lastSeen]
-        if(lastSeen.includes(productId)) return res.json({status:"success", message:"already there"})
-         else {
-             if(lastSeen.length>=4) {
-                 lastSeen.shift()
-                 lastSeen.push(productId)
-                }
-                else lastSeen.push(productId)
-         }
+    if (lastSeen.includes(productId)) return res.json({ status: "success", message: "already there" })
+    else {
+        if (lastSeen.length >= 4) {
+            lastSeen.shift()
+            lastSeen.push(productId)
+        }
+        else lastSeen.push(productId)
+    }
 
-        await User.findByIdAndUpdate(req.userId, {lastSeen},(err,doc)=>{
-            if(err) throw err
-            else res.json({status:"success", message:"successfully added"})
-        })  
+    await User.findByIdAndUpdate(req.userId, { lastSeen }, (err, doc) => {
+        if (err) throw err
+        else res.json({ status: "success", message: "successfully added" })
+    })
     /* await User.findByIdAndUpdate(req.userId,condition,(err,doc)=>{
         console.log(doc, "after last seen updat3e")
         res.json({status:"success", comments:"you reached last seen"})
     }) */
     //{$addToSet:{lastSeen:req.body.data}}
-    
+
 }
 
 
-exports.getLastSeen=async(req,res)=>{
-    let result = await User.findById(req.userId, {lastSeen:1})
-    if(!result) return res.json({status:"failed" })
+exports.getLastSeen = async (req, res) => {
+    let result = await User.findById(req.userId, { lastSeen: 1 })
+    if (!result) return res.json({ status: "failed" })
 
     let lastSeen = await ActiveProducts.find({
-        "_id" : {
-          "$in" :result.lastSeen
-         }
-      },{_id: 1,
-        title: 1,   
+        "_id": {
+            "$in": result.lastSeen
+        }
+    }, {
+        _id: 1,
+        title: 1,
         category: 1,
         condition: 1,
         color: 1,
         price: 1,
         images: 1,
-        priceRange: 1,});
-    if(!lastSeen) return res.json({status:"failed", message:"No product to show", data:[]})
-    res.json({status:"success", data:lastSeen})
+        priceRange: 1,
+    });
+    if (!lastSeen) return res.json({ status: "failed", message: "No product to show", data: [] })
+    res.json({ status: "success", data: lastSeen })
 }
 
-exports.setFavorities=async(req,res)=>{
-    let id=req.userId
-    let productId=req.body.data
-    let result = await User.findById(id, {liked:1})
-    if(!result) return res.json({status:"failed"})
+exports.setFavorities = async (req, res) => {
+    let id = req.userId
+    let productId = req.body.data
+    let result = await User.findById(id, { liked: 1 })
+    if (!result) return res.json({ status: "failed" })
     let favourities = [...result.liked]
 
-    let index= favourities.indexOf(productId)
-    if(index===-1) favourities.push(productId)
-        else favourities.splice(index,1)
-    await User.findByIdAndUpdate(id,{liked:favourities}, (err, doc)=>{
-        if(err) throw err
-        else res.json({status:"success"})}
- )}
+    let index = favourities.indexOf(productId)
+    if (index === -1) favourities.push(productId)
+    else favourities.splice(index, 1)
+    await User.findByIdAndUpdate(id, { liked: favourities }, (err, doc) => {
+        if (err) throw err
+        else res.json({ status: "success" })
+    }
+    )
+}
 
- exports.getFavoritiesList=async(req,res)=>{
-    
-    let id=req.userId
-    let result = await User.findById(id, {liked:1})
-    if(!result)  res.json({status:"failed"})
-    else res.json({status:"success", favourities:result.liked})  
+exports.getFavoritiesList = async (req, res) => {
 
-   }
+    let id = req.userId
+    let result = await User.findById(id, { liked: 1 })
+    if (!result) res.json({ status: "failed" })
+    else res.json({ status: "success", favourities: result.liked })
 
-exports.getFavoriteProducts=async(req,res)=>{
+}
+
+exports.getFavoriteProducts = async (req, res) => {
 
 
-    let id=req.userId
-    let result = await User.findById(id, {liked:1})
-    if(!result) return  res.json({status:"failed"})
+    let id = req.userId
+    let result = await User.findById(id, { liked: 1 })
+    if (!result) return res.json({ status: "failed" })
     let favoriteProducts = await ActiveProducts.find({
-        "_id" : {
-          "$in" :result.liked
-         }
-      },{_id: 1,
-        title: 1,   
+        "_id": {
+            "$in": result.liked
+        }
+    }, {
+        _id: 1,
+        title: 1,
         category: 1,
         condition: 1,
         color: 1,
         price: 1,
         images: 1,
-        priceRange: 1,});
-    
-    if(!favoriteProducts) return res.json({status:"failed", message:"No product to show", products:[]})
-    res.json({status:"success", products:favoriteProducts})
-   
+        priceRange: 1,
+    });
+
+    if (!favoriteProducts) return res.json({ status: "failed", message: "No product to show", products: [] })
+    res.json({ status: "success", products: favoriteProducts })
+
 
 }
 
-exports.getInactiveProducts = async(req,res)=>{
+exports.getInactiveProducts = async (req, res) => {
 
-    let id=req.userId
-    let result = await InActiveProducts.find({creator:id},{_id:1, title:1, images:1, price:1})
-    if(!result) return  res.json({failed:"You have no Inactive Products"})
-    res.json({success:"You have successfully retrieved", products:result})
-
-}
-
-exports.getSoldProducts = async(req,res)=>{
-
-    let id=req.userId
-    let result = await SoldProducts.find({creator:id},{_id:1, title:1, images:1, price:1})
-    if(!result) return  res.json({failed:"You have no Sold Products"})
-    if(result) res.json({success:"You have successfully retrieved", products:result})
+    let id = req.userId
+    let result = await InActiveProducts.find({ creator: id }, { _id: 1, title: 1, images: 1, price: 1 })
+    if (!result) return res.json({ failed: "You have no Inactive Products" })
+    res.json({ success: "You have successfully retrieved", products: result })
 
 }
 
-exports.inactiveProductDetails=async(req,res)=>{
+exports.getSoldProducts = async (req, res) => {
+
+    let id = req.userId
+    let result = await SoldProducts.find({ creator: id }, { _id: 1, title: 1, images: 1, price: 1 })
+    if (!result) return res.json({ failed: "You have no Sold Products" })
+    if (result) res.json({ success: "You have successfully retrieved", products: result })
+
+}
+
+exports.inactiveProductDetails = async (req, res) => {
     const id = req.params.id
-    let product = await InActiveProducts.findOne({_id:id, creator:req.userId}, {
+    let product = await InActiveProducts.findOne({ _id: id, creator: req.userId }, {
         title: 1,
         category: 1,
         condition: 1,
@@ -250,14 +256,14 @@ exports.inactiveProductDetails=async(req,res)=>{
         views: 1,
         images: 1
     })
-    .populate([{path:"creator",select:"firstName", model:User}])
+        .populate([{ path: "creator", select: "firstName", model: User }])
     if (!product) res.json({ status: "failed", message: "Internal Error please try again" })
     else res.json({ status: "success", message: "Successfully retrieved", data: product })
 }
 
-exports.soldProductDetails=async(req,res)=>{
+exports.soldProductDetails = async (req, res) => {
     const id = req.params.id
-    let product = await SoldProducts.findOne({_id:id, creator:req.userId}, {
+    let product = await SoldProducts.findOne({ _id: id, creator: req.userId }, {
         title: 1,
         category: 1,
         condition: 1,
@@ -269,7 +275,12 @@ exports.soldProductDetails=async(req,res)=>{
         views: 1,
         images: 1
     })
-    .populate([{path:"creator",select:"firstName", model:User}])
+        .populate([{ path: "creator", select: "firstName", model: User }])
     if (!product) res.json({ status: "failed", message: "Internal Error please try again" })
     else res.json({ status: "success", message: "Successfully retrieved", data: product })
+}
+
+exports.editProduct = async (req, res) => {
+    console.log("This is Edit Product Warning", req.params.id);
+
 }

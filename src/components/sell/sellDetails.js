@@ -9,9 +9,9 @@ import '../styles/main.css'
 
 const SellDetails = (props) => {
 
-
-
     const { imageChangeHandler, changeHandler, submitHandler, product } = props
+    console.log("info from sell Details", product);
+
 
     const cancelHandler = () => {
         props.history.push("/")

@@ -50,7 +50,7 @@ const Favorites = (props) => {
             </div>
             {showModal ?
                 <ProductDetails showModel={showModal} handleClose={handleClose}
-                    id={productId}
+                    id={productId} {...props}
                 /> : null}
         </div>
     )

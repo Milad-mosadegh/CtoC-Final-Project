@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { Tab, Col, Nav, Row } from 'react-bootstrap'
 import ProductDetails from '../../buy/productDetails';
 import '../../styles/main.css'
@@ -11,11 +11,11 @@ const Activity = (props) => {
 
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
-    const [url, setUrl]             = useState("")
-    
+    const [url, setUrl] = useState("")
 
 
-    const setTargetProduct = (id,url) => {
+
+    const setTargetProduct = (id, url) => {
         setShowModal(true)
         setUrl(url)
         setProductId(id)
@@ -53,7 +53,7 @@ const Activity = (props) => {
                         <Tab.Pane eventKey="first" >
                             <ActiveProducts
                                 setTargetProduct={setTargetProduct}
-                            />   
+                            />
                         </Tab.Pane>
 
                         <Tab.Pane eventKey="second">
@@ -72,12 +72,13 @@ const Activity = (props) => {
                 </Row>
             </Tab.Container>
             {showModal ?
-                    <ProductDetails 
-                        showModel={showModal} 
-                        handleClose={handleClose}
-                        id={productId}
-                        url={url}
-                    /> : null}
+                <ProductDetails
+                    showModel={showModal}
+                    handleClose={handleClose}
+                    id={productId}
+                    url={url}
+                    {...props}
+                /> : null}
 
         </div>
 

@@ -14,6 +14,7 @@ import ResetPassword from './components/resetPassword/resetPassword';
 import BuyComponent from './components/buy/buy';
 import Messages from './components/messages/messages';
 import Contact from './components/contact/contact';
+import EditProduct from './components/account/EditProductDetail/editProduct';
 
 
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/account" component={MainAcc} />
           <Route path="/contact" component={Contact} />
+          <Route path="/editproduct/:id" component={EditProduct} />
           <Route path="/messages" component={Messages} />
           <Route path="/resetpass/:id/:token" component={ResetPassword} />
           <Route path="/sellitems" component={SellItems} />
