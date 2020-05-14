@@ -49,22 +49,22 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
             .catch(err => err)
         console.log(response)
 
-        const deactivateHandler = (id) => {
-            Axios.post("/api/products/inactiveproduct", { data: { id } }, {
-                headers: {
-                    'x-auth-token': localStorage.getItem('c2c-token'),
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(res => res)
-                .catch(err => err)
+        
+    }
+    const soldHandler = (id) => {
+        Axios.post("/api/products/soldproduct", { data: { id } }, {
+            headers: {
+                'x-auth-token': localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res)
+            .catch(err => err)
 
-        }
     }
     const activateHandler = (id) => console.log("activate handler called", id)
     const deleteHandler = (id) => console.log("delete handler called", id)
     const editHandler = (id) => console.log("edit handler called", id)
-    const soldHandler = (id) => console.log("edit handler called", id)
     const reportHandler = (id) => console.log("Report handler called", id)
     const favoriteHandler = (id) => console.log("favorite handler called", id)
 
@@ -74,7 +74,7 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
             <Zoom>
                 <div>
                     <ProductDetailsForm
-                        description={productDetail.description}
+                        descriptiohandleClosen={productDetail.description}
                         postedBy={productDetail ? productDetail.creator.firstName : null}
                         creatorId={productDetail ? productDetail.creator._id : null}
                         productId={productDetail._id}
@@ -89,9 +89,9 @@ const ProductDetails = ({ id, showModel, handleClose }) => {
                         activateHandler={activateHandler}
                         deleteHandler={deleteHandler}
                         editHandler={editHandler}
-                        soldHandler={soldHandler}
                         reportHandler={reportHandler}
                         favoriteHandler={favoriteHandler}
+                        soldHandler={soldHandler}
                         handleClose={handleClose}
                     />
                 </div>
