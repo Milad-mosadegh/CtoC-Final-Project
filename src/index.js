@@ -4,12 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Axios from 'axios';
+import axios from 'axios';
 
 // import store from 'store.js'
 
-Axios.defaults.headers['x-auth-token'] = localStorage.getItem("c2c-token");
-Axios.interceptors.response.use( (response=>response), function (error) {
+axios.defaults.headers['x-auth-token'] = localStorage.getItem("c2c-token");
+axios.interceptors.response.use( (response=>response), function (error) {
   if ( 401 === error.response.status ) {
     window.location = '/login';
     // store.dispatch({type:'a/logout'});

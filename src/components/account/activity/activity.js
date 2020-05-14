@@ -1,51 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import { Tab, Col, Nav, Row } from 'react-bootstrap'
-
-import Zoom from 'react-reveal/Zoom';
-
-
-import GET from '../../lib/get';
 import ProductDetails from '../../buy/productDetails';
-import Products from '../../buy/products';
-
 import '../../styles/main.css'
+import ActiveProducts from './activeProducts';
+import InactiveProducts from './inactiveProducts';
+import SoldProducts from './soldProducts';
 
 
 const Activity = (props) => {
 
-    const [products, setProducts] = useState("")
-    const [showMainComponent, setShowMainComponents] = useState(true)
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
-    const [inActiveProducts, setInActiveProducts] = useState("")
-    const [soldProducts, setSoldProducts] = useState("")
+    const [url, setUrl]             = useState("")
+    
 
 
-
-
-    useEffect(() => {
-        const fetchData = async () => {
-            let response = await GET("/api/account/myproducts")
-            console.log("response from buy", response)
-            setProducts(response.data.data)
-            let res = await GET("/api/account/inactiveproducts")
-            setInActiveProducts(res.data.products)
-            let sold = await GET("/api/account/soldproducts")
-            setSoldProducts(sold.data.products)
-        }
-        fetchData()
-    }, [])
-
-    const setTargetProduct = (id) => {
-        setShowMainComponents(false)
+    const setTargetProduct = (id,url) => {
         setShowModal(true)
+        setUrl(url)
         setProductId(id)
     }
 
 
     const handleClose = () => {
         setShowModal(false)
-        setShowMainComponents(true)
 
     }
 
@@ -73,54 +51,33 @@ const Activity = (props) => {
 
                     <Tab.Content>
                         <Tab.Pane eventKey="first" >
-                            <Zoom>
-                                <div>
-                                    <Products
-                                        products={products}
-                                        setTargetProduct={setTargetProduct}
-                                    />
-                                    {showModal ?
-                                        <ProductDetails showModel={showModal} handleClose={handleClose}
-                                            id={productId}
-                                        /> : null}
-                                </div>
-                            </Zoom>
+                            <ActiveProducts
+                                setTargetProduct={setTargetProduct}
+                            />   
                         </Tab.Pane>
+
                         <Tab.Pane eventKey="second">
-
-                            <Zoom>
-                                <div>
-                                    {console.log(inActiveProducts, "in activities")}
-                                    <Products
-                                        products={inActiveProducts}
-                                        setTargetProduct={setTargetProduct}
-                                    />
-                                    {showModal ?
-                                        <ProductDetails showModel={showModal} handleClose={handleClose}
-                                            id={productId}
-                                        /> : null}
-                                </div>
-                            </Zoom>
-
+                            <InactiveProducts
+                                setTargetProduct={setTargetProduct}
+                            />
                         </Tab.Pane>
+
                         <Tab.Pane eventKey="third">
-                            <Zoom>
-                                <div>
-                                    <Products
-                                        products={soldProducts}
-                                        setTargetProduct={setTargetProduct}
-                                    />
-                                    {showModal ?
-                                        <ProductDetails showModel={showModal} handleClose={handleClose}
-                                            id={productId}
-                                        /> : null}
-                                </div>
-                            </Zoom>
+                            <SoldProducts
+                                setTargetProduct={setTargetProduct}
+                            />
                         </Tab.Pane>
                     </Tab.Content>
 
                 </Row>
             </Tab.Container>
+            {showModal ?
+                    <ProductDetails 
+                        showModel={showModal} 
+                        handleClose={handleClose}
+                        id={productId}
+                        url={url}
+                    /> : null}
 
         </div>
 

@@ -7,16 +7,17 @@ import ProductDetailsForm from './productDetailsForm';
 import { POST } from '../lib/post';
 import Axios from 'axios';
 
-const ProductDetails = ({ id, showModel, handleClose }) => {
+const ProductDetails = ({ id, showModel, handleClose , url}) => {
     const [productDetail, setProductDetail] = useState("")
     const [bgImage, setBgImage] = useState("noimage.png")
     useEffect(() => {
         const getProductDetails = async () => {
-            let response = await GET(`/api/buy/productDetails/${id}`)
+            let response = await GET(`${url?url:`/api/buy/activeproductdetails`}/${id}`)
             setProductDetail(response.data.data)
             if (response.data.data.images.length > 0) setBgImage(response.data.data.images[0])
 
         }
+
         getProductDetails()
         return (async () => {
             const config = {

@@ -4,7 +4,7 @@ import '../../../node_modules/font-awesome/css/font-awesome.min.css'
 import ItemCard from '../landingpage/itemCard';
 import GET from "../lib/get"
 
-export default function Products({ products, setTargetProduct }) {
+export default function Products({ products, setTargetProduct,url }) {
     const [favourit, setFavourit]=useState([])
     useEffect(()=>{
         const getFavourities = async()=>{
@@ -27,6 +27,7 @@ export default function Products({ products, setTargetProduct }) {
                         id={product._id}
                         images={product.images.length > 0 ? product.images[0] : 'noimage.png'}
                         favourit={favourit}
+                        url={url?url:`/api/buy/activeproductdetails`}
                     />
 
                 ) : null}

@@ -98,7 +98,7 @@ exports.editProfile = async (req, res) => {
 }
 
 exports.getMyProducts = async (req, res) => {
-    let products = await ActiveProducts.find({ creator: req.userId },
+    let result = await ActiveProducts.find({ creator: req.userId },
         {
             _id: 1,
             title: 1,
@@ -107,29 +107,14 @@ exports.getMyProducts = async (req, res) => {
         }
     )
 
-    if (!products) {
-        res.json({ status: "failed", message: "Your have no Products" })
+    if (!result) {
+        res.json({ failed: "Your have no Products" })
     } else {
-        res.json({ status: "success", data: products })
+        res.json({ success:"You have successfully retrieved your products", products:result })
     }
 }
 
-exports.getMySoldProducts = async (req, res) => {
-    let products = await SoldProducts.find({ creator: req.userId },
-        {
-            _id: 1,
-            title: 1,
-            price: 1,
-            images: 1,
-        }
-    )
 
-    if (!products) {
-        res.json({ status: "failed", message: "Your have no Products" })
-    } else {
-        res.json({ status: "success", data: products })
-    }
-}
 
 exports.lastSeen =async(req,res)=>{
     let productId= req.body.data;
@@ -249,4 +234,42 @@ exports.getSoldProducts = async(req,res)=>{
     if(!result) return  res.json({failed:"You have no Sold Products"})
     if(result) res.json({success:"You have successfully retrieved", products:result})
 
+}
+
+exports.inactiveProductDetails=async(req,res)=>{
+    const id = req.params.id
+    let product = await InActiveProducts.findOne({_id:id, creator:req.userId}, {
+        title: 1,
+        category: 1,
+        condition: 1,
+        quantity: 1,
+        color: 1,
+        price: 1,
+        description: 1,
+        creator: 1,
+        views: 1,
+        images: 1
+    })
+    .populate([{path:"creator",select:"firstName", model:User}])
+    if (!product) res.json({ status: "failed", message: "Internal Error please try again" })
+    else res.json({ status: "success", message: "Successfully retrieved", data: product })
+}
+
+exports.soldProductDetails=async(req,res)=>{
+    const id = req.params.id
+    let product = await SoldProducts.findOne({_id:id, creator:req.userId}, {
+        title: 1,
+        category: 1,
+        condition: 1,
+        quantity: 1,
+        color: 1,
+        price: 1,
+        description: 1,
+        creator: 1,
+        views: 1,
+        images: 1
+    })
+    .populate([{path:"creator",select:"firstName", model:User}])
+    if (!product) res.json({ status: "failed", message: "Internal Error please try again" })
+    else res.json({ status: "success", message: "Successfully retrieved", data: product })
 }
