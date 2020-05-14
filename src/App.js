@@ -15,6 +15,7 @@ import BuyComponent from './components/buy/buy';
 import Messages from './components/messages/messages';
 import Contact from './components/contact/contact';
 import EditProduct from './components/account/EditProductDetail/editProduct';
+import SubCategories from './components/CategoriesDetails/SubCategories';
 
 
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/account" component={MainAcc} />
           <Route path="/contact" component={Contact} />
           <Route path="/editproduct/:id" component={EditProduct} />
+          <Route path="/categories/:type" component={SubCategories} />
           <Route path="/messages" component={Messages} />
           <Route path="/resetpass/:id/:token" component={ResetPassword} />
           <Route path="/sellitems" component={SellItems} />

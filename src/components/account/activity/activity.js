@@ -35,8 +35,8 @@ const Activity = (props) => {
 
             <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
                 <Row>
-                    <Col sm={2}>
-                        <Nav variant="pills" justify="false" className="flex-column mt-5">
+                    <Col sm={12}>
+                        <Nav variant="pills" justify="false" className="d-flex mt-5">
                             <Nav.Item>
                                 <Nav.Link eventKey="first">Active Products</Nav.Link>
                             </Nav.Item>

@@ -56,17 +56,18 @@ const Categories = (props) => {
         speed: 500
     };
 
+    const goToSub = () => props.history.push('/subcategories')
 
     return (
 
-        <div className="container">
+        <div className="container ">
             <Slider {...settings} className="shadow-lg ">
                 {allCat.map(data =>
                     <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                         <Card style={{ width: '18rem' }}>
                             <Card.Img variant="top" className='cardImg' src={data.name} />
                             <Card.Body >
-                                <Card.Title> <Link className="text-light" to={data.type}>{data.type}</Link></Card.Title>
+                                <Card.Title> <Link onClick={goToSub} className="text-light" >{data.type}</Link></Card.Title>
                             </Card.Body>
                         </Card>
                     </div>

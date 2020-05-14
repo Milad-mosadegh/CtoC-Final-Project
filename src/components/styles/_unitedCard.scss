@@ -1,6 +1,6 @@
 .unitedWrap{
     margin: 10px;
-
+ transition: 0.5s;
     .unitedCards{
         width: 200px;
         height: 300px;
@@ -8,13 +8,13 @@
         box-shadow: $lightBoxShadow;
         color: $lightTextGray;
         margin-bottom: 10px;
-        transition: 0.6s;
+        transition: 0.5s;
     }
     &:hover {
         box-shadow: $mediumBoxShadow;
         color: whitesmoke;
         margin-top: -10px;
-        transition: 0.6s;
+        transition: 0.5s;
     }
     .unitedImgBox{
         width: 200px;

@@ -75,16 +75,16 @@ const Home = (props) => {
                         <h2 className='mb-5'> See What we Have in Categories</h2>
                         <div className="container">
                         <SlideShow />
-                                                        </div>
-                        
-<div className="homeBanner"></div>
+                        </div>
+
+                    <div className="homeBanner"></div>
                     >
                         <Footer />
-                    </div>
+                </div>
                 </div>
             }
 
-        </div>
+        </div >
     );
 }
 

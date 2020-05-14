@@ -124,6 +124,22 @@ $bestGreenColor:rgb(126 , 197, 68);
         transition: 0.6s;
     }
 }
+.myFavButton{
+    @include myButton($bestOrangeColor,#fff,100%,40px);
+    border: none;
+    outline: none;
+    opacity: 0.8;
+    transition: 0.4s;
+    font-size: 20px;
+    user-select: none;
+    box-shadow: $lightBoxShadow;
+    &:hover{
+        opacity: 1;
+        box-shadow: $mediumBoxShadow;
+        transform: translateY(-5px);
+        transition: 0.6s;
+    }
+}
 
 .myGreenButton-lg {
     @include myButton($bestGreenColor,#fff,120px,40px);

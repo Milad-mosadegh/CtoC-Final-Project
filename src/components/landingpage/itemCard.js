@@ -1,6 +1,6 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Slide from 'react-reveal/Slide';
-import {POST} from "../lib/post"
+import { POST } from "../lib/post"
 
 // redux/favorites.js
 
@@ -57,25 +57,25 @@ withComponents ( function({productId,favorites,favoriteActions}){
 
 
 
-const ItemCard = ({ title, price, id, images, setTargetProduct, favourit ,url}) => {
+const ItemCard = ({ title, price, id, images, setTargetProduct, favourit, url }) => {
 
-    const [favouritized, setFavouritized] =useState(false)
+    const [favouritized, setFavouritized] = useState(false)
 
-    useEffect(()=>{
-        if(favourit.includes(id)) setFavouritized(true)
-    },[favourit, id]);
-   
+    useEffect(() => {
+        if (favourit.includes(id)) setFavouritized(true)
+    }, [favourit, id]);
 
-    const setFvourities=async()=> {
-        if(localStorage.getItem("c2c-token")){
-            const config={
-                headers:{
-                    'x-auth-token':localStorage.getItem('c2c-token'),
+
+    const setFvourities = async () => {
+        if (localStorage.getItem("c2c-token")) {
+            const config = {
+                headers: {
+                    'x-auth-token': localStorage.getItem('c2c-token'),
                     'Content-Type': 'application/json'
                 }
             }
-            let response= await POST("/api/account/setfavorities", id, config)
-            if(response.data.status==="success") setFavouritized(!favouritized)
+            let response = await POST("/api/account/setfavorities", id, config)
+            if (response.data.status === "success") setFavouritized(!favouritized)
         }
     }
     return (
@@ -83,31 +83,24 @@ const ItemCard = ({ title, price, id, images, setTargetProduct, favourit ,url}) 
         <div>
             <div className="unitedWrap ">
                 <Slide left>
-            
                     <div className="unitedCards" key={id} >
-                        <button className={favouritized?"btn btn-warning fa fa-star":"btn btn-success fa fa-star-o"} onClick={setFvourities}></button>
-                        <div className="unitedImgBox" onClick={() => setTargetProduct(id,url)}
+                        <button className={favouritized ? "myFavButton fa fa-star " : "myFavButton fa fa-star-o "} onClick={setFvourities}></button>
+                        <div className="unitedImgBox" onClick={() => setTargetProduct(id, url)}
                             style={{
                                 backgroundImage: `url(${`http://localhost:5000/avatars/${images}`})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat',
                             }}>
-                        
                         </div>
                         <div className="unitedContent">
-                        
                             <div className="unitedPrice">
-
                                 <h5> Price : {price}€</h5>
                             </div>
                             <h3>{title}</h3>
                         </div>
                     </div>
-                    
-                
                 </Slide>
-
             </div>
         </div>
     );
