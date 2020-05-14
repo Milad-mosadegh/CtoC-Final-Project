@@ -8,6 +8,7 @@ import MyAlert from '../lib/alert';
 import SigninModal from "../signin/signinModal/signinModal"
 import { makeStyles } from '@material-ui/core/styles';
 import PasswordReset from "../signin/resetModal"
+import axios from "axios"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 
 const SellItems = (props) => {
 
-
+    const {id} = props
     const [images, setImages] = useState([])
     const [aut, setAuth] = useState(false)
     const [showSignin, setShowSignin] = useState(false)
@@ -39,7 +40,6 @@ const SellItems = (props) => {
         }
 
     )
-    console.log("product comming ", props.product);
     const classes = useStyles();
     const [alertId, setAlertId] = useState("")
     const [alertText, setAlertText] = useState("")
@@ -58,8 +58,10 @@ const SellItems = (props) => {
 
     useEffect(() => {
         if (localStorage.getItem("c2c-token")) authenticate();
-        if (props.product) setProduct(props.product)
-    }, [])
+            axios.get(`/api/buy/activeproductdetails/${id}`)
+                .then(res => setProduct(res.data.data))
+                .catch(err => err)
+}, [])
 
 
 
