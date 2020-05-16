@@ -91,7 +91,9 @@ const SellDetails = (props) => {
                     <div className=" boxRight">
                         <div >
                             <div className="d-flex justify-content-around">
-                                <ImageCard id={"1"} imageChangeHandler={imageChangeHandler} />
+                            {/* <ImageCard image={profile.profileImage} edit={true} id={"1"} imageChangeHandler={imageChangeHandler} /> */}
+                            {console.log(product.images?product.images[0]:null, "in sell details")}
+                                <ImageCard id={"1"} images={product.images?product.images[0]:null} edit={product.images?true:false} imageChangeHandler={imageChangeHandler} />
                                 <ImageCard id={"2"} imageChangeHandler={imageChangeHandler} />
                                 <ImageCard id={"3"} imageChangeHandler={imageChangeHandler} />
                             </div>

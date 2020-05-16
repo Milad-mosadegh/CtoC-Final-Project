@@ -7,7 +7,7 @@ function EditProduct(props) {
 
     return (
         <div>
-            <SellItems id={id} />
+            <SellItems id={id} {...props}/>
             <h1>Edit Your Information ...</h1>
 
         </div>
