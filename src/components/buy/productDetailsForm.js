@@ -104,21 +104,25 @@ const ProductDetailsForm = (props) => {
                         <span>
                             Product ID : <input className="p-d-input" type="text" value={productId} disabled />
                         </span>
-                        <span>
-                            Color : <input className="p-d-input" type="text" value={color} disabled />
-                        </span>
-                        <span>
-                            Condition : <input className="p-d-input" type="text" value={condition} disabled />
-                        </span>
-                        <span>
-                            Quantity : <input className="p-d-input" type="text" value={quantity} disabled />
-                        </span>
                     </div>
 
 
                     <div className="des">
-                        <span>Description</span>
-                        <p>{description}</p>
+                        <div className="d-flex justify-content-lg-around">
+                            <span>
+                                Color : <input className="p-d-input" type="text" value={color} disabled />
+                            </span>
+                            <span>
+                                Condition : <input className="p-d-input" type="text" value={condition} disabled />
+                            </span>
+                            <span>
+                                Quantity : <input className="p-d-input" type="text" value={quantity} disabled />
+                            </span>
+0                        </div>
+                        <div className="mt-5 float-left">
+                            <span>Description :</span>
+                            <p>{description}</p>
+                        </div>
                     </div>
 
 
@@ -127,7 +131,7 @@ const ProductDetailsForm = (props) => {
             <div>
                 {creatorId ?
                     creatorId === currentUserId ?
-                        <div>
+                        <div className="mt-5">
                             <button className='myBlueButton-lg' onClick={() => editHandler(productId)}>       Edit    </button>
                             <button className='myRedButton-lg ml-1' onClick={() => deleteHandler(productId)}>     Delete  </button>
                             <button className='myOrabgeButton-lg ml-1' onClick={() => deactivateHandler(productId)}> In-Active</button>

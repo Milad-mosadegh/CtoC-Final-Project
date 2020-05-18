@@ -7,9 +7,10 @@ import ProductDetailsForm from './productDetailsForm';
 import { POST } from '../lib/post';
 import axios from 'axios';
 
+
 const ProductDetails = (props) => {
 
-    const { id, showModel, handleClose, url } = props
+    const { id, showModel, handleClose, url, alertBoxHead, alertBoxTitle } = props
 
     const [productDetail, setProductDetail] = useState("")
     const [bgImage, setBgImage] = useState("noimage.png")
@@ -59,9 +60,9 @@ const ProductDetails = (props) => {
                 'Content-Type': 'application/json'
             }
         })
+
             .then(res => res)
             .catch(err => err)
-
     }
     const activateHandler = (id) => console.log("activate handler called", id)
     const deleteHandler = (id) => console.log("delete handler called", id)

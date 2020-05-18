@@ -6,8 +6,17 @@ nav > .nav-link {
 }
 
 .milad .nav-link {
-    color: whitesmoke ;
+    color: white ;
     background: $bestBlueColor;
     margin-top: 10px;
 }
 
+.milad .nav-pills .nav-link {
+    border-radius: 0;
+    margin: 5px;
+}
+
+.milad .nav-pills .nav-link.active {
+    color: white;
+    background-color:$bestRedColor;
+}
