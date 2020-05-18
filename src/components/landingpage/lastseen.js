@@ -42,14 +42,6 @@ const LastSeen = (props) => {
                 : <LastSeenDescription />
             }
         </div>
-
-
-
-
-
     );
 }
-
-
-
 export default LastSeen;

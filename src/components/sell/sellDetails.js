@@ -9,7 +9,7 @@ import '../styles/main.css'
 
 const SellDetails = (props) => {
 
-    const { imageChangeHandler, changeHandler, submitHandler, product } = props
+    const { imageChangeHandler, changeHandler, submitHandler, product , edit, editHandler} = props
     console.log("info from edit sell", product);
 
 
@@ -101,10 +101,16 @@ const SellDetails = (props) => {
                                 <ImageCard id={"6"} image={product.images?product.images[5]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
                             </div>
                         </div>
+                        {edit?
                         <div style={{ marginTop: "60px" }}>
-                            <button className="myBlueButton-sm" type="submit" onClick={submitHandler}>Submit</button>
+                            <button className="myOrabgeButton-lg" type="submit" onClick={editHandler}>Update</button>
                             <button className="myRedButton-sm ml-2" onClick={cancelHandler}>Cancel</button>
                         </div>
+                        :
+                        <div style={{ marginTop: "60px" }}>
+                            <button className="myRedButton-sm" type="submit" onClick={submitHandler}>Submit</button>
+                            <button className="myRedButton-sm ml-2" onClick={cancelHandler}>Cancel</button>
+                        </div>}
                     </div>
                 </Fade>
             </div>

@@ -79,6 +79,7 @@ const SellItems = (props) => {
 
         if (!localStorage.getItem("c2c-token")) return handleOpen()
         if (showSignin) handleClose()
+        console.log("submited product,", product)
         let config;
         if (images.length > 0) {
             const formData = new FormData();
@@ -118,7 +119,50 @@ const SellItems = (props) => {
         }
 
     }
-    if(edit) console.log("edit is enabled")
+    const editHandler=async()=>{
+        if (!localStorage.getItem("c2c-token")) return handleOpen()
+        if (showSignin) handleClose()
+        console.log("submited product,", product)
+        let config;
+        if (images.length > 0) {
+            const formData = new FormData();
+            let imageArray = images.map(value => value.image)
+            imageArray.forEach(value => formData.append("files", value))
+            Object.keys(product).forEach(key => {
+                                    if(key==="creator") formData.append(key,id)
+                                    else formData.append(key, product[key])})
+            config = {
+                headers: {
+                    'x-auth-token': localStorage.getItem('c2c-token'),
+                    'Content-type': 'multipart/form-data'
+                }
+            }
+
+            const response = await IMGPOST("/api/products/newproduct", formData, config)
+            if (response.data && response.data.status === "success") {
+                setAlertId("A")
+                setAlertText('You have successfuly posted your product')
+                setShowAlert(true)
+
+            }
+        }
+        else {
+            config = {
+                headers: {
+                    'x-auth-token': localStorage.getItem('c2c-token'),
+                    'Content-Type': 'application/json'
+                }
+            }
+            const response = await POST("/api/products/newproduct", product, config)
+            if (response.data && response.data.status === "success") {
+                setAlertId("A")
+                setAlertText('You have successfuly posted your product')
+                setShowAlert(true)
+
+
+            }
+        }
+    }
     return (
         <div>
         
@@ -129,6 +173,8 @@ const SellItems = (props) => {
                 changeHandler={changeHandler}
                 submitHandler={submitHandler}
                 product={product}
+                edit={edit}
+                editHandler={editHandler}
             />
 
             {showAlert ? <MyAlert id={alertId} alertText={alertText} {...props} /> : null}
