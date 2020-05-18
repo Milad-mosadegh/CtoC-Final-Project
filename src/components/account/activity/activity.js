@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tab, Col, Nav, Row } from 'react-bootstrap'
+import { Tab, Tabs, Col, Nav, Row } from 'react-bootstrap'
 import ProductDetails from '../../buy/productDetails';
 import '../../styles/main.css'
 import ActiveProducts from './activeProducts';
@@ -8,7 +8,7 @@ import SoldProducts from './soldProducts';
 
 
 const Activity = (props) => {
-    const {favorit, favoritHandler} = props
+    const { favorit, favoritHandler } = props
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
     const [url, setUrl] = useState("")
@@ -33,7 +33,7 @@ const Activity = (props) => {
 
         <div className="border shadow milad">
 
-            <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
+            {/*   <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
                 <Row>
                     <Col sm={12}>
                         <Nav variant="pills" justify="false" className="d-flex mt-5">
@@ -76,7 +76,45 @@ const Activity = (props) => {
                     </Tab.Content>
 
                 </Row>
-            </Tab.Container>
+            </Tab.Container> */}
+
+
+
+
+            <Tabs
+                id="uncontrolled-tab-example"
+                mountOnEnter={true}
+                unmountOnExit={true}
+                variant='pills'
+                className="d-flex justify-content-center ml-2"
+            >
+                <Tab eventKey="profile" title="Active Products"  >
+                    <ActiveProducts
+                        setTargetProduct={setTargetProduct}
+                        favorit={favorit}
+                        favoritHandler={favoritHandler}
+                    />
+                </Tab>
+                <Tab eventKey="activities" title="Inactive Products" >
+                    <InactiveProducts
+                        setTargetProduct={setTargetProduct}
+                        favorit={favorit}
+                        favoritHandler={favoritHandler}
+                    />
+                </Tab>
+                <Tab eventKey="favorities" title="Sold Products" >
+                    <SoldProducts
+                        setTargetProduct={setTargetProduct}
+                        favorit={favorit}
+                        favoritHandler={favoritHandler}
+                    />
+                </Tab>
+
+
+            </Tabs>
+
+
+
             {showModal ?
                 <ProductDetails
                     showModel={showModal}

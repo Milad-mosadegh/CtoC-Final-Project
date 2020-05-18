@@ -132,22 +132,27 @@
                     font-weight: bold;
                       margin-left: 10px;
                 }
+                 .p-d-input{
+                    border: none;
+                    width: 300px;
+                    background: none;
+                }
             }
 
-            .p-d-input{
-                border: none;
-                width: 100px;
-                background: none;
-              
-            }
+           
             .des{
                 border-top: 2px solid $bestBlueColor;
                 margin-top: 10px;
                 margin-bottom: 20px;
                 padding: 10px;
                 span{
-                    font-size: 20px;
+                    font-size: 15px;
                     font-weight: bold;
+                }
+                 .p-d-input{
+                    border: none;
+                    width: 200px;
+                    background: none;
                 }
                 p{
                     font-size: 14px;
