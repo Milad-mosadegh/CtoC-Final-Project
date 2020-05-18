@@ -6,6 +6,7 @@ import Products from "../buy/products"
 
 
 const LastSeen = (props) => {
+    const {favorit,favoritHandler} = props
     const [lastSeenProducts, setLastSeenProducts] = useState([])
 
     useEffect(() => {
@@ -17,7 +18,6 @@ const LastSeen = (props) => {
                 localStorage.removeItem("c2c-profile")
                 props.unAuthenticated()
             }
-
         }
         if (localStorage.getItem("c2c-token")) getProducts();
         else props.unAuthenticated()
@@ -34,6 +34,8 @@ const LastSeen = (props) => {
                         <Products
                             products={lastSeenProducts}
                             setTargetProduct={props.setTargetProduct}
+                            favorit={favorit}
+                            favoritHandler={favoritHandler}
                         />
                     </div>
                 </div>

@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 import Products from '../../buy/products';
 import ProductDetails from '../../buy/productDetails';
-import GET from '../../lib/get';
 import axios from "axios"
 const Favorites = (props) => {
 
+    const {favorit, favoritHandler} = props
     const [products, setProducts] = useState([])
-    const [showMainComponent, setShowMainComponents] = useState(true)
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
 
@@ -26,7 +25,6 @@ const Favorites = (props) => {
     }, [])
 
     const setTargetProduct = (id) => {
-        setShowMainComponents(false)
         setShowModal(true)
         setProductId(id)
     }
@@ -34,7 +32,6 @@ const Favorites = (props) => {
 
     const handleClose = () => {
         setShowModal(false)
-        setShowMainComponents(true)
 
     }
 
@@ -45,6 +42,8 @@ const Favorites = (props) => {
                     <Products
                         products={products}
                         setTargetProduct={setTargetProduct}
+                        favorit={favorit}
+                        favoritHandler={favoritHandler}
                     />
                 </div>
             </div>

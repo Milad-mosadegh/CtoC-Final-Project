@@ -3,7 +3,7 @@ import Zoom from 'react-reveal/Zoom';
 import Products from '../../buy/products';
 import axios from "axios"
 
-function InactiveProducts({setTargetProduct}) {
+function InactiveProducts({setTargetProduct, favorit, favoritHandler}) {
 
     const [inActiveProducts, setInActiveProducts] = useState("")
     useEffect(() => {
@@ -17,6 +17,8 @@ function InactiveProducts({setTargetProduct}) {
                     products={inActiveProducts}
                     setTargetProduct={setTargetProduct}
                     url={`/api/account/inactiveproductdetails`}
+                    favorit={favorit}
+                    favoritHandler={favoritHandler}
                 />
         </Zoom>
     )

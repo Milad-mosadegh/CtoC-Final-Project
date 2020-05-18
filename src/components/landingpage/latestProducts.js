@@ -6,21 +6,8 @@ import GET from '../lib/get';
 
 const LatestProduct = (props) => {
 
-    const [latestProducts, setLatestProducts] = useState("")
-    const [showModal, setShowModal] = useState(false)
-    const [productId, setProductId] = useState("")
-    const [showMainComponent, setShowMainComponents] = useState(true)
-    const setTargetProduct = (id) => {
-        setShowMainComponents(false)
-        setShowModal(true)
-        setProductId(id)
-    }
-
-    const handleClose = () => {
-        setShowModal(false)
-        setShowMainComponents(true)
-
-    }
+    const [latestProducts, setLatestProducts] = useState([])
+    const {favorit,favoritHandler} = props
 
     useEffect(() => {
         const getData = async () => {
@@ -38,6 +25,8 @@ const LatestProduct = (props) => {
                     <Products
                         products={latestProducts}
                         setTargetProduct={props.setTargetProduct}
+                        favorit={favorit}
+                        favoritHandler={favoritHandler}
                     />
                 </div>
             </div>

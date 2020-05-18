@@ -1,34 +1,32 @@
 import React, { useState, useEffect } from 'react';
-
 import LastSeen from './lastseen';
-
 import MyNavbar from '../navbar/navBar';
 import GET from '../lib/get';
 import SlideShow from '../buy/slideShow';
-
-
-
 import '../styles/main.css'
 import Footer from '../footer/footer';
 import LatestProducts from './latestProducts';
 import ProductDetails from '../buy/productDetails';
 
 
-const Home = (props) => {
+export default function Home(props){
+
     const [auth, setAuth] = useState(false)
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
-    const [showMainComponent, setShowMainComponents] = useState(true)
+    const [favorit, setFavorit] = useState([])
     const setTargetProduct = (id) => {
-        setShowMainComponents(false)
         setShowModal(true)
         setProductId(id)
     }
 
     const handleClose = () => {
         setShowModal(false)
-        setShowMainComponents(true)
 
+    }
+    const favoritHandler = async()=>{
+        let response= await GET("/api/account/getfavoritelist")
+            if(response.data.status==="success") setFavorit(response.data.favourities)
     }
     const unAuthenticated = () => setAuth(false)
     useEffect(() => {
@@ -41,6 +39,14 @@ const Home = (props) => {
                 else setAuth(false)
             }
             getData()
+            const getFavorities = async()=>{
+                if(!localStorage.getItem("c2c-token")) return
+                let response= await GET("/api/account/getfavoritelist")
+                if(response.data.status==="success")
+                console.log(response.data.favourities)
+                setFavorit(response.data.favourities)
+            }
+            getFavorities()
         }
     }, [])
     return (
@@ -61,13 +67,18 @@ const Home = (props) => {
 
                     <div className="homeCard">
                         <div className="leftCard">
-                            <LatestProducts setTargetProduct={setTargetProduct} />
+                            <LatestProducts 
+                                setTargetProduct={setTargetProduct}
+                                favoritHandler={favoritHandler}
+                                favorit={favorit} />
                         </div>
 
                         <div className="rightCard">
                             <LastSeen auth={auth}
                                 setTargetProduct={setTargetProduct}
-                                unAuthenticated={unAuthenticated} /> 
+                                unAuthenticated={unAuthenticated}
+                                favoritHandler={favoritHandler}
+                                favorit={favorit} /> 
                         </div>
                     </div>
 
@@ -75,17 +86,13 @@ const Home = (props) => {
                         <h2 className='mb-5'> See What we Have in Categories</h2>
                         <div className="container">
                         <SlideShow />
-                        </div>
+                            </div>
+                    </div>
+                    <div className="homeBanner">
 
-                    <div className="homeBanner"></div>
-                    >
+                    </div>
                         <Footer />
                 </div>
-                </div>
             }
-
-        </div >
-    );
-}
-
-export default Home;
+</div>
+    )}

@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../styles/main.css'
 import '../../../node_modules/font-awesome/css/font-awesome.min.css'
 import ItemCard from '../landingpage/itemCard';
-import GET from "../lib/get"
 
-export default function Products({ products, setTargetProduct,url }) {
-    const [favourit, setFavourit]=useState([])
-    useEffect(()=>{
-        const getFavourities = async()=>{
-            if(!localStorage.getItem("c2c-token")) return
-            let response= await GET("/api/account/getfavoritelist")
-            if(response.data.status==="success")
-            console.log(response.data.favourities)
-            setFavourit(response.data.favourities)
-        }
-        getFavourities()
-    },[])
+export default function Products(props) {
+    const {favorit,favoritHandler, products, setTargetProduct,url} = props
+
     return (
         <div className="container">
             <div className="myWrap mt-5">
@@ -26,8 +16,9 @@ export default function Products({ products, setTargetProduct,url }) {
                         price={product.price}
                         id={product._id}
                         images={product.images.length > 0 ? product.images[0] : 'noimage.png'}
-                        favourit={favourit}
+                        favorit={favorit}
                         url={url?url:`/api/buy/activeproductdetails`}
+                        favoritHandler={favoritHandler}
                     />
 
                 ) : null}

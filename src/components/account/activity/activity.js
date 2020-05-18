@@ -8,7 +8,7 @@ import SoldProducts from './soldProducts';
 
 
 const Activity = (props) => {
-
+    const {favorit, favoritHandler} = props
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
     const [url, setUrl] = useState("")
@@ -53,18 +53,24 @@ const Activity = (props) => {
                         <Tab.Pane eventKey="first" >
                             <ActiveProducts
                                 setTargetProduct={setTargetProduct}
+                                favorit={favorit}
+                                favoritHandler={favoritHandler}
                             />
                         </Tab.Pane>
 
                         <Tab.Pane eventKey="second">
                             <InactiveProducts
                                 setTargetProduct={setTargetProduct}
+                                favorit={favorit}
+                                favoritHandler={favoritHandler}
                             />
                         </Tab.Pane>
 
                         <Tab.Pane eventKey="third">
                             <SoldProducts
                                 setTargetProduct={setTargetProduct}
+                                favorit={favorit}
+                                favoritHandler={favoritHandler}
                             />
                         </Tab.Pane>
                     </Tab.Content>

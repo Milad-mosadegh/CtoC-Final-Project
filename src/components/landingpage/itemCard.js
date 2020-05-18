@@ -57,16 +57,17 @@ withComponents ( function({productId,favorites,favoriteActions}){
 
 
 
-const ItemCard = ({ title, price, id, images, setTargetProduct, favourit, url }) => {
+const ItemCard = ({ title, price, id, images, setTargetProduct, favorit, url, favoritHandler  }) => {
 
-    const [favouritized, setFavouritized] = useState(false)
+    const [favoritized, setFavoritized] = useState(false)
 
     useEffect(() => {
-        if (favourit.includes(id)) setFavouritized(true)
-    }, [favourit, id]);
+        if(favorit) if (favorit.includes(id)) setFavoritized(true)
+         else setFavoritized(false)
+    }, [favorit, id]);
 
 
-    const setFvourities = async () => {
+    const setFvorities = async () => {
         if (localStorage.getItem("c2c-token")) {
             const config = {
                 headers: {
@@ -75,7 +76,10 @@ const ItemCard = ({ title, price, id, images, setTargetProduct, favourit, url })
                 }
             }
             let response = await POST("/api/account/setfavorities", id, config)
-            if (response.data.status === "success") setFavouritized(!favouritized)
+            if (response.data.status === "success") {
+                setFavoritized(!favoritized)
+                favoritHandler() 
+            }
         }
     }
     return (
@@ -84,7 +88,7 @@ const ItemCard = ({ title, price, id, images, setTargetProduct, favourit, url })
             <div className="unitedWrap ">
                 <Slide left>
                     <div className="unitedCards" key={id} >
-                        <button className={favouritized ? "myFavButton fa fa-star " : "myFavButton fa fa-star-o "} onClick={setFvourities}></button>
+                        <button className={favoritized ? "myFavButton fa fa-star " : "myFavButton fa fa-star-o "} onClick={setFvorities}></button>
                         <div className="unitedImgBox" onClick={() => setTargetProduct(id, url)}
                             style={{
                                 backgroundImage: `url(${`http://localhost:5000/avatars/${images}`})`,

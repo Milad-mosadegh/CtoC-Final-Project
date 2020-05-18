@@ -18,6 +18,7 @@ const BuyComponent = (props) => {
     const [productId, setProductId] = useState("")
     const [filteredProducts, setFilteredProducts] = useState("")
     const [showMainComponent, setShowMainComponents] = useState(true)
+    const [favorit, setFavorit] = useState([])
     useEffect(() => {
         const fetchData = async () => {
             let response = await GET("/api/buy/allproducts")
@@ -25,7 +26,20 @@ const BuyComponent = (props) => {
             setProducts(response.data.data)
         }
         fetchData()
+        const getFavorities = async()=>{
+            if(!localStorage.getItem("c2c-token")) return
+            let response= await GET("/api/account/getfavoritelist")
+            if(response.data.status==="success")
+            console.log(response.data.favourities)
+            setFavorit(response.data.favourities)
+        }
+        getFavorities()
     }, [])
+
+    const favoritHandler = async()=>{
+        let response= await GET("/api/account/getfavoritelist")
+            if(response.data.status==="success") setFavorit(response.data.favourities)
+    }
 
     const filterHandler = (e) => {
 
@@ -93,6 +107,8 @@ const BuyComponent = (props) => {
                 <Products
                     products={filteredProducts ? filteredProducts : products}
                     setTargetProduct={setTargetProduct}
+                    favorit={favorit}
+                    favoritHandler={favoritHandler}
                 />
             </div>
             {showModal ?
