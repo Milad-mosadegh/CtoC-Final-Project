@@ -40,7 +40,6 @@ exports.productDetails = async (req, res) => {
     .populate([{path:"creator",select:"firstName", model:User}])
     if (!product) res.json({ status: "failed", message: "Internal Error please try again" })
     else {
-        console.log(product)
         res.json({ status: "success", message: "Successfully retrieved", data: product })
 
     }

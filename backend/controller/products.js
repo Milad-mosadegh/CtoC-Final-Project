@@ -10,7 +10,6 @@ const cp      = require('child_process');
 exports.newProduct = async (req,res)=>{
     let priceRange;
 
-    console.log(req.body.data, "in new product")
     if(req.body.data){
             const {title, category, condition, quantity, color, price, description} = req.body.data
             const creator= req.userId
@@ -163,13 +162,11 @@ exports.activateProduct=async(req,res)=>{
 }
 
 exports.editProduct=async(req,res)=>{
-    console.log("you reached editProduct", req.userId, "data ;", req.body.data)
     res.json({success:"you reached edit"})
 
 }
 
 exports.blockProduct=async(req,res)=>{
-    console.log("you reached blocked", req.userId, "data ;", req.body.data)
     res.json({success:"you reached blocked"})
 
 }

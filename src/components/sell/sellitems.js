@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import MyNavbar from '../navbar/navBar';
-import GET from '../lib/get';
 import { POST, IMGPOST } from '../lib/post';
 import FormData from "form-data"
 import SellDetails from './sellDetails';
@@ -23,7 +22,7 @@ const SellItems = (props) => {
 
     const {id} = props
     const [images, setImages] = useState([])
-    const [aut, setAuth] = useState(false)
+    const [edit, setEdit] = useState(false)
     const [showSignin, setShowSignin] = useState(false)
     const [showReset, setShowReset] = useState(false)
 
@@ -57,26 +56,13 @@ const SellItems = (props) => {
     const handleClose = () => setShowSignin(false);
 
     useEffect(() => {
-        if (localStorage.getItem("c2c-token")) authenticate();
-            axios.get(`/api/buy/activeproductdetails/${id}`)
-                .then(res => setProduct(res.data.data))
+        if(id)  axios.get(`/api/buy/activeproductdetails/${id}`)
+                .then(res => {
+                    setProduct(res.data.data)
+                    setEdit(true)})
                 .catch(err => err)
 }, [])
 
-
-
-    const authenticate = async () => {
-        let response = await GET("/api/auth/authenticated")
-        if (response.data) {
-            if (response.data.status === "success") {
-                setAuth(true)
-            }
-            else {
-                localStorage.removeItem("c2c-token")
-                localStorage.removeItem("c2c-profile")
-            }
-        }
-    }
 
     const imageChangeHandler = (image) => {
         if (images.length === 0) return setImages([image])
@@ -132,10 +118,11 @@ const SellItems = (props) => {
         }
 
     }
+    if(edit) console.log("edit is enabled")
     return (
         <div>
+        
             <MyNavbar {...props} />
-            {console.log(product, "it's coming from state")}
             <SellDetails
                 {...props}
                 imageChangeHandler={imageChangeHandler}

@@ -20,7 +20,6 @@ exports.resetLink = async(req,res)=>{
     }
 
     const resetToken = await passResetToken(payload, userCheck.pass)
-    console.log(resetToken)
     const newPassRcovery= new PassRecovery({
         userId : userCheck._id,
         recovered:false,
@@ -99,8 +98,7 @@ exports.resetPassword=async(req,res)=>{
     const profileData = {
         pass:hashedPass
     }
-    console.log(id, profileData)
-    console.log(await User.findById(id))
+
     await User.findByIdAndUpdate(id, profileData,async (err, doc)=>{
         if(err) return res.json({status:"failed", message:err})
         else {
@@ -109,7 +107,6 @@ exports.resetPassword=async(req,res)=>{
                 if(err) res.json({status:"failed", message:err})
                     else res.json({status:"success", message:"You have succesfully cahnged your password"})
             })
-            console.log("Successfully change")
         }
 
      })

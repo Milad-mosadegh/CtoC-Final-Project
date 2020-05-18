@@ -13,7 +13,6 @@ const MyModal = ({ showModel, handleClose, title, description, images }) => {
             // dialogClassName="modal-90w"
             // aria-labelledby="example-custom-modal-styling-title" 
             >
-                {console.log("Modal", images)}
                 <Modal.Header closeButton>
                     <Modal.Title >{title}</Modal.Title>
                 </Modal.Header>

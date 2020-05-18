@@ -9,7 +9,6 @@ import '../styles/main.css'
 import GET from '../lib/get';
 
 export default function MainAcc(props) {
-    console.log(props, "in account")
     const [favorit, setFavorit] = useState([])
     const mykey = props.location.mykey ? props.location.mykey : "profile"
     useEffect(() => {
@@ -18,7 +17,6 @@ export default function MainAcc(props) {
                 if(!localStorage.getItem("c2c-token")) return
                 let response= await GET("/api/account/getfavoritelist")
                 if(response.data.status==="success")
-                console.log(response.data.favourities)
                 setFavorit(response.data.favourities)
             }
             

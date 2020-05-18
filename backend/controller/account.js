@@ -77,7 +77,7 @@ exports.editProfile = async (req, res) => {
 
 
         const { firstName, lastName, paypalId, phoneNumber, street, city, zipCode } = req.body
-        console.log(firstName, lastName, paypalId, phoneNumber, street, city, zipCode)
+
         const profileData = {
             firstName,
             lastName,

@@ -55,7 +55,6 @@ exports.messagesList=async(req,res)=>{
     if(!conversationResult)  {
         res.json({status:"failed", message:"You have no active conversation", data:[]})}
         else {
-            console.log(conversationResult)
             res.json({status:"success", message:"successfully retrieved", data:conversationResult})
         }
 
@@ -66,7 +65,6 @@ exports.deleteMessage=async(req,res)=>{
 exports.getConversation=async(req,res)=>{
     let conversationResult = await Coversation.findById(req.params.id,{messages:1,productId:1})
                                               .populate([{path:"productId",select:"title", model:ActiveProduct}])
-                                              console.log(conversationResult)
     res.json({status:"success", message:"you reached getconversation", data:conversationResult})
     
 }
@@ -88,8 +86,7 @@ exports.updateConversation=async(req,res)=>{
     
                     },(err,doc)=>{
                     if(err) res.json({status:"failed", message:"Unable to send your message, please try again",data:err})
-                        else {res.json({status:'success', message:"added in previous conversation", data:doc.messages})
-                        console.log("show",doc, "after updating conversation")}
+                        else {res.json({status:'success', message:"added in previous conversation", data:doc.messages})}
                 })
 }
 

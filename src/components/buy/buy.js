@@ -22,7 +22,6 @@ const BuyComponent = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             let response = await GET("/api/buy/allproducts")
-            console.log("response from buy", response)
             setProducts(response.data.data)
         }
         fetchData()
@@ -30,7 +29,6 @@ const BuyComponent = (props) => {
             if(!localStorage.getItem("c2c-token")) return
             let response= await GET("/api/account/getfavoritelist")
             if(response.data.status==="success")
-            console.log(response.data.favourities)
             setFavorit(response.data.favourities)
         }
         getFavorities()

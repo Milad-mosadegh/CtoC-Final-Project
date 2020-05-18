@@ -16,7 +16,6 @@ const ProfileData = (props) => {
 
                 <fieldset id="fieldset" disabled="disabled">
                     <div className="w-25  ">
-                        {console.log(profile.profileImage, "image in profile")}
                         <ImageCard image={profile.profileImage} edit={true} id={"1"} imageChangeHandler={imageChangeHandler} />
 
                     </div>

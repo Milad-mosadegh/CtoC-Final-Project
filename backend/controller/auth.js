@@ -59,7 +59,6 @@ exports.signup=async (req,res)=>{
     }
 
     let hashedPass = await bcrypt.hash(pass, 10)
-    console.log(hashedPass)
     if(!hashedPass) return res.status(501).json({status:"failed", message:"Technical Erro 501, Please contact support team!"})
     const newUser = new User({
                 firstName,

@@ -10,7 +10,7 @@ import '../styles/main.css'
 const SellDetails = (props) => {
 
     const { imageChangeHandler, changeHandler, submitHandler, product } = props
-    console.log("info from sell Details", product);
+    console.log("info from edit sell", product);
 
 
     const cancelHandler = () => {
@@ -91,16 +91,14 @@ const SellDetails = (props) => {
                     <div className=" boxRight">
                         <div >
                             <div className="d-flex justify-content-around">
-                            {/* <ImageCard image={profile.profileImage} edit={true} id={"1"} imageChangeHandler={imageChangeHandler} /> */}
-                            {console.log(product.images?product.images[0]:null, "in sell details")}
-                                <ImageCard id={"1"} images={product.images?product.images[0]:null} edit={product.images?true:false} imageChangeHandler={imageChangeHandler} />
-                                <ImageCard id={"2"} imageChangeHandler={imageChangeHandler} />
-                                <ImageCard id={"3"} imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"1"} image={product.images?product.images[0]:null} edit={product.images?true:false} imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"2"} image={product.images?product.images[1]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"3"} image={product.images?product.images[2]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
                             </div>
                             <div className="d-flex justify-content-around mt-2">
-                                <ImageCard id={"4"} imageChangeHandler={imageChangeHandler} />
-                                <ImageCard id={"5"} imageChangeHandler={imageChangeHandler} />
-                                <ImageCard id={"6"} imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"4"} image={product.images?product.images[3]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"5"} image={product.images?product.images[4]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"6"} image={product.images?product.images[5]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
                             </div>
                         </div>
                         <div style={{ marginTop: "60px" }}>

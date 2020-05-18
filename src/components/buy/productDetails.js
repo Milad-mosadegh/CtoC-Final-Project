@@ -5,7 +5,7 @@ import '../styles/main.css';
 import GET from '../lib/get';
 import ProductDetailsForm from './productDetailsForm';
 import { POST } from '../lib/post';
-import Axios from 'axios';
+import axios from 'axios';
 
 const ProductDetails = (props) => {
 
@@ -29,21 +29,19 @@ const ProductDetails = (props) => {
                     'Content-Type': 'application/json'
                 }
             }
-            let response = await POST("/api/account/lastseen", id, config)
-            console.log(response)
+            await POST("/api/account/lastseen", id, config)
         })
 
     }, [])
 
 
     const handleBgImage = (backgroundImage) => {
-        console.log("backgroundImage Image", backgroundImage);
         setBgImage(backgroundImage)
     }
 
 
-    const deactivateHandler = (id) => {
-        let response = Axios.post("/api/products/inactiveproduct", { data: { id } }, {
+    const deactivateHandler = async(id) => {
+        await axios.post("/api/products/inactiveproduct", { data: { id } }, {
             headers: {
                 'x-auth-token': localStorage.getItem('c2c-token'),
                 'Content-Type': 'application/json'
@@ -51,12 +49,11 @@ const ProductDetails = (props) => {
         })
             .then(res => res)
             .catch(err => err)
-        console.log(response)
 
 
     }
     const soldHandler = (id) => {
-        Axios.post("/api/products/soldproduct", { data: { id } }, {
+        axios.post("/api/products/soldproduct", { data: { id } }, {
             headers: {
                 'x-auth-token': localStorage.getItem('c2c-token'),
                 'Content-Type': 'application/json'

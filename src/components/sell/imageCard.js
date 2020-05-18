@@ -41,7 +41,6 @@ const ImageCard = (props) => {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
             }}>
-
             <div style={{ height: "70%", width: "100%" }} >
                 <Form.File style={{ height: "100%", width: "100%" }} id="formcheck-api-custom" custom>
                     <Form.File.Input id={props.id}

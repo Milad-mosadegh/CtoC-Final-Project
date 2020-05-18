@@ -80,7 +80,6 @@ const MyProfile = (props) => {
             }
 
             const formData = new FormData();
-            console.log("image in submit", image, profile)
             formData.append("file", profile.profileImage)
             Object.keys(profile).forEach(key => { if (key !== "profileImage") formData.append(key, profile[key]) })
             let response = await IMGPOST("/api/account/profile", formData, config)
