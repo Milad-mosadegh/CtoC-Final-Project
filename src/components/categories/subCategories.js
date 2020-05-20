@@ -71,6 +71,7 @@ function SubCategories(props) {
     return (
         <div>
             <MyNavbar {...props} />
+            <SearchBar />
             <div className="container">
                 <div className="active-message-head"></div>
                 <div className="active-message-text">
@@ -80,7 +81,7 @@ function SubCategories(props) {
             <FilterBar 
                 filterHandler={filterHandler}
             />
-            <SearchBar />
+            
             <div className="container">
                 <Products
                     products={filteredProducts ? filteredProducts : products}

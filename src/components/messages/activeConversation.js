@@ -3,9 +3,6 @@ import '../styles/main.css';
 import GET from '../lib/get';
 import { POST } from '../lib/post';
 
-import Fade from 'react-reveal/Fade'
-import Zoom from 'react-reveal/Zoom'
-
 const ActiveConversation = (props) => {
     const { hidePopUp, conversationId } = props
     const [message, setMessage] = useState("")
@@ -62,7 +59,7 @@ const ActiveConversation = (props) => {
     }
     let userId = JSON.parse(localStorage.getItem("c2c-profile")).id
     return (
-        // <Fade top cascade duration={100}>
+
         <div className="message-wrapper">
 
             <div className="message-header">
@@ -104,7 +101,7 @@ const ActiveConversation = (props) => {
                 <button className="fa fa-send-o" type="submit"></button>
             </form>
         </div>
-        // </Fade>
+
     );
 }
 

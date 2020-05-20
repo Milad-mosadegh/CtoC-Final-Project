@@ -15,7 +15,7 @@ import BuyComponent from './components/buy/buy';
 import Messages from './components/messages/messages';
 import Contact from './components/contact/contact';
 import EditProduct from './components/account/editProductDetail/editProduct';
-import SubCategories from './components/CategoriesDetails/SubCategories';
+import SubCategories from './components/categories/subCategories';
 
 
 

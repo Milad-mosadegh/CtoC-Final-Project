@@ -33,7 +33,7 @@ const Activity = (props) => {
 
         <div className="border shadow milad">
 
-            {/*   <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
+              {/* <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
                 <Row>
                     <Col sm={12}>
                         <Nav variant="pills" justify="false" className="d-flex mt-5">
