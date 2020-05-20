@@ -67,5 +67,35 @@ exports.latestProducts =async(req,res)=>{
 }
 
 exports.productsByCategory=async(req,res)=>{
-    console.log(req.params.type, "params in product category")
+    
+    let category=req.params.type
+    console.log(category)
+    let result;
+    if(category==="0")
+    result = await ActiveProducts.find({},{
+        _id: 1,
+        title: 1,
+        category: 1,
+        condition: 1,
+        color: 1,
+        price: 1,
+        images: 1,
+        priceRange: 1,
+
+    }).sort({'_id':-1})
+    else
+        result = await ActiveProducts.find({category},{
+        _id: 1,
+        title: 1,
+        category: 1,
+        condition: 1,
+        color: 1,
+        price: 1,
+        images: 1,
+        priceRange: 1,
+
+    }).sort({'_id':-1})
+
+    if(!result) res.json({failed:"Request failed try again"})
+        else res.json({success:"success", products:result})
 }

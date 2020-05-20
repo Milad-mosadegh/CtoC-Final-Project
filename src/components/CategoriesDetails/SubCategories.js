@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import Categories from '../lib/categories'
-
 import '../styles/main.css'
 import MyNavbar from '../navbar/navBar';
 import SearchBar from '../searchBar/searchbar';
@@ -15,6 +14,7 @@ import GET from '../lib/get';
 function SubCategories(props) {
     const type = props.match.params.type
     const title = Categories.filter(data => data.linkName === type)[0].value
+    const categoryName= Categories.filter(data=>data.linkName===type)[0].id
 
     const [products, setProducts] = useState("")
     const [showModal, setShowModal] = useState(false)
@@ -25,16 +25,41 @@ function SubCategories(props) {
 
 
     useEffect(() => {
-        axios.get(`/api/buy/categories/${type}`)
-            .then(res => setProducts(res.data.products))
+        axios.get(`/api/buy/categories/${categoryName}`)
+            .then(res => {if(res.data.success) setProducts(res.data.products)})
             .catch(err => err)
     }, [])
-
 
 
     const favoritHandler = async () => {
         let response = await GET("/api/account/getfavoritelist")
         if (response.data.status === "success") setFavorit(response.data.favourities)
+    }
+    const filterHandler = (e) => {
+
+        e.preventDefault();
+        let colorValue = parseInt(e.target.color.value)
+        let categoryValue = parseInt(e.target.category.value)
+        let conditionValue = parseInt(e.target.condition.value)
+        let priceValue = parseInt(e.target.price.value)
+        setFilteredProducts(products
+            .filter(product => {
+                if (categoryValue !== 0) return product.category === categoryValue
+                else return true
+            })
+            .filter(product => {
+                if (colorValue !== 0) return product.color === colorValue
+                else return true
+            })
+            .filter(product => {
+                if (conditionValue !== 0) return product.condition === conditionValue
+                else return true
+            })
+            .filter(product => {
+                if (priceValue !== 0) return product.priceRange === priceValue
+                else return true
+            }))
+
     }
 
     const setTargetProduct = (id) => {
@@ -52,7 +77,9 @@ function SubCategories(props) {
                     <h1>{title}</h1>
                 </div>
             </div>
-            <FilterBar />
+            <FilterBar 
+                filterHandler={filterHandler}
+            />
             <SearchBar />
             <div className="container">
                 <Products
