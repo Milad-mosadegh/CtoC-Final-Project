@@ -31,8 +31,8 @@ const AllConversations = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {console.log(conversations, "in list ")}
-                    {conversations ? conversations.map(data => {
+                    
+                    {conversations.length>0 ? conversations.map(data => {
                         let myDate = new Date(data.timeStamp)
                         return <tr >
                             <td>{data.senderId._id === currentUserId ? "Me" : data.senderId.firstName}</td>
@@ -48,14 +48,14 @@ const AllConversations = (props) => {
                             <td><input type="checkbox" checked={selectedArray.includes(data._id)?true:false}  onClick={()=>selectOneHandler(data._id)}/></td>
                         </tr>
                     }
-                    ) : null}
+                    ) : <h4>You have no Messages!</h4>}
 
 
                 </tbody>
             </Table>
-            <div>
+            {conversations.length>0?<div>
             <button  className= "myRedButton-lg" onClick={deleteHandler}>Delete</button>
-            </div>
+            </div>:null}
         </div>
     );
 }

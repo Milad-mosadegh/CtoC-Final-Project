@@ -1,4 +1,4 @@
-const Coversation = require("../model/conversationModel")
+const Conversation = require("../model/conversationModel")
 const User = require("../model/userModel")
 const ActiveProduct= require("../model/activeProductModel")
 
@@ -6,10 +6,10 @@ const ActiveProduct= require("../model/activeProductModel")
 exports.createMessage=async(req,res)=>{
     const {message, senderId, productId, recipentId, title}=req.body.data
     if(!message) return
-    let conversationResult = await Coversation
+    let conversationResult = await Conversation
                                 .findOne({$and:[{senderId, productId}]})
     if(!conversationResult){
-        const newConversation = new Coversation({
+        const newConversation = new Conversation({
             messages:[{
                 senderId,
                 message,
@@ -31,7 +31,7 @@ exports.createMessage=async(req,res)=>{
     } else{
 
             const{_id} = conversationResult._id
-           await Coversation.findByIdAndUpdate(_id,
+           await Conversation.findByIdAndUpdate(_id,
              {"$push":{messages:{
                senderId,
                message
@@ -47,7 +47,7 @@ exports.createMessage=async(req,res)=>{
 exports.messagesList=async(req,res)=>{
     let senderId=req.userId
     let recipentId=req.userId
-    let conversationResult = await Coversation
+    let conversationResult = await Conversation
     .find({$or:[{senderId}, {recipentId}]})
     .populate([{path:"senderId",select:"firstName", model:User},{path:"recipentId",select:"firstName", model:User}])
     //.populate([{path:"senderId",select:"firstName", model:User},{path:"recipentId",select:"firstName", model:User}])
@@ -59,11 +59,9 @@ exports.messagesList=async(req,res)=>{
         }
 
 }
-exports.deleteMessage=async(req,res)=>{
 
-}
 exports.getConversation=async(req,res)=>{
-    let conversationResult = await Coversation.findById(req.params.id,{messages:1,productId:1})
+    let conversationResult = await Conversation.findById(req.params.id,{messages:1,productId:1})
                                               .populate([{path:"productId",select:"title", model:ActiveProduct}])
     res.json({status:"success", message:"you reached getconversation", data:conversationResult})
     
@@ -73,7 +71,7 @@ exports.updateConversation=async(req,res)=>{
     const {conversationId,message}=req.body.data
     if(message==="") return console.log("empty msg")
     else
-    await Coversation.findOneAndUpdate(
+    await Conversation.findOneAndUpdate(
         {
                 $and:[{_id:conversationId}, {$or:[{senderId:req.userId},{recipentId:req.userId}]}]
             },
@@ -90,3 +88,13 @@ exports.updateConversation=async(req,res)=>{
                 })
 }
 
+exports.deleteMessages=async(req,res)=>{
+    console.log(req.body, "req from fe")
+    await Conversation.deleteMany({$or:[{senderId:req.userId},{recipentId:req.userId}], _id:{$in:req.body.selectedArray}},(err,doc)=>{
+        if(err) res.json({failed:err})
+        else {
+            console.log(doc)
+            res.json({success:doc})
+        }
+    })
+}

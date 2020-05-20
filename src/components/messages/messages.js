@@ -4,6 +4,7 @@ import ActiveConversation from "./activeConversation"
 import MyNavbar from '../navbar/navBar';
 import { CheckAuthentication } from '../lib/auth';
 import GET from "../lib/get"
+import axios from 'axios';
 
 const Messages = (props) => {
 
@@ -12,6 +13,8 @@ const Messages = (props) => {
     const [recipentName, setRecipentName] = useState("testing")
     const [selectedArray, setSelectedArray]= useState([])
     const [conversations, setConversations] = useState([])
+    const [deleteAll,setDeleteAll] = useState(false)
+
     let targetArray=[]
     useEffect(() => {
         const confirmAuth = async()=>{
@@ -20,23 +23,30 @@ const Messages = (props) => {
             if(response.data.status!=="success") props.history.push("/signin")
         }
         confirmAuth()
-        const getMessages = async () => {
-            let response = await GET("/api/messages/messageslist")
-            console.log(response, "in all conversaions")
-            if (response.data.status === "success")
-                setConversations(response.data.data)
-            else props.history.push("/signin")
-        }
+        
         getMessages()
     }, [])
+    const getMessages = async () => {
+        let response = await GET("/api/messages/messageslist")
+        console.log(response, "in all conversaions")
+        if (response.data.status === "success")
+            setConversations(response.data.data)
+        else props.history.push("/signin")
+    }
 
     const setTargetConversation = id => setConversationId(id)
     const setConversationRecipent = name =>setRecipentName(name)
     const showPopUp = () => setShowConversation(true)
     const hidePopUp = () => setShowConversation(false)
-    const deleteHandler=()=>console.log("delete handler called", selectedArray)
+    const deleteHandler=()=>{
+        if(selectedArray.length<1) return console.log("nothing to delete")
+        axios.post("/api/messages/deletemessages",{selectedArray})
+                        .then(res=>{if(res.data.success) getMessages()})
+                        .catch(err=>props.history.push("/signin"))
+    }
 
     const selectOneHandler=(id)=>{
+        setDeleteAll(false)
         let index =selectedArray.indexOf(id)
         let tempArray=[...selectedArray]
         
@@ -50,8 +60,13 @@ const Messages = (props) => {
      
 }
     const selectAllHandler=(e)=>{
-                        if(!e.target.checked) setSelectedArray([])
-                        else setSelectedArray(conversations.map(data=>data._id))
+                        if(!e.target.checked) {
+                            setSelectedArray([])
+                            setDeleteAll(false)}
+                        else {
+                            setSelectedArray(conversations.map(data=>data._id))
+                            setDeleteAll(true)
+                        }
                     }
 
     return (
