@@ -9,7 +9,7 @@ import '../styles/main.css'
 
 const SellDetails = (props) => {
 
-    const { imageChangeHandler, changeHandler, submitHandler, product , edit, editHandler} = props
+    const { imageChangeHandler, changeHandler, submitHandler, product , edit, showAlertBox} = props
     console.log("info from edit sell", product);
 
 
@@ -91,7 +91,7 @@ const SellDetails = (props) => {
                     <div className=" boxRight">
                         <div >
                             <div className="d-flex justify-content-around">
-                                <ImageCard id={"1"} image={product.images?product.images[0]:null} edit={product.images?true:false} imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"1"} image={product.images?product.images[0]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
                                 <ImageCard id={"2"} image={product.images?product.images[1]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
                                 <ImageCard id={"3"} image={product.images?product.images[2]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
                             </div>
@@ -103,8 +103,8 @@ const SellDetails = (props) => {
                         </div>
                         {edit?
                         <div style={{ marginTop: "60px" }}>
-                            <button className="myOrabgeButton-lg" type="submit" onClick={editHandler}>Update</button>
-                            <button className="myRedButton-sm ml-2" onClick={cancelHandler}>Cancel</button>
+                            <button className="myOrabgeButton-lg" onClick={showAlertBox}>Update</button>
+                            <button className="myRedButton-lg ml-2" onClick={cancelHandler}>Cancel</button>
                         </div>
                         :
                         <div style={{ marginTop: "60px" }}>

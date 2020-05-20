@@ -8,6 +8,7 @@ import SigninModal from "../signin/signinModal/signinModal"
 import { makeStyles } from '@material-ui/core/styles';
 import PasswordReset from "../signin/resetModal"
 import axios from "axios"
+import AlertBox from "../AlertBox/alertBox"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 
 const SellItems = (props) => {
 
-    const {id} = props
+    const {id,editHandler} = props
     const [images, setImages] = useState([])
     const [edit, setEdit] = useState(false)
     const [showSignin, setShowSignin] = useState(false)
@@ -43,6 +44,15 @@ const SellItems = (props) => {
     const [alertId, setAlertId] = useState("")
     const [alertText, setAlertText] = useState("")
     const [showAlert, setShowAlert] = useState(false)
+    const [alertBox, setAlertBox] = useState(false)
+
+    const proceedHandler=()=>{
+        editHandler(product, images)
+        setAlertBox(false)
+    }
+    const hideAlertBox =()=>setAlertBox(false)
+    const showAlertBox =()=>setAlertBox(true)
+
 
     const handleOpenReset = () => {
         setShowSignin(false)
@@ -59,7 +69,10 @@ const SellItems = (props) => {
         if(id)  axios.get(`/api/buy/activeproductdetails/${id}`)
                 .then(res => {
                     setProduct(res.data.data)
-                    setEdit(true)})
+                    setEdit(true)
+                    for(let  i=1; i<=product.images.length; i++){
+                        images.push({id:i, image:fetch(`/avatars/${product.images[i]}`).then(r => r.blob())})
+                    }})
                 .catch(err => err)
 }, [])
 
@@ -119,75 +132,44 @@ const SellItems = (props) => {
         }
 
     }
-    const editHandler=async()=>{
-        if (!localStorage.getItem("c2c-token")) return handleOpen()
-        if (showSignin) handleClose()
-        console.log("submited product,", product)
-        let config;
-        if (images.length > 0) {
-            const formData = new FormData();
-            let imageArray = images.map(value => value.image)
-            imageArray.forEach(value => formData.append("files", value))
-            Object.keys(product).forEach(key => {
-                                    if(key==="creator") formData.append(key,id)
-                                    else formData.append(key, product[key])})
-            config = {
-                headers: {
-                    'x-auth-token': localStorage.getItem('c2c-token'),
-                    'Content-type': 'multipart/form-data'
-                }
-            }
-
-            const response = await IMGPOST("/api/products/newproduct", formData, config)
-            if (response.data && response.data.status === "success") {
-                setAlertId("A")
-                setAlertText('You have successfuly posted your product')
-                setShowAlert(true)
-
-            }
-        }
-        else {
-            config = {
-                headers: {
-                    'x-auth-token': localStorage.getItem('c2c-token'),
-                    'Content-Type': 'application/json'
-                }
-            }
-            const response = await POST("/api/products/newproduct", product, config)
-            if (response.data && response.data.status === "success") {
-                setAlertId("A")
-                setAlertText('You have successfuly posted your product')
-                setShowAlert(true)
-
-
-            }
-        }
-    }
+    
     return (
         <div>
         
             <MyNavbar {...props} />
+
             <SellDetails
-                {...props}
-                imageChangeHandler={imageChangeHandler}
-                changeHandler={changeHandler}
-                submitHandler={submitHandler}
-                product={product}
-                edit={edit}
-                editHandler={editHandler}
+                            {...props}
+                            imageChangeHandler={imageChangeHandler}
+                            changeHandler={changeHandler}
+                            submitHandler={submitHandler}
+                            product={product}
+                            edit={edit}
+                            showAlertBox={showAlertBox}
             />
 
             {showAlert ? <MyAlert id={alertId} alertText={alertText} {...props} /> : null}
             {showSignin ? <SigninModal
-                handleClose={handleClose}
-                show={showSignin}
-                classes={classes}
-                handleCloseReset={handleCloseReset}
-                handleOpenReset={handleOpenReset}
-                showReset={showReset}
-                productSubmitHandler={submitHandler}
+                            handleClose={handleClose}
+                            show={showSignin}
+                            classes={classes}
+                            handleCloseReset={handleCloseReset}
+                            handleOpenReset={handleOpenReset}
+                            showReset={showReset}
+                            productSubmitHandler={submitHandler}
             /> : null}
-            {showReset ? <PasswordReset handleClose={handleCloseReset} handleOpen={handleOpenReset} show={showReset} classes={classes} /> : null}
+            {showReset ? <PasswordReset 
+                            handleClose={handleCloseReset} 
+                            handleOpen={handleOpenReset} 
+                            show={showReset} 
+                            classes={classes} /> : null}
+
+            {alertBox?<AlertBox
+                            alertBoxTitle="Update!"
+                            alertBoxBody="Are you sure to update your product?"
+                            hideAlertBox={hideAlertBox}
+                            proceedHandler={proceedHandler}
+                    />:null}
         </div>
     );
 }

@@ -56,10 +56,7 @@ const Home = (props) => {
                 /> :
                 <div>
                     <MyNavbar {...props} />
-                    <AlertBox
-                        alertBoxHead="Sold Item"
-                        alertBoxTitle="Are You Sure for That ?"
-                    />
+                    
                     <div className="fixedBackground">
                         <div className="container">
                             <h1>WelcomE To <span className="c">C</span>-To-<span className="c">C</span> OnlinE ShoP</h1>
@@ -80,7 +77,8 @@ const Home = (props) => {
                             <LastSeen auth={auth}
                                 setTargetProduct={setTargetProduct}
                                 favorit={favorit}
-                                favoritHandler={favoritHandler}                                unAuthenticated={unAuthenticated} /> 
+                                favoritHandler={favoritHandler}                         
+                                unAuthenticated={unAuthenticated} /> 
                         </div>
                     </div>
 

@@ -14,7 +14,7 @@ router.get("/getfavoritelist", auth.checkToken, account.getFavoritiesList)
 router.get("/getfavoriteproducts", auth.checkToken, account.getFavoriteProducts)
 router.get(`/inactiveproductdetails/:id`, auth.checkToken, account.inactiveProductDetails)
 router.get(`/soldproductdetails/:id`, auth.checkToken, account.soldProductDetails)
-router.get(`/editproduct/:id`, auth.checkToken, account.editProduct)
+router.post(`/editproduct`, auth.checkToken, account.editProduct)
 
 
 
