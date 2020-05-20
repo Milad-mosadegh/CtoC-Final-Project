@@ -65,3 +65,7 @@ exports.latestProducts =async(req,res)=>{
         else res.json({status:"failed",message:"request failed"})
 
 }
+
+exports.productsByCategory=async(req,res)=>{
+    console.log(req.params.type, "params in product category")
+}
