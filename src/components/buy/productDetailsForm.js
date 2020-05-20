@@ -35,6 +35,7 @@ const ProductDetailsForm = (props) => {
         condition,
         quantity,
         title,
+        price,
         bgImage,
         deactivateHandler,
         handleClose,
@@ -118,8 +119,12 @@ const ProductDetailsForm = (props) => {
                             <span>
                                 Quantity : <input className="p-d-input" type="text" value={quantity} disabled />
                             </span>
-0                        </div>
-                        <div className="mt-5 float-left">
+                            <span>
+                                Price : <input className="p-d-input" type="text" value={price} disabled />
+                            </span>
+                        </div>
+                        <hr />
+                        <div className="mt-1 text-center">
                             <span>Description :</span>
                             <p>{description}</p>
                         </div>

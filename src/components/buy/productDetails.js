@@ -41,7 +41,7 @@ const ProductDetails = (props) => {
     }
 
 
-    const deactivateHandler = async(id) => {
+    const deactivateHandler = async (id) => {
         await axios.post("/api/products/inactiveproduct", { data: { id } }, {
             headers: {
                 'x-auth-token': localStorage.getItem('c2c-token'),
@@ -78,11 +78,12 @@ const ProductDetails = (props) => {
             <Zoom>
                 <div>
                     <ProductDetailsForm
-                        descriptiohandleClosen={productDetail.description}
+                        description={productDetail.description}
                         postedBy={productDetail ? productDetail.creator.firstName : null}
                         creatorId={productDetail ? productDetail.creator._id : null}
                         productId={productDetail._id}
                         color={productDetail.color}
+                        price={productDetail.price}
                         condition={productDetail.condition}
                         quantity={productDetail.quantity}
                         title={productDetail.title}
