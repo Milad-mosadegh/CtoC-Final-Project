@@ -1,10 +1,9 @@
 
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
-const User = require("./userModel")
+const User = require("./userModel");
 const ActiveProduct = require("./activeProductModel")
 
-const ConversationSchema = new Schema({
+const ConversationSchema = new mongoose.Schema({
 
   messages:{
     type: Array,
