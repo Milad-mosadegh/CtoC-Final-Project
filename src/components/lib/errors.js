@@ -34,6 +34,34 @@ const Errors={
     resetPass:{
         status      :false,
         value       :`Attention! please provide a valid email address.`
+    },
+    title:{
+        status      :false,
+        value       :"Attention! title must contain atleast 3 and maximum 20 characters"
+    },
+    quantity:{
+        status      :false,
+        value       :"Attention! quantity must contain only digits"
+    },
+    price:{
+        status      :false,
+        value       :"Attention! please provide valid price"
+    },
+    description:{
+        status      :false,
+        value       :"Attention! description must contain atleast 10 and maximum 100 characters"
+    },
+    category:{
+        status      :false,
+        value       :"Attention! Please choose a valid category"
+    },
+    condition:{
+        status      :false,
+        value       :"Attention! Please choose a valid condition"
+    },
+    color:{
+        status      :false,
+        value       :"Attention! Please choose a valid color"
     }
 
 }

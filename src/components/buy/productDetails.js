@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const ProductDetails = (props) => {
 
-    const { id, showModel, handleClose, url, alertBoxHead, alertBoxTitle } = props
+    const { id, showModel, handleClose, url } = props
 
     const [productDetail, setProductDetail] = useState("")
     const [bgImage, setBgImage] = useState("noimage.png")

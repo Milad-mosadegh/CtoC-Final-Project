@@ -3,12 +3,10 @@ import TextField from '@material-ui/core/TextField';
 import { Modal } from "react-bootstrap"
 import Zoom from 'react-reveal/Zoom'
 import { Link } from "react-router-dom"
-import PasswordReset from "../resetModal"
 
 export default function SigninForm(props) {
 
-    const { classes, submitHandler, changeHandler, email, errors, pass, handleClose, handleOpen, show, handleCloseReset, handleOpenReset, showReset } = props
-
+    const { classes, submitHandler, changeHandler, email, errors, pass, handleClose, show, handleOpenReset } = props
     return (
         <Modal size="md" show={show} onHide={handleClose} animation={false} centered={true}>
             <div id="signin" className='mySignin'>

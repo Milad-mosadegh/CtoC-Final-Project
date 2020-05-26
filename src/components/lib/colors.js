@@ -1,5 +1,5 @@
 const Colors=[
-    {id:"0"  ,value:"All Colors"},
+    {id:"0"  ,value:"Select Color"},
     {id:"1"  ,value:"Black"},
     {id:"2"  ,value:"Blue"},
     {id:"3"  ,value:"Brown"},
@@ -13,5 +13,6 @@ const Colors=[
     {id:"11" ,value:"Silver"},
     {id:"12" ,value:"Sky Blue"},
     {id:"13" ,value:"White"},
-    {id:"14" ,value:"Yellow"}]
+    {id:"14" ,value:"Yellow"},
+    {id:"15" ,value:"Other"}]
     export default Colors;

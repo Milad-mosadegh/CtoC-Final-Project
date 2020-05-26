@@ -4,11 +4,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Categories from "../lib/categories"
 import { Card } from 'react-bootstrap'
-import { Link, Route } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import '../styles/main.css'
 
 const SlideShow = (props) => {
-    const { title } = props
 
     const [categories, setCategories] = useState("")
     useEffect(() => {

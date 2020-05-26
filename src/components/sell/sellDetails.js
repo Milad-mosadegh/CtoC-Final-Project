@@ -9,7 +9,7 @@ import '../styles/main.css'
 
 const SellDetails = (props) => {
 
-    const { imageChangeHandler, changeHandler, submitHandler, product, edit, showAlertBox } = props
+    const { imageChangeHandler, changeHandler, submitHandler, product, edit, showAlertBox, inputErrors } = props
     console.log("info from edit sell", product);
 
 
@@ -25,18 +25,21 @@ const SellDetails = (props) => {
                         <div className="boxLeftChild">
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridEmail">
-                                    <Form.Label>Title</Form.Label>
+                                    {/* <Form.Label>Title</Form.Label> */}
                                     <Form.Control name="title" type="text" value={product.title} placeholder="Enter Tilte" onChange={changeHandler} />
+                                    <small className="sText">{inputErrors.title ? inputErrors.title.status ? inputErrors.title.value : null : null}</small>
                                 </Form.Group>
                             </Form.Row>
 
 
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridState">
-                                    <Form.Label>Categories</Form.Label>
+                                    {/* <Form.Label>Categories</Form.Label> */}
                                     <Form.Control as="select" name="category" value={product.category} onChange={changeHandler}>
                                         {Categories.map((key, index) => <option value={key.id}>{key.value}</option>)}
                                     </Form.Control>
+                                    <small className="sText">{inputErrors.category ? inputErrors.category.status ? inputErrors.category.value : null : null}</small>
+
                                 </Form.Group>
                             </Form.Row>
 
@@ -44,15 +47,19 @@ const SellDetails = (props) => {
 
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridState">
-                                    <Form.Label>Condition</Form.Label>
+                                    {/* <Form.Label>Condition</Form.Label> */}
                                     <Form.Control as="select" name="condition" value={product.condition} onChange={changeHandler}>
                                         {Conditions.map((key, index) => <option value={key.id}>{key.value}</option>)}
                                     </Form.Control>
+                                    <small className="sText">{inputErrors.condition ? inputErrors.condition.status ? inputErrors.condition.value : null : null}</small>
+
                                 </Form.Group>
 
                                 <Form.Group controlId="formGridAddress1">
-                                    <Form.Label>Quantity</Form.Label>
+                                    {/* <Form.Label>Quantity</Form.Label> */}
                                     <Form.Control type="text" placeholder="Quantity" name="quantity" value={product.quantity} onChange={changeHandler} />
+                                    <small className="sText">{inputErrors.quantity ? inputErrors.quantity.status ? inputErrors.quantity.value : null : null}</small>
+
                                 </Form.Group>
 
                             </Form.Row>
@@ -60,27 +67,41 @@ const SellDetails = (props) => {
 
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridState">
-                                    <Form.Label>Color</Form.Label>
+                                    {/* <Form.Label>Color</Form.Label> */}
                                     <Form.Control as="select" name="color" value={product.color} onChange={changeHandler}>
                                         {Colors.map((key, index) => <option value={key.id}>{key.value}</option>)}
                                     </Form.Control>
+                                    <small className="sText">{inputErrors.color ? inputErrors.color.status ? inputErrors.color.value : null : null}</small>
+
                                 </Form.Group>
                             </Form.Row>
-
+                            <Form.Row>
+                            <Form.Group as={Col} controlId="formGridState">
                             <InputGroup className="mb-3">
                                 <InputGroup.Prepend>
-                                    <InputGroup.Text>$</InputGroup.Text>
+                                    <InputGroup.Text>Price</InputGroup.Text>
                                 </InputGroup.Prepend>
                                 <FormControl aria-label="Amount (to the nearest dollar)" name="price" value={product.price} onChange={changeHandler} />
-
+                                
                             </InputGroup>
+                            <small className="sText">{inputErrors.price ? inputErrors.price.status ? inputErrors.price.value : null : null}</small>
 
+                            </Form.Group>
+                            </Form.Row>
+
+                            <Form.Row>
+                            <Form.Group as={Col} controlId="formGridState">
                             <InputGroup>
                                 <InputGroup.Prepend>
                                     <InputGroup.Text>Description</InputGroup.Text>
                                 </InputGroup.Prepend>
-                                <FormControl as="textarea" aria-label="With textarea" name="description" value={product.description} onChange={changeHandler} />
+                                <FormControl as="textarea" aria-label="With textarea" name="description" value={product.description} onChange={changeHandler}/>
                             </InputGroup>
+                            <small className="sText">{inputErrors.description ? inputErrors.description.status ? inputErrors.description.value : null : null}</small>
+
+                            </Form.Group>
+                            </Form.Row>
+
                         </div>
                     </div>
                 </Fade>
@@ -111,6 +132,8 @@ const SellDetails = (props) => {
                                 <button className="myBlueButton-lg" type="submit" onClick={submitHandler}>Submit</button>
                                 <button className="myRedButton-lg ml-2" onClick={cancelHandler}>Cancel</button>
                             </div>}
+                            <small className="sText">{inputErrors.form ? inputErrors.form.status ? inputErrors.form.value : null : null}</small>
+
                     </div>
                 </Fade>
             </div>

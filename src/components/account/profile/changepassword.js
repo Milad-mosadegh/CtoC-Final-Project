@@ -2,29 +2,18 @@ import React, { useState, useEffect } from 'react';
 import Errors from "../../lib/errors"
 import { POST } from '../../lib/post';
 import ChangePassform from './changepassform';
-import MyAlert from '../../lib/alert';
 
 
 
 export default function PasswordChange(props) {
-    const { derenderModal, showModal } = props
+    const { derenderModal, showModal,showAlertBox , changeAlertBoxTitle, changeAlertBoxBody, passChangedHandler,editDisabler} = props
     let [inputErrors, setInputErrors] = useState("")
     const [pass, setPass] = useState("")
     const [confirmPass, setConfirmPass] = useState("")
     const [oldPass, setOldPass] = useState("")
 
-    const [alertId, setAlertId] = useState("")
-    const [showAlert, setShowAlert] = useState(false)
-    const [alertText, setAlertText] = useState('')
-
-
     useEffect(() => {
         setInputErrors(Errors)
-
-        /*   const timer = setTimeout(() => {
-              derenderModal()
-          }, 3000);
-          return () => clearTimeout(timer); */
     }, [])
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -35,7 +24,6 @@ export default function PasswordChange(props) {
         }
 
 
-        // else setErrors({ ...errors, authentication: { ...errors.authentication, status: true } })
         if (!Object.keys(formData).every(key => formData[key]))
             return setInputErrors({ ...inputErrors, form: { ...inputErrors.form, status: true } })
         else setInputErrors({ ...inputErrors, form: { ...inputErrors.form, status: false } })
@@ -51,25 +39,23 @@ export default function PasswordChange(props) {
             }
             const response = await POST(`/api/auth/changepassword`, formData, config)
             if (response.data.status === "success") {
-                // alert("you have succesfully changed your password, Please relogin")
-                setAlertId("A")
-                setAlertText("you have succesfully changed your password, Please relogin")
-                setShowAlert(true)
-
-                // derenderModal()
-                // localStorage.removeItem("c2c-token")
-                // localStorage.removeItem("c2c-profile")
-
-                // props.history.push("/signin")
-
+                editDisabler()
+                changeAlertBoxTitle("Password Changed")
+                changeAlertBoxBody("You have successfully changed the password")
+                passChangedHandler()
+                localStorage.removeItem("c2c-token")
+                localStorage.removeItem("c2c-profile")
+                derenderModal()
+                showAlertBox()
 
             }
             else if (response.data.status === "failed") {
+                editDisabler()
                 setInputErrors({ ...inputErrors, backend: { ...inputErrors.backend, status: true, value: response.data.message } })
-                // alert("sorry request failed try again later")
-                setAlertId("B")
-                setAlertText('sorry request failed try again later')
-                setShowAlert(true)
+                changeAlertBoxTitle("Request Failed")
+                changeAlertBoxBody("Please check your credentials")
+                showAlertBox()
+                derenderModal()
             }
         }
 
@@ -122,7 +108,7 @@ export default function PasswordChange(props) {
                 oldPass={oldPass}
 
             />
-            {showAlert ? <MyAlert id={alertId} alertText={alertText} derenderModal={derenderModal} {...props} /> : null}
+            
         </>
     );
 }
