@@ -86,23 +86,24 @@ const Activity = (props) => {
                 mountOnEnter={true}
                 unmountOnExit={true}
                 variant='pills'
+                defaultActiveKey= {props.location.subKey ? props.location.subKey : "active"}
                 className="d-flex justify-content-center ml-2"
             >
-                <Tab eventKey="profile" title="Active Products"  >
+                <Tab eventKey="active" title="Active Products"  >
                     <ActiveProducts
                         setTargetProduct={setTargetProduct}
                         favorit={favorit}
                         favoritHandler={favoritHandler}
                     />
                 </Tab>
-                <Tab eventKey="activities" title="Inactive Products" >
+                <Tab eventKey="inactive" title="Inactive Products" >
                     <InactiveProducts
                         setTargetProduct={setTargetProduct}
                         favorit={favorit}
                         favoritHandler={favoritHandler}
                     />
                 </Tab>
-                <Tab eventKey="favorities" title="Sold Products" >
+                <Tab eventKey="sold" title="Sold Products" >
                     <SoldProducts
                         setTargetProduct={setTargetProduct}
                         favorit={favorit}

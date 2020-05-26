@@ -22,6 +22,7 @@ const Home = (props) => {
 
     const handleClose = () => {
         setShowModal(false)
+        window.location.reload(false);
     }
     const unAuthenticated = () => setAuth(false)
     useEffect(() => {
@@ -94,7 +95,7 @@ const Home = (props) => {
                     <Footer />
                 </div>
                }
-        </div >
+        </div>
     ); 
 }
 

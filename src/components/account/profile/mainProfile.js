@@ -53,7 +53,7 @@ const MyProfile = (props) => {
         else props.history.push("/signin")
 
 
-    })
+    },[])
 
     const changeAlertBoxTitle=(title)=>setAlertBoxTitle(title)
     const changeAlertBoxBody=(body)=>setAlertBoxBody(body)
