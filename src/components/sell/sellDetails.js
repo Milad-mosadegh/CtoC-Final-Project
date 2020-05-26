@@ -9,7 +9,7 @@ import '../styles/main.css'
 
 const SellDetails = (props) => {
 
-    const { imageChangeHandler, changeHandler, submitHandler, product , edit, showAlertBox} = props
+    const { imageChangeHandler, changeHandler, submitHandler, product, edit, showAlertBox } = props
     console.log("info from edit sell", product);
 
 
@@ -91,26 +91,26 @@ const SellDetails = (props) => {
                     <div className=" boxRight">
                         <div >
                             <div className="d-flex justify-content-around">
-                                <ImageCard id={"1"} image={product.images?product.images[0]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
-                                <ImageCard id={"2"} image={product.images?product.images[1]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
-                                <ImageCard id={"3"} image={product.images?product.images[2]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"1"} image={product.images ? product.images[0] : null} edit={product.images ? true : false} imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"2"} image={product.images ? product.images[1] : null} edit={product.images ? true : false} imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"3"} image={product.images ? product.images[2] : null} edit={product.images ? true : false} imageChangeHandler={imageChangeHandler} />
                             </div>
                             <div className="d-flex justify-content-around mt-2">
-                                <ImageCard id={"4"} image={product.images?product.images[3]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
-                                <ImageCard id={"5"} image={product.images?product.images[4]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
-                                <ImageCard id={"6"} image={product.images?product.images[5]:null} edit={product.images?true:false}  imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"4"} image={product.images ? product.images[3] : null} edit={product.images ? true : false} imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"5"} image={product.images ? product.images[4] : null} edit={product.images ? true : false} imageChangeHandler={imageChangeHandler} />
+                                <ImageCard id={"6"} image={product.images ? product.images[5] : null} edit={product.images ? true : false} imageChangeHandler={imageChangeHandler} />
                             </div>
                         </div>
-                        {edit?
-                        <div style={{ marginTop: "60px" }}>
-                            <button className="myOrabgeButton-lg" onClick={showAlertBox}>Update</button>
-                            <button className="myRedButton-lg ml-2" onClick={cancelHandler}>Cancel</button>
-                        </div>
-                        :
-                        <div style={{ marginTop: "60px" }}>
-                            <button className="myRedButton-sm" type="submit" onClick={submitHandler}>Submit</button>
-                            <button className="myRedButton-sm ml-2" onClick={cancelHandler}>Cancel</button>
-                        </div>}
+                        {edit ?
+                            <div style={{ marginTop: "60px" }}>
+                                <button className="myOrabgeButton-lg" onClick={showAlertBox}>Update</button>
+                                <button className="myRedButton-lg ml-2" onClick={cancelHandler}>Cancel</button>
+                            </div>
+                            :
+                            <div style={{ marginTop: "60px" }}>
+                                <button className="myBlueButton-lg" type="submit" onClick={submitHandler}>Submit</button>
+                                <button className="myRedButton-lg ml-2" onClick={cancelHandler}>Cancel</button>
+                            </div>}
                     </div>
                 </Fade>
             </div>

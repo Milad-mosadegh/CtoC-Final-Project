@@ -13,6 +13,15 @@ $bestRedColor : #b72826;
 $bestOrangeColor:rgb(255, 139, 13);
 $bestGreenColor:rgb(126 , 197, 68);
 
+.bestBlueColor{
+    background: #11213b;
+}
+
+
+.bestRedColor{
+    background: #b72826;
+}
+
 
 
 @mixin ItemCard($width,$height,$cardImage,$h2Size) {

@@ -7,7 +7,7 @@ import '../styles/main.css'
 import Footer from '../footer/footer';
 import LatestProducts from './latestProducts';
 import ProductDetails from '../buy/productDetails';
-import AlertBox from '../AlertBox/alertBox';
+
 
 
 const Home = (props) => {
@@ -34,20 +34,21 @@ const Home = (props) => {
                 else setAuth(false)
             }
             getData()
-            const getFavorities = async()=>{
-                if(!localStorage.getItem("c2c-token")) return
-                let response= await GET("/api/account/getfavoritelist")
-                if(response.data.status==="success")
-                setFavorit(response.data.favourities)
+            const getFavorities = async () => {
+                if (!localStorage.getItem("c2c-token")) return
+                let response = await GET("/api/account/getfavoritelist")
+                if (response.data.status === "success")
+                    setFavorit(response.data.favourities)
             }
-            getFavorities()}
-        }, [])
-    
-        const favoritHandler = async()=>{
-            let response= await GET("/api/account/getfavoritelist")
-                if(response.data.status==="success") setFavorit(response.data.favourities)
+            getFavorities()
         }
-    
+    }, [])
+
+    const favoritHandler = async () => {
+        let response = await GET("/api/account/getfavoritelist")
+        if (response.data.status === "success") setFavorit(response.data.favourities)
+    }
+
     return (
         <div>
             {showModal ?
@@ -56,7 +57,7 @@ const Home = (props) => {
                 /> :
                 <div>
                     <MyNavbar {...props} />
-                    
+
                     <div className="fixedBackground">
                         <div className="container">
                             <h1>WelcomE To <span className="c">C</span>-To-<span className="c">C</span> OnlinE ShoP</h1>
@@ -67,17 +68,17 @@ const Home = (props) => {
 
                     <div className="homeCard">
                         <div className="leftCard">
-                            <LatestProducts 
+                            <LatestProducts
                                 setTargetProduct={setTargetProduct}
                                 favorit={favorit}
-                                favoritHandler={favoritHandler}   />
+                                favoritHandler={favoritHandler} />
                         </div>
 
                         <div className="rightCard">
                             <LastSeen auth={auth}
                                 setTargetProduct={setTargetProduct}
                                 favorit={favorit}
-                                favoritHandler={favoritHandler}                         
+                                favoritHandler={favoritHandler}
                                 unAuthenticated={unAuthenticated} /> 
                         </div>
                     </div>
@@ -87,15 +88,14 @@ const Home = (props) => {
                         <div className="container">
                             <SlideShow />
                         </div>
-                        
-                        <div className="homeBanner"></div>
-                            
-                        <Footer />
                     </div>
-                  </div>
+                        
+<div className="homeBanner"></div>
+                    <Footer />
+                </div>
                }
-        </div>
-    );
+        </div >
+    ); 
 }
 
 export default Home;

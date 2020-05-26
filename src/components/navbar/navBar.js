@@ -4,6 +4,8 @@ import '../styles/main.css'
 import { Navbar, Nav, Badge, Button } from 'react-bootstrap';
 import GET from '../lib/get';
 
+
+
 const MyNavbar = (props) => {
     const [auth, setAuth] = useState("")
     const [path, setPath] = useState("")
@@ -57,7 +59,7 @@ const MyNavbar = (props) => {
                 <Navbar.Brand className="text-uppercase text-shadow ctoc" >
                     <span className="navLogo">
                         C to C
-                </span>
+                    </span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

@@ -5,13 +5,9 @@
     box-sizing: border-box;
 }
 
-
 .homeWrap{
     display: flex;
 }
-
-
-
 
 .fixedBackground{
     width: 100%;
@@ -152,9 +148,7 @@
 @media only screen and (max-width:600px){
 
     .fixedBackground{
-
         height: 180px;
-
         h1{
             color: $bestBlueColor;
             font-size: 26px;
@@ -169,16 +163,13 @@
     .homeCard{  
         display: flex;
         flex-direction: column;
-
         .leftCard{
             flex: 100%;
         }
         .rightCard{
             flex: 100%;
         }
-
     }
-
 
     .popProBox{
         margin-top: -20px;
@@ -189,7 +180,7 @@
                 margin-bottom: 0px;
                 font-size: 30px;
                 font-weight: 100;
-                color: whitesmoke;
+                color: $bestBlueColor;
             }
             .popProBox-cards{
                 flex-wrap: wrap;
@@ -197,9 +188,7 @@
         }
     }
 
-
     .wrapAll{
-
         margin-left: 0px;
         height: 580px;
         padding: 30px;
@@ -211,7 +200,7 @@
         }
 
         .wrapAll-cads{
-            margin-top:60px ;
+            margin-top:-10px;
             display: flex;
             justify-content: space-around;
         }

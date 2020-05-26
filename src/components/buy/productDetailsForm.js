@@ -124,19 +124,19 @@ const ProductDetailsForm = (props) => {
                             </span>
                         </div>
                         <hr />
-                        <div className="mt-1 text-center">
+                        <div className="mt-1 text-center ">
                             <span>Description :</span>
-                            <p>{description}</p>
+                            <div className="box-exeed">
+                                <p>{description}</p>
+                            </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-            <div>
+            <div className="fixed-bottom">
                 {creatorId ?
                     creatorId === currentUserId ?
-                        <div className="mt-5">
+                        <div>
                             <button className='myBlueButton-lg' onClick={() => editHandler(productId)}>       Edit    </button>
                             <button className='myRedButton-lg ml-1' onClick={() => deleteHandler(productId)}>     Delete  </button>
                             <button className='myOrabgeButton-lg ml-1' onClick={() => deactivateHandler(productId)}> In-Active</button>
@@ -144,14 +144,16 @@ const ProductDetailsForm = (props) => {
                         </div>
                         : <div>
 
-                            <div className="myIcon">
-                                <div className="myIcons fa fa-star-o" onClick={() => favoriteHandler(productId)}>   </div>
-                                <div className="myIcons fa fa-ban" onClick={() => reportHandler(productId)}>     </div>
-                                <NewMessage
-                                    title={title}
-                                    productId={productId}
-                                    recipentId={creatorId ? creatorId : null}
-                                    openShowSignin={openShowSignin} />
+                            <div className="myIcon w-50 mx-auto">
+                                <button className="myIcons myBlueButton-lg fa fa-star-o" onClick={() => favoriteHandler(productId)}>   </button>
+                                <button className="myIcons myRedButton-lg fa fa-ban" onClick={() => reportHandler(productId)}>     </button>
+                                <button className="myOrabgeButton-lg">
+                                    <NewMessage
+                                        title={title}
+                                        productId={productId}
+                                        recipentId={creatorId ? creatorId : null}
+                                        openShowSignin={openShowSignin} />
+                                </button>
                             </div>
 
                         </div>

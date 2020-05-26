@@ -162,18 +162,7 @@
 
         }
 
-        .myIcon{
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .myIcons{
-            // display: inline-block;
-            font-size: 30px;
-            transition: 0.4s;
-        }
+        
 
       
         .myIcons:nth-child(2){
@@ -194,7 +183,28 @@
             padding: 30px;
         }
     }
+   
 }
+         .box-exeed{
+             height: 150px;
+            overflow: scroll;
+
+        }
+        
+
+.myIcon{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .myIcons{
+            font-size: 30px;
+            transition: 0.4s;
+            padding: 10px;
+            
+        }
 
 
 /* Media Query */
