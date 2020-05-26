@@ -18,27 +18,39 @@ exports.createMessage=async(req,res)=>{
             productId,
             recipentId,
             title})
-        await newConversation.save((err,doc)=>{
+        await newConversation.save(async(err,doc)=>{
             if(err) {
                 res.json({status:"failed", message:"Currently unable to send your meesage please try again", data:err})
                 throw err
             }
             else{
-                res.json({status:"success", message:"Successfully sent!, Conversation created", data:doc})
-            }
+                await User.findByIdAndUpdate(req.userId,
+                    {$addToSet:{activeConversations:{
+                                            conversationId:doc._id,
+                                            read:false
+                                        }}}, (err,doc)=>{
+                                            if(err) {
+                                                res.json({status:"failed", message:"Currently unable to send your meesage please try again", data:err})
+                                                throw err
+                                            }
+                                            else {
+                                            console.log(doc, "in conversation")
+                                            res.json({status:"success", message:"Successfully sent!, Conversation created", data:doc})
+                                            }
+                                        })
+                                    }
+                                    })
+            } else{
 
-        })
-    } else{
-
-            const{_id} = conversationResult._id
-           await Conversation.findByIdAndUpdate(_id,
-             {"$push":{messages:{
-               senderId,
-               message
-             }}},(err,doc)=>{
+                const{_id} = conversationResult._id
+                await Conversation.findByIdAndUpdate(_id,
+                {"$push":{messages:{
+                senderId,
+                message
+                    }}},(err,doc)=>{
                  if(err) res.json({status:"failed", message:"Unable to send your message, please try again",data:err})
                     else res.json({status:'success', message:"added in previous conversation", data:doc})
-             })
+                    })
            
 
     }

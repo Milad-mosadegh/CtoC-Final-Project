@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+//const Conversations = require("./conversationModel")
 
 const UserSchema = new mongoose.Schema({
     firstName: {
@@ -63,7 +64,21 @@ const UserSchema = new mongoose.Schema({
     lastSeen:{
         type: Array,
         required: true, 
-      }
+      }/* ,
+      activeConversations:{
+        type: Array,
+        required: true,
+        items:{
+          type:Object,
+          properties:{
+            conversationId:{type: mongoose.Schema.Types.ObjectId, ref: Conversations},
+            read:{
+              type:Boolean,
+              required:true
+            }
+          }
+        }
+    } */
 
 })
 
