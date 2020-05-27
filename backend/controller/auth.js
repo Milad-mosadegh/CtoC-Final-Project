@@ -65,14 +65,25 @@ exports.signup=async (req,res)=>{
                 lastName,
                 email,
                 pass:hashedPass,   
-                confirmed:true,
+                confirmed:false,
                 accessLevel : "user"
             });
-     newUser.save((err, doc)=>{
+     newUser.save(async(err, doc)=>{
                 if(err) res.status(500).json({status: "failed", message:err})
                     else{ 
-                        res.json({status:"success", message:"Welcome ! Your account is successfully created"})
-                        //emailCheck.confirmation(doc)
+                        
+                        const payload={
+                            id:doc._id,
+                            email:doc.email
+                        }
+                        const confirmationToken = await jwt.sign(payload, jwtSecretKey, {expiresIn:3600})
+                        
+                        doc.html=`<b>To Confirm your email address please <a href="http://localhost:3000/confirm/${doc.id}/${confirmationToken}">Click here!</a></b>`
+                        doc.subject="Confirm your email"
+                        let emailStatus= await emailCheck.confirmation(doc)
+                        console.log(doc, "in confirmation ")
+                        if(emailStatus) res.json({status:"success", message:"Welcome ! Your account is successfully created"})
+                            else res.json({status:"failed", message:"Request failed please try again"})
                     }
                     
             })
@@ -126,3 +137,24 @@ exports.changePassword =async(req,res)=>{
                 })
         })
 }
+
+exports.confirmEmail = async(req,res)=>{
+    console.log(req.body, "in confirmation")
+    const {token} = req.body
+    
+        await jwt.verify(token, jwtSecretKey,async (fail, decodedPayload)=>{
+            if(fail) return res.json({
+                failed:"Authentication failed!"
+            }) 
+            else {
+                let id =decodedPayload.id
+                await User.findByIdAndUpdate(id,{confirmed:true},(err,doc)=>{
+                    if(err) res.json({failed:"Your request is failed please try again"})
+                        else res.json({success:"You have successfuly confirmed your email address."})
+
+                })
+            }
+        })
+    
+    }
+    

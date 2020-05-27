@@ -3,7 +3,7 @@ const emailPass = process.env.MAIL_PASS;
 const nodemailer = require("nodemailer");
 
 exports.confirmation = async(doc)=>{
-  const {email, id, subject, text,html} = doc
+  const {email, subject, text,html} = doc
 
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",

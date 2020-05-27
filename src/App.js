@@ -16,6 +16,7 @@ import Messages from './components/messages/messages';
 import Contact from './components/contact/contact';
 import EditProduct from './components/account/editProductDetail/editProduct';
 import SubCategories from './components/categories/subCategories';
+import ConfirmEmail from "./components/signup/confirmEmail"
 
 
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/signin" component={MaterialSignin} />
           <Route path="/signup" component={MaterialSignup} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/confirm/:id/:token" component={ConfirmEmail} />
         </Switch>
       </Router>
     </div>

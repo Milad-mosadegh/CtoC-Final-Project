@@ -1,5 +1,5 @@
 const Categories = [
-    { linkName: 'all', id: "0", value: "Select Category", imgName: "art.jpg" },
+    { linkName: 'all', id: "0", value: "All Categories", imgName: "art.jpg" },
     { linkName: 'antiques', id: "1", value: "Antiques", imgName: "antique.jpg" },
     { linkName: 'art', id: "2", value: "Art", imgName: "art.jpg" },
     { linkName: 'baby', id: "3", value: "Baby", imgName: "baby.jpg" },
