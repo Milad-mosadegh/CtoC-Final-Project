@@ -39,7 +39,8 @@ const ProductDetailsForm = (props) => {
         bgImage,
         deactivateHandler,
         handleClose,
-        activateHandler } = props
+        activateHandler,
+        status } = props
 
     const [auth, setAuth] = useState(false)
     const [showSignin, setShowSignin] = useState(false)
@@ -120,7 +121,7 @@ const ProductDetailsForm = (props) => {
                                 Quantity : <input className="p-d-input" type="text" value={quantity} disabled />
                             </span>
                             <span>
-                                Price : <input className="p-d-input" type="text" value={price} disabled />
+                                Price : $ <input className="p-d-input" type="text" value={price} disabled /> 
                             </span>
                         </div>
                         <hr />
@@ -135,13 +136,19 @@ const ProductDetailsForm = (props) => {
             </div>
             <div className="fixed-bottom">
                 {creatorId ?
+                    status!=="sold"?
                     creatorId === currentUserId ?
-                        <div>
-                            <button className='myBlueButton-lg' onClick={() => editHandler(productId)}>       Edit    </button>
-                            <button className='myRedButton-lg ml-1' onClick={() => deleteHandler(productId)}>     Delete  </button>
-                            <button className='myOrabgeButton-lg ml-1' onClick={() => deactivateHandler(productId)}> In-Active</button>
-                            <button className='myGreenButton-lg ml-1' onClick={() => soldHandler(productId)}>       Sold    </button>
-                        </div>
+                        status==="inactive"?
+                            <div>
+                                <button className='myOrabgeButton-lg ml-1' onClick={() => activateHandler(productId)}> Activate</button>
+                            </div>
+
+                            :<div>
+                                <button className='myBlueButton-lg' onClick={() => editHandler(productId)}>       Edit    </button>
+                                <button className='myRedButton-lg ml-1' onClick={() => deleteHandler(productId)}>     Delete  </button>
+                                <button className='myOrabgeButton-lg ml-1' onClick={() => deactivateHandler(productId)}> In-Active</button>
+                                <button className='myGreenButton-lg ml-1' onClick={() => soldHandler(productId)}>       Sold    </button>
+                            </div>
                         : <div>
 
                             <div className="myIcon w-50 mx-auto">
@@ -158,7 +165,7 @@ const ProductDetailsForm = (props) => {
 
                         </div>
 
-
+                    :null
                     : null}
             </div>
             {showSignin ? <SigninModal

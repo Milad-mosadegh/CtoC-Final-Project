@@ -39,7 +39,7 @@ export default function SearchBar(props) {
     let suggestionArray = [];
     if (value.length > 0) {
       let length = value.length;
-      suggestionArray = (items.sort().filter(v => v.slice(0, length).includes(value, 0))).slice(0, 10)
+      suggestionArray = (items.sort().filter(v =>  v.toLowerCase().slice(0, length).includes(value.toLowerCase(), 0))).slice(0, 10)
       console.log(suggestionArray)
     }
     setSuggestions(suggestionArray)

@@ -7,17 +7,23 @@ import ProductDetailsForm from './productDetailsForm';
 import { POST } from '../lib/post';
 import axios from 'axios';
 import AlertBox from '../AlertBox/alertBox';
+import Color from "../lib/colors"
+import Condition from "../lib/condition"
 
 
 const ProductDetails = (props) => {
 
-    const { id, showModel, handleClose, url } = props
+    const { id, showModel, handleClose, url,status } = props
 
     const [productDetail, setProductDetail] = useState("")
     const [showSoldAlertBox, setShowSoldAlertBox] = useState(false)
     const [showActiveAlertBox, setShowActiveAlertBox]=useState(false)
     const [showinactiveAlertBox, setShowInactiveAlertBox]=useState(false)
     const [showDeleteAlertBox, setShowDeleteAlertBox]=useState(false)
+
+    let color=productDetail?Color.filter(color=>color.id===productDetail.color)[0].value:null
+    let condition=productDetail?Condition.filter(condition=>condition.id===productDetail.condition)[0].value:null
+
 
 
 
@@ -87,8 +93,36 @@ const ProductDetails = (props) => {
             })
             .catch(err => err)
     }
-    const activateHandler = (id) => console.log("activate handler called", id)
-    const deleteHandler = (id) => console.log("delete handler called", id)
+    const activateHandler = (id) => axios.post("/api/products/activateproduct", { data: { id } }, {
+        headers: {
+            'x-auth-token': localStorage.getItem('c2c-token'),
+            'Content-Type': 'application/json'
+        }
+    })
+
+        .then(res => {
+            if(res.data.success) {
+                setShowActiveAlertBox(false)
+                handleClose()
+                props.history.push("/")
+            }
+        })
+        .catch(err => err)
+    const deleteHandler = (id) => axios.post("/api/products/deleteproduct", { data: { id } }, {
+        headers: {
+            'x-auth-token': localStorage.getItem('c2c-token'),
+            'Content-Type': 'application/json'
+        }
+    })
+
+        .then(res => {
+            if(res.data.success) {
+                setShowSoldAlertBox(false)
+                handleClose()
+                props.history.push("/")
+            }
+        })
+        .catch(err => err)
 
     const editHandler = (id) => props.history.push(`./editproduct/${id}`)
 
@@ -100,27 +134,30 @@ const ProductDetails = (props) => {
         <div className="my-container" show={showModel} onHide={handleClose}>
             <Zoom>
                 <div>
+  
+                 
                     <ProductDetailsForm
                         description={productDetail.description}
                         postedBy={productDetail ? productDetail.creator.firstName : null}
                         creatorId={productDetail ? productDetail.creator._id : null}
                         productId={productDetail._id}
-                        color={productDetail.color}
+                        color={color}
                         price={productDetail.price}
-                        condition={productDetail.condition}
+                        condition={condition}
                         quantity={productDetail.quantity}
                         title={productDetail.title}
                         bgImage={bgImage}
                         images={productDetail.images}
                         handleBgImage={handleBgImage}
                         deactivateHandler={()=>setShowInactiveAlertBox(true)}
-                        activateHandler={activateHandler}
-                        deleteHandler={deleteHandler}
+                        activateHandler={()=>setShowActiveAlertBox(true)}
+                        deleteHandler={()=>setShowDeleteAlertBox(true)}
                         editHandler={editHandler}
                         reportHandler={reportHandler}
                         favoriteHandler={favoriteHandler}
                         soldHandler={()=>setShowSoldAlertBox(true)}
                         handleClose={handleClose}
+                        status={status}
                     />
                 </div>
             </Zoom>
@@ -149,7 +186,7 @@ const ProductDetails = (props) => {
                     <AlertBox
                         alertBoxTitle="Delete" 
                         alertBoxBody="Are you sure to delete it?"
-                        proceedHandler={()=>soldHandler(id)}
+                        proceedHandler={()=>deleteHandler(id)}
                         hideAlertBox={()=>setShowDeleteAlertBox(false)} />
                         :null}
         </div>

@@ -57,7 +57,7 @@ withComponents ( function({productId,favorites,favoriteActions}){
 
 
 
-const ItemCard = ({ title, price, id, images, setTargetProduct, favorit, url, favoritHandler  }) => {
+const ItemCard = ({ title, price, id, images, setTargetProduct, favorit, url, favoritHandler,status  }) => {
 
     const [favoritized, setFavoritized] = useState(false)
 
@@ -89,7 +89,7 @@ const ItemCard = ({ title, price, id, images, setTargetProduct, favorit, url, fa
                 <Slide left>
                     <div className="unitedCards" key={id} >
                         <button className={favoritized ? "myFavButton fa fa-star " : "myFavButton fa fa-star-o "} onClick={setFvorities}></button>
-                        <div className="unitedImgBox" onClick={() => setTargetProduct(id, url)}
+                        <div className="unitedImgBox" onClick={() => setTargetProduct(id, url,status)}
                             style={{
                                 backgroundImage: `url(${`http://localhost:5000/avatars/${images}`})`,
                                 backgroundPosition: 'center',

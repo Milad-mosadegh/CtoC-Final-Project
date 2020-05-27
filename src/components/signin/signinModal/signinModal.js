@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { POST } from '../../lib/post';
 import SigninForm from "./signinForm"
-
 import '../../styles/main.css';
-import Axios from 'axios';
+import axios from 'axios';
 
 export default function SigninModal(props) {
 
@@ -48,7 +47,7 @@ export default function SigninModal(props) {
             if (response.data.status === "success") {
                 localStorage.setItem("c2c-token", response.data.token)
                 localStorage.setItem("c2c-profile",JSON.stringify(response.data.data) )
-                Axios.defaults.headers['x-auth-token'] = response.data.token
+                axios.defaults.headers['x-auth-token'] = response.data.token
                 productSubmitHandler()
             }
             else setErrors({ ...errors, authentication: { ...errors.authentication, status: true } })

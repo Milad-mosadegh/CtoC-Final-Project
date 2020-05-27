@@ -19,6 +19,7 @@ function InactiveProducts({setTargetProduct, favorit, favoritHandler}) {
                     url={`/api/account/inactiveproductdetails`}
                     favorit={favorit}
                     favoritHandler={favoritHandler}
+                    status="inactive"
                 />
         </Zoom>
     )

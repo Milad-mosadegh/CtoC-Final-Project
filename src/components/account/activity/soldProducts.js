@@ -19,6 +19,7 @@ function SoldProducts({setTargetProduct, favoritHandler,favorit}) {
                     url={`/api/account/soldproductdetails`}
                     favorit={favorit}
                     favoritHandler={favoritHandler}
+                    status="sold"
                 />
                 
             </Zoom>
