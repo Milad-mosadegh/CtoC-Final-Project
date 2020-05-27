@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tab, Tabs, Col, Nav, Row } from 'react-bootstrap'
+import { Tab, Tabs } from 'react-bootstrap'
 import ProductDetails from '../../buy/productDetails';
 import '../../styles/main.css'
 import ActiveProducts from './activeProducts';
@@ -12,13 +12,15 @@ const Activity = (props) => {
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
     const [url, setUrl] = useState("")
+    const [status,setStatus]=useState("")
 
 
 
-    const setTargetProduct = (id, url) => {
+    const setTargetProduct = (id, url, status) => {
         setShowModal(true)
         setUrl(url)
         setProductId(id)
+        setStatus(status)
     }
 
 
@@ -86,23 +88,24 @@ const Activity = (props) => {
                 mountOnEnter={true}
                 unmountOnExit={true}
                 variant='pills'
+                defaultActiveKey= {props.location.subKey ? props.location.subKey : "active"}
                 className="d-flex justify-content-center ml-2"
             >
-                <Tab eventKey="profile" title="Active Products"  >
+                <Tab eventKey="active" title="Active Products"  >
                     <ActiveProducts
                         setTargetProduct={setTargetProduct}
                         favorit={favorit}
                         favoritHandler={favoritHandler}
                     />
                 </Tab>
-                <Tab eventKey="activities" title="Inactive Products" >
+                <Tab eventKey="inactive" title="Inactive Products" >
                     <InactiveProducts
                         setTargetProduct={setTargetProduct}
                         favorit={favorit}
                         favoritHandler={favoritHandler}
                     />
                 </Tab>
-                <Tab eventKey="favorities" title="Sold Products" >
+                <Tab eventKey="sold" title="Sold Products" >
                     <SoldProducts
                         setTargetProduct={setTargetProduct}
                         favorit={favorit}
@@ -121,6 +124,7 @@ const Activity = (props) => {
                     handleClose={handleClose}
                     id={productId}
                     url={url}
+                    status={status}
                     {...props}
                 /> : null}
 

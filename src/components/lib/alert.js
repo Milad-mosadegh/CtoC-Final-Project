@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const MyAlert = (props) => {
-    const { id, alertText, derenderModal } = props
+    const { id, alertText, redirectPath } = props
     toast.success(alertText, { containerId: "A", autoClose: 1000 })
     toast.warn(alertText, { containerId: "B", autoClose: 1000 })
     toast.info(alertText, { containerId: "C", autoClose: 1000 })
@@ -12,7 +12,7 @@ const MyAlert = (props) => {
     useEffect(() => {
         const timer = setTimeout(() => {
 
-            props.history.push({pathname:'/account',mykey:"activities"})
+            props.history.push({pathname:redirectPath,mykey:"activities"})
         }, 1000);
         return () => clearTimeout(timer);
 

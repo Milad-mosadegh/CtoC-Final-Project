@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PasswordReset from "../signin/resetModal"
 import axios from "axios"
 import AlertBox from "../AlertBox/alertBox"
+import Errors from "../lib/errors"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -45,6 +46,76 @@ const SellItems = (props) => {
     const [alertText, setAlertText] = useState("")
     const [showAlert, setShowAlert] = useState(false)
     const [alertBox, setAlertBox] = useState(false)
+    let   [inputErrors, setInputErrors] = useState("");
+
+    const regexName = new RegExp(/^[a-zA-ZäöüÄÖÜß]*$/)
+    const regexEmail = new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
+    const regexNumber = new RegExp(/^[0-9]*$/)
+    const regexPrice = new RegExp(/^[0-9]*$/)
+
+
+    const changeHandler = (e) => {
+        inputErrors = {...inputErrors,form:{...inputErrors.form, status:false}};
+
+        switch (e.target.name) {
+            
+            case "title":
+                if ((!regexName.test(e.target.value)) || (e.target.value.length < 4) || (e.target.value.length >20 )) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+
+                break;
+
+            case "category":
+                if (e.target.value === "0")
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                break;
+
+            case "condition":
+                if (!regexEmail.test(e.target.value)) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+
+                break;
+
+            case "quantity":
+                if (!regexNumber.test(e.target.value)) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+
+                break;
+
+            case "color":
+                if (e.target.value === "0") 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                break;
+
+            case "price":
+                if ((!regexPrice.test(e.target.value)) || (e.target.value<1)) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                break;
+
+            case "description":
+                if ((e.target.value.length < 10) || (e.target.value.length >200 )) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                break;
+
+            default:
+                break;
+        }
+        setProduct({ ...product, [e.target.name]: e.target.value })
+    }
 
     const proceedHandler=()=>{
         editHandler(product, images)
@@ -74,7 +145,8 @@ const SellItems = (props) => {
                         images.push({id:i, image:fetch(`/avatars/${product.images[i]}`).then(r => r.blob())})
                     }})
                 .catch(err => err)
-}, [])
+        setInputErrors(Errors)
+},[])
 
 
     const imageChangeHandler = (image) => {
@@ -86,7 +158,7 @@ const SellItems = (props) => {
         setImages(tempImageArray)
     }
 
-    const changeHandler = (e) => setProduct({ ...product, [e.target.name]: e.target.value })
+    
 
     const submitHandler = async () => {
 
@@ -146,9 +218,10 @@ const SellItems = (props) => {
                             product={product}
                             edit={edit}
                             showAlertBox={showAlertBox}
+                            inputErrors={inputErrors}
             />
 
-            {showAlert ? <MyAlert id={alertId} alertText={alertText} {...props} /> : null}
+            {showAlert ? <MyAlert id={alertId} alertText={alertText} {...props} redirectPath="/account"/> : null}
             {showSignin ? <SigninModal
                             handleClose={handleClose}
                             show={showSignin}
@@ -169,6 +242,7 @@ const SellItems = (props) => {
                             alertBoxBody="Are you sure to update your product?"
                             hideAlertBox={hideAlertBox}
                             proceedHandler={proceedHandler}
+                            
                     />:null}
         </div>
     );

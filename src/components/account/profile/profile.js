@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './../styles.css'
 import { Form, Col } from 'react-bootstrap';
 import ImageCard from '../../sell/imageCard';
-import PasswordChange from './changepassword';
 
 const ProfileData = (props) => {
-    const [error, setError] = useState("")
-
-    const { submitHandler, imageChangeHandler, changeHandler, cancelHandler, editHandler, profile, edit, showModal, renderModal, derenderModal } = props
+    const { submitHandler, imageChangeHandler, changeHandler, editDisabler, editEnabler, profile, renderModal, editAble,error } = props
+    
 
 
     return (
         <div className='shadow-lg p-5'>
             <Form onSubmit={submitHandler}>
 
-                <fieldset id="fieldset" disabled="disabled">
+                <fieldset disabled={editAble?"":"disabled"}>
                     <div className="w-25  ">
                         <ImageCard image={profile.profileImage} edit={true} id={"1"} imageChangeHandler={imageChangeHandler} />
 
@@ -59,7 +57,7 @@ const ProfileData = (props) => {
                         <Form.Group as={Col} controlId="formGridAddress1">
                             <Form.Label>Password</Form.Label>
                             <Form.Control name="password" type="password" value="*********" onChange={changeHandler} />
-                            {edit ?
+                            {editAble ?
                                 <smail className="sText"
                                     onClick={renderModal}
                                     style={{ cursor: "pointer" }}>click here to change your password</smail> : null}
@@ -104,28 +102,21 @@ const ProfileData = (props) => {
 
 
                 </fieldset>
-                {edit ?
+                {editAble ?
                     <div>
                         <button className='myBlueButton-lg' type="submit">
                             Update
                     </button>
-                        <button className="ml-1 myRedButton-lg" onClick={cancelHandler} >
+                        <button className="ml-1 myRedButton-lg" onClick={editDisabler} >
                             Cancel
                     </button>
                     </div>
                     :
-                    <button className="myBlueButton-lg" onClick={editHandler}>
+                    <button className="myBlueButton-lg" onClick={editEnabler}>
                         Edit
             </button>
                 }
             </Form>
-
-            {showModal ?
-                <PasswordChange
-                    showModal={showModal}
-                    derenderModal={derenderModal}
-                    {...props}
-                /> : null}
         </div>
     );
 }

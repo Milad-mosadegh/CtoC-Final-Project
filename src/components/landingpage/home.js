@@ -94,7 +94,7 @@ const Home = (props) => {
                     <Footer />
                 </div>
                }
-        </div >
+        </div>
     ); 
 }
 

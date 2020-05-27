@@ -11,19 +11,19 @@ const Footer = (props) => {
                 <div className="footer-info col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <h3>Milad Mosadegh</h3>
                     <div className="footer-links">
-                        <a href="/" className="fa fa fa-envelope-o" />
-                        <a href="/" className="fa fa-instagram " />
-                        <a href="/" className="fa fa-facebook " />
+                        <a href="/"><span className="fa fa fa-envelope-o" /></a>
+                        <a href="/"><span className="fa fa-instagram " /></a>
+                        <a href="/"><span className="fa fa-facebook " /></a>
                     </div>
                 </div>
                 <div className="footer-info col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
                     <h3>Ather Ahmad</h3>
                     <div className="footer-links">
-                        <a href="/" className="fa fa fa-envelope-o" />
-                        <a href="/" className="fa fa-instagram " />
-                        <a href="/" className="fa fa-facebook " />
-                    </div>
-                </div>
+                        <a href="/" ><span className="fa fa fa-envelope-o" /></a>
+                        <a href="/" ><span className="fa fa-instagram "    /></a>
+                        <a href="/"><span className="fa fa-facebook "      /></a>
+                    </div> 
+                </div> 
             </div>
         </div>
 
