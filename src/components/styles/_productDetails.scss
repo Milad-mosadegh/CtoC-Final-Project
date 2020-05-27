@@ -145,6 +145,10 @@
                 margin-top: 10px;
                 margin-bottom: 20px;
                 padding: 10px;
+                .desOne{
+                    display: flex;
+                    justify-content: space-around;
+                }
                 span{
                     font-size: 15px;
                     font-weight: bold;
@@ -192,7 +196,7 @@
         }
         
 
-.myIcon{
+        .myIcon{
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -207,85 +211,91 @@
         }
 
 
-/* Media Query */
+/*================================== Media Query ============*/
 @media only screen and (max-width: 600px) {
+
+
     .my-container{
-        width: 100%; /* Full width */
-        height: 80%; /* Full height */
-        // margin: 10px auto;
-        margin: 50px auto ;
-   
+        width: 400px; /* Full width */
+        height: 90%; /* Full height */
+        margin: 20px auto ;
+        .head-one{
+            height: 100px;
+        }
+        .head-tow{
+            height: 60px;
+            margin-top:-34px;
 
-    .largImage{
-       width: 300px;
-       height: 200px;
-    }
-    .myThumb {
-        display: none;
-        width: 50px;
-    }
-    .content{
-        width: 300px;
-        height: 250px;
-    }
-    
-    .content h2{
-        padding: 10px;
-        font-size: 12px;
-        font-weight: 500;
-    }
+            h2{
+                font-size: 20px;
+            }
+        }
+        .pd-row-1{
+            height: 350px;
+            .largImage{
+                width: 280px;
+                height: 300px;
+            }
+            .myThumb {
+                width: 50px;
+            }
+        }
+
+
+        .content{
+            width: 300px;
+            height: 250px;
         
-    .innerContent h3{
-        display: inline-block;
-        font-size: 8px;
-    }
+        .p-d-content{
+            margin-top: 20px;
+            height: 0px;
+            .innerContent{
+                display: flex;
+                flex-wrap: wrap;
+                text-align: left;
+                padding: 10px;
+                span{
+                    font-size: 15px;
+                    font-weight: bold;
+                      margin-left: 10px;
+                }
+                 .p-d-input{
+                    border: none;
+                    width: 160px;
+                    background: none;
+                }
+            }
 
-    .content h4{
-        font-size: 8px;
-        padding: 20px;
-    }
+           
+            .des{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                border-top: 2px solid $bestBlueColor;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                padding: 10px;
+                .desOne{
+                    flex-wrap: wrap;
+                }
+                span{
+                    font-size: 15px;
+                    font-weight: bold;
+                }
+                 .p-d-input{
+                    border: none;
+                    width: 200px;
+                    background: none;
+                }
+                p{
+                    font-size: 14px;
+                    padding: 20px;
+                }
+            }
 
-    .myLine{
-        border-bottom: 2px solid rgb(121, 120, 120);
-        box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
+        }
+        
+ 
     }
-
-    .myLine2{
-        width: 70%;
-        border-bottom: 2px solid rgb(121, 120, 120);
-        box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
     }
-    .myIcon{
-        width: 300px;
-        justify-content: space-around;
-    }
-    .myIcons{
-        font-size: 20px;
-    }
-   
-    .myIcons:hover{
-        font-size: 20px;
-        transform: translateY(-10px);
-    }
-    .but-big{
-        width: 50px;
-        font-size: 12px;
-    }
-    .but-big:hover{
-        width: 280px;
-        background: rgba(255, 0, 0, 0.644);
-        box-shadow: $hardBoxShadow;
-        color: whitesmoke;
-    }
-
- }
-}
-
-
-@media only screen and (max-width: 800px) {
-
-}
-
-@media only screen and (max-width: 960px) {
-
 }

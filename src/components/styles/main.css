@@ -1195,6 +1195,14 @@
   padding: 10px;
 }
 
+.my-container .content .p-d-content .des .desOne {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
 .my-container .content .p-d-content .des span {
   font-size: 15px;
   font-weight: bold;
@@ -1256,74 +1264,93 @@
   padding: 10px;
 }
 
-/* Media Query */
+/*================================== Media Query ============*/
 @media only screen and (max-width: 600px) {
   .my-container {
-    width: 100%;
+    width: 400px;
     /* Full width */
-    height: 80%;
+    height: 90%;
     /* Full height */
-    margin: 50px auto;
+    margin: 20px auto;
   }
-  .my-container .largImage {
-    width: 300px;
-    height: 200px;
+  .my-container .head-one {
+    height: 100px;
   }
-  .my-container .myThumb {
-    display: none;
+  .my-container .head-tow {
+    height: 60px;
+    margin-top: -34px;
+  }
+  .my-container .head-tow h2 {
+    font-size: 20px;
+  }
+  .my-container .pd-row-1 {
+    height: 350px;
+  }
+  .my-container .pd-row-1 .largImage {
+    width: 280px;
+    height: 300px;
+  }
+  .my-container .pd-row-1 .myThumb {
     width: 50px;
   }
   .my-container .content {
     width: 300px;
     height: 250px;
   }
-  .my-container .content h2 {
+  .my-container .content .p-d-content {
+    margin-top: 20px;
+    height: 0px;
+  }
+  .my-container .content .p-d-content .innerContent {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    text-align: left;
     padding: 10px;
-    font-size: 12px;
-    font-weight: 500;
   }
-  .my-container .innerContent h3 {
-    display: inline-block;
-    font-size: 8px;
+  .my-container .content .p-d-content .innerContent span {
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 10px;
   }
-  .my-container .content h4 {
-    font-size: 8px;
+  .my-container .content .p-d-content .innerContent .p-d-input {
+    border: none;
+    width: 160px;
+    background: none;
+  }
+  .my-container .content .p-d-content .des {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    border-top: 2px solid #11213b;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  .my-container .content .p-d-content .des .desOne {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .my-container .content .p-d-content .des span {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .my-container .content .p-d-content .des .p-d-input {
+    border: none;
+    width: 200px;
+    background: none;
+  }
+  .my-container .content .p-d-content .des p {
+    font-size: 14px;
     padding: 20px;
-  }
-  .my-container .myLine {
-    border-bottom: 2px solid #797878;
-    -webkit-box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
-            box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
-  }
-  .my-container .myLine2 {
-    width: 70%;
-    border-bottom: 2px solid #797878;
-    -webkit-box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
-            box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.637);
-  }
-  .my-container .myIcon {
-    width: 300px;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-  }
-  .my-container .myIcons {
-    font-size: 20px;
-  }
-  .my-container .myIcons:hover {
-    font-size: 20px;
-    -webkit-transform: translateY(-10px);
-            transform: translateY(-10px);
-  }
-  .my-container .but-big {
-    width: 50px;
-    font-size: 12px;
-  }
-  .my-container .but-big:hover {
-    width: 280px;
-    background: rgba(255, 0, 0, 0.644);
-    -webkit-box-shadow: 10px 10px 10px black;
-            box-shadow: 10px 10px 10px black;
-    color: whitesmoke;
   }
 }
 
@@ -1606,6 +1633,7 @@
     color: #b72826;
     background: transparent;
     opacity: 0.9;
+    margin-left: -20px;
   }
   .up:hover {
     color: #b72826;
@@ -1622,6 +1650,7 @@
     color: #b72826;
     background: transparent;
     opacity: 0.9;
+    margin-left: -20px;
   }
   .down:hover {
     color: #b72826;
@@ -1636,7 +1665,7 @@
   }
   .my {
     width: 80px;
-    height: 300px;
+    height: 250px;
     border-radius: 30px;
     background: transparent;
   }
@@ -1942,6 +1971,7 @@
 }
 
 .popProBox .popProBox-content .popProBox-cards {
+  margin-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1949,7 +1979,7 @@
       justify-content: space-around;
 }
 
-/* Last Seen  */
+/*================== Last Seen =============== */
 .wrapAll {
   background: #11213b;
   margin-left: -200px;
@@ -1962,15 +1992,17 @@
 .wrapAll h2 {
   margin-bottom: 0px;
   font-size: 50px;
-  font-weight: 100;
+  font-weight: 200;
   color: whitesmoke;
 }
 
 .wrapAll .wrapAll-cads {
-  margin-top: 60px;
+  margin-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
@@ -2094,7 +2126,7 @@
     color: whitesmoke;
   }
   .wrapAll .wrapAll-cads {
-    margin-top: -10px;
+    margin-top: -80px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2107,6 +2139,48 @@
     background-position: -700px;
     background-repeat: no-repeat;
   }
+  .lastSeenBox {
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 0px;
+    margin-bottom: 130px;
+  }
+  .lastSeenBox .describ {
+    -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+    background: #11213b;
+    height: 400px;
+  }
+  .lastSeenBox .describ h3 {
+    font-size: 25px;
+    padding: 20px;
+    font-weight: 200;
+    color: #b72826;
+  }
+  .lastSeenBox .describ p {
+    font-size: 14px;
+    padding: 20px;
+    color: #7a7979;
+  }
+  .lastSeenBox .extra {
+    width: 80%;
+    margin: -10px auto;
+    background: #f3f1f1;
+    height: 150px;
+  }
+  .lastSeenBox .extra p {
+    font-size: 12px;
+  }
+  .lastSeenBox .extra button {
+    width: 100px;
+    height: 30px;
+    color: whitesmoke;
+    background: #11213b;
+    -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+    border: none;
+    font-size: 20px;
+  }
 }
 
 /* ============================= MEDIA QUERY 480PX ============================ */
@@ -2115,13 +2189,13 @@
     height: 180px;
   }
   .fixedBackground h1 {
-    font-size: 22px;
+    font-size: 26px;
   }
   .fixedBackground h3 {
-    font-size: 8px;
+    font-size: 10px;
   }
   .popProBox {
-    margin-top: -20px;
+    margin-top: 0px;
   }
   .popProBox .popProBox-content {
     padding: 0;
@@ -2129,9 +2203,10 @@
   .popProBox .popProBox-content h2 {
     padding-top: 20px;
     font-size: 30px;
-    font-weight: 100;
+    font-weight: 200;
   }
   .popProBox .popProBox-content .popProBox-cards {
+    margin-top: 30px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2147,10 +2222,10 @@
   .wrapAll h2 {
     margin-bottom: 0px;
     font-size: 30px;
-    font-weight: 100;
+    font-weight: 200;
   }
   .wrapAll .wrapAll-cads {
-    margin-top: 60px;
+    margin-top: 30px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2408,11 +2483,12 @@
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
   padding: 30px;
-  background: #11213b;
+  background: #d8d5d5;
 }
 
 .boxLeft .boxLeftChild {
   width: 70%;
+  color: white;
 }
 
 .boxRight {
@@ -2420,7 +2496,7 @@
   -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
           box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
   padding: 20px;
-  background: #d8d5d5;
+  background: #11213b;
   margin-left: -300px;
   margin-top: 200px;
 }
@@ -2724,6 +2800,43 @@
   transition: 0.6s;
 }
 
+/* .ctoc{
+  display:flex ;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Faster One', cursive;
+  background: $bestRedColor;
+  padding: 40px;
+  height: 130px;
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right: 50px;
+  box-shadow: $mediumBoxShadow;
+  .navLogo1{
+    font-size: 50px;
+    color: rgb(35, 35, 110);
+    border-bottom: 1px solid white;
+  }
+  .navLogo2{
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: whitesmoke;
+    margin-top: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: $lightBoxShadow;
+  }
+
+} */
+.myLogo {
+  width: 300px;
+  height: 100px;
+  background-image: url("../../logo/1.png");
+  background-position: center;
+  background-size: cover;
+  margin-right: 60px;
+}
+
 .navTitle {
   letter-spacing: 2px;
   -webkit-transition: 0.4s;
@@ -2748,20 +2861,17 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .navLogo img {
-    width: 50px;
-    margin-top: -22px;
+  .ctoc {
+    padding: 40px;
+    height: 80px;
   }
-  /*   .navLogo{
-      font-size: 29px;
-      color: whitesmoke;
-      background: $bestRedColor;
-      padding: 27px;
-      border-radius: 0 0 40px ;
-      box-shadow: $hardBoxShadow;
-      border: none;
-      outline: none;
-  } */
+  .ctoc .navLogo1 {
+    font-size: 30px;
+  }
+  .ctoc .navLogo2 {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
   .navTitle {
     letter-spacing: 2px;
     font-size: 14px;
@@ -3867,7 +3977,7 @@
   }
   .unitedWrap .unitedCards {
     width: 150px;
-    height: 200px;
+    height: 215px;
   }
   .unitedWrap .unitedImgBox {
     width: 100%;
@@ -4899,6 +5009,38 @@ nav > .nav-link {
 .t-head {
   background: #11213b;
   color: whitesmoke;
+}
+
+/* ================ QUERRY 480PX ===================== */
+@media only screen and (max-width: 480px) {
+  .active-message-head {
+    height: 80px;
+  }
+  .active-message-text {
+    width: 60%;
+    height: 50px;
+    margin-top: -30px;
+    margin-bottom: 20px;
+  }
+  .active-message-text h1 {
+    font-size: 32px;
+  }
+  .t-head th {
+    font-size: 12px;
+    font-weight: 300;
+  }
+  .active-message-body td {
+    font-size: 10px;
+    font-weight: 200px;
+  }
+  .active-message-body h4 {
+    font-size: 15px;
+  }
+  .wrapMessage button {
+    font-size: 15px;
+    height: 30px;
+    width: 90px;
+  }
 }
 
 .bestBlueColor {

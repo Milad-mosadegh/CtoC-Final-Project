@@ -1,6 +1,48 @@
 @import './variables';
 
 
+/* .ctoc{
+  display:flex ;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Faster One', cursive;
+  background: $bestRedColor;
+  padding: 40px;
+  height: 130px;
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right: 50px;
+  box-shadow: $mediumBoxShadow;
+  .navLogo1{
+    font-size: 50px;
+    color: rgb(35, 35, 110);
+    border-bottom: 1px solid white;
+  }
+  .navLogo2{
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: whitesmoke;
+    margin-top: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: $lightBoxShadow;
+  }
+
+} */
+
+.ctoc{
+ 
+}
+
+.myLogo{
+  width: 300px;
+  height: 100px;
+  background-image: url('../../logo/1.png');
+  background-position: center;
+  background-size: cover;
+  margin-right: 60px;
+}
+
 
 .navTitle{
     letter-spacing: 2px;
@@ -26,23 +68,20 @@
    
 @media only screen and (max-width: 600px){
 
+  .ctoc{
+    padding: 40px;
+    height: 80px;
+    .navLogo1{
+      font-size: 30px;
+    }
+    .navLogo2{
+      font-size: 10px;
+      letter-spacing: 3px;
+    }
 
-  .navLogo img{
+}
 
-    width: 50px;
-    margin-top: -22px;
-  }
 
-  /*   .navLogo{
-      font-size: 29px;
-      color: whitesmoke;
-      background: $bestRedColor;
-      padding: 27px;
-      border-radius: 0 0 40px ;
-      box-shadow: $hardBoxShadow;
-      border: none;
-      outline: none;
-  } */
 
   .navTitle{
       letter-spacing: 2px;

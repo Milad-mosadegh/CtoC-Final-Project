@@ -1,4 +1,6 @@
 @import './variables';
+
+
 .boxes{
     width: 150px;
     height: 150px;
@@ -23,9 +25,11 @@
     height: 550px;
     box-shadow: $mediumBoxShadow;
     padding: 30px;
-    background: $bestBlueColor;
-        .boxLeftChild{
-            width: 70%;
+    background:  rgb(216, 213, 213);
+   
+    .boxLeftChild{
+        width: 70%;
+        color: white;
         }
 }
 
@@ -33,7 +37,7 @@
     width: 40%;
     box-shadow: $mediumBoxShadow;
     padding: 20px;
-    background: rgb(216, 213, 213);
+    background: $bestBlueColor;
     margin-left: -300px;
     margin-top: 200px;
 }

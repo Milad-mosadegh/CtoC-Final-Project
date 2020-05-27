@@ -7,6 +7,10 @@ import Conditions from "../lib/condition"
 import Fade from 'react-reveal/Fade';
 import '../styles/main.css'
 
+import TextField from '@material-ui/core/TextField';
+
+
+
 const SellDetails = (props) => {
 
     const { imageChangeHandler, changeHandler, submitHandler, product, edit, showAlertBox } = props
@@ -16,6 +20,8 @@ const SellDetails = (props) => {
     const cancelHandler = () => {
         props.history.push("/")
     }
+
+
     return (
 
         <div className="sellWrapAll ">
@@ -29,6 +35,20 @@ const SellDetails = (props) => {
                                     <Form.Control name="title" type="text" value={product.title} placeholder="Enter Tilte" onChange={changeHandler} />
                                 </Form.Group>
                             </Form.Row>
+
+
+                            <TextField
+                                id="standard-name-input"
+                                label="Title"
+                                type="text"
+                                autoComplete="current-name"
+                                name="title"
+                                value={product.title}
+                                onChange={changeHandler}
+                                fullWidth={true}
+                                required={true}
+                            />
+
 
 
                             <Form.Row>
@@ -90,12 +110,12 @@ const SellDetails = (props) => {
                 <Fade right cascade delay={100}>
                     <div className=" boxRight">
                         <div >
-                            <div className="d-flex justify-content-around">
+                            <div className="d-flex justify-content-around mb-2">
                                 <ImageCard id={"1"} image={product.images ? product.images[0] : null} edit={product.images ? true : false} imageChangeHandler={imageChangeHandler} />
                                 <ImageCard id={"2"} image={product.images ? product.images[1] : null} edit={product.images ? true : false} imageChangeHandler={imageChangeHandler} />
                                 <ImageCard id={"3"} image={product.images ? product.images[2] : null} edit={product.images ? true : false} imageChangeHandler={imageChangeHandler} />
                             </div>
-                            <div className="d-flex justify-content-around mt-2">
+                            <div className="d-flex justify-content-around mt-4">
                                 <ImageCard id={"4"} image={product.images ? product.images[3] : null} edit={product.images ? true : false} imageChangeHandler={imageChangeHandler} />
                                 <ImageCard id={"5"} image={product.images ? product.images[4] : null} edit={product.images ? true : false} imageChangeHandler={imageChangeHandler} />
                                 <ImageCard id={"6"} image={product.images ? product.images[5] : null} edit={product.images ? true : false} imageChangeHandler={imageChangeHandler} />

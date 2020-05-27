@@ -82,6 +82,8 @@ const ProductDetailsForm = (props) => {
             <div className="head-tow">
                 <h2>{title}</h2>
             </div>
+
+
             <div className="pd-row-1">
                 <div className="largImage">
                     <img src={`http://localhost:5000/avatars/${bgImage}`} alt="" />
@@ -109,7 +111,7 @@ const ProductDetailsForm = (props) => {
 
 
                     <div className="des">
-                        <div className="d-flex justify-content-lg-around">
+                        <div className="desOne">
                             <span>
                                 Color : <input className="p-d-input" type="text" value={color} disabled />
                             </span>
@@ -124,7 +126,7 @@ const ProductDetailsForm = (props) => {
                             </span>
                         </div>
                         <hr />
-                        <div className="mt-1 text-center ">
+                        <div className="mt-1 text-center desTow ">
                             <span>Description :</span>
                             <div className="box-exeed">
                                 <p>{description}</p>

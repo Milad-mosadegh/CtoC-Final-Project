@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import '../styles/main.css'
 import { Navbar, Nav, Badge, Button } from 'react-bootstrap';
 import GET from '../lib/get';
+import one from '../../logo/1.png'
 
 
 
@@ -55,12 +56,16 @@ const MyNavbar = (props) => {
 
     return (
         <div>
-            <Navbar className="p-3" expand="lg">
-                <Navbar.Brand className="text-uppercase text-shadow ctoc" >
-                    <span className="navLogo">
+            <Navbar expand="lg">
+                <div className="text-uppercase text-shadow ctoc" >
+                    {/*   <span className="navLogo1">
                         C to C
                     </span>
-                </Navbar.Brand>
+                    <span className="navLogo2">
+                        Online Shop
+                    </span> */}
+                    <div className="myLogo"></div>
+                </div>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

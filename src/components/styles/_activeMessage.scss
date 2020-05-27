@@ -28,3 +28,48 @@
     background: $bestBlueColor;
     color: whitesmoke;
 }
+
+
+/* ================ QUERRY 480PX ===================== */
+
+@media only screen and (max-width : 480px){
+    .active-message-head{
+        height: 80px;
+    }
+    
+    .active-message-text{
+        width: 60%;
+        height: 50px;
+        margin-top: -30px;
+        margin-bottom: 20px;
+        h1{
+            font-size: 32px;
+        }
+    }
+    .t-head{
+        th{
+            font-size: 12px;
+            font-weight: 300;
+        }
+    }
+
+    .active-message-body{
+        td{
+            font-size: 10px;
+            font-weight: 200px;
+        }
+        h4{
+            font-size: 15px;
+        }
+    }
+
+    .wrapMessage{
+        button{
+            font-size: 15px;
+            height: 30px;
+            width: 90px;
+        }
+    }
+
+
+}

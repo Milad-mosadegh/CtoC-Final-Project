@@ -63,13 +63,14 @@
             color: $bestBlueColor;
         }
         .popProBox-cards{
+            margin-top: 50px;
             display: flex;
             justify-content: space-around;
         }
     }
 }
 
-/* Last Seen  */
+/*================== Last Seen =============== */
 
 .wrapAll{
     background: $bestBlueColor;
@@ -79,14 +80,15 @@
     box-shadow: $mediumBoxShadow;
     h2{
         margin-bottom: 0px;
-            font-size: 50px;
-            font-weight: 100;
-            color: whitesmoke;
+        font-size: 50px;
+        font-weight: 200;
+        color: whitesmoke;
     }
-
+    
     .wrapAll-cads{
-        margin-top:60px ;
+        margin-top:50px ;
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-around;
     }
 }
@@ -194,13 +196,13 @@
         padding: 30px;
         h2{
             margin-bottom: 0px;
-                font-size: 30px;
-                font-weight: 100;
-                color: whitesmoke;
+            font-size: 30px;
+            font-weight: 100;
+            color: whitesmoke;
         }
 
         .wrapAll-cads{
-            margin-top:-10px;
+            margin-top:-80px;
             display: flex;
             justify-content: space-around;
         }
@@ -215,6 +217,50 @@
     }
 
 
+    .lastSeenBox{
+        width: 100%;
+        margin-top: 5px;
+        margin-left: 0px;
+        margin-bottom: 130px;
+    .describ{
+        box-shadow: $mediumBoxShadow;
+        background: $bestBlueColor;
+         height: 400px;
+        h3{
+            font-size: 25px;
+            padding: 20px;
+            font-weight: 200;
+            color: $bestRedColor;
+        }
+        
+        p{  
+            font-size: 14px;
+            padding: 20px;
+            color:$lightTextGray;
+        }
+    }
+    .extra{
+        width: 80%;
+        margin: -10px auto;
+        background: rgb(243, 241, 241);
+        height: 150px;
+        p{
+            font-size: 12px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            color: whitesmoke;
+            background: $bestBlueColor;
+            box-shadow: $lightBoxShadow;
+            border: none;
+            font-size: 20px;
+         
+        }
+    }
+
+}
+
 }
 
 
@@ -223,31 +269,27 @@
 /* ============================= MEDIA QUERY 480PX ============================ */
 
 @media only screen and (max-width:480px){
-
-
     .fixedBackground{
-
         height: 180px;
         h1{
-            font-size: 22px;
+            font-size: 26px;
         }
         h3{
-            font-size: 8px;
+            font-size: 10px;
         }
     }
 
-
     .popProBox{
-        margin-top: -20px;
-
+        margin-top: 0px;
         .popProBox-content{
             padding: 0;
             h2{
                 padding-top: 20px;
                 font-size: 30px;
-                font-weight: 100;
+                font-weight: 200;
             }
             .popProBox-cards{
+                margin-top: 30px;
                 display: flex;
                 justify-content: space-between;
             }
@@ -256,18 +298,17 @@
 
 
     .wrapAll{
-
         margin-left: 0px;
         height: 580px;
         padding: 30px;
         h2{
             margin-bottom: 0px;
-                font-size: 30px;
-                font-weight: 100;
+            font-size: 30px;
+            font-weight: 200;
         }
 
         .wrapAll-cads{
-            margin-top:60px ;
+            margin-top:30px ;
             display: flex;
             justify-content: space-around;
         }
