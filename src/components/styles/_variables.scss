@@ -22,6 +22,15 @@ $bestGreenColor:rgb(126 , 197, 68);
     background: #b72826;
 }
 
+.myRedCircleButton{
+    background: $bestOrangeColor;
+    border-radius: 100%;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+
 
 
 @mixin ItemCard($width,$height,$cardImage,$h2Size) {

@@ -8,11 +8,24 @@ import Fade from 'react-reveal/Fade';
 import '../styles/main.css'
 
 import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import { makeStyles } from '@material-ui/core/styles';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '37ch',
+        },
+    },
+}));
 
 
 
 const SellDetails = (props) => {
-
+    const classes = useStyles();
     const { imageChangeHandler, changeHandler, submitHandler, product, edit, showAlertBox, inputErrors } = props
     console.log("info from edit sell", product);
 
@@ -26,101 +39,113 @@ const SellDetails = (props) => {
 
         <div className="sellWrapAll ">
             <div className="row sellBgGradient ">
-                <Fade top cascade delay={100}>
+                <Fade cascade delay={100}>
                     <div className="boxLeft">
                         <div className="boxLeftChild">
-                            <Form.Row>
-                                <Form.Group as={Col} controlId="formGridEmail">
-                                    {/* <Form.Label>Title</Form.Label> */}
-                                    <Form.Control name="title" type="text" value={product.title} placeholder="Enter Tilte" onChange={changeHandler} />
-                                    <small className="sText">{inputErrors.title ? inputErrors.title.status ? inputErrors.title.value : null : null}</small>
-                                </Form.Group>
-                            </Form.Row>
+
+                            <form className={classes.root} noValidate autoComplete="off">
+                                <TextField
+                                    id="standard-name-input"
+                                    label="Title"
+                                    type="text"
+                                    name="title"
+                                    value={product.title}
+                                    onChange={changeHandler}
+                                    fullWidth={true}
+                                    required={true}
+                                    className="mb-3"
+                                    helperText={inputErrors.title ? inputErrors.title.status ? inputErrors.title.value : null : null}
+                                />
 
 
+                                <TextField
+                                    id="standard-select-currency"
+                                    label="Categories"
+                                    select
+                                    name="category"
+                                    value={product.category}
+                                    onChange={changeHandler}
+                                    fullWidth={true}
+                                    required={true}
+                                    className="mb-3"
+                                    helperText={inputErrors.category ? inputErrors.category.status ? inputErrors.category.value : null : null}
+                                >
+                                    {Categories.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
+                                </TextField>
+
+                                <div>
+                                    <TextField
+                                        id="standard-select-currency"
+                                        label="Condition"
+                                        select
+                                        name="condition"
+                                        value={product.condition}
+                                        onChange={changeHandler}
+                                        required={true}
+                                        fullWidth={true}
+                                        className="mb-3"
+                                        helperText={inputErrors.condition ? inputErrors.condition.status ? inputErrors.condition.value : null : null}
+                                    >
+                                        {Conditions.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
+                                    </TextField>
+
+
+                                    <TextField
+                                        id="standard-name-input"
+                                        label="Quantity"
+                                        name="quantity"
+                                        value={product.quantity}
+                                        onChange={changeHandler}
+                                        required={true}
+                                        className="mb-3"
+                                        helperText={inputErrors.quantity ? inputErrors.quantity.status ? inputErrors.quantity.value : null : null}
+                                    />
+                                </div>
+
+                                <div>
+                                    <TextField
+                                        id="standard-select-currency"
+                                        label="Select Color"
+                                        select
+                                        name="color"
+                                        value={product.color}
+                                        onChange={changeHandler}
+                                        required={true}
+                                        fullWidth={true}
+                                        className="mb-3"
+                                        helperText={inputErrors.color ? inputErrors.color.status ? inputErrors.color.value : null : null}
+                                    >
+                                        {Colors.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
+                                    </TextField>
+
+
+                                    <TextField
+                                        id="standard-name-input"
+                                        label="Price"
+                                        name="price"
+                                        value={product.price}
+                                        onChange={changeHandler}
+                                        required={true}
+                                        className="mb-5"
+                                        helperText={inputErrors.price ? inputErrors.price.status ? inputErrors.price.value : null : null}
+                                    />
+                                </div>
+
+                            </form>
                             <TextField
-                                id="standard-name-input"
-                                label="Title"
-                                type="text"
-                                autoComplete="current-name"
-                                name="title"
-                                value={product.title}
+                                id="outlined-multiline-static"
+                                label="Description"
+                                name="description"
+                                value={product.description}
                                 onChange={changeHandler}
+                                multiline
+                                rows={4}
+                                defaultValue="Default Value"
+                                variant="outlined"
                                 fullWidth={true}
-                                required={true}
+                                helperText={inputErrors.description ? inputErrors.description.status ? inputErrors.description.value : null : null}
                             />
-
-
-
-                            <Form.Row>
-                                <Form.Group as={Col} controlId="formGridState">
-                                    {/* <Form.Label>Categories</Form.Label> */}
-                                    <Form.Control as="select" name="category" value={product.category} onChange={changeHandler}>
-                                        {Categories.map((key, index) => <option value={key.id}>{key.value}</option>)}
-                                    </Form.Control>
-                                    <small className="sText">{inputErrors.category ? inputErrors.category.status ? inputErrors.category.value : null : null}</small>
-
-                                </Form.Group>
-                            </Form.Row>
-
-
-
-                            <Form.Row>
-                                <Form.Group as={Col} controlId="formGridState">
-                                    {/* <Form.Label>Condition</Form.Label> */}
-                                    <Form.Control as="select" name="condition" value={product.condition} onChange={changeHandler}>
-                                        {Conditions.map((key, index) => <option value={key.id}>{key.value}</option>)}
-                                    </Form.Control>
-                                    <small className="sText">{inputErrors.condition ? inputErrors.condition.status ? inputErrors.condition.value : null : null}</small>
-
-                                </Form.Group>
-
-                                <Form.Group controlId="formGridAddress1">
-                                    {/* <Form.Label>Quantity</Form.Label> */}
-                                    <Form.Control type="text" placeholder="Quantity" name="quantity" value={product.quantity} onChange={changeHandler} />
-                                    <small className="sText">{inputErrors.quantity ? inputErrors.quantity.status ? inputErrors.quantity.value : null : null}</small>
-
-                                </Form.Group>
-
-                            </Form.Row>
-
-
-                            <Form.Row>
-                                <Form.Group as={Col} controlId="formGridState">
-                                    {/* <Form.Label>Color</Form.Label> */}
-                                    <Form.Control as="select" name="color" value={product.color} onChange={changeHandler}>
-                                        {Colors.map((key, index) => <option value={key.id}>{key.value}</option>)}
-                                    </Form.Control>
-                                    <small className="sText">{inputErrors.color ? inputErrors.color.status ? inputErrors.color.value : null : null}</small>
-
-                                </Form.Group>
-                            </Form.Row>
-                            <Form.Row>
-                            <Form.Group as={Col} controlId="formGridState">
-                            <InputGroup className="mb-3">
-                                <InputGroup.Prepend>
-                                    <InputGroup.Text>Price</InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <FormControl aria-label="Amount (to the nearest dollar)" name="price" value={product.price} onChange={changeHandler} />
-                                
-                            </InputGroup>
-                            <small className="sText">{inputErrors.price ? inputErrors.price.status ? inputErrors.price.value : null : null}</small>
-
-                            </Form.Group>
-                            </Form.Row>
-
-                            <Form.Row>
-                            <Form.Group as={Col} controlId="formGridState">
-                            <InputGroup>
-                                <InputGroup.Prepend>
-                                    <InputGroup.Text>Description</InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <FormControl as="textarea" aria-label="With textarea" name="description" value={product.description} onChange={changeHandler}/>
-                            </InputGroup>
-                            <small className="sText">{inputErrors.description ? inputErrors.description.status ? inputErrors.description.value : null : null}</small>
-
-                            </Form.Group>
-                            </Form.Row>
+                            <small className="sText float-left">You have used {product.description ? product.description.length : null}</small>
 
                         </div>
                     </div>
@@ -128,7 +153,7 @@ const SellDetails = (props) => {
 
 
 
-                <Fade right cascade delay={100}>
+                <Fade cascade delay={100}>
                     <div className=" boxRight">
                         <div >
                             <div className="d-flex justify-content-around mb-2">
@@ -152,7 +177,7 @@ const SellDetails = (props) => {
                                 <button className="myBlueButton-lg" type="submit" onClick={submitHandler}>Submit</button>
                                 <button className="myRedButton-lg ml-2" onClick={cancelHandler}>Cancel</button>
                             </div>}
-                            <small className="sText">{inputErrors.form ? inputErrors.form.status ? inputErrors.form.value : null : null}</small>
+                        <small className="sText">{inputErrors.form ? inputErrors.form.status ? inputErrors.form.value : null : null}</small>
 
                     </div>
                 </Fade>

@@ -6,6 +6,15 @@
   background: #b72826;
 }
 
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
 .myBlueButton-sm {
   width: 100px;
   height: 30px;
@@ -357,6 +366,15 @@
   background: #b72826;
 }
 
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
 .myBlueButton-sm {
   width: 100px;
   height: 30px;
@@ -564,6 +582,15 @@
 
 .bestRedColor {
   background: #b72826;
+}
+
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
 }
 
 .myBlueButton-sm {
@@ -803,6 +830,15 @@
 
 .bestRedColor {
   background: #b72826;
+}
+
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
 }
 
 .myBlueButton-sm {
@@ -1362,6 +1398,15 @@
   background: #b72826;
 }
 
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
 .myBlueButton-sm {
   width: 100px;
   height: 30px;
@@ -1682,6 +1727,15 @@
 
 .bestRedColor {
   background: #b72826;
+}
+
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
 }
 
 .myBlueButton-sm {
@@ -2248,6 +2302,15 @@
   background: #b72826;
 }
 
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
 .myBlueButton-sm {
   width: 100px;
   height: 30px;
@@ -2480,8 +2543,8 @@
 .boxLeft {
   width: 60%;
   height: 550px;
-  -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
-          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.877);
+  -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
   padding: 30px;
   background: #d8d5d5;
 }
@@ -2597,6 +2660,15 @@
 
 .bestRedColor {
   background: #b72826;
+}
+
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
 }
 
 .myBlueButton-sm {
@@ -2889,6 +2961,15 @@
   background: #b72826;
 }
 
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
 .myBlueButton-sm {
   width: 100px;
   height: 30px;
@@ -3162,6 +3243,15 @@
 
 .bestRedColor {
   background: #b72826;
+}
+
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
 }
 
 .myBlueButton-sm {
@@ -3511,6 +3601,15 @@
 
 .bestRedColor {
   background: #b72826;
+}
+
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
 }
 
 .myBlueButton-sm {
@@ -4006,6 +4105,15 @@
   background: #b72826;
 }
 
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
 .myBlueButton-sm {
   width: 100px;
   height: 30px;
@@ -4233,6 +4341,15 @@ nav > .nav-link {
 
 .bestRedColor {
   background: #b72826;
+}
+
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
 }
 
 .myBlueButton-sm {
@@ -4471,6 +4588,15 @@ nav > .nav-link {
 
 .bestRedColor {
   background: #b72826;
+}
+
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
 }
 
 .myBlueButton-sm {
@@ -4774,6 +4900,15 @@ nav > .nav-link {
   background: #b72826;
 }
 
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
 .myBlueButton-sm {
   width: 100px;
   height: 30px;
@@ -5051,6 +5186,15 @@ nav > .nav-link {
   background: #b72826;
 }
 
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
 .myBlueButton-sm {
   width: 100px;
   height: 30px;
@@ -5308,6 +5452,15 @@ nav > .nav-link {
 
 .bestRedColor {
   background: #b72826;
+}
+
+.myRedCircleButton {
+  background: #ff8b0d;
+  border-radius: 100%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
 }
 
 .myBlueButton-sm {

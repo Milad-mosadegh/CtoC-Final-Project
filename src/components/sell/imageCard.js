@@ -69,13 +69,12 @@ const ImageCard = (props) => {
                                 <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd" />
                             </svg>
                         </Button>
-                    : <Button
+                    : <button
                         onClick={inputHandler}
-                        className="btn btn-danger fa fa-plus text-white roundedCircle mb-1"
-                        style={{ borderRadius: '100%', padding: "13px" }}
+                        className="myRedCircleButton fa fa-plus"
                         name="addButton">
 
-                    </Button>}
+                    </button>}
             </div>
         </div>
     )
