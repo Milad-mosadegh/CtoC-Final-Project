@@ -6,6 +6,7 @@ import { IMGPOST, POST } from '../../lib/post';
 import ProfileData from './profile';
 import AlertBox from '../../AlertBox/alertBox';
 import PasswordChange from './changepassword';
+import Errors from "../../lib/errors"
 
 
 
@@ -32,6 +33,13 @@ const MyProfile = (props) => {
     const [alertBoxTitle, setAlertBoxTitle] =useState("")
     const [alertBoxBody, setAlertBoxBody] =useState("")
     const [passChanged, setPassChanged] = useState(false)
+    const [inputErrors, setInputErrors] = useState("")
+
+    const regexAlphabet = new RegExp(/^[a-zA-ZäöüÄÖÜß]*$/)
+    const regexPaypalId= new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
+    const regexNumber = new RegExp(/^[0-9]*$/)
+    const regexAlphaNumber = new RegExp(/[a-zA-Z0-9äöüÄÖÜß]/)
+    const regexEmail = new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
 
     useEffect(() => {
 
@@ -48,6 +56,7 @@ const MyProfile = (props) => {
                 props.history.push("/signin")
             }
         }
+        setInputErrors(Errors)
 
         if (localStorage.getItem("c2c-token")) getData();
         else props.history.push("/signin")
@@ -68,11 +77,61 @@ const MyProfile = (props) => {
                         if(passChanged) props.history.push("/signin")
                     }
     const changeHandler = (e) => {
+        switch (e.target.name) {
+            
+            case "firstName":
+                if ((!regexAlphabet.test(e.target.value)) || (e.target.value.length < 3)) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                break;
 
-                        /*      const regexAlphabet = new RegExp(/^[a-zA-ZäöüÄÖÜß]*$/)
-                                const regexPaypalId= new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
-                                const regexNumber = new RegExp(/^[0-9]*$/)
-                                const regexAlphaNumber = new RegExp(/[a-zA-Z0-9äöüÄÖÜß]/) */
+            case "lastName":
+                if ((!regexAlphabet.test(e.target.value)) || (e.target.value.length < 3)) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                break;
+
+            case "paypalId":
+                if (!regexEmail.test(e.target.value)) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                break;
+
+            case "city":
+                if ((!regexAlphabet.test(e.target.value)) ||(e.target.value.length<3) )
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                break;
+
+            case "phoneNumber":
+                if ((!regexNumber.test(e.target.value)) ||(e.target.value.length<9) )
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                break;
+
+            case "street":
+                if ((!regexAlphaNumber.test(e.target.value)) ||(e.target.value.length<5) )
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                break;
+
+            case "zipCode":
+                if (!regexEmail.test(e.target.value)) 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
+                else 
+                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                break;
+
+            default:
+                break;
+        }
+                             
                 
             setProfile({ ...profile, [e.target.name]: e.target.value })
                 
@@ -86,6 +145,7 @@ const MyProfile = (props) => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
+
 
         if (avatarChanged) {
             const config = {
@@ -152,6 +212,7 @@ const MyProfile = (props) => {
                 renderModal={renderModal}
                 showModal={showModal}
                 derenderModal={derenderModal}
+                errors={inputErrors}
                 {...props}
             />
 

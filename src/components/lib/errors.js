@@ -62,6 +62,26 @@ const Errors = {
     color: {
         status: false,
         value: "Attention! Please choose a valid color"
+    },
+    phoneNumber: {
+        status: false,
+        value: "Attention! phone number must contain 9 or more Digits"
+    },
+    paypalId: {
+        status: false,
+        value: "Attention! paypal Id must contain only valid email address"
+    },
+    zipCode: {
+        status: false,
+        value: "Attention! zipcode must contain 3 or more Digits "
+    },
+    city: {
+        status: false,
+        value: "Attention! city name must contain atleast 2  or more Alphabets"
+    },
+    street: {
+        status: false,
+        value: "Attention! street must contain atleast 3 or more characters"
     }
 
 }

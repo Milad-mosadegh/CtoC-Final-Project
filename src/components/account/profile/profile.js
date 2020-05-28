@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const ProfileData = (props) => {
     const classes = useStyles();
 
-    const { submitHandler, imageChangeHandler, changeHandler, editDisabler, editEnabler, profile, renderModal, editAble, error } = props
+    const { submitHandler, imageChangeHandler, changeHandler, editDisabler, editEnabler, profile, renderModal, editAble, errors } = props
 
 
 
@@ -44,9 +44,7 @@ const ProfileData = (props) => {
                             value={profile.firstName}
                             onChange={changeHandler}
                             className="mb-4 mt-4"
-                            helperText={<small className="sText">{error === "firstName" ?
-                                <p>Attention! name must consist on 3 or more alphabets</p>
-                                : null}</small>}
+                            helperText={<small className="sText">{errors.firstName ? errors.firstName.status ? errors.firstName.value : null : null}</small>}
                         />
 
                         <TextField
@@ -57,23 +55,19 @@ const ProfileData = (props) => {
                             value={profile.lastName}
                             onChange={changeHandler}
                             className="mb-4 mt-4"
-                            helperText={error === "lastName" ?
-                                <p>Attention! name must consist on 3 or more alphabets</p>
-                                : null}
+                            helperText={<small className="sText">{errors.lastName ? errors.lastName.status ? errors.lastName.value : null : null}</small>}
                         />
 
                         <TextField
                             id="standard-name-input"
-                            label="Last Name"
+                            label="Email"
                             type="text"
                             name="email"
                             value={profile.email}
                             onChange={changeHandler}
                             className="mb-4"
                             fullWidth={true}
-                            helperText={error === "email" ?
-                                <p>Sorry! it is your use id and cannot be changed</p>
-                                : null}
+                            disabled={true}
                         />
 
                         <TextField
@@ -84,9 +78,7 @@ const ProfileData = (props) => {
                             value={profile.phoneNumber}
                             onChange={changeHandler}
                             className="mb-4"
-                            helperText={error === "phone" ?
-                                <p>Attention! phone number can only consist of digits and more than eight.</p>
-                                : null}
+                            helperText={<small className="sText">{errors.phoneNumber ? errors.phoneNumber.status ? errors.phoneNumber.value : null : null}</small>}
                         />
 
                         <TextField
@@ -97,6 +89,7 @@ const ProfileData = (props) => {
                             value="*********"
                             onChange={changeHandler}
                             className="mb-4"
+                            disabled={true}
                             helperText={editAble ?
                                 <small className="sText"
                                     onClick={renderModal}
@@ -110,9 +103,7 @@ const ProfileData = (props) => {
                             value={profile.paypalId}
                             onChange={changeHandler}
                             className="mb-4"
-                            helperText={<small className="sText">{error === "paypalId" ?
-                                <p>Attention! please provide valid email address.</p>
-                                : null}</small>}
+                            helperText={<small className="sText">{errors.paypalId ? errors.paypalId.status ? errors.paypalId.value : null : null}</small>}
                         />
 
                         <TextField
@@ -123,9 +114,7 @@ const ProfileData = (props) => {
                             value={profile.zipCode}
                             onChange={changeHandler}
                             className="mb-4"
-                            helperText={<small className="sText">{error === "zipCode" ?
-                                <p>Attention! Zipcode can only consist of numbers and more than two.</p>
-                                : null}</small>}
+                            helperText={<small className="sText">{errors.zipCode ? errors.zipCode.status ? errors.zipCode.value : null : null}</small>}
 
                         />
 
@@ -137,11 +126,9 @@ const ProfileData = (props) => {
                             value={profile.city}
                             onChange={changeHandler}
                             className="mb-4"
-                            helperText={<small className="sText">{error === "city" ?
-                                <p>Attention! city name can only consist of alphabets and more than two. </p>
-                                : null}</small>}
+                            helperText={<small className="sText">{errors.city ? errors.city.status ? errors.city.value : null : null}</small>}
                         />
-                    </form>
+                    
 
                     <TextField
                         id="standard-name-input"
@@ -152,10 +139,9 @@ const ProfileData = (props) => {
                         onChange={changeHandler}
                         className="mb-4"
                         fullWidth={true}
-                        helperText={<small className="sText">{error === "street" ?
-                            <p>Attention! street can only consist of alphabets and more than two.</p>
-                            : null}</small>}
+                        helperText={<small className="sText">{errors.street ? errors.street.status ? errors.street.value : null : null}</small>}
                     />
+                </form>
 
                 </fieldset>
                 {
@@ -173,8 +159,8 @@ const ProfileData = (props) => {
                             Edit
             </button>
                 }
-            </Form >
-        </div >
+            </Form>
+        </div>
     );
 }
 

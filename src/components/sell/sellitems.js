@@ -98,7 +98,8 @@ const SellItems = (props) => {
         setAlertBox(false)
     }
     const hideAlertBox =()=>setAlertBox(false)
-    const showAlertBox =()=>setAlertBox(true)
+
+    
 
 
     const handleOpenReset = () => {
@@ -124,6 +125,18 @@ const SellItems = (props) => {
         setInputErrors(Errors)
 },[])
 
+const showAlertBox =()=>{
+
+    if(!Object.keys(product).every(key=>product[key])) 
+        return setInputErrors({...inputErrors,form:{...inputErrors.form, status:true}})
+        else   setInputErrors({...inputErrors,form:{...inputErrors.form, status:false}})
+
+    if(Object.keys(product).filter(item=>{if((item==="_id" || item==="creator" || item ==="images")) return false
+                                        else return true}).map(key=>inputErrors[key].status).includes(true)) return
+
+    setAlertBox(true) 
+}
+
 
     const imageChangeHandler = (image) => {
         if (images.length === 0) return setImages([image])
@@ -138,12 +151,11 @@ const SellItems = (props) => {
 
     const submitHandler = async () => {
 
-        console.log("form error ", inputErrors.form.status)
+   
         if(!Object.keys(product).every(key=>product[key])) 
             return setInputErrors({...inputErrors,form:{...inputErrors.form, status:true}})
             else   setInputErrors({...inputErrors,form:{...inputErrors.form, status:false}})
 
-            console.log("form error ", inputErrors.form.status)
 
         if(Object.keys(product).map(key=>inputErrors[key].status).includes(true)) return console.log("includes error")
         
