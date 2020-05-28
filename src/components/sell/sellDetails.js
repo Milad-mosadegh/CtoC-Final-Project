@@ -10,14 +10,14 @@ import '../styles/main.css'
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
-            width: '37ch',
+            width: '25ch',
         },
     },
 }));
@@ -54,7 +54,7 @@ const SellDetails = (props) => {
                                     fullWidth={true}
                                     required={true}
                                     className="mb-3"
-                                    helperText={inputErrors.title ? inputErrors.title.status ? inputErrors.title.value : null : null}
+                                    helperText={<small className="sText">{inputErrors.title ? inputErrors.title.status ? inputErrors.title.value : null : null}</small>}
                                 />
 
 
@@ -68,7 +68,7 @@ const SellDetails = (props) => {
                                     fullWidth={true}
                                     required={true}
                                     className="mb-3"
-                                    helperText={inputErrors.category ? inputErrors.category.status ? inputErrors.category.value : null : null}
+                                    helperText={<small className="sText"> {inputErrors.category ? inputErrors.category.status ? inputErrors.category.value : null : null}</small>}
                                 >
                                     {Categories.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
                                 </TextField>
@@ -85,7 +85,7 @@ const SellDetails = (props) => {
                                             required={true}
                                             fullWidth={true}
                                             className="mb-3"
-                                            helperText={inputErrors.condition ? inputErrors.condition.status ? inputErrors.condition.value : null : null}
+                                            helperText={<small className="sText">{inputErrors.condition ? inputErrors.condition.status ? inputErrors.condition.value : null : null}</small>}
                                         >
                                             {Conditions.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
                                         </TextField>
@@ -99,7 +99,7 @@ const SellDetails = (props) => {
                                             onChange={changeHandler}
                                             required={true}
                                             className="mb-3"
-                                            helperText={inputErrors.quantity ? inputErrors.quantity.status ? inputErrors.quantity.value : null : null}
+                                            helperText={<small className="sText">{inputErrors.quantity ? inputErrors.quantity.status ? inputErrors.quantity.value : null : null}</small>}
                                         />
                                     </div>
 
@@ -114,7 +114,7 @@ const SellDetails = (props) => {
                                             required={true}
                                             fullWidth={true}
                                             className="mb-3"
-                                            helperText={inputErrors.color ? inputErrors.color.status ? inputErrors.color.value : null : null}
+                                            helperText={<small className="sText">{inputErrors.color ? inputErrors.color.status ? inputErrors.color.value : null : null}</small>}
                                         >
                                             {Colors.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
                                         </TextField>
@@ -128,7 +128,7 @@ const SellDetails = (props) => {
                                             onChange={changeHandler}
                                             required={true}
                                             className="mb-5"
-                                            helperText={inputErrors.price ? inputErrors.price.status ? inputErrors.price.value : null : null}
+                                            helperText={<small className="sText">{inputErrors.price ? inputErrors.price.status ? inputErrors.price.value : null : null}</small>}
                                         />
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@ const SellDetails = (props) => {
                                 defaultValue="Default Value"
                                 variant="outlined"
                                 fullWidth={true}
-                                helperText={inputErrors.description ? inputErrors.description.status ? inputErrors.description.value : null : null}
+                                helperText={<small className="sText">{inputErrors.description ? inputErrors.description.status ? inputErrors.description.value : null : null}</small>}
                             />
                             <small className="sText float-left">You have used {product.description ? product.description.length : null}</small>
                         </div>
@@ -183,7 +183,7 @@ const SellDetails = (props) => {
                     </div>
                 </Fade>
             </div>
-        </div>
+        </div >
 
     );
 }

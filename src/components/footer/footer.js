@@ -1,29 +1,37 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom'
 import '../styles/main.css';
 
-
+import logo from '../../logo/1.png'
 const Footer = (props) => {
     return (
-        <div className="footer">
+        <div>
 
-            <div className="row footer-combine">
-                <div className="footer-info col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <h3>Milad Mosadegh</h3>
-                    <div className="footer-links">
-                        <a href="/"><span className="fa fa fa-envelope-o" /></a>
-                        <a href="/"><span className="fa fa-instagram " /></a>
-                        <a href="/"><span className="fa fa-facebook " /></a>
-                    </div>
+            <img src={logo} alt="logo" />
+            <div className="footer">
+                <div className="footerBox">
+                    <Link className="footerLink" to='/sell'>Sell</Link>
+                    <Link className="footerLink" to='/sell'>Sell</Link>
+                    <Link className="footerLink" to='/sell'>Sell</Link>
                 </div>
-                <div className="footer-info col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                    <h3>Ather Ahmad</h3>
-                    <div className="footer-links">
-                        <a href="/" ><span className="fa fa fa-envelope-o" /></a>
-                        <a href="/" ><span className="fa fa-instagram "    /></a>
-                        <a href="/"><span className="fa fa-facebook "      /></a>
-                    </div> 
-                </div> 
+                <div className="footerBox">
+                    <Link className="footerLink" to='/sell'>Sell</Link>
+                    <Link className="footerLink" to='/sell'>Sell</Link>
+                    <Link className="footerLink" to='/sell'>Sell</Link>
+
+                </div>
+                <div className="footerBox">
+                    <Link className="footerLink" to='/sell'>Sell</Link>
+                    <Link className="footerLink" to='/sell'>Sell</Link>
+                    <Link className="footerLink" to='/sell'>Sell</Link>
+                    <Link className="footerLink" to='/sell'>Sell</Link>
+
+                </div>
+                <div className="footerBox">
+                    <h3>Wo Made This?</h3>
+                    <Link className="footerLink" to='/miladmosadegh'>Milad Mosadegh</Link>
+                    <Link className="footerLink" to='/atherahmad'>Ather Ahmad</Link>
+                </div>
             </div>
         </div>
 
