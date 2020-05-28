@@ -27,8 +27,6 @@ const useStyles = makeStyles((theme) => ({
 const SellDetails = (props) => {
     const classes = useStyles();
     const { imageChangeHandler, changeHandler, submitHandler, product, edit, showAlertBox, inputErrors } = props
-    console.log("info from edit sell", product);
-
 
     const cancelHandler = () => {
         props.history.push("/")
@@ -36,7 +34,7 @@ const SellDetails = (props) => {
 
 
     return (
-
+ 
         <div className="sellWrapAll ">
             <div className="row sellBgGradient ">
                 <Fade cascade delay={100}>
@@ -56,8 +54,9 @@ const SellDetails = (props) => {
                                     className="mb-3"
                                     helperText={<small className="sText">{inputErrors.title ? inputErrors.title.status ? inputErrors.title.value : null : null}</small>}
                                 />
+                                
 
-
+                                                  
                                 <TextField
                                     id="standard-select-currency"
                                     label="Categories"
@@ -70,7 +69,8 @@ const SellDetails = (props) => {
                                     className="mb-3"
                                     helperText={<small className="sText"> {inputErrors.category ? inputErrors.category.status ? inputErrors.category.value : null : null}</small>}
                                 >
-                                    {Categories.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
+                                    {Categories.map((key, index) =>{ if(key.id===0) return null
+                                                                    else return <MenuItem value={key.id}>{key.value}</MenuItem>})}
                                 </TextField>
                                 <div className={classes.root}>
 
@@ -87,7 +87,8 @@ const SellDetails = (props) => {
                                             className="mb-3"
                                             helperText={<small className="sText">{inputErrors.condition ? inputErrors.condition.status ? inputErrors.condition.value : null : null}</small>}
                                         >
-                                            {Conditions.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
+                                            {Conditions.map((key, index) => { if(key.id===0) return null
+                                                                    else return <MenuItem value={key.id}>{key.value}</MenuItem>})}
                                         </TextField>
 
 
@@ -116,7 +117,8 @@ const SellDetails = (props) => {
                                             className="mb-3"
                                             helperText={<small className="sText">{inputErrors.color ? inputErrors.color.status ? inputErrors.color.value : null : null}</small>}
                                         >
-                                            {Colors.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
+                                            {Colors.map((key, index) => { if(key.id===0) return null
+                                                                    else return <MenuItem value={key.id}>{key.value}</MenuItem>})}
                                         </TextField>
 
 
