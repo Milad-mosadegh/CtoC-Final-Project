@@ -36,8 +36,7 @@ const SellItems = (props) => {
             quantity: "",
             color: "",
             price: "",
-            description: "",
-            creator: ""
+            description: ""
         }
 
     )
@@ -46,10 +45,9 @@ const SellItems = (props) => {
     const [alertText, setAlertText] = useState("")
     const [showAlert, setShowAlert] = useState(false)
     const [alertBox, setAlertBox] = useState(false)
-    let   [inputErrors, setInputErrors] = useState("");
+    let   [inputErrors, setInputErrors] = useState([]);
 
     const regexName = new RegExp(/^[a-zA-ZäöüÄÖÜß]*$/)
-    const regexEmail = new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
     const regexNumber = new RegExp(/^[0-9]*$/)
     const regexPrice = new RegExp(/^[0-9]*$/)
 
@@ -67,34 +65,12 @@ const SellItems = (props) => {
 
                 break;
 
-            case "category":
-                if (e.target.value === "0")
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
-                else 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
-                break;
-
-            case "condition":
-                if (!regexEmail.test(e.target.value)) 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
-                else 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
-
-                break;
-
             case "quantity":
                 if (!regexNumber.test(e.target.value)) 
                     setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
                 else 
                     setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
 
-                break;
-
-            case "color":
-                if (e.target.value === "0") 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
-                else 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
                 break;
 
             case "price":
@@ -162,9 +138,17 @@ const SellItems = (props) => {
 
     const submitHandler = async () => {
 
+        console.log("form error ", inputErrors.form.status)
+        if(!Object.keys(product).every(key=>product[key])) 
+            return setInputErrors({...inputErrors,form:{...inputErrors.form, status:true}})
+            else   setInputErrors({...inputErrors,form:{...inputErrors.form, status:false}})
+
+            console.log("form error ", inputErrors.form.status)
+
+        if(Object.keys(product).map(key=>inputErrors[key].status).includes(true)) return console.log("includes error")
+        
         if (!localStorage.getItem("c2c-token")) return handleOpen()
         if (showSignin) handleClose()
-        console.log("submited product,", product)
         let config;
         if (images.length > 0) {
             const formData = new FormData();

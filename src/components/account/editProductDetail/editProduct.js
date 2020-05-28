@@ -26,7 +26,6 @@ function EditProduct(props) {
         }
     
         const formData = new FormData();
-        console.log(images, "in edit")
         
         if (images.length > 0) {
             let imageArray = images.map(value => value.image)

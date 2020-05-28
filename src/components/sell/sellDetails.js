@@ -27,8 +27,6 @@ const useStyles = makeStyles((theme) => ({
 const SellDetails = (props) => {
     const classes = useStyles();
     const { imageChangeHandler, changeHandler, submitHandler, product, edit, showAlertBox, inputErrors } = props
-    console.log("info from edit sell", product);
-
 
     const cancelHandler = () => {
         props.history.push("/")
@@ -71,7 +69,8 @@ const SellDetails = (props) => {
                                     className="mb-3"
                                     helperText={inputErrors.category ? inputErrors.category.status ? inputErrors.category.value : null : null}
                                 >
-                                    {Categories.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
+                                    {Categories.map((key, index) =>{ if(key.id===0) return null
+                                                                    else return <MenuItem value={key.id}>{key.value}</MenuItem>})}
                                 </TextField>
                                 <div className={classes.root}>
 
@@ -88,7 +87,8 @@ const SellDetails = (props) => {
                                             className="mb-3"
                                             helperText={inputErrors.condition ? inputErrors.condition.status ? inputErrors.condition.value : null : null}
                                         >
-                                            {Conditions.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
+                                            {Conditions.map((key, index) => { if(key.id===0) return null
+                                                                    else return <MenuItem value={key.id}>{key.value}</MenuItem>})}
                                         </TextField>
 
 
@@ -117,7 +117,8 @@ const SellDetails = (props) => {
                                             className="mb-3"
                                             helperText={inputErrors.color ? inputErrors.color.status ? inputErrors.color.value : null : null}
                                         >
-                                            {Colors.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
+                                            {Colors.map((key, index) => { if(key.id===0) return null
+                                                                    else return <MenuItem value={key.id}>{key.value}</MenuItem>})}
                                         </TextField>
 
 

@@ -1,5 +1,5 @@
 const Colors=[
-    {id:0  ,value:"Select Color"},
+    {id:0  ,value:"All Colors"},
     {id:1  ,value:"Black"},
     {id:2  ,value:"Blue"},
     {id:3  ,value:"Brown"},
