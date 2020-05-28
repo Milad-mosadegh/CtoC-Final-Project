@@ -37,7 +37,7 @@ const Errors = {
     },
     title: {
         status: false,
-        value: "Attention! title must contain atleast 3 and maximum 20 characters"
+        value: "Attention! title must contain from 3 to 40 characters"
     },
     quantity: {
         status: false,

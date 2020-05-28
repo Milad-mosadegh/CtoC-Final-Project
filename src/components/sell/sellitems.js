@@ -60,7 +60,7 @@ const SellItems = (props) => {
         switch (e.target.name) {
             
             case "title":
-                if ((!regexName.test(e.target.value)) || (e.target.value.length < 4) || (e.target.value.length >20 )) 
+                if ((!regexName.test(e.target.value)) || (e.target.value.length < 4) || (e.target.value.length >40 )) 
                     setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
                 else 
                     setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})

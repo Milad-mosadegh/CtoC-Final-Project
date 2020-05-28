@@ -36,7 +36,7 @@ const SellDetails = (props) => {
 
 
     return (
-
+ 
         <div className="sellWrapAll ">
             <div className="row sellBgGradient ">
                 <Fade cascade delay={100}>
@@ -44,6 +44,7 @@ const SellDetails = (props) => {
                         <div className="boxLeftChild">
 
                             <form className={classes.root} noValidate autoComplete="off">
+                                
                                 <TextField
                                     id="standard-name-input"
                                     label="Title"
@@ -56,8 +57,9 @@ const SellDetails = (props) => {
                                     className="mb-3"
                                     helperText={inputErrors.title ? inputErrors.title.status ? inputErrors.title.value : null : null}
                                 />
+                                
 
-
+                                                  
                                 <TextField
                                     id="standard-select-currency"
                                     label="Categories"
@@ -72,7 +74,7 @@ const SellDetails = (props) => {
                                 >
                                     {Categories.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
                                 </TextField>
-
+                                
                                 <div>
                                     <TextField
                                         id="standard-select-currency"
