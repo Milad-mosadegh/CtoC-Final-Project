@@ -57,7 +57,7 @@ const MyNavbar = (props) => {
     return (
         <div>
             <Navbar expand="lg">
-                <div className="text-uppercase text-shadow ctoc" >
+                <div className="text-uppercase text-shadow ctoc " >
                     {/*   <span className="navLogo1">
                         C to C
                     </span>

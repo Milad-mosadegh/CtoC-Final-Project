@@ -43,8 +43,7 @@ const SellDetails = (props) => {
                     <div className="boxLeft">
                         <div className="boxLeftChild">
 
-                            <form className={classes.root} noValidate autoComplete="off">
-                                
+                            <form noValidate autoComplete="off">
                                 <TextField
                                     id="standard-name-input"
                                     label="Title"
@@ -74,66 +73,68 @@ const SellDetails = (props) => {
                                 >
                                     {Categories.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
                                 </TextField>
-                                
-                                <div>
-                                    <TextField
-                                        id="standard-select-currency"
-                                        label="Condition"
-                                        select
-                                        name="condition"
-                                        value={product.condition}
-                                        onChange={changeHandler}
-                                        required={true}
-                                        fullWidth={true}
-                                        className="mb-3"
-                                        helperText={inputErrors.condition ? inputErrors.condition.status ? inputErrors.condition.value : null : null}
-                                    >
-                                        {Conditions.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
-                                    </TextField>
+                                <div className={classes.root}>
+
+                                    <div>
+                                        <TextField
+                                            id="standard-select-currency"
+                                            label="Condition"
+                                            select
+                                            name="condition"
+                                            value={product.condition}
+                                            onChange={changeHandler}
+                                            required={true}
+                                            fullWidth={true}
+                                            className="mb-3"
+                                            helperText={inputErrors.condition ? inputErrors.condition.status ? inputErrors.condition.value : null : null}
+                                        >
+                                            {Conditions.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
+                                        </TextField>
 
 
-                                    <TextField
-                                        id="standard-name-input"
-                                        label="Quantity"
-                                        name="quantity"
-                                        value={product.quantity}
-                                        onChange={changeHandler}
-                                        required={true}
-                                        className="mb-3"
-                                        helperText={inputErrors.quantity ? inputErrors.quantity.status ? inputErrors.quantity.value : null : null}
-                                    />
+                                        <TextField
+                                            id="standard-name-input"
+                                            label="Quantity"
+                                            name="quantity"
+                                            value={product.quantity}
+                                            onChange={changeHandler}
+                                            required={true}
+                                            className="mb-3"
+                                            helperText={inputErrors.quantity ? inputErrors.quantity.status ? inputErrors.quantity.value : null : null}
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <TextField
+                                            id="standard-select-currency"
+                                            label="Select Color"
+                                            select
+                                            name="color"
+                                            value={product.color}
+                                            onChange={changeHandler}
+                                            required={true}
+                                            fullWidth={true}
+                                            className="mb-3"
+                                            helperText={inputErrors.color ? inputErrors.color.status ? inputErrors.color.value : null : null}
+                                        >
+                                            {Colors.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
+                                        </TextField>
+
+
+                                        <TextField
+                                            id="standard-name-input"
+                                            label="Price"
+                                            name="price"
+                                            value={product.price}
+                                            onChange={changeHandler}
+                                            required={true}
+                                            className="mb-5"
+                                            helperText={inputErrors.price ? inputErrors.price.status ? inputErrors.price.value : null : null}
+                                        />
+                                    </div>
                                 </div>
-
-                                <div>
-                                    <TextField
-                                        id="standard-select-currency"
-                                        label="Select Color"
-                                        select
-                                        name="color"
-                                        value={product.color}
-                                        onChange={changeHandler}
-                                        required={true}
-                                        fullWidth={true}
-                                        className="mb-3"
-                                        helperText={inputErrors.color ? inputErrors.color.status ? inputErrors.color.value : null : null}
-                                    >
-                                        {Colors.map((key, index) => <MenuItem value={key.id}>{key.value}</MenuItem>)}
-                                    </TextField>
-
-
-                                    <TextField
-                                        id="standard-name-input"
-                                        label="Price"
-                                        name="price"
-                                        value={product.price}
-                                        onChange={changeHandler}
-                                        required={true}
-                                        className="mb-5"
-                                        helperText={inputErrors.price ? inputErrors.price.status ? inputErrors.price.value : null : null}
-                                    />
-                                </div>
-
                             </form>
+
                             <TextField
                                 id="outlined-multiline-static"
                                 label="Description"
@@ -148,7 +149,6 @@ const SellDetails = (props) => {
                                 helperText={inputErrors.description ? inputErrors.description.status ? inputErrors.description.value : null : null}
                             />
                             <small className="sText float-left">You have used {product.description ? product.description.length : null}</small>
-
                         </div>
                     </div>
                 </Fade>
