@@ -5,7 +5,7 @@ import ImageCard from '../../sell/imageCard';
 
 
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
-            width: '50ch',
+            width: '500px',
         },
     },
 
@@ -35,7 +35,7 @@ const ProfileData = (props) => {
                         <ImageCard image={profile.profileImage} edit={true} id={"1"} imageChangeHandler={imageChangeHandler} />
                     </div>
 
-                    <form className={classes.root}>
+                    <form className={`${classes.root}, `}>
                         <TextField
                             id="standard-name-input"
                             label="First Name"
@@ -43,7 +43,7 @@ const ProfileData = (props) => {
                             name="firstName"
                             value={profile.firstName}
                             onChange={changeHandler}
-                            className="mb-4 mt-4"
+                            className="mb-4 mt-4 mr-1 col-lg-5 col-md-5 col-sm-12"
                             helperText={<small className="sText">{errors.firstName ? errors.firstName.status ? errors.firstName.value : null : null}</small>}
                         />
 
@@ -54,7 +54,7 @@ const ProfileData = (props) => {
                             name="lastName"
                             value={profile.lastName}
                             onChange={changeHandler}
-                            className="mb-4 mt-4"
+                            className="mb-4 mt-4 mr-1 col-lg-5 col-md-5 col-sm-12"
                             helperText={<small className="sText">{errors.lastName ? errors.lastName.status ? errors.lastName.value : null : null}</small>}
                         />
 
@@ -65,7 +65,7 @@ const ProfileData = (props) => {
                             name="email"
                             value={profile.email}
                             onChange={changeHandler}
-                            className="mb-4"
+                            className="mb-4 mr-1 col-lg-5 col-md-5 col-sm-12"
                             fullWidth={true}
                             disabled={true}
                         />
@@ -77,7 +77,7 @@ const ProfileData = (props) => {
                             name="phoneNumber"
                             value={profile.phoneNumber}
                             onChange={changeHandler}
-                            className="mb-4"
+                            className="mb-4 mr-1 col-lg-5 col-md-5 col-sm-12"
                             helperText={<small className="sText">{errors.phoneNumber ? errors.phoneNumber.status ? errors.phoneNumber.value : null : null}</small>}
                         />
 
@@ -88,7 +88,7 @@ const ProfileData = (props) => {
                             name="password"
                             value="*********"
                             onChange={changeHandler}
-                            className="mb-4"
+                            className="mb-4 mr-1 col-lg-5 col-md-5 col-sm-12"
                             disabled={true}
                             helperText={editAble ?
                                 <small className="sText"
@@ -102,7 +102,7 @@ const ProfileData = (props) => {
                             name="paypalId"
                             value={profile.paypalId}
                             onChange={changeHandler}
-                            className="mb-4"
+                            className="mb-4 mr-1 col-lg-5 col-md-5 col-sm-12"
                             helperText={<small className="sText">{errors.paypalId ? errors.paypalId.status ? errors.paypalId.value : null : null}</small>}
                         />
 
@@ -113,7 +113,7 @@ const ProfileData = (props) => {
                             name="zipCode"
                             value={profile.zipCode}
                             onChange={changeHandler}
-                            className="mb-4"
+                            className="mb-4 mr-1 col-lg-5 col-md-5 col-sm-12"
                             helperText={<small className="sText">{errors.zipCode ? errors.zipCode.status ? errors.zipCode.value : null : null}</small>}
 
                         />
@@ -125,23 +125,23 @@ const ProfileData = (props) => {
                             name="city"
                             value={profile.city}
                             onChange={changeHandler}
-                            className="mb-4"
+                            className="mb-4 mr-1 col-lg-5 col-md-5 col-sm-12"
                             helperText={<small className="sText">{errors.city ? errors.city.status ? errors.city.value : null : null}</small>}
                         />
-                    
 
-                    <TextField
-                        id="standard-name-input"
-                        label="Street"
-                        type="text"
-                        name="street"
-                        value={profile.street}
-                        onChange={changeHandler}
-                        className="mb-4"
-                        fullWidth={true}
-                        helperText={<small className="sText">{errors.street ? errors.street.status ? errors.street.value : null : null}</small>}
-                    />
-                </form>
+
+                        <TextField
+                            id="standard-name-input"
+                            label="Street"
+                            type="text"
+                            name="street"
+                            value={profile.street}
+                            onChange={changeHandler}
+                            className="mb-4 col-lg-12 col-md-12 col-sm-12"
+                            fullWidth={true}
+                            helperText={<small className="sText">{errors.street ? errors.street.status ? errors.street.value : null : null}</small>}
+                        />
+                    </form>
 
                 </fieldset>
                 {

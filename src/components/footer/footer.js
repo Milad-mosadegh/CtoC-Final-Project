@@ -3,34 +3,32 @@ import { Link } from 'react-router-dom'
 import '../styles/main.css';
 
 import logo from '../../logo/1.png'
-const Footer = (props) => {
+const MyFooter = (props) => {
     return (
-        <div>
+        <div className="footer">
+            <div className="footerLogo ">
+                <img src={logo} alt="logo" />
+            </div>
+            <div className="container">
+                <div className="footerInfo">
+                    <div className="footerBox col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <Link className="footerLink" to='/sellitems'>Sell</Link>
+                        <Link className="footerLink" to='/buyitems'>Buy</Link>
+                        <Link className="footerLink" to='/contact'>Contact</Link>
+                    </div>
+                    <div className="footerBox col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <Link className="footerLink" to='/account'>Profile</Link>
+                        <Link className="footerLink" to='/messages'>Message</Link>
+                        <Link className="footerLink" to='/signin'>Signin</Link>
+                        <Link className="footerLink" to='/signup'>Signup</Link>
+                    </div>
 
-            <img src={logo} alt="logo" />
-            <div className="footer">
-                <div className="footerBox">
-                    <Link className="footerLink" to='/sell'>Sell</Link>
-                    <Link className="footerLink" to='/sell'>Sell</Link>
-                    <Link className="footerLink" to='/sell'>Sell</Link>
-                </div>
-                <div className="footerBox">
-                    <Link className="footerLink" to='/sell'>Sell</Link>
-                    <Link className="footerLink" to='/sell'>Sell</Link>
-                    <Link className="footerLink" to='/sell'>Sell</Link>
+                    <div className="footerBox col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <h3>Find us ...</h3>
+                        <a className="footerLink" href='https://github.com/Milad-mosadegh'>Milad Mosadegh</a>
+                        <a className="footerLink" href='https://github.com/atherahmad'>Ather Ahmad</a>
 
-                </div>
-                <div className="footerBox">
-                    <Link className="footerLink" to='/sell'>Sell</Link>
-                    <Link className="footerLink" to='/sell'>Sell</Link>
-                    <Link className="footerLink" to='/sell'>Sell</Link>
-                    <Link className="footerLink" to='/sell'>Sell</Link>
-
-                </div>
-                <div className="footerBox">
-                    <h3>Wo Made This?</h3>
-                    <Link className="footerLink" to='/miladmosadegh'>Milad Mosadegh</Link>
-                    <Link className="footerLink" to='/atherahmad'>Ather Ahmad</Link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,4 +36,4 @@ const Footer = (props) => {
     );
 }
 
-export default Footer;
+export default MyFooter;

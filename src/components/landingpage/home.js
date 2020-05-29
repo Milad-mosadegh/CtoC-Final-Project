@@ -4,9 +4,10 @@ import MyNavbar from '../navbar/navBar';
 import GET from '../lib/get';
 import SlideShow from '../buy/slideShow';
 import '../styles/main.css'
-import Footer from '../footer/footer';
+
 import LatestProducts from './latestProducts';
 import ProductDetails from '../buy/productDetails';
+import MyFooter from '../footer/footer';
 
 
 
@@ -83,19 +84,18 @@ const Home = (props) => {
                         </div>
                     </div>
 
+                    <div className="homeBanner"></div>
                     <div className="darkWhite p-5">
                         <h2 className='mb-5'> See What we Have in Categories</h2>
                         <div className="container">
-                            <SlideShow />
-                        </div>
+                        <SlideShow />
+                            </div>
                     </div>
-                        
-<div className="homeBanner"></div>
-                    <Footer />
-                </div>
-               }
-        </div>
-    ); 
-}
-
+            <MyFooter /> 
+                            </div>
+               }  
+                    </div>
+    );        
+            }   
+  
 export default Home;

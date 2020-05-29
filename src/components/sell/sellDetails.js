@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Col, InputGroup, FormControl } from 'react-bootstrap'
+
 import Categories from "../lib/categories"
 import ImageCard from "./imageCard"
 import Colors from "../lib/colors"
@@ -9,23 +9,12 @@ import '../styles/main.css'
 
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import { makeStyles } from '@material-ui/core/styles';
 
 
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    },
-}));
 
 
 
 const SellDetails = (props) => {
-    const classes = useStyles();
     const { imageChangeHandler, changeHandler, submitHandler, product, edit, showAlertBox, inputErrors } = props
 
     const cancelHandler = () => {
@@ -34,7 +23,7 @@ const SellDetails = (props) => {
 
 
     return (
- 
+
         <div className="sellWrapAll ">
             <div className="row sellBgGradient ">
                 <Fade cascade delay={100}>
@@ -42,6 +31,7 @@ const SellDetails = (props) => {
                         <div className="boxLeftChild">
 
                             <form noValidate autoComplete="off">
+
                                 <TextField
                                     id="standard-name-input"
                                     label="Title"
@@ -49,14 +39,13 @@ const SellDetails = (props) => {
                                     name="title"
                                     value={product.title}
                                     onChange={changeHandler}
-                                    fullWidth={true}
                                     required={true}
-                                    className="mb-3"
+                                    className="mb-3 col-lg-12 col-md-12 col-sm-12"
                                     helperText={<small className="sText">{inputErrors.title ? inputErrors.title.status ? inputErrors.title.value : null : null}</small>}
                                 />
-                                
 
-                                                  
+
+
                                 <TextField
                                     id="standard-select-currency"
                                     label="Categories"
@@ -66,15 +55,17 @@ const SellDetails = (props) => {
                                     onChange={changeHandler}
                                     fullWidth={true}
                                     required={true}
-                                    className="mb-3"
+                                    className="mb-3 col-lg-12 col-md-12 col-sm-12"
                                     helperText={<small className="sText"> {inputErrors.category ? inputErrors.category.status ? inputErrors.category.value : null : null}</small>}
                                 >
-                                    {Categories.map((key, index) =>{ if(key.id===0) return null
-                                                                    else return <MenuItem value={key.id}>{key.value}</MenuItem>})}
+                                    {Categories.map((key, index) => {
+                                        if (key.id === 0) return null
+                                        else return <MenuItem value={key.id}>{key.value}</MenuItem>
+                                    })}
                                 </TextField>
-                                <div className={classes.root}>
+                                <div>
 
-                                    <div>
+                                    <div >
                                         <TextField
                                             id="standard-select-currency"
                                             label="Condition"
@@ -84,11 +75,13 @@ const SellDetails = (props) => {
                                             onChange={changeHandler}
                                             required={true}
                                             fullWidth={true}
-                                            className="mb-3"
+                                            className="mb-3 mr-1 col-lg-5 col-md-5 col-sm-12"
                                             helperText={<small className="sText">{inputErrors.condition ? inputErrors.condition.status ? inputErrors.condition.value : null : null}</small>}
                                         >
-                                            {Conditions.map((key, index) => { if(key.id===0) return null
-                                                                    else return <MenuItem value={key.id}>{key.value}</MenuItem>})}
+                                            {Conditions.map((key, index) => {
+                                                if (key.id === 0) return null
+                                                else return <MenuItem value={key.id}>{key.value}</MenuItem>
+                                            })}
                                         </TextField>
 
 
@@ -99,7 +92,7 @@ const SellDetails = (props) => {
                                             value={product.quantity}
                                             onChange={changeHandler}
                                             required={true}
-                                            className="mb-3"
+                                            className="mb-3 mr-1 col-lg-5 col-md-5 col-sm-12"
                                             helperText={<small className="sText">{inputErrors.quantity ? inputErrors.quantity.status ? inputErrors.quantity.value : null : null}</small>}
                                         />
                                     </div>
@@ -114,11 +107,13 @@ const SellDetails = (props) => {
                                             onChange={changeHandler}
                                             required={true}
                                             fullWidth={true}
-                                            className="mb-3"
+                                            className="mb-3 mr-1 col-lg-5 col-md-5 col-sm-12"
                                             helperText={<small className="sText">{inputErrors.color ? inputErrors.color.status ? inputErrors.color.value : null : null}</small>}
                                         >
-                                            {Colors.map((key, index) => { if(key.id===0) return null
-                                                                    else return <MenuItem value={key.id}>{key.value}</MenuItem>})}
+                                            {Colors.map((key, index) => {
+                                                if (key.id === 0) return null
+                                                else return <MenuItem value={key.id}>{key.value}</MenuItem>
+                                            })}
                                         </TextField>
 
 
@@ -129,7 +124,7 @@ const SellDetails = (props) => {
                                             value={product.price}
                                             onChange={changeHandler}
                                             required={true}
-                                            className="mb-5"
+                                            className="mb-5 mr-1 col-lg-5 col-md-5 col-sm-12"
                                             helperText={<small className="sText">{inputErrors.price ? inputErrors.price.status ? inputErrors.price.value : null : null}</small>}
                                         />
                                     </div>
@@ -146,6 +141,7 @@ const SellDetails = (props) => {
                                 rows={4}
                                 defaultValue="Default Value"
                                 variant="outlined"
+                                className="mb-3 col-lg-12 col-md-12 col-sm-12"
                                 fullWidth={true}
                                 helperText={<small className="sText">{inputErrors.description ? inputErrors.description.status ? inputErrors.description.value : null : null}</small>}
                             />

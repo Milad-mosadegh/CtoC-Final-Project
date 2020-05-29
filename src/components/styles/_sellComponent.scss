@@ -97,11 +97,11 @@
 
     .boxLeft{
         width: 100%;
-        height: 550px;
+        height: 700px;
         margin-left: 30px;
         box-shadow: $mediumBoxShadow;
-        padding: 10px;
-        background: $bestBlueColor;
+        padding: 15px;
+        background: rgb(216, 213, 213);
             .boxLeftChild{
                 width: 100%;
             }
@@ -117,18 +117,6 @@
         margin-top: -30px;
     }
 
-/* .blueButton{
-    @include myButton($bestBlueColor,#fff);
-    font-size: 14px;
-      width: 100px;
-    padding: 30px;
-}
-.redButton{
-    @include myButton($bestRedColor,#fff);
-    font-size: 14px;
-    width: 100px;
-    padding: 30px;
-} */
 
 }
 

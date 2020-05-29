@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../styles/main.css'
 import { Navbar, Nav, Badge, Button } from 'react-bootstrap';
 import GET from '../lib/get';
-import one from '../../logo/1.png'
+import pic1 from '../../logo/1.png'
 
 
 
@@ -57,15 +57,10 @@ const MyNavbar = (props) => {
     return (
         <div>
             <Navbar expand="lg">
-                <div className="text-uppercase text-shadow ctoc " >
-                    {/*   <span className="navLogo1">
-                        C to C
-                    </span>
-                    <span className="navLogo2">
-                        Online Shop
-                    </span> */}
-                    <div className="myLogo"></div>
-                </div>
+
+                <Navbar.Brand href="#home" className="navLogo">
+                    <img src={pic1} alt="" width="230px" height="100px" />
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
