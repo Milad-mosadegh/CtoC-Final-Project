@@ -47,9 +47,10 @@ const SellItems = (props) => {
     const [alertBox, setAlertBox] = useState(false)
     let   [inputErrors, setInputErrors] = useState([]);
 
-    const regexName = new RegExp(/^[a-zA-ZäöüÄÖÜß]*$/)
     const regexNumber = new RegExp(/^[0-9]*$/)
     const regexPrice = new RegExp(/^[0-9]*$/)
+
+
 
 
     const changeHandler = (e) => {
@@ -58,7 +59,7 @@ const SellItems = (props) => {
         switch (e.target.name) {
             
             case "title":
-                if ((!regexName.test(e.target.value)) || (e.target.value.length < 4) || (e.target.value.length >40 )) 
+                if ((e.target.value.length < 4) || (e.target.value.length >40 )) 
                     setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
                 else 
                     setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
@@ -151,15 +152,15 @@ const showAlertBox =()=>{
 
     const submitHandler = async () => {
 
-   
         if(!Object.keys(product).every(key=>product[key])) 
             return setInputErrors({...inputErrors,form:{...inputErrors.form, status:true}})
             else   setInputErrors({...inputErrors,form:{...inputErrors.form, status:false}})
 
 
-        if(Object.keys(product).map(key=>inputErrors[key].status).includes(true)) return console.log("includes error")
+        if(Object.keys(product).map(key=>inputErrors[key].status).includes(true)) return 
         
         if (!localStorage.getItem("c2c-token")) return handleOpen()
+
         if (showSignin) handleClose()
         let config;
         if (images.length > 0) {

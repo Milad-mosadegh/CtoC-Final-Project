@@ -159,6 +159,8 @@ const ProfileData = (props) => {
                             Edit
             </button>
                 }
+                <small className="sText">{errors.form ? errors.form.status ? errors.form.value : null : null}</small>
+
             </Form>
         </div>
     );

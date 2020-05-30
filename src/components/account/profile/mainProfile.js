@@ -36,7 +36,6 @@ const MyProfile = (props) => {
     const [inputErrors, setInputErrors] = useState("")
 
     const regexAlphabet = new RegExp(/^[a-zA-ZäöüÄÖÜß]*$/)
-    const regexPaypalId= new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
     const regexNumber = new RegExp(/^[0-9]*$/)
     const regexAlphaNumber = new RegExp(/[a-zA-Z0-9äöüÄÖÜß]/)
     const regexEmail = new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
@@ -77,6 +76,7 @@ const MyProfile = (props) => {
                         if(passChanged) props.history.push("/signin")
                     }
     const changeHandler = (e) => {
+        setInputErrors({...inputErrors,form:{...inputErrors.form, status:false}})
         switch (e.target.name) {
             
             case "firstName":
@@ -122,7 +122,7 @@ const MyProfile = (props) => {
                 break;
 
             case "zipCode":
-                if (!regexEmail.test(e.target.value)) 
+                if ((!regexNumber.test(e.target.value)) || (e.target.value.length < 3) || (e.target.value.length > 7    ) )
                     setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
                 else 
                     setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
@@ -143,11 +143,34 @@ const MyProfile = (props) => {
     }
   
 
-    const submitHandler = async (e) => {
-        e.preventDefault();
+const submitHandler = async (e) => {
+    e.preventDefault();
+        if(!Object.keys(profile)
+                .every(key=>{
+                    if(key==="paypalId") return true
+                    else return  profile[key]
+                            })) 
+            return setInputErrors({...inputErrors,form:{...inputErrors.form, status:true}})
+            else   setInputErrors({...inputErrors,form:{...inputErrors.form, status:false}})
 
-
-        if (avatarChanged) {
+    if(profile.paypalId===""){
+        setInputErrors({...inputErrors,paypalId:{...inputErrors.form, status:false}})
+            if (Object.keys(profile)
+                    .filter(e=>{
+                        if((e==="paypalId") ||(e==="profileImage") )return false
+                            else return true} )
+                            .map(key=>inputErrors[key].status).includes(true)) return
+            }
+        else
+            if (Object.keys(profile)
+                .filter(e=>{
+                        if(e==="profileImage") return false
+                            else return true
+                        }
+                    )
+                    .map(key=>inputErrors[key].status).includes(true)) return
+                    
+    if (avatarChanged) {
             const config = {
                 headers: {
                     'x-auth-token': localStorage.getItem('c2c-token'),
@@ -174,8 +197,8 @@ const MyProfile = (props) => {
                 setShowAlertBox(true)
                 setEditAble(false)
                 }
-            return
         }
+        else{
 
         const config = {
             headers: {
@@ -196,7 +219,7 @@ const MyProfile = (props) => {
             changeAlertBoxBody("Please correct the inputs.")
             setShowAlertBox(true)
             setEditAble(false)
-        }
+        }}
 
     }
     return (

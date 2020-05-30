@@ -181,7 +181,7 @@ const SellDetails = (props) => {
                     </div>
                 </Fade>
             </div>
-        </div >
+        </div>
 
     );
 }
