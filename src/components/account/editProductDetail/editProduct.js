@@ -1,19 +1,12 @@
 import React,{useState} from 'react'
 import SellItems from '../../sell/sellitems'
 import axios from "axios"
-import MyAlert from "../../lib/alert";
 
 
 
 function EditProduct(props) {
 
-    const [alertId, setAlertId] = useState("")
-    const [alertText, setAlertText] = useState("")
-    const [showAlert, setShowAlert] = useState(false)
-
     const id = props.match.params.id
-
-   
 
     const editHandler=async(product, images)=>{
 
@@ -32,17 +25,16 @@ function EditProduct(props) {
             imageArray.forEach(value => formData.append("files", value))
         }
 
-        Object.keys(product).forEach(key => {
-                                  if(key==="creator") formData.append(key,id)
-                                  else formData.append(key, product[key])
-                                })
+        Object.keys(product).forEach(
+            key => {
+                    if(key==="creator") formData.append(key,id)
+                      else formData.append(key, product[key])
+                    })
           
         axios.post("/api/account/editproduct", formData, config)
                     .then(res=>{
                         if(res.data.status==="success"){
-                        setAlertId("A")
-                        setAlertText('You have successfuly posted your product')
-                        setShowAlert(true)
+                            props.history.push({pathname:"/account",mykey:"activities"})
                     }})
                     .catch(err=>err)
     }
@@ -54,9 +46,6 @@ function EditProduct(props) {
                 {...props}
                 editHandler={editHandler}
                 />
-            
-            {showAlert ? <MyAlert id={alertId} alertText={alertText} {...props} /> : null}
-
         </div>
     )
 }

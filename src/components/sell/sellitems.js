@@ -3,7 +3,6 @@ import MyNavbar from '../navbar/navBar';
 import { POST, IMGPOST } from '../lib/post';
 import FormData from "form-data"
 import SellDetails from './sellDetails';
-import MyAlert from '../lib/alert';
 import SigninModal from "../signin/signinModal/signinModal"
 import { makeStyles } from '@material-ui/core/styles';
 import PasswordReset from "../signin/resetModal"
@@ -27,6 +26,7 @@ const SellItems = (props) => {
     const [edit, setEdit] = useState(false)
     const [showSignin, setShowSignin] = useState(false)
     const [showReset, setShowReset] = useState(false)
+    const [redirectAlertBox, setRedirectAlertBox]=useState(false)
 
     const [product, setProduct] = useState(
         {
@@ -41,9 +41,6 @@ const SellItems = (props) => {
 
     )
     const classes = useStyles();
-    const [alertId, setAlertId] = useState("")
-    const [alertText, setAlertText] = useState("")
-    const [showAlert, setShowAlert] = useState(false)
     const [alertBox, setAlertBox] = useState(false)
     let   [inputErrors, setInputErrors] = useState([]);
 
@@ -98,10 +95,11 @@ const SellItems = (props) => {
         editHandler(product, images)
         setAlertBox(false)
     }
-    const hideAlertBox =()=>setAlertBox(false)
+    const hideAlertBox =()=>setAlertBox(false) 
 
-    
-
+    const redirectHandler=()=>{
+        setRedirectAlertBox(false)
+        props.history.push({pathname:"/account",mykey:"activities"})}
 
     const handleOpenReset = () => {
         setShowSignin(false)
@@ -148,9 +146,23 @@ const showAlertBox =()=>{
         setImages(tempImageArray)
     }
 
-    
+    const newProductHandler=()=>{
+        setRedirectAlertBox(false)
+        setProduct({
+            title: "",
+            category: "",
+            condition: "",
+            quantity: "",
+            color: "",
+            price: "",
+            description: ""
+        })
+        setImages([])
+
+    }
 
     const submitHandler = async () => {
+        if(redirectAlertBox) return
 
         if(!Object.keys(product).every(key=>product[key])) 
             return setInputErrors({...inputErrors,form:{...inputErrors.form, status:true}})
@@ -177,10 +189,8 @@ const showAlertBox =()=>{
 
             const response = await IMGPOST("/api/products/newproduct", formData, config)
             if (response.data && response.data.status === "success") {
-                setAlertId("A")
-                setAlertText('You have successfuly posted your product')
-                setShowAlert(true)
-
+                setRedirectAlertBox(true)
+                //props.history.push({pathname:"/account",mykey:"activities"})
             }
         }
         else {
@@ -192,11 +202,8 @@ const showAlertBox =()=>{
             }
             const response = await POST("/api/products/newproduct", product, config)
             if (response.data && response.data.status === "success") {
-                setAlertId("A")
-                setAlertText('You have successfuly posted your product')
-                setShowAlert(true)
-
-
+                setRedirectAlertBox(true)
+                //
             }
         }
 
@@ -218,7 +225,6 @@ const showAlertBox =()=>{
                             inputErrors={inputErrors}
             />
 
-            {showAlert ? <MyAlert id={alertId} alertText={alertText} {...props} redirectPath="/account"/> : null}
             {showSignin ? <SigninModal
                             handleClose={handleClose}
                             show={showSignin}
@@ -241,7 +247,14 @@ const showAlertBox =()=>{
                             proceedHandler={proceedHandler}
                             
                     />:null}
-        </div>
+            {redirectAlertBox?<AlertBox
+                            alertBoxTitle="Scucessfully uploaded"
+                            alertBoxBody="Do you want to upload another product?"
+                            hideAlertBox={redirectHandler}
+                            proceedHandler={newProductHandler}
+                            
+                    />:null}
+                            </div>
     );
 }
 
