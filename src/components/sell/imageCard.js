@@ -55,20 +55,24 @@ const ImageCard = (props) => {
                         <button
                             className="myRedCircleButton fa fa-pencil"
                             onClick={inputHandler}
+                            type="button"
                         >
 
                         </button>
                         : <button
                             className="myRedCircleButton fa fa-trash"
-                            onClick={deleteHandler} >
-
+                            onClick={deleteHandler}
+                            type="button" >
+                            
                         </button>
                     : <button
                         onClick={inputHandler}
                         className="myRedCircleButton fa fa-plus"
-                        name="addButton">
+                        name="addButton"
+                        type="button"
+>
 
-                    </button >}
+                    </button>}
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import React from 'react';
 import './../styles.css'
-import { Form, Col } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import ImageCard from '../../sell/imageCard';
 
 

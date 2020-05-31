@@ -144,6 +144,7 @@ const MyProfile = (props) => {
   
 
 const submitHandler = async (e) => {
+    console.log("submit handler called")
     e.preventDefault();
         if(!Object.keys(profile)
                 .every(key=>{
@@ -233,8 +234,6 @@ const submitHandler = async (e) => {
                 profile={profile}
                 editAble={editAble}
                 renderModal={renderModal}
-                showModal={showModal}
-                derenderModal={derenderModal}
                 errors={inputErrors}
                 {...props}
             />
