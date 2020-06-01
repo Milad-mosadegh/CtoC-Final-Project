@@ -8,14 +8,15 @@ import axios from 'axios';
 
 // import store from 'store.js'
 
-axios.defaults.headers['x-auth-token'] = localStorage.getItem("c2c-token");
-axios.interceptors.response.use( (response=>response), function (error) {
+//if(localStorage.getItem("c2c-token")) axios.defaults.headers['x-auth-token'] = localStorage.getItem("c2c-token");
+
+/* axios.interceptors.response.use( (response=>response), function (error) {
   if ( 401 === error.response.status ) {
     window.location = '/login';
     // store.dispatch({type:'a/logout'});
   } else { return Promise.reject(error) }
 });
-
+ */
 ReactDOM.render(
   // <Provider store={store}>
   <React.StrictMode>

@@ -9,7 +9,14 @@ function ActiveProducts(props) {
     const { favorit, favoritHandler,setTargetProduct } = props
     const [activeProducts, setActiveProducts] = useState("")
     useEffect(() => {
-        axios.get("/api/account/myproducts")
+        let config;
+        if(localStorage.getItem("c2c-token")) config = {headers:{
+            'Content-Type': 'application/json',
+            'x-auth-token': localStorage.getItem('c2c-token')
+        }}
+            else props.history.push("/signin")
+            
+        axios.get("/api/account/myproducts",config)
         .then(res=>setActiveProducts(res.data.products))
         .catch(err=>err)
     }, [])

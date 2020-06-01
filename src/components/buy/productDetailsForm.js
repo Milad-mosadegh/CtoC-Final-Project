@@ -40,7 +40,8 @@ const ProductDetailsForm = (props) => {
         deactivateHandler,
         handleClose,
         activateHandler,
-        status } = props
+        status,
+        favorit } = props
 
     const [auth, setAuth] = useState(false)
     const [showSignin, setShowSignin] = useState(false)
@@ -70,7 +71,7 @@ const ProductDetailsForm = (props) => {
     let currentUserId = auth ? JSON.parse(localStorage.getItem("c2c-profile")).id : null
 
 
-
+console.log("favorit in detail form", favorit)
 
 
     return (
@@ -154,7 +155,11 @@ const ProductDetailsForm = (props) => {
                         : <div>
 
                             <div className="myIcon w-50 mx-auto">
-                                <button className="myIcons myBlueButton-lg fa fa-star-o" onClick={() => favoriteHandler(productId)}>   </button>
+                                <button className=
+                                    {favorit?
+                                    "myIcons myBlueButton-lg fa fa-star"
+                                    :"myIcons myBlueButton-lg fa fa-star-o"} 
+                                    onClick={() => favoriteHandler(productId)}>   </button>
                                 <button className="myIcons myRedButton-lg fa fa-ban" onClick={() => reportHandler(productId)}>     </button>
                                 <button className="myOrabgeButton-lg">
                                     <NewMessage

@@ -138,6 +138,7 @@ const MyProfile = (props) => {
             }
                 
     const imageChangeHandler = (image) => {
+        
         setProfile({ ...profile, profileImage: image.image })
         setAvatarChange(true)
     }
@@ -221,7 +222,7 @@ const submitHandler = async (e) => {
             setShowAlertBox(true)
             setEditAble(false)
         }}
-
+ 
     }
     return (
         <div className='mainProfile'>

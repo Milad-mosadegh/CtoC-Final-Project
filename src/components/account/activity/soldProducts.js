@@ -3,10 +3,17 @@ import Zoom from 'react-reveal/Zoom';
 import Products from '../../buy/products';
 import axios from "axios"
 
-function SoldProducts({setTargetProduct, favoritHandler,favorit}) {
+function SoldProducts(props) {
+    const {setTargetProduct, favoritHandler,favorit}=props
     const [soldProducts, setSoldProducts] = useState("")
     useEffect(() => {
-        axios.get("/api/account/soldproducts")
+        let config;
+        if(localStorage.getItem("c2c-token")) config = {headers:{
+            'Content-Type': 'application/json',
+            'x-auth-token': localStorage.getItem('c2c-token')
+        }}
+            else props.history.push("/signin")
+        axios.get("/api/account/soldproducts",config)
         .then(res=>setSoldProducts(res.data.products))
         .catch(err=>err)
     }, [])

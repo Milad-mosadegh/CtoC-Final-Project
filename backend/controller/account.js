@@ -226,7 +226,6 @@ exports.getFavoriteProducts = async (req, res) => {
 }
 
 exports.getInactiveProducts = async (req, res) => {
-
     let id = req.userId
     let result = await InActiveProducts.find({ creator: id }, { _id: 1, title: 1, images: 1, price: 1 })
     if (!result) return res.json({ failed: "You have no Inactive Products" })
@@ -244,6 +243,7 @@ exports.getSoldProducts = async (req, res) => {
 }
 
 exports.inactiveProductDetails = async (req, res) => {
+    console.log("inactive details called")
     const id = req.params.id
     let product = await InActiveProducts.findOne({ _id: id, creator: req.userId }, {
         title: 1,
@@ -258,8 +258,8 @@ exports.inactiveProductDetails = async (req, res) => {
         images: 1
     })
         .populate([{ path: "creator", select: "firstName", model: User }])
-    if (!product) res.json({ status: "failed", message: "Internal Error please try again" })
-    else res.json({ status: "success", message: "Successfully retrieved", data: product })
+    if (!product) res.json({ failed: "Internal Error please try again" })
+    else res.json({ success: product })
 }
 
 exports.soldProductDetails = async (req, res) => {
@@ -277,8 +277,8 @@ exports.soldProductDetails = async (req, res) => {
         images: 1
     })
         .populate([{ path: "creator", select: "firstName", model: User }])
-    if (!product) res.json({ status: "failed", message: "Internal Error please try again" })
-    else res.json({ status: "success", message: "Successfully retrieved", data: product })
+    if (!product) res.json({failed: "Internal Error please try again" })
+    else res.json({ success: product })
 }
 
 exports.editProduct = async (req, res) => {

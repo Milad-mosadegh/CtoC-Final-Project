@@ -115,7 +115,8 @@ const SellItems = (props) => {
     useEffect(() => {
         if(id)  axios.get(`/api/buy/activeproductdetails/${id}`)
                 .then(res => {
-                    setProduct(res.data.data)
+                    console.log("response in sell item",res)
+                    setProduct(res.data.success)
                     setEdit(true)
                     for(let  i=1; i<=product.images.length; i++){
                         images.push({id:i, image:fetch(`/avatars/${product.images[i]}`).then(r => r.blob())})
