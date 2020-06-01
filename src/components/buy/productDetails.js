@@ -8,10 +8,23 @@ import axios from 'axios';
 import AlertBox from '../AlertBox/alertBox';
 import Color from "../lib/colors"
 import Condition from "../lib/condition"
+import SigninModal from '../signin/signinModal/signinModal';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '25ch',
+        },
+    },
+}));
 
 
 const ProductDetails = (props) => {
 
+    const classes = useStyles();
     const { id, showModel, handleClose, url,status } = props
     const [product, setProduct] = useState("")
     const [showSoldAlertBox, setShowSoldAlertBox] = useState(false)
@@ -19,6 +32,7 @@ const ProductDetails = (props) => {
     const [showInactiveAlertBox, setShowInactiveAlertBox]=useState(false)
     const [showDeleteAlertBox, setShowDeleteAlertBox]=useState(false)
     const [favorit, setFavorit]=useState(false)
+    const[showSigninModal,setShowSigninModal]=useState(false)
 
     let color=product?Color.filter(color=>color.id===product.color)[0].value:null
     let condition=product?Condition.filter(condition=>condition.id===product.condition)[0].value:null
@@ -47,7 +61,6 @@ const ProductDetails = (props) => {
            })
            .catch(err=>err)
 
-        if(product.images) console.log(product,"in effec")
         return (async () => {
             const config = {
                 headers: {
@@ -58,7 +71,7 @@ const ProductDetails = (props) => {
             await POST("/api/account/lastseen", id, config)
         })
 
-    }, [])
+    }, [favorit])
 
 
     const handleBgImage = (backgroundImage) => {
@@ -151,7 +164,10 @@ const ProductDetails = (props) => {
         if (response.data.status === "success") {
             setFavorit(!favorit)
         }
-    } 
+        setShowSigninModal(false)
+    }
+    else setShowSigninModal(true) 
+
     
     
 }
@@ -216,7 +232,13 @@ const ProductDetails = (props) => {
                         proceedHandler={()=>deleteHandler(id)}
                         hideAlertBox={()=>setShowDeleteAlertBox(false)} />
                         :null}
-        </div>
+            {showSigninModal?
+            <SigninModal 
+                    handleClose={()=>setShowSigninModal(false)}
+                    show={showSigninModal}
+                    classes={classes}
+                    productSubmitHandler={favoriteHandler} />:null}                        
+            </div>
 
     );
 }

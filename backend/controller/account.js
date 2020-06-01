@@ -189,6 +189,7 @@ exports.setFavorities = async (req, res) => {
     )
 }
 
+
 exports.getFavoritiesList = async (req, res) => {
 
     let id = req.userId
