@@ -3,7 +3,6 @@ import TextField from '@material-ui/core/TextField';
 import { Modal } from "react-bootstrap"
 import Errors from "../lib/errors"
 import { POST } from '../lib/post';
-
 import '../styles/main.css';
 
 export default function PasswordReset(props) {
@@ -38,21 +37,16 @@ export default function PasswordReset(props) {
   }
   const changeHandler = (e) => {
     setErrors({ ...errors, form: { ...errors.form, status: false } })
-    switch (e.target.name) {
-      case "email":
+
         setResetResponse("")
-        if (!regexEmail.test(e.target.value)) setErrors({ ...errors, [e.target.name]: { ...errors[e.target.name], status: true } })
-        else setErrors({ ...errors, [e.target.name]: { ...errors[e.target.name], status: false } })
+        if (!regexEmail.test(e.target.value)) setErrors({ ...errors,email: { ...errors.email, status: true } })
+        else setErrors({ ...errors, email: { ...errors.email, status: false } })
         setEmail(e.target.value)
-        break;
-      default:
-        break;
-    }
+    
   }
   return (
     <>
       <Modal size="md" show={show} onHide={handleClose} animation={false} centered={true}>
-        {/* <Modal.Header closeButton></Modal.Header> */}
         <div className='resetModal'>
           <form className={classes.root} noValidate autoComplete="off" >
             <div className="resetModal-form">
@@ -70,15 +64,15 @@ export default function PasswordReset(props) {
                   onChange={changeHandler}
                   className="mx-auto "
                 />
-                {errors.resetPass ? errors.resetPass.status ? <smail className="sText"><p>{errors.resetPass.value}</p></smail> : null : null}
+                
                 <small className="mt-2 myText2"><p><strong >Please provide your email address to reset password.</strong></p></small>
                 {resetResponse ? <smail className="sText text-success"><p>{resetResponse}</p></smail> : null}
 
-
+                {errors.resetPass ? errors.email.status ? <smail className="sText"><p>{errors.email.value}</p></smail> : null : null}
               </div>
               <div className="resetModal-btn">
                 <button className="myRedButton-lg" onClick={handleClose}>Close</button>
-                <button className="myBlueButton-lg ml-1" onClick={resetPassword}>Send </button>
+                <button className="myBlueButton-lg ml-1" type="button" onClick={resetPassword}>Send </button>
               </div>
             </div>
           </form>

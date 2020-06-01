@@ -1,22 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
 import PictureSlider from './pictureSlider';
-import NewMessage from '../messages/newMessage';
 import { CheckAuthentication } from '../lib/auth'
-import SigninModal from "../signin/signinModal/signinModal"
-import { makeStyles } from '@material-ui/core/styles';
-import PasswordReset from '../signin/resetModal';
-
 import '../styles/main.css'
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    },
-}));
 
 const ProductDetailsForm = (props) => {
 
@@ -44,22 +29,7 @@ const ProductDetailsForm = (props) => {
         favorit } = props
 
     const [auth, setAuth] = useState(false)
-    const [showSignin, setShowSignin] = useState(false)
-    const [showReset, setShowReset] = useState(false)
 
-    const openShowSignin = () => setShowSignin(true)
-    const closeShowSignin = () => setShowSignin(false)
-    const classes = useStyles();
-
-    const handleOpenReset = () => {
-        setShowSignin(false)
-        setShowReset(true)
-    }
-    const handleCloseReset = () => {
-        setShowReset(false)
-        setShowSignin(true)
-    }
-    const submitHandler = () => console.log("it is for fun  ")
     useEffect(() => {
         const checkAuth = async () => {
             let res = await CheckAuthentication();
@@ -162,11 +132,6 @@ console.log("favorit in detail form", favorit)
                                     onClick={() => favoriteHandler(productId)}>   </button>
                                 <button className="myIcons myRedButton-lg fa fa-ban" onClick={() => reportHandler(productId)}>     </button>
                                 <button className="myOrabgeButton-lg">
-                                    <NewMessage
-                                        title={title}
-                                        productId={productId}
-                                        recipentId={creatorId ? creatorId : null}
-                                        openShowSignin={openShowSignin} />
                                 </button>
                             </div>
 
@@ -175,22 +140,7 @@ console.log("favorit in detail form", favorit)
                     :null
                     : null}
             </div>
-            {showSignin ? <SigninModal
-                handleClose={closeShowSignin}
-                show={showSignin}
-                classes={classes}
-                handleCloseReset={handleCloseReset}
-                handleOpenReset={handleOpenReset}
-                showReset={showReset}
-                productSubmitHandler={submitHandler}
-            />
-                : null}
-            {showReset ? <PasswordReset
-                handleClose={handleCloseReset}
-                handleOpen={handleOpenReset}
-                show={showReset} classes={classes}
-            />
-                : null}
+
 
         </div>
     );

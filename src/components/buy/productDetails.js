@@ -10,6 +10,8 @@ import Color from "../lib/colors"
 import Condition from "../lib/condition"
 import SigninModal from '../signin/signinModal/signinModal';
 import { makeStyles } from '@material-ui/core/styles';
+import PasswordReset from '../signin/resetModal';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -33,6 +35,8 @@ const ProductDetails = (props) => {
     const [showDeleteAlertBox, setShowDeleteAlertBox]=useState(false)
     const [favorit, setFavorit]=useState(false)
     const[showSigninModal,setShowSigninModal]=useState(false)
+    const [showReset, setShowReset] = useState(false)
+
 
     let color=product?Color.filter(color=>color.id===product.color)[0].value:null
     let condition=product?Condition.filter(condition=>condition.id===product.condition)[0].value:null
@@ -237,7 +241,21 @@ const ProductDetails = (props) => {
                     handleClose={()=>setShowSigninModal(false)}
                     show={showSigninModal}
                     classes={classes}
-                    productSubmitHandler={favoriteHandler} />:null}                        
+                    productSubmitHandler={favoriteHandler}
+                    handleCloseReset={()=>setShowReset(false)}
+                    handleOpenReset={()=>{
+                                        setShowSigninModal(false)
+                                        setShowReset(true)}}
+                    showReset={showReset} />:null}
+
+            {showReset ? 
+                <PasswordReset
+                    handleClose={()=>setShowReset(false)}
+                    handleOpen={()=>setShowReset(true)}
+                    show={showReset} 
+                    classes={classes}
+            />
+                : null}                      
             </div>
 
     );
