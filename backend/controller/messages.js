@@ -44,7 +44,7 @@ exports.createMessage=async(req,res)=>{
 
                 const{_id} = conversationResult._id
                 await Conversation.findByIdAndUpdate(_id,
-                {"$push":{messages:{
+                {$addToSet:{messages:{
                 senderId,
                 message
                     }}},(err,doc)=>{

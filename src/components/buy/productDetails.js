@@ -224,6 +224,7 @@ const messageHandler=async(id)=>{
                         status={status}
                         favorit={favorit}
                         messageHandler={messageHandler}
+                        
                     />
                 </div>
             </Zoom>
@@ -276,7 +277,14 @@ const messageHandler=async(id)=>{
             />
                 : null} 
             {showMessagePopup?
-                    <ProductMessage/>
+                    <ProductMessage
+                        hideAlertBox={()=>setShowMessagePopup(false)}
+                        title={product.title}
+                        productId={product._id}
+                        recipentId={product ? product.creator._id : null}
+                        recipentName={product ? product.creator.firstName : null}
+                        {...props}
+                    />
                     :null}                                     
             </div>
 
