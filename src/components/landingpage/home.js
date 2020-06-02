@@ -4,15 +4,13 @@ import MyNavbar from '../navbar/navBar';
 import GET from '../lib/get';
 import SlideShow from '../buy/slideShow';
 import '../styles/main.css'
-
 import LatestProducts from './latestProducts';
 import ProductDetails from '../buy/productDetails';
 import MyFooter from '../footer/footer';
-import ProductMessage from '../buy/messagePopup';
-
-
+import ContextApi from '../Context/contextApi';
 
 const Home = (props) => {
+
     const [auth, setAuth] = useState(false)
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
@@ -54,13 +52,14 @@ const Home = (props) => {
     return (
         <div>
             <MyNavbar {...props} />
+
+
             {showModal ?
                 <ProductDetails showModel={showModal} handleClose={handleClose}
                     id={productId} {...props}
                 /> :
 
                 <div>
-
 
                     <div className="fixedBackground">
                         <div className="container">
@@ -72,6 +71,7 @@ const Home = (props) => {
 
                     <div className="homeCard">
                         <div className="leftCard">
+
                             <LatestProducts
                                 setTargetProduct={setTargetProduct}
                                 favorit={favorit}
@@ -88,19 +88,19 @@ const Home = (props) => {
                     </div>
 
                     <div className="homeBanner"></div>
+
                     <div className="darkWhite p-5">
                         <h2 className='mb-5'> See What we Have in Categories</h2>
                         <div className="container">
-                        <SlideShow />
-                                </div>
+                            <SlideShow />
                         </div>
+                    </div>
+
                     <MyFooter /> 
-                           </div>
-               }
-               <ProductMessage />
-               </div>
-    );        
-      
-}   
-  
+
+                </div>
+            }
+        </div>
+    )
+}
 export default Home;

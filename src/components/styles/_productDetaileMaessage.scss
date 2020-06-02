@@ -1,7 +1,4 @@
 @import './variables';
-*{
-   overflow: hidden;
-}
 
 .pdm{
     display: block; /* Hidden by default */
@@ -12,25 +9,30 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.598);
+   
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.598);
     box-shadow: 0 10px 120px rgb(0, 0, 0);
     transition: 0.5s;
+
     .pdm-content{
         width: 40%;
         margin: 300px auto;
         height: 350px;
         background-color: #eee;
     }
+
     .pdm-head{
         background: $bestOrangeColor;
         height: 80px; ;
-    }
+    }      
+ 
 
       .pdm-head-title{
             background: white;
             color: $bestBlueColor;
              box-shadow: 3px 4px 20px #000000;
+            box-shadow: 3px 4px 20px rgb(0, 0, 0);
             width: 300px;
             margin: 0 auto;
             margin-top: -30px;

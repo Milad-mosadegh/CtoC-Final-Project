@@ -6113,10 +6113,6 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
-* {
-  overflow: hidden;
-}
-
 .pdm {
   display: block;
   /* Hidden by default */
@@ -6157,6 +6153,8 @@ nav > .nav-link {
   color: #11213b;
   -webkit-box-shadow: 3px 4px 20px #000000;
           box-shadow: 3px 4px 20px #000000;
+  -webkit-box-shadow: 3px 4px 20px black;
+          box-shadow: 3px 4px 20px black;
   width: 300px;
   margin: 0 auto;
   margin-top: -30px;

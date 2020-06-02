@@ -1,17 +1,15 @@
 import React from 'react'
 import TextField from '@material-ui/core/TextField';
-
 import '../styles/main.css'
 
 function ProductMessage({ proceedHandler, hideAlertBox, pdmShow, cancelButtonBody }) {
     return (
         <div className="pdm">
             <div className="pdm-content">
-
                 <div className="pdm-head"></div>
                 <div className="pdm-head-title">
                     Message
-                </div>
+                    </div>
 
                 <div className="pdm-tilte">
                     <TextField
@@ -29,6 +27,7 @@ function ProductMessage({ proceedHandler, hideAlertBox, pdmShow, cancelButtonBod
 
                     />
                 </div>
+
                 {pdmShow ?
                     <button type="button" className="myBlueButton-sm" onClick={hideAlertBox}>Ok</button>
                     :
@@ -40,6 +39,8 @@ function ProductMessage({ proceedHandler, hideAlertBox, pdmShow, cancelButtonBod
                             : <button type="button" className="myRedButton-sm ml-1" onClick={hideAlertBox}>Cancel</button>}
                     </div>
                 }
+
+
             </div>
         </div>
     )
