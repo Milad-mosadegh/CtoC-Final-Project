@@ -253,6 +253,7 @@ const showAlertBox =()=>{
                             alertBoxBody="Do you want to upload another product?"
                             hideAlertBox={redirectHandler}
                             proceedHandler={newProductHandler}
+                            cancelButtonBody="No"
                             
                     />:null}
                             </div>
