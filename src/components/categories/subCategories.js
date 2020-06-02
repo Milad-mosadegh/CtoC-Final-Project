@@ -37,7 +37,15 @@ function SubCategories(props) {
 
     const searchHandler=(text, category)=>{
         console.log("search handler called", text, "category", category)
-        axios.get(`/api/buy/categories/${category}`)
+        if(!text)
+        axios.get(`/api/buy/categories/${category}`,{params: {
+            text: text
+          }})
+            .then(res => {if(res.data.success) setProducts(res.data.products)})
+            .catch(err => err)
+        else axios.get(`/api/buy/categoriessearch/${category}`,{params: {
+            text: text
+          }})
             .then(res => {if(res.data.success) setProducts(res.data.products)})
             .catch(err => err)
     }

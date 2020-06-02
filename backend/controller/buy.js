@@ -103,10 +103,10 @@ exports.latestProducts =async(req,res)=>{
 }
 
 exports.productsByCategory=async(req,res)=>{
-    
+
     let category=req.params.type
-    console.log(category)
     let result;
+    console.log("simple categry search")
     if(category==="0")
     result = await ActiveProducts.find({},{
         _id: 1,
@@ -120,7 +120,49 @@ exports.productsByCategory=async(req,res)=>{
 
     }).sort({'_id':-1})
     else
-        result = await ActiveProducts.find({category},{
+result = await ActiveProducts.find({category},{
+        _id: 1,
+        title: 1,
+        category: 1,
+        condition: 1,
+        color: 1,
+        price: 1,
+        images: 1,
+        priceRange: 1,
+
+    }).sort({'_id':-1})
+
+    if(!result) res.json({failed:"Request failed try again"})
+        else res.json({success:"success", products:result})
+}
+
+exports.productsBySearch=async(req,res)=>{
+    
+    let text=req.query.text
+    let editedText=`/{text}/i`
+    let category=req.params.type
+    let result;
+    var regex = new RegExp(".*" + text + ".*","i")
+    console.log(regex)
+
+    console.log("text categry search")
+
+
+    if(category==="0")
+result = await ActiveProducts.find({title: {$regex:regex}},
+    {
+        _id: 1,
+        title: 1,
+        category: 1,
+        condition: 1,
+        color: 1,
+        price: 1,
+        images: 1,
+        priceRange: 1,
+
+    }).sort({'_id':-1})
+    else
+result = await ActiveProducts.find({title: {$regex:regex}},{
         _id: 1,
         title: 1,
         category: 1,

@@ -5,6 +5,8 @@ router.get("/allproducts", buy.allProucts)
 router.get(`/activeproductdetails/:id`, buy.productDetails)
 router.get(`/latestprdoucts`, buy.latestProducts)
 router.get("/categories/:type", buy.productsByCategory)
+router.get("/categoriessearch/:type", buy.productsBySearch)
+
 
 
 
