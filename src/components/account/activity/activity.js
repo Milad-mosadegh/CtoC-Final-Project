@@ -7,7 +7,7 @@ import SoldProducts from './soldProducts';
 
 
 const Activity = (props) => {
-    const { favorit, favoritHandler,setTargetProduct } = props
+    const { favorit, favoritHandler, setTargetProduct } = props
 
     return (
 
@@ -20,21 +20,21 @@ const Activity = (props) => {
                 defaultActiveKey={props.location.subKey ? props.location.subKey : "active"}
                 className="d-flex justify-content-center ml-2"
             >
-                <Tab eventKey="active" title="Active Products" className="col-lg-3 col-md-3 col-sm-12" >
+                <Tab eventKey="active" title="Active Products" className="col-lg-12 col-md-12 col-sm-12" >
                     <ActiveProducts
                         setTargetProduct={setTargetProduct}
                         favorit={favorit}
                         favoritHandler={favoritHandler}
                     />
                 </Tab>
-                <Tab eventKey="inactive" title="Inactive Products" className="col-lg-3 col-md-3 col-sm-12"  >
+                <Tab eventKey="inactive" title="Inactive Products" className="col-lg-12 col-md-12 col-sm-12"  >
                     <InactiveProducts
                         setTargetProduct={setTargetProduct}
                         favorit={favorit}
                         favoritHandler={favoritHandler}
                     />
                 </Tab>
-                <Tab eventKey="sold" title="Sold Products" className="col-lg-3 col-md-3 col-sm-12"  >
+                <Tab eventKey="sold" title="Sold Products" className="col-lg-12 col-md-12 col-sm-12"  >
                     <SoldProducts
                         setTargetProduct={setTargetProduct}
                         favorit={favorit}

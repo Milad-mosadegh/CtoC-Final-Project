@@ -59,7 +59,7 @@ const MyNavbar = (props) => {
             <Navbar expand="lg">
 
                 <Navbar.Brand href="#home" className="navLogo">
-                    <img src={pic1} alt="" width="230px" height="100px" />
+                    <img src={pic1} alt="" width="200px" height="70px" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
