@@ -6113,6 +6113,10 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
+* {
+  overflow: hidden;
+}
+
 .pdm {
   display: block;
   /* Hidden by default */
@@ -6122,30 +6126,37 @@ nav > .nav-link {
   /* Sit on top */
   left: 0;
   top: 0;
-  width: 30%;
+  width: 100%;
   /* Full width */
-  height: 35%;
+  height: 100%;
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
-  background: #eee;
-  margin: 400px 750px;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.598);
   -webkit-box-shadow: 0 10px 120px black;
           box-shadow: 0 10px 120px black;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
+.pdm .pdm-content {
+  width: 40%;
+  margin: 300px auto;
+  height: 350px;
+  background-color: #eee;
+}
+
 .pdm .pdm-head {
-  background: #11213b;
-  height: 70px;
+  background: #ff8b0d;
+  height: 80px;
 }
 
 .pdm .pdm-head-title {
   background: white;
   color: #11213b;
-  -webkit-box-shadow: 3px 4px 20px black;
-          box-shadow: 3px 4px 20px black;
+  -webkit-box-shadow: 3px 4px 20px #000000;
+          box-shadow: 3px 4px 20px #000000;
   width: 300px;
   margin: 0 auto;
   margin-top: -30px;
