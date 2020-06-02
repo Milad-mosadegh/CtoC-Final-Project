@@ -1,79 +1,69 @@
+@import './variables';
 
 .footer{
-    // background: $bestBlueColor;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    .footerLogo{
-        width: 100%;
-        height: 100px; 
-        background: white;  
-        margin-top: 50px;
+    justify-content: space-around;
+    .footerLogo img{
+        width: 60%;
+        height: 65px;
     }
-
-    img{
-        width: 300px;
-        margin-top: 0px;
-    }
-    
-
-}
     .footerInfo{
         display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: space-around;
-        margin-top: 40px;
-    }
-    
-    .footerBox{
-        display: flex;
-        flex-direction:column;
         justify-content: center;
-        align-items: center;
-        h3{
+        align-items: center;        
+    }
+    .footerLink{
+        text-decoration: none;
         color: $bestBlueColor;
-        font-size: 25px;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: 300;
+        transition: 0.5s;
+        &:hover{
+            transition: 0.5s;
+            letter-spacing: 4px;
+        }
+    }
+
+     .footerLink2{
+        text-decoration: none;
+        color: $bestBlueColor;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: 300;
+        transition: 0.5s;
+        &:hover{
+            transition: 0.5s;
+            letter-spacing: 4px;
+        }
     }
 }
 
-    .footerLink{
-        color: $bestBlueColor;
-        font-size: 18px;
-        line-height: 50px;
-        text-transform: uppercase;
-        transition: 0.5s;
-        &:hover{
-            letter-spacing: 5px;
-            transition: 0.5s;
-            color: $bestRedColor;
-        }
-    }
-
-
 @media only screen and (max-width:420px){
+       .footer{
+           display: block;
+            .footerLogo img{
+                width: 65%;
+                height: 75px;
+                margin-bottom: 20px;
+            }
+            .footerLink{
+                text-decoration: none;
+                color: $bestBlueColor;
+                padding: 10px;
+                font-size: 15px;
+                font-weight: 300;
+            }
 
-    .footer{
-        img{
-            width: 70%;
-            margin-top: 0px;
-        }
-
+            .footerInfo{
+                justify-content:center;
+                h5{
+                    font-size: 10px;
+                }
+            }
+            .footerLink2{
+                font-size: 12px;
     }
-          .footerLink{
-            font-size: 15px;
-            line-height: 50px;
-            text-align: left;
-        }
-
-
-        .footerBox{
-      
-        h3{
-            border-top: 1px solid $bestRedColor;
-            margin-top: 20px;
-      
-        }
-    }
-
+        } 
 }
