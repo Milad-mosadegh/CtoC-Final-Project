@@ -139,7 +139,6 @@ result = await ActiveProducts.find({category},{
 exports.productsBySearch=async(req,res)=>{
     
     let text=req.query.text
-    let editedText=`/{text}/i`
     let category=req.params.type
     let result;
     var regex = new RegExp(".*" + text + ".*","i")
