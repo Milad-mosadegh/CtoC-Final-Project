@@ -7,11 +7,14 @@ import SearchBar from '../searchBar/searchbar';
 import FilterBar from '../filterBar/filterBar';
 import Products from '../buy/products';
 import GET from '../lib/get';
+import ProductDetails from "../buy/productDetails"
 
 
 
 
 function SubCategories(props) {
+/*     console.log(props.history.location.state.id, "in sub category")
+    console.log(props.match.params.type) */
     const type = props.match.params.type
     const title = Categories.filter(data => data.linkName === type)[0].value
     const categoryName= Categories.filter(data=>data.linkName===type)[0].id
@@ -29,6 +32,15 @@ function SubCategories(props) {
             .then(res => {if(res.data.success) setProducts(res.data.products)})
             .catch(err => err)
     }, [])
+
+    
+
+    const searchHandler=(text, category)=>{
+        console.log("search handler called", text, "category", category)
+        axios.get(`/api/buy/categories/${category}`)
+            .then(res => {if(res.data.success) setProducts(res.data.products)})
+            .catch(err => err)
+    }
 
 
     const favoritHandler = async () => {
@@ -70,14 +82,23 @@ function SubCategories(props) {
 
     return (
         <div>
-            <MyNavbar {...props} />
-            <SearchBar />
+        <MyNavbar {...props} />
+        {showMainComponent?
+            <>
+            
+            
             <div className="container">
                 <div className="active-message-head"></div>
                 <div className="active-message-text">
                     <h1>{title}</h1>
                 </div>
             </div>
+            <SearchBar 
+                category={props.history.location.id}
+                products={filteredProducts ? filteredProducts : products}
+                {...props}
+                searchHandler={searchHandler}
+            />
             <FilterBar 
                 filterHandler={filterHandler}
             />
@@ -90,6 +111,14 @@ function SubCategories(props) {
                     favoritHandler={favoritHandler}
                 />
             </div>
+            </>:null}
+            {showModal ?
+                <ProductDetails 
+                    showModel={showModal} 
+                    handleClose={()=>{setShowModal(false)
+                                      setShowMainComponents(true)}}
+                    id={productId} {...props}
+                />:null}
 
         </div>
     )

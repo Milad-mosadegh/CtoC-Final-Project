@@ -5,7 +5,7 @@ import SearchBar from '../searchBar/searchbar';
 import Products from "./products"
 import SlideShow from './slideShow';
 import GET from '../lib/get';
-
+import axios from "axios"
 import FilterBar from "../filterBar/filterBar"
 import ProductDetails from './productDetails';
 // import { IfNotAuthenticated } from '../lib/auth';
@@ -37,6 +37,12 @@ const BuyComponent = (props) => {
     const favoritHandler = async()=>{
         let response= await GET("/api/account/getfavoritelist")
             if(response.data.status==="success") setFavorit(response.data.favourities)
+    }
+    const searchHandler=(text, category)=>{
+        console.log("search handler called", text, "category", category)
+        axios.get(`/api/buy/categories/${category}`)
+            .then(res => {if(res.data.success) setProducts(res.data.products)})
+            .catch(err => err)
     }
 
     const filterHandler = (e) => {
@@ -81,10 +87,7 @@ const BuyComponent = (props) => {
         <div>
             <MyNavbar {...props} />
 
-            {/* <SearchBar
-                products={filteredProducts ? filteredProducts : products}
-            /> */}
-            <div className="container">
+            {showMainComponent?<><div className="container">
                 <SlideShow />
             </div>
 
@@ -96,6 +99,9 @@ const BuyComponent = (props) => {
             }}>
                 <SearchBar
                     products={filteredProducts ? filteredProducts : products}
+                    category={0}
+                    searchHandler={searchHandler}
+                    {...props}
                 />
 
                 <FilterBar
@@ -108,7 +114,7 @@ const BuyComponent = (props) => {
                     favorit={favorit}
                     favoritHandler={favoritHandler}
                 />
-            </div>
+            </div></>:null}
             {showModal ?
                 <ProductDetails showModel={showModal} handleClose={handleClose}
                     id={productId} {...props}

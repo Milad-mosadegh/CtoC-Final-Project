@@ -241,7 +241,7 @@ const ProductDetails = (props) => {
                     handleClose={()=>setShowSigninModal(false)}
                     show={showSigninModal}
                     classes={classes}
-                    productSubmitHandler={favoriteHandler}
+                    productSubmitHandler={()=>props.history.push("/buyitems")}
                     handleCloseReset={()=>setShowReset(false)}
                     handleOpenReset={()=>{
                                         setShowSigninModal(false)

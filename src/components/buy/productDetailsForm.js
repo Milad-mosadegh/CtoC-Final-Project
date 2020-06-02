@@ -131,7 +131,7 @@ console.log("favorit in detail form", favorit)
                                     :"myIcons myBlueButton-lg fa fa-star-o"} 
                                     onClick={() => favoriteHandler(productId)}>   </button>
                                 <button className="myIcons myRedButton-lg fa fa-ban" onClick={() => reportHandler(productId)}>     </button>
-                                <button className="myOrabgeButton-lg">
+                                <button className="myOrabgeButton-lg fa fa-envelope">
                                 </button>
                             </div>
 

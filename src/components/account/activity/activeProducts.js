@@ -21,7 +21,6 @@ function ActiveProducts(props) {
         .catch(err=>err)
     }, [])
 
-
     return (
 
         <Zoom>

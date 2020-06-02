@@ -68,7 +68,7 @@ const SlideShow = (props) => {
                             <Card.Title>
 
                                 <Link
-                                    to={{ pathname: `/categories/${data.linkName}` }}>
+                                    to={{ pathname: `/categories/${data.linkName}`, id:data.id }}>
                                     <span className="sliderTitle">{data.value}</span>
                                 </Link>
 

@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
-
 import Products from '../../buy/products';
-import ProductDetails from '../../buy/productDetails';
 import axios from "axios"
 const Favorites = (props) => {
 
-    const {favorit, favoritHandler} = props
+    const {favorit, favoritHandler,setTargetProduct} = props
     const [products, setProducts] = useState([])
-    const [showModal, setShowModal] = useState(false)
-    const [productId, setProductId] = useState("")
+
 
 
 
@@ -24,17 +21,6 @@ const Favorites = (props) => {
 
     }, [])
 
-    const setTargetProduct = (id) => {
-        setShowModal(true)
-        setProductId(id)
-    }
-
-
-    const handleClose = () => {
-        setShowModal(false)
-
-    }
-
     return (
         <div className='shadow'>
             <div className="d-flex">
@@ -47,10 +33,6 @@ const Favorites = (props) => {
                     />
                 </div>
             </div>
-            {showModal ?
-                <ProductDetails showModel={showModal} handleClose={handleClose}
-                    id={productId} {...props}
-                /> : null}
         </div>
     )
 }

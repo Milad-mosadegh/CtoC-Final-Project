@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Tab, Tabs } from 'react-bootstrap'
-import ProductDetails from '../../buy/productDetails';
 import '../../styles/main.css'
 import ActiveProducts from './activeProducts';
 import InactiveProducts from './inactiveProducts';
@@ -8,28 +7,7 @@ import SoldProducts from './soldProducts';
 
 
 const Activity = (props) => {
-    const { favorit, favoritHandler } = props
-    const [showModal, setShowModal] = useState(false)
-    const [productId, setProductId] = useState("")
-    const [url, setUrl] = useState("")
-    const [status, setStatus] = useState("")
-
-
-
-    const setTargetProduct = (id, url, status) => {
-        setShowModal(true)
-        setUrl(url)
-        setProductId(id)
-        setStatus(status)
-    }
-
-
-    const handleClose = () => {
-        setShowModal(false)
-
-    }
-
-
+    const { favorit, favoritHandler,setTargetProduct } = props
 
     return (
 
@@ -66,19 +44,6 @@ const Activity = (props) => {
 
 
             </Tabs>
-
-
-
-            {showModal ?
-                <ProductDetails
-                    showModel={showModal}
-                    handleClose={handleClose}
-                    id={productId}
-                    url={url}
-                    status={status}
-                    {...props}
-                /> : null}
-
         </div>
 
 

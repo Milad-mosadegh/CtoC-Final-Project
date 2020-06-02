@@ -52,12 +52,13 @@ const Home = (props) => {
 
     return (
         <div>
+        <MyNavbar {...props} />
             {showModal ?
                 <ProductDetails showModel={showModal} handleClose={handleClose}
                     id={productId} {...props}
                 /> :
                 <div>
-                    <MyNavbar {...props} />
+                    
 
                     <div className="fixedBackground">
                         <div className="container">
