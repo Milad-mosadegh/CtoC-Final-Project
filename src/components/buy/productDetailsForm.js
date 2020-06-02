@@ -26,7 +26,8 @@ const ProductDetailsForm = (props) => {
         handleClose,
         activateHandler,
         status,
-        favorit } = props
+        favorit,
+        messageHandler } = props
 
     const [auth, setAuth] = useState(false)
 
@@ -131,7 +132,7 @@ console.log("favorit in detail form", favorit)
                                     :"myIcons myBlueButton-lg fa fa-star-o"} 
                                     onClick={() => favoriteHandler(productId)}>   </button>
                                 <button className="myIcons myRedButton-lg fa fa-ban" onClick={() => reportHandler(productId)}>     </button>
-                                <button className="myOrabgeButton-lg fa fa-envelope">
+                                <button className="myOrabgeButton-lg fa fa-envelope " onClick={()=>messageHandler()}>
                                 </button>
                             </div>
 

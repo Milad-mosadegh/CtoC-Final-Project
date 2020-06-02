@@ -11,6 +11,7 @@ import Condition from "../lib/condition"
 import SigninModal from '../signin/signinModal/signinModal';
 import { makeStyles } from '@material-ui/core/styles';
 import PasswordReset from '../signin/resetModal';
+import ProductMessage from './messagePopup';
 
 
 
@@ -36,6 +37,8 @@ const ProductDetails = (props) => {
     const [favorit, setFavorit]=useState(false)
     const[showSigninModal,setShowSigninModal]=useState(false)
     const [showReset, setShowReset] = useState(false)
+    const [showMessagePopup, setShowMessagePopup]= useState(false)
+    const [displayValue, setDisplayValue]= useState("block")
 
 
     let color=product?Color.filter(color=>color.id===product.color)[0].value:null
@@ -156,6 +159,7 @@ const ProductDetails = (props) => {
     const editHandler = (id) => props.history.push(`./editproduct/${id}`)
 
     const reportHandler = (id) => console.log("Report handler called", id)
+
     const favoriteHandler = async(id) => {
          if (localStorage.getItem("c2c-token")) {
         const config = {
@@ -172,16 +176,30 @@ const ProductDetails = (props) => {
     }
     else setShowSigninModal(true) 
 
-    
-    
 }
-
+const messageHandler=async(id)=>{
+    console.log("you accessed message handler", id)
+    if (localStorage.getItem("c2c-token")) {
+        setShowSigninModal(false)
+        setShowMessagePopup(true)
+        const config = {
+            headers: {
+                'x-auth-token': localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        }
+    }
+    else {
+        
+        setShowSigninModal(true) }
+}
 
     return (
         <div className="my-container" show={showModel} onHide={handleClose}>
             <Zoom>
             
                 <div>
+                
                     <ProductDetailsForm
                         description={product.description}
                         postedBy={product ? product.creator.firstName : null}
@@ -205,6 +223,7 @@ const ProductDetails = (props) => {
                         handleClose={handleClose}
                         status={status}
                         favorit={favorit}
+                        messageHandler={messageHandler}
                     />
                 </div>
             </Zoom>
@@ -255,7 +274,10 @@ const ProductDetails = (props) => {
                     show={showReset} 
                     classes={classes}
             />
-                : null}                      
+                : null} 
+            {showMessagePopup?
+                    <ProductMessage/>
+                    :null}                                     
             </div>
 
     );

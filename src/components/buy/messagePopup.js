@@ -1,11 +1,11 @@
 import React from 'react'
 import TextField from '@material-ui/core/TextField';
-
 import '../styles/main.css'
 
 function ProductMessage({ proceedHandler, hideAlertBox, simpleAlert, cancelButtonBody }) {
     return (
         <div className="pdm">
+        <div className="pdm-content">
             <div className="pdm-head">
             </div>
             <div className="pdm-head-title">
@@ -39,6 +39,7 @@ function ProductMessage({ proceedHandler, hideAlertBox, simpleAlert, cancelButto
                         : <button type="button" className="myRedButton-sm ml-1" onClick={hideAlertBox}>Cancel</button>}
                 </div>
             }
+            </div>
         </div>
     )
 }
