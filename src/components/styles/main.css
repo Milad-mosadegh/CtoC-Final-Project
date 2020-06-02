@@ -6145,12 +6145,14 @@ nav > .nav-link {
 
 .pdm .pdm-head {
   background: #ff8b0d;
-  height: 70px;
+  height: 80px;
 }
 
 .pdm .pdm-head-title {
   background: white;
   color: #11213b;
+  -webkit-box-shadow: 3px 4px 20px #000000;
+          box-shadow: 3px 4px 20px #000000;
   -webkit-box-shadow: 3px 4px 20px black;
           box-shadow: 3px 4px 20px black;
   width: 300px;

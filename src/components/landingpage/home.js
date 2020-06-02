@@ -7,6 +7,7 @@ import '../styles/main.css'
 import LatestProducts from './latestProducts';
 import ProductDetails from '../buy/productDetails';
 import MyFooter from '../footer/footer';
+import ContextApi from '../Context/contextApi';
 
 const Home = (props) => {
 
@@ -51,13 +52,14 @@ const Home = (props) => {
     return (
         <div>
             <MyNavbar {...props} />
+
+
             {showModal ?
                 <ProductDetails showModel={showModal} handleClose={handleClose}
                     id={productId} {...props}
                 /> :
 
                 <div>
-
 
                     <div className="fixedBackground">
                         <div className="container">
@@ -69,6 +71,7 @@ const Home = (props) => {
 
                     <div className="homeCard">
                         <div className="leftCard">
+
                             <LatestProducts
                                 setTargetProduct={setTargetProduct}
                                 favorit={favorit}
@@ -96,7 +99,7 @@ const Home = (props) => {
                     <MyFooter /> 
 
                 </div>
-               }
+            }
         </div>
     )
 }
