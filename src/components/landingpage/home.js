@@ -8,6 +8,7 @@ import '../styles/main.css'
 import LatestProducts from './latestProducts';
 import ProductDetails from '../buy/productDetails';
 import MyFooter from '../footer/footer';
+import ProductMessage from '../buy/messagePopup';
 
 
 
@@ -52,13 +53,14 @@ const Home = (props) => {
 
     return (
         <div>
-        <MyNavbar {...props} />
+            <MyNavbar {...props} />
             {showModal ?
                 <ProductDetails showModel={showModal} handleClose={handleClose}
                     id={productId} {...props}
                 /> :
+
                 <div>
-                    
+
 
                     <div className="fixedBackground">
                         <div className="container">
@@ -90,13 +92,15 @@ const Home = (props) => {
                         <h2 className='mb-5'> See What we Have in Categories</h2>
                         <div className="container">
                         <SlideShow />
-                            </div>
-                    </div>
-            <MyFooter /> 
-                            </div>
-               }  
-                    </div>
+                                </div>
+                        </div>
+                    <MyFooter /> 
+                           </div>
+               }
+               <ProductMessage />
+               </div>
     );        
-            }   
+      
+}   
   
 export default Home;
