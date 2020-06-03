@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import '../styles/main.css'
 import { Navbar, Nav, Badge } from 'react-bootstrap';
 import GET from '../lib/get';
 import pic1 from '../../logo/1.png'
 
-import { GlobalContext } from '../../App'
 
 
 
@@ -56,14 +55,8 @@ const MyNavbar = (props) => {
         }
     }, [])
 
-
-    const user = useContext(GlobalContext)
     return (
         <div>
-            {console.log("it is the Conetxt", user)}
-            {user[0].auth}
-            {user[3].authorize("Ather")}
-            {user[0].auth ? console.log("Res for user") : console.log("not updated")}
             <Navbar expand="lg">
 
                 <Navbar.Brand href="#home" className="navLogo">

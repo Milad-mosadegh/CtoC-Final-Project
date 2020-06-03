@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,51 +18,9 @@ import EditProduct from './components/account/editProductDetail/editProduct';
 import SubCategories from './components/categories/subCategories';
 import ConfirmEmail from "./components/signup/confirmEmail"
 
-
-
-export const GlobalContext = React.createContext();
-
-
-
-
-
 function App() {
-
-  const [auth, setAuth] = useState(false)
-  const [favorities, setFavorities] = useState([])
-  const [userProfile, setUserProfile] = useState(
-    { userName: "Milad", userId: "123" }
-  )
-
-  const getFavorities = () => {
-    setFavorities([])
-  }
-
-  const unAuthorize = () => {
-    setAuth(false)
-    setFavorities([])
-  }
-
-  const authorize = (profile) => {
-    setAuth(true)
-    setUserProfile(
-      {
-        userName: profile,
-        userId: profile
-      }
-    )
-  }
-
   return (
-
     <div className="App">
-      <GlobalContext.Provider value={[
-        { auth: auth },
-        { userProfile: userProfile },
-        { getFavorities: getFavorities },
-        { authorize: authorize }
-      ]}>
-
         <Router>
           <Switch>
             <Route path="/" exact component={Home} />
@@ -80,8 +38,6 @@ function App() {
             <Route path="/confirm/:id/:token" component={ConfirmEmail} />
           </Switch>
         </Router>
-      </GlobalContext.Provider>
-
     </div>
 
   );
