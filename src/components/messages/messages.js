@@ -19,16 +19,17 @@ const Messages = (props) => {
     useEffect(() => {
         const confirmAuth = async()=>{
             let response=await CheckAuthentication()
-            console.log("there is erro", response)
             if(response.data.status!=="success") props.history.push("/signin")
         }
         confirmAuth()
         
         getMessages()
-    }, [])
+    })
     const getMessages = async () => {
+
+        
+
         let response = await GET("/api/messages/messageslist")
-        console.log(response, "in all conversaions")
         if (response.data.status === "success")
             setConversations(response.data.data)
         else props.history.push("/signin")
@@ -40,7 +41,10 @@ const Messages = (props) => {
     const hidePopUp = () => setShowConversation(false)
     const deleteHandler=()=>{
         if(selectedArray.length<1) return console.log("nothing to delete")
-        axios.post("/api/messages/deletemessages",{selectedArray})
+        axios.post("/api/messages/deletemessages",{selectedArray},{headers: {
+                            'x-auth-token': localStorage.getItem('c2c-token'),
+                            'Content-Type': 'application/json'
+                    }})
                         .then(res=>{if(res.data.success) getMessages()})
                         .catch(err=>props.history.push("/signin"))
     }

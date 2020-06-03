@@ -28,7 +28,7 @@ const ActiveConversation = (props) => {
     }
 
     const scrollToBottom = () => {
-        chatEndRef.current.scrollIntoView({ behavior: "smooth" })
+        if(chatEndRef) chatEndRef.current.scrollIntoView({ behavior: "smooth" })
     }
 
 
@@ -92,7 +92,8 @@ const ActiveConversation = (props) => {
                             <div className="sender">{msg.message}</div>
                         </div>
                 ) : null}
-                <div ref={chatEndRef} />
+                 <div ref={chatEndRef} />
+                
 
             </div>
 

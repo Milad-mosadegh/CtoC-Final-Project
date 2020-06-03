@@ -53,7 +53,7 @@ export default function SearchBar(props) {
       <form onSubmit={submitHandler} noValidate="novalidate">
         <div className="row ">
           <div className=" AutoComplete col-lg-5 col-md-4 col-sm-12 p-2">
-            <input autoComplete="off" type="text" name="searchText" className="form-control"
+            <input autoComplete="off" type="text" name="searchText" className="form-control" 
               value={searchText} placeholder="Type your Search here !"
               onChange={changeHandler} />
             <ul>

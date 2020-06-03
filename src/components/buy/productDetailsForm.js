@@ -42,9 +42,6 @@ const ProductDetailsForm = (props) => {
     let currentUserId = auth ? JSON.parse(localStorage.getItem("c2c-profile")).id : null
 
 
-console.log("favorit in detail form", favorit)
-
-
     return (
         <div>
             <div className="head-one">

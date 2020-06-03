@@ -12,6 +12,7 @@ import SigninModal from '../signin/signinModal/signinModal';
 import { makeStyles } from '@material-ui/core/styles';
 import PasswordReset from '../signin/resetModal';
 import ProductMessage from './messagePopup';
+import ReportProduct from "../complaints/report"
 
 
 
@@ -35,10 +36,11 @@ const ProductDetails = (props) => {
     const [showInactiveAlertBox, setShowInactiveAlertBox]=useState(false)
     const [showDeleteAlertBox, setShowDeleteAlertBox]=useState(false)
     const [favorit, setFavorit]=useState(false)
-    const[showSigninModal,setShowSigninModal]=useState(false)
+    const [showSigninModal,setShowSigninModal]=useState(false)
     const [showReset, setShowReset] = useState(false)
     const [showMessagePopup, setShowMessagePopup]= useState(false)
-    const [displayValue, setDisplayValue]= useState("block")
+    const [showReportAlertBox, setShowReportAlertBox]=useState(false)
+    const [showReportBox, setShowReportBox]=useState(false)
 
 
     let color=product?Color.filter(color=>color.id===product.color)[0].value:null
@@ -78,7 +80,7 @@ const ProductDetails = (props) => {
             await POST("/api/account/lastseen", id, config)
         })
 
-    }, [favorit])
+    }, [id,url])
 
 
     const handleBgImage = (backgroundImage) => {
@@ -158,7 +160,7 @@ const ProductDetails = (props) => {
 
     const editHandler = (id) => props.history.push(`./editproduct/${id}`)
 
-    const reportHandler = (id) => console.log("Report handler called", id)
+    
 
     const favoriteHandler = async(id) => {
          if (localStorage.getItem("c2c-token")) {
@@ -171,28 +173,26 @@ const ProductDetails = (props) => {
         let response = await POST("/api/account/setfavorities", id, config)
         if (response.data.status === "success") {
             setFavorit(!favorit)
-        }
+            setShowSigninModal(false)
+        }  
         setShowSigninModal(false)
     }
     else setShowSigninModal(true) 
 
 }
 const messageHandler=async(id)=>{
-    console.log("you accessed message handler", id)
+
     if (localStorage.getItem("c2c-token")) {
-        setShowSigninModal(false)
+        setShowSigninModal(false) 
         setShowMessagePopup(true)
-        const config = {
-            headers: {
-                'x-auth-token': localStorage.getItem('c2c-token'),
-                'Content-Type': 'application/json'
-            }
-        }
+
+
     }
-    else {
-        
-        setShowSigninModal(true) }
+    else 
+        setShowSigninModal(true) 
 }
+
+const reportHandler = (id) => setShowReportAlertBox(true)
 
     return (
         <div className="my-container" show={showModel} onHide={handleClose}>
@@ -256,17 +256,28 @@ const messageHandler=async(id)=>{
                         proceedHandler={()=>deleteHandler(id)}
                         hideAlertBox={()=>setShowDeleteAlertBox(false)} />
                         :null}
+            {showReportAlertBox?
+                    <AlertBox
+                        alertBoxTitle="Report!" 
+                        alertBoxBody="Are you sure to report this product?"
+                        proceedHandler={()=>{
+                            setShowReportAlertBox(false)
+                            setShowReportBox(true)}}
+                        hideAlertBox={()=>setShowReportAlertBox(false)} />
+                        :null}
+
             {showSigninModal?
             <SigninModal 
                     handleClose={()=>setShowSigninModal(false)}
                     show={showSigninModal}
                     classes={classes}
-                    productSubmitHandler={()=>props.history.push("/buyitems")}
+                    productSubmitHandler={()=>setShowSigninModal(false)}
                     handleCloseReset={()=>setShowReset(false)}
                     handleOpenReset={()=>{
                                         setShowSigninModal(false)
                                         setShowReset(true)}}
                     showReset={showReset} />:null}
+
 
             {showReset ? 
                 <PasswordReset
@@ -277,15 +288,25 @@ const messageHandler=async(id)=>{
             />
                 : null} 
             {showMessagePopup?
-                    <ProductMessage
-                        hideAlertBox={()=>setShowMessagePopup(false)}
-                        title={product.title}
-                        productId={product._id}
-                        recipentId={product ? product.creator._id : null}
-                        recipentName={product ? product.creator.firstName : null}
-                        {...props}
-                    />
-                    :null}                                     
+                <ProductMessage
+                    hideAlertBox={()=>setShowMessagePopup(false)}
+                    title={product.title}
+                    productId={product._id}
+                    recipentId={product ? product.creator._id : null}
+                    recipentName={product ? product.creator.firstName : null}
+                    {...props}
+                />
+                :null}
+            {showReportBox?
+                <ReportProduct
+                    hideAlertBox={()=>setShowReportBox(false)}
+                    title={product.title}
+                    productId={product._id}
+                    recipentId={product ? product.creator._id : null}
+                    recipentName={product ? product.creator.firstName : null}
+                    {...props}
+                />
+                :null  }                                  
             </div>
 
     );

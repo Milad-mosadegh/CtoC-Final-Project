@@ -234,6 +234,7 @@ const showAlertBox =()=>{
                             handleOpenReset={handleOpenReset}
                             showReset={showReset}
                             productSubmitHandler={submitHandler}
+                            erros={inputErrors}
             /> : null}
             {showReset ? <PasswordReset 
                             handleClose={handleCloseReset} 

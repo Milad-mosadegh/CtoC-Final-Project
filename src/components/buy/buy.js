@@ -39,8 +39,19 @@ const BuyComponent = (props) => {
             if(response.data.status==="success") setFavorit(response.data.favourities)
     }
     const searchHandler=(text, category)=>{
+        setFilteredProducts(false)
         console.log("search handler called", text, "category", category)
-        axios.get(`/api/buy/categories/${category}`)
+        if(!text)
+        axios.get(`/api/buy/categories/${category}`,{params: {
+            text: text
+          }})
+            .then(res => {if(res.data.success) {
+                console.log(res.data.products, "in search")
+                setProducts(res.data.products)}})
+            .catch(err => err)
+        else axios.get(`/api/buy/categoriessearch/${category}`,{params: {
+            text: text
+          }})
             .then(res => {if(res.data.success) setProducts(res.data.products)})
             .catch(err => err)
     }
@@ -49,14 +60,9 @@ const BuyComponent = (props) => {
 
         e.preventDefault();
         let colorValue = parseInt(e.target.color.value)
-        let categoryValue = parseInt(e.target.category.value)
         let conditionValue = parseInt(e.target.condition.value)
         let priceValue = parseInt(e.target.price.value)
         setFilteredProducts(products
-            .filter(product => {
-                if (categoryValue !== 0) return product.category === categoryValue
-                else return true
-            })
             .filter(product => {
                 if (colorValue !== 0) return product.color === colorValue
                 else return true
@@ -124,4 +130,4 @@ const BuyComponent = (props) => {
     );
 }
 
-export default BuyComponent;    
+export default BuyComponent;

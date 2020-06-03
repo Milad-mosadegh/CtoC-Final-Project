@@ -1,6 +1,6 @@
 @import './variables';
 
-.pdm{
+.rpd{
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -15,24 +15,19 @@
     box-shadow: 0 10px 120px rgb(0, 0, 0);
     transition: 0.5s;
 
-    .pdm-content{
+    .rpd-content{
         width: 40%;
         margin: 300px auto;
-        height: 350px;
+        height: 450px;
         background-color: #eee;
     }
 
-    .pdm-head{
-        background: $bestOrangeColor;
+    .rpd-head{
+        background: $bestRedColor;
         height: 80px; ;
     }
-    .pdm-reporthead{
-        background: $bestOrangeColor;
-        height: 80px; ;
-    }      
- 
-
-      .pdm-head-title{
+    
+      .rpd-head-title{
             background: white;
             color: $bestBlueColor;
              box-shadow: 3px 4px 20px #000000;
@@ -43,7 +38,7 @@
             padding: 10px;
             font-size: 25px;
         }
-    .pdm-tilte{
+    .rpd-tilte{
         margin-top: 25px;
         margin-bottom: 15px;
         padding: 10px;

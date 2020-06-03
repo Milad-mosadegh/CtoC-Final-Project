@@ -101,12 +101,12 @@ exports.updateConversation=async(req,res)=>{
 }
 
 exports.deleteMessages=async(req,res)=>{
-    console.log(req.body, "req from fe")
+    console.log(req.body.data, "req from fe")
     await Conversation.deleteMany({$or:[{senderId:req.userId},{recipentId:req.userId}], _id:{$in:req.body.selectedArray}},(err,doc)=>{
         if(err) res.json({failed:err})
         else {
             console.log(doc)
-            res.json({success:doc})
+            res.json({success:"you have successfully deleted messagges"})
         }
     })
 }

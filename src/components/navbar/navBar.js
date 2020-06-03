@@ -17,7 +17,7 @@ const MyNavbar = (props) => {
         localStorage.removeItem('c2c-token')
         localStorage.removeItem("c2c-profile")
         setAuth(false)
-        props.history.push("/")
+        props.history.push("/signin")
 
     }
 

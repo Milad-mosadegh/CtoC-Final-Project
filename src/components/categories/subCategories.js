@@ -13,8 +13,7 @@ import ProductDetails from "../buy/productDetails"
 
 
 function SubCategories(props) {
-/*     console.log(props.history.location.state.id, "in sub category")
-    console.log(props.match.params.type) */
+
     const type = props.match.params.type
     const title = Categories.filter(data => data.linkName === type)[0].value
     const categoryName= Categories.filter(data=>data.linkName===type)[0].id
@@ -36,12 +35,15 @@ function SubCategories(props) {
     
 
     const searchHandler=(text, category)=>{
+        setFilteredProducts(false)
         console.log("search handler called", text, "category", category)
         if(!text)
         axios.get(`/api/buy/categories/${category}`,{params: {
             text: text
           }})
-            .then(res => {if(res.data.success) setProducts(res.data.products)})
+            .then(res => {if(res.data.success) {
+                console.log(res.data.products, "in search")
+                setProducts(res.data.products)}})
             .catch(err => err)
         else axios.get(`/api/buy/categoriessearch/${category}`,{params: {
             text: text
@@ -59,14 +61,9 @@ function SubCategories(props) {
 
         e.preventDefault();
         let colorValue = parseInt(e.target.color.value)
-        let categoryValue = parseInt(e.target.category.value)
         let conditionValue = parseInt(e.target.condition.value)
         let priceValue = parseInt(e.target.price.value)
         setFilteredProducts(products
-            .filter(product => {
-                if (categoryValue !== 0) return product.category === categoryValue
-                else return true
-            })
             .filter(product => {
                 if (colorValue !== 0) return product.color === colorValue
                 else return true

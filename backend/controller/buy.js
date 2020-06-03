@@ -176,3 +176,28 @@ result = await ActiveProducts.find({title: {$regex:regex}},{
     if(!result) res.json({failed:"Request failed try again"})
         else res.json({success:"success", products:result})
 }
+
+exports.productsByFilter=async(req,res)=>{
+    const {color,category,condition,price}=req.body
+    console.log(color,category,condition,price)
+    let query={}
+    if (color!==0) query.color=color
+    if(category!==0) query.category=category
+    if(condition!==0) query.category=condition
+    if(price!==0) query.priceRange=price
+
+    let result = await ActiveProducts.find(query,{
+        _id: 1,
+        title: 1,
+        category: 1,
+        condition: 1,
+        color: 1,
+        price: 1,
+        images: 1,
+        priceRange: 1,
+
+    }).sort({'_id':-1})
+
+    if(result) res.json({success:result})
+        else res.json({failed:"request failed try again"})
+}

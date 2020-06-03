@@ -5,7 +5,8 @@ const CheckAuthentication = async()=>{
         const token=localStorage.getItem("c2c-token")
         let response=await get("api/auth/authenticated",{
                 headers:{
-                    "x-auth-token":token
+                    "x-auth-token":token,
+                    'Content-Type': 'application/json'
                 }
         })
         .then(res=>{
@@ -27,7 +28,8 @@ const IfAuthenticated = async ({children}) => {
     if(token){
         let response = await get("api/auth/authenticated",{
                 headers:{
-                    'x-auth-token':token
+                    'x-auth-token':token,
+                    'Content-Type': 'application/json'
                 }})
             .then(res=>JSON.parse(res))
             .catch(err=>{
@@ -47,7 +49,8 @@ const IfNotAuthenticated = async(props) => {
     if(token){
         let response = await get("api/auth/authenticated",{
                 headers:{
-                    'x-auth-token':token
+                    'x-auth-token':token,
+                    'Content-Type': 'application/json'
                 }})
             .then(res=>res)
             .catch(err=>{
