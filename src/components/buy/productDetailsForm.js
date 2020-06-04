@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import PictureSlider from './pictureSlider';
 import { CheckAuthentication } from '../lib/auth'
 import '../styles/main.css'
+import  {GlobalContextContext} from "../Context/contextApi"
 
 const ProductDetailsForm = (props) => {
 
@@ -30,6 +31,7 @@ const ProductDetailsForm = (props) => {
         messageHandler } = props
 
     const [auth, setAuth] = useState(false)
+    const [profile, setProfile] = useContext(GlobalContextContext)
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -39,9 +41,6 @@ const ProductDetailsForm = (props) => {
         }
         checkAuth()
     }, [])
-    let currentUserId = auth ? JSON.parse(localStorage.getItem("c2c-profile")).id : null
-
-
     return (
         <div>
             <div className="head-one">
@@ -108,7 +107,7 @@ const ProductDetailsForm = (props) => {
             <div className="fixed-bottom">
                 {creatorId ?
                     status!=="sold"?
-                    creatorId === currentUserId ?
+                    creatorId === profile.userId ?
                         status==="inactive"?
                             <div>
                                 <button className='myOrabgeButton-lg ml-1' onClick={() => activateHandler(productId)}> Activate</button>

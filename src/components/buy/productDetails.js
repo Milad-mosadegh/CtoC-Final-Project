@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 const ProductDetails = (props) => {
 
     const classes = useStyles();
-    const { id, showModel, handleClose, url,status } = props
+    const { id, showModel, handleClose, url,status,getLastSeen } = props
     const [product, setProduct] = useState("")
     const [showSoldAlertBox, setShowSoldAlertBox] = useState(false)
     const [showActiveAlertBox, setShowActiveAlertBox]=useState(false)
@@ -78,9 +78,10 @@ const ProductDetails = (props) => {
                 }
             }
             await POST("/api/account/lastseen", id, config)
+            if(getLastSeen) await getLastSeen()
         })
 
-    }, [id,url])
+    }, [id,url,getLastSeen])
 
 
     const handleBgImage = (backgroundImage) => {

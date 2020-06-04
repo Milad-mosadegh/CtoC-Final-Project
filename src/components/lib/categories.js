@@ -10,13 +10,13 @@ const Categories = [
     { linkName: 'computers', id: 8, value: "Computers & Accessories", imgName: "it.jpg" },
     { linkName: 'consumer', id: 9, value: "Consumer Electronics", imgName: "consumer.jpeg" },
     { linkName: 'movies', id: 10, value: "DVDs & Movies", imgName: "movie.jpg" },
-    { linkName: 'home', id: 11, value: "Home & Garden", imgName: "home.jpg" },
-    { linkName: 'jewelery', id: 12, value: "Jewelery & Watches", imgName: "jewellery.jpg" },
-    { linkName: 'music', id: 13, value: "Musical Instruments", imgName: "music.jpg" },
+    { linkName: 'home', id: 11, value: "Home & Garden", imgName: "home.jpeg" },
+    { linkName: 'jewelery', id: 12, value: "Jewelery & Watches", imgName: "jewellery.jpeg" },
+    { linkName: 'music', id: 13, value: "Musical Instruments", imgName: "music.jpeg" },
     { linkName: 'pets', id: 14, value: "Pet Supplies", imgName: "pet.jpeg" },
     { linkName: 'sports', id: 15, value: "Sports", imgName: "sport.jpg" },
     { linkName: 'hobbies', id: 16, value: "Toys & Hobbies", imgName: "toys.jpeg" },
-    { linkName: 'games', id: 17, value: "Video Games & Consoles", imgName: "game.jpg" },
+    { linkName: 'games', id: 17, value: "Video Games & Consoles", imgName: "game.jpeg" },
     { linkName: 'others', id: 18, value: "Others", imgName: "art.jpg" }]
 export default Categories;
 

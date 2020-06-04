@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState , useEffect,useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import '../../App.css'
 import {POST} from "../lib/post";
@@ -7,6 +7,7 @@ import './style.css'
 import MyNavbar from '../navbar/navBar';
 import SignupForm from './signupForm';
 import GET from '../lib/get';
+import {GlobalContextContext} from "../Context/contextApi"
 
 
 const useStyles = makeStyles(theme => ({
@@ -21,6 +22,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function MaterialSignup(props) {
+    const [profile,setProfile] = useContext(GlobalContextContext)
     const classes = useStyles();
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -36,9 +38,16 @@ export default function MaterialSignup(props) {
             {
             const getData =async ()=>{
                 let response = await GET("/api/auth/authenticated")
-                if(response.data){
-                    if(response.data.status==="success") props.history.push("/dashboard")
-                    }
+
+                    if(response.data.status==="success") {
+                        setProfile({ ...profile,
+                            auth:true,
+                            userId:response.data.data._id,
+                            name:response.data.data.firstName,
+                            favorities:response.data.data.liked
+                       })
+
+                        props.history.push("/dashboard")}
                 else {
                     localStorage.removeItem("c2c-token")
                     localStorage.removeItem("c2c-profile")}

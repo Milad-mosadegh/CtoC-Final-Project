@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { POST } from '../../lib/post';
 import SigninForm from "./signinForm"
 import '../../styles/main.css';
 import axios from 'axios';
+import {GlobalContextContext} from "../../Context/contextApi"
 
 export default function SigninModal(props) {
 
@@ -11,6 +12,8 @@ export default function SigninModal(props) {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [errors, setErrors] = useState("")
+    const [profile,setProfile] = useContext(GlobalContextContext)
+
   
     const changeHandler = (e) => {
         setErrors({ ...errors, form: { ...errors.form, status: false } })
@@ -48,6 +51,12 @@ export default function SigninModal(props) {
                 localStorage.setItem("c2c-token", response.data.token)
                 localStorage.setItem("c2c-profile",JSON.stringify(response.data.data) )
                 axios.defaults.headers['x-auth-token'] = response.data.token
+                setProfile({ ...profile,
+                     auth:true,
+                    userId:response.data.data.id,
+                    favorities:response.data.data.liked,
+                    name:response.data.data.firstName
+                })
                 productSubmitHandler()
             }
             else setErrors({ ...errors, authentication: { ...errors.authentication, status: true } })

@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import it from '../../images/it.jpg'
 import sports from '../../images/sport.jpg'
-import home from '../../images/home.jpg'
+import home from "../../images/home.jpeg"
 import game from '../../images/game.jpg'
 import music from '../../images/music.jpg'
 import movie from '../../images/movie.jpg'

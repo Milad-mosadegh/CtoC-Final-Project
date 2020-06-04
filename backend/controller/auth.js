@@ -28,11 +28,11 @@ exports.signin=async (req,res)=>{
                    if(isPassCorrect) {
                         if(result.confirmed){
                                 const token = await createToken(result.id)
-                                const {id, firstName, lastName } = result
+                                const {id, firstName, lastName,liked } = result
                                 res.json({
                                     status   :"success",
                                     message  : "Welcome! you are successfully logged in. ",
-                                    data     : {id, firstName, lastName}, 
+                                    data     : {id, firstName, lastName, liked}, 
                                     token
                                      })
                                     }   else res.json({
@@ -91,19 +91,10 @@ exports.signup=async (req,res)=>{
 //Checking Authentication of user
 
 exports.authenticated=async(req,res)=>{
-    await User.findById(req.userId, (err, doc)=>{
+    await User.findById(req.userId,{_id:1,firstName:1,liked:1,} ,(err, doc)=>{
         if(err) return res.json({status:"failed", message:"Unable to retrieve your data please try again"})
-        const {firstName, lastName, email, address, paypalId, phoneNumber, profileImage} = doc 
-        let profileData={
-            firstName,
-            lastName,
-            email, 
-            address, 
-            paypalId, 
-            phoneNumber, 
-            profileImage
-        }
-        res.json({status:"success", message:"You have been authorized", data:profileData})
+
+        res.json({status:"success", message:"You have been authorized", data:doc})
 })
 }
 exports.changePassword =async(req,res)=>{

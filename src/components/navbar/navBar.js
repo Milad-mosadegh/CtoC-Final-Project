@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import { Link } from 'react-router-dom'
 import '../styles/main.css'
 import { Navbar, Nav, Badge } from 'react-bootstrap';
 import GET from '../lib/get';
 import pic1 from '../../logo/1.png'
+import {GlobalContextContext} from "../Context/contextApi"
 
 
 
 
 const MyNavbar = (props) => {
-    const [auth, setAuth] = useState("")
-    const [path, setPath] = useState("")
-    const [username, setUsername] = useState("")
 
+    const [path, setPath] = useState("")
+    const [profile,setProfile]=useContext(GlobalContextContext)
     const logoutHandler = () => {
         localStorage.removeItem('c2c-token')
         localStorage.removeItem("c2c-profile")
-        setAuth(false)
+        setProfile({ ...profile,
+            auth:false,
+           userId:false,
+           favorities:[],
+           name:false
+       })
         props.history.push("/signin")
 
     }
@@ -36,19 +41,33 @@ const MyNavbar = (props) => {
                 let response = await GET("/api/auth/authenticated")
                 if (response.data) {
                     if (response.data.status === "success") {
-                        setAuth(true)
-                        setUsername(response.data.data.firstName)
+                        setProfile({ ...profile,
+                            auth:true,
+                            userId:response.data.data._id,
+                            name:response.data.data.firstName,
+                            favorities:response.data.data.liked
+                       })
                     }
                 }
                 else {
-                    setAuth(false)
+                    setProfile({ ...profile,
+                        auth:false,
+                       userId:false,
+                       favorities:[],
+                       name:false
+                   })
                     localStorage.removeItem("c2c-token")
                     localStorage.removeItem("c2c-profile")
                 }
             }
             getData()
         }
-        else setAuth(false)
+        else setProfile({ ...profile,
+            auth:false,
+           userId:false,
+           favorities:[],
+           name:false
+       })
 
         if (props.location) {
             setPath(props.location.pathname)
@@ -59,8 +78,10 @@ const MyNavbar = (props) => {
         <div>
             <Navbar expand="lg">
 
-                <Navbar.Brand href="#home" className="navLogo">
+                <Navbar.Brand className="navLogo">
+                    <Link className="text-light text-uppercase" to="/">
                     <img src={pic1} alt="" width="200px" height="70px" />
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -88,7 +109,7 @@ const MyNavbar = (props) => {
                         </Nav.Link>
                     </Nav>
 
-                    {auth ?
+                    {profile.auth ?
 
                         <Nav>
                             <Nav.Link>
@@ -102,7 +123,7 @@ const MyNavbar = (props) => {
                                 </Link>
                             </Nav.Link>
                             <Nav.Link className="justify-content-center ">
-                                <span className="navB">Welcome <span className="navBRed">{username}</span> </span>
+                                <span className="navB">Welcome <span className="navBRed">{profile.name}</span> </span>
                             </Nav.Link>
                             <Nav.Link className="btn " onClick={logoutHandler}>
                                 <span className="navTitle fa fa-sign-out " style={{ fontSize: "26px", colo: "#11213b" }}></span>

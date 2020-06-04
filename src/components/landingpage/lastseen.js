@@ -1,29 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import '../styles/main.css';
 import LastSeenDescription from './lastSeenDescription';
-import GET from "../lib/get"
 import Products from "../buy/products"
 
 
 const LastSeen = (props) => {
-    const {favorit,favoritHandler} = props
-    const [lastSeenProducts, setLastSeenProducts] = useState([])
+    const {favorit,favoritHandler , getLastSeen,lastSeenProducts} = props
+  
 
     useEffect(() => {
-        const getProducts = async () => {
-            let response = await GET("/api/account/lastseen")
-            if (response.data.status === "success") setLastSeenProducts(response.data.data)
-            else {
-                localStorage.removeItem("c2c-token")
-                localStorage.removeItem("c2c-profile")
-                props.unAuthenticated()
-            }
-        }
-        if (localStorage.getItem("c2c-token")) getProducts();
+        
+        if (localStorage.getItem("c2c-token")) getLastSeen();
         else props.unAuthenticated()
 
 
     }, [])
+    
 
     return (
         <div>
@@ -36,6 +28,8 @@ const LastSeen = (props) => {
                             setTargetProduct={props.setTargetProduct}
                             favorit={favorit}
                             favoritHandler={favoritHandler}
+                            getLastSeen={getLastSeen}
+                            
                         />
                     </div>
                 </div>

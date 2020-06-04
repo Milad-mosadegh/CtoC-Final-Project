@@ -1,47 +1,27 @@
-/* import React, { useState } from 'react'
-import App from '../../App';
- */
+import React, { useState } from 'react'
+const GlobalContextContext = React.createContext();
 
 
-// export const GlobalContext = React.createContext();
 
-/* const [auth, setAuth] = useState(false)
-const [favorities, setFavorities] = useState([])
-const [userProfile, setUserProfile] = useState(
-    { userName: "Milad", userId: "123" }
-)
+ const GlobalContextProvider = (props) =>{ 
+    
 
-const getFavorities = () => {
-    setFavorities([])
-}
+    const [profile, setProfile] = useState({
+        auth:false,
+        favorities:[],
+        name:false,
+        userId:false
+    })
 
-const unAuthorize = () => {
-    setAuth(false)
-    setFavorities([])
-}
+     return (
+         //<GlobalContext.Provider value={[auth,setAuth,favorities,setFavorities,name,setName,userId,setUserId]}>
+         <GlobalContextContext.Provider value={[profile,setProfile]}>
 
-const authorize = (profile) => {
-    setAuth(true)
-    setUserProfile(
-        {
-            userName: profile.firstName,
-            userId: profile._id
-        }
-    )
-}
- */
-
-// const GlobalContextProvider = () => {
-
-//     return (
-//         <GlobalContext.Provider value={"MIlad"}>
-
-//             <App />
-
-//         </GlobalContext.Provider>
-//     );
-// };
-// export default GlobalContextProvider
+            {props.children}
+         </GlobalContextContext.Provider>
+     );
+ };
+ export  {GlobalContextProvider, GlobalContextContext }
 
 
 

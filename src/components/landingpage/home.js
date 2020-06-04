@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import LastSeen from './lastseen';
 import MyNavbar from '../navbar/navBar';
 import GET from '../lib/get';
@@ -7,14 +7,14 @@ import '../styles/main.css'
 import LatestProducts from './latestProducts';
 import ProductDetails from '../buy/productDetails';
 import MyFooter from '../footer/footer';
-import ContextApi from '../Context/contextApi';
+import  {GlobalContextContext} from "../Context/contextApi"
 
 const Home = (props) => {
 
-    const [auth, setAuth] = useState(false)
+    const [profile,setProfile]=useContext(GlobalContextContext)
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
-    const [favorit, setFavorit] = useState([])
+    const [lastSeenProducts, setLastSeenProducts] = useState([])
     const setTargetProduct = (id) => {
         setShowModal(true)
         setProductId(id)
@@ -23,30 +23,55 @@ const Home = (props) => {
     const handleClose = () => {
         setShowModal(false)
     }
-    const unAuthenticated = () => setAuth(false)
+    const unAuthenticated = () => setProfile({ ...profile,
+        auth:false,
+       userId:false,
+       favorities:[],
+       name:false
+   })
     useEffect(() => {
         if (localStorage.getItem("c2c-token")) {
             const getData = async () => {
                 let response = await GET("/api/auth/authenticated")
                 if (response.data) {
-                    if (response.data.status === "success") setAuth(true)
-                }
-                else setAuth(false)
+                    if (response.data.status === "success") {
+                        setProfile({ ...profile,
+                        auth:true,
+                        userId:response.data.data._id,
+                        name:response.data.data.firstName,
+                        favorities:response.data.data.liked
+                   })
+                }}
+                else setProfile({ ...profile,
+                    auth:false,
+                   userId:false,
+                   favorities:[],
+                   name:false
+               })
             }
             getData()
             const getFavorities = async () => {
                 if (!localStorage.getItem("c2c-token")) return
                 let response = await GET("/api/account/getfavoritelist")
                 if (response.data.status === "success")
-                    setFavorit(response.data.favourities)
+                setProfile({ ...profile,favorities:response.data.favourities})
             }
             getFavorities()
         }
     }, [])
+    const getLastSeen = async () => {
+        let response = await GET("/api/account/lastseen")
+        if (response.data.status === "success") setLastSeenProducts(response.data.data)
+        else {
+            localStorage.removeItem("c2c-token")
+            localStorage.removeItem("c2c-profile")
+            unAuthenticated()
+        }
+    }
 
     const favoritHandler = async () => {
         let response = await GET("/api/account/getfavoritelist")
-        if (response.data.status === "success") setFavorit(response.data.favourities)
+        if (response.data.status === "success") setProfile({ ...profile,favorities:response.data.favourities})
     }
 
     return (
@@ -55,7 +80,7 @@ const Home = (props) => {
 
 
             {showModal ?
-                <ProductDetails showModel={showModal} handleClose={handleClose}
+                <ProductDetails showModel={showModal} handleClose={handleClose} getLastSeen={getLastSeen}
                     id={productId} {...props}
                 /> :
 
@@ -74,16 +99,19 @@ const Home = (props) => {
 
                             <LatestProducts
                                 setTargetProduct={setTargetProduct}
-                                favorit={favorit}
-                                favoritHandler={favoritHandler} />
+                                favorit={profile.favorities}
+                                favoritHandler={favoritHandler}
+                                />
                         </div>
 
                         <div className="rightCard">
-                            <LastSeen auth={auth}
+                            <LastSeen auth={profile.auth}
                                 setTargetProduct={setTargetProduct}
-                                favorit={favorit}
+                                favorit={profile.favorities}
                                 favoritHandler={favoritHandler}
-                                unAuthenticated={unAuthenticated} /> 
+                                unAuthenticated={unAuthenticated}
+                                lastSeenProducts={lastSeenProducts}
+                                getLastSeen={getLastSeen}  /> 
                         </div>
                     </div>
 

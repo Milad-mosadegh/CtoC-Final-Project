@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect,useContext} from 'react';
 import MyNavbar from '../navbar/navBar';
 import MyProfile from './profile/mainProfile';
 import '../../App.css'
@@ -8,29 +8,28 @@ import Favorites from './favorities/favorities';
 import '../styles/main.css'
 import GET from '../lib/get';
 import ProductDetails from '../buy/productDetails';
+import  {GlobalContextContext} from "../Context/contextApi"
 
 
 export default function MainAcc(props) {
-    const [favorit, setFavorit] = useState([])
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
     const [url, setUrl]=useState("")
     const [status, setStatus]=useState("")
+    const [profile,setProfile]=useContext(GlobalContextContext)
 
     const mykey = props.location.mykey ? props.location.mykey : "profile"
     useEffect(() => {
         if (localStorage.getItem("c2c-token")) {
-            const getFavorities = async()=>{
-                if(!localStorage.getItem("c2c-token")) return
-                let response= await GET("/api/account/getfavoritelist")
-                if(response.data.status==="success")
-                setFavorit(response.data.favourities)
-            }
-            
             getFavorities()
         }
     }, [])
-    
+    const getFavorities = async()=>{
+        if(!localStorage.getItem("c2c-token")) return
+        let response= await GET("/api/account/getfavoritelist")
+        if(response.data.status==="success")
+        setProfile({ ...profile,favorities:response.data.favourities})
+    }
     const setTargetProduct = (id,url,status) => {
         setProductId(id)
         setUrl(url)
@@ -43,10 +42,6 @@ export default function MainAcc(props) {
     const handleClose = () => {
         setShowModal(false)
 
-    }
-    const favoritHandler = async()=>{
-        let response= await GET("/api/account/getfavoritelist")
-            if(response.data.status==="success") setFavorit(response.data.favourities)
     }
     return (
         <div >
@@ -74,8 +69,8 @@ export default function MainAcc(props) {
                     </Tab>
                     <Tab eventKey="activities" title="Activities" >
                         <MainActivity {...props}
-                            favorit={favorit}
-                            favoritHandler={favoritHandler}
+                            favorit={profile.favorities}
+                            favoritHandler={getFavorities}
                             setTargetProduct={setTargetProduct}
                             handleClose={handleClose} />
 
@@ -83,8 +78,8 @@ export default function MainAcc(props) {
                     </Tab>
                     <Tab eventKey="favorities" title="Favorities" >
                         <Favorites {...props}
-                            favorit={favorit}
-                            favoritHandler={favoritHandler}
+                            favorit={profile.favorities}
+                            favoritHandler={getFavorities}
                             setTargetProduct={setTargetProduct}
                             handleClose={handleClose} />
                     </Tab>

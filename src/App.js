@@ -17,10 +17,11 @@ import Contact from './components/contact/contact';
 import EditProduct from './components/account/editProductDetail/editProduct';
 import SubCategories from './components/categories/subCategories';
 import ConfirmEmail from "./components/signup/confirmEmail"
-
+import {GlobalContextProvider} from "./components/Context/contextApi"
 function App() {
   return (
     <div className="App">
+    <GlobalContextProvider>
         <Router>
           <Switch>
             <Route path="/" exact component={Home} />
@@ -36,8 +37,9 @@ function App() {
             <Route path="/signup" component={MaterialSignup} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/confirm/:id/:token" component={ConfirmEmail} />
-          </Switch>
-        </Router>
+            </Switch>
+          </Router>
+        </GlobalContextProvider>
     </div>
 
   );
