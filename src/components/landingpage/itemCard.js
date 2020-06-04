@@ -9,11 +9,9 @@ const ItemCard = ({ title, price, id, images, setTargetProduct, url, favoritHand
     const [profile, setProfile] = useContext(GlobalContextContext)
 
     useEffect(() => {
-        console.log(profile.favorities, "in item cards")
      if (profile.favorities.includes(id)) setFavoritized(true)
          else setFavoritized(false)
-    }, [id]);
-console.log(profile, "in item card")
+    }, [id,favoritized,profile.favorities]);
 
     const setFvorities = async () => {
         if (localStorage.getItem("c2c-token")) {

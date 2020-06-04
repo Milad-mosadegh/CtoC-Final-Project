@@ -8,6 +8,7 @@ import LatestProducts from './latestProducts';
 import ProductDetails from '../buy/productDetails';
 import MyFooter from '../footer/footer';
 import  {GlobalContextContext} from "../Context/contextApi"
+import axios from "axios"
 
 const Home = (props) => {
 
@@ -15,6 +16,7 @@ const Home = (props) => {
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
     const [lastSeenProducts, setLastSeenProducts] = useState([])
+    const [favToPass, setFavToPass]=useState([])
     const setTargetProduct = (id) => {
         setShowModal(true)
         setProductId(id)
@@ -22,6 +24,8 @@ const Home = (props) => {
 
     const handleClose = () => {
         setShowModal(false)
+        getFavorities()
+
     }
     const unAuthenticated = () => setProfile({ ...profile,
         auth:false,
@@ -29,36 +33,44 @@ const Home = (props) => {
        favorities:[],
        name:false
    })
+   const getFavorities = async () => {
+    if (!localStorage.getItem("c2c-token")) return
+    let response = await GET("/api/account/getfavoritelist")
+    if (response.data.status === "success")
+    setProfile({ ...profile,favorities:response.data.favourities})
+}
     useEffect(() => {
-        if (localStorage.getItem("c2c-token")) {
-            const getData = async () => {
-                let response = await GET("/api/auth/authenticated")
-                if (response.data) {
-                    if (response.data.status === "success") {
-                        setProfile({ ...profile,
-                        auth:true,
-                        userId:response.data.data._id,
-                        name:response.data.data.firstName,
-                        favorities:response.data.data.liked
-                   })
-                }}
-                else setProfile({ ...profile,
-                    auth:false,
-                   userId:false,
-                   favorities:[],
-                   name:false
-               })
+        if (localStorage.getItem("c2c-token")) 
+        axios.get("/api/auth/authenticated", {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-auth-token': localStorage.getItem('c2c-token')
             }
-            getData()
-            const getFavorities = async () => {
-                if (!localStorage.getItem("c2c-token")) return
-                let response = await GET("/api/account/getfavoritelist")
-                if (response.data.status === "success")
-                setProfile({ ...profile,favorities:response.data.favourities})
-            }
-            getFavorities()
-        }
+        })
+        .then(res => {
+            if(res.data.status==="success")
+                setProfile({ ...profile,
+                    auth:true,
+                    userId:res.data.data._id,
+                    name:res.data.data.firstName,
+                    favorities:res.data.data.liked
+                })
+                else {
+                    props.history.push("/signin")
+                     setProfile({ ...profile,
+                            auth:false,
+                           userId:false,
+                           favorities:[],
+                           name:false
+                       })}
+                })
+        .catch(err => err)
+        else 
+            props.history.push("/")
+
+
     }, [])
+
     const getLastSeen = async () => {
         let response = await GET("/api/account/lastseen")
         if (response.data.status === "success") setLastSeenProducts(response.data.data)

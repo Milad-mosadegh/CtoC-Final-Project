@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import MyNavbar from '../navbar/navBar';
 import SearchBar from '../searchBar/searchbar';
@@ -8,35 +8,38 @@ import GET from '../lib/get';
 import axios from "axios"
 import FilterBar from "../filterBar/filterBar"
 import ProductDetails from './productDetails';
+import  {GlobalContextContext} from "../Context/contextApi"
 // import { IfNotAuthenticated } from '../lib/auth';
 
 
 
 const BuyComponent = (props) => {
+    const [profile,setProfile]=useContext(GlobalContextContext)
     const [products, setProducts] = useState("")
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
     const [filteredProducts, setFilteredProducts] = useState("")
     const [showMainComponent, setShowMainComponents] = useState(true)
-    const [favorit, setFavorit] = useState([])
+
+    const getFavorities = async()=>{
+        if(!localStorage.getItem("c2c-token")) return
+        let response= await GET("/api/account/getfavoritelist")
+        if(response.data.status==="success")
+        setProfile({ ...profile,favorities:response.data.favourities})
+    }
     useEffect(() => {
         const fetchData = async () => {
             let response = await GET("/api/buy/allproducts")
             setProducts(response.data.data)
         }
         fetchData()
-        const getFavorities = async()=>{
-            if(!localStorage.getItem("c2c-token")) return
-            let response= await GET("/api/account/getfavoritelist")
-            if(response.data.status==="success")
-            setFavorit(response.data.favourities)
-        }
+        
         getFavorities()
     }, [])
 
     const favoritHandler = async()=>{
         let response= await GET("/api/account/getfavoritelist")
-            if(response.data.status==="success") setFavorit(response.data.favourities)
+        if (response.data.status === "success") setProfile({ ...profile,favorities:response.data.favourities})
     }
     const searchHandler=(text, category)=>{
         setFilteredProducts(false)
@@ -85,6 +88,7 @@ const BuyComponent = (props) => {
     }
 
     const handleClose = () => {
+        getFavorities()
         setShowModal(false)
         setShowMainComponents(true)
 
@@ -117,7 +121,7 @@ const BuyComponent = (props) => {
                 <Products
                     products={filteredProducts ? filteredProducts : products}
                     setTargetProduct={setTargetProduct}
-                    favorit={favorit}
+                    favorit={profile.favorities}
                     favoritHandler={favoritHandler}
                 />
             </div></>:null}
