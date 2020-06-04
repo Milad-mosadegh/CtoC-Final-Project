@@ -16,7 +16,7 @@ function SubCategories(props) {
 
     const type = props.match.params.type
     const title = Categories.filter(data => data.linkName === type)[0].value
-    const categoryName= Categories.filter(data=>data.linkName===type)[0].id
+    const categoryName = Categories.filter(data => data.linkName === type)[0].id
 
     const [products, setProducts] = useState("")
     const [showModal, setShowModal] = useState(false)
@@ -28,27 +28,34 @@ function SubCategories(props) {
 
     useEffect(() => {
         axios.get(`/api/buy/categories/${categoryName}`)
-            .then(res => {if(res.data.success) setProducts(res.data.products)})
+            .then(res => { if (res.data.success) setProducts(res.data.products) })
             .catch(err => err)
     }, [])
 
-    
 
-    const searchHandler=(text, category)=>{
+
+    const searchHandler = (text, category) => {
         setFilteredProducts(false)
         console.log("search handler called", text, "category", category)
-        if(!text)
-        axios.get(`/api/buy/categories/${category}`,{params: {
-            text: text
-          }})
-            .then(res => {if(res.data.success) {
-                console.log(res.data.products, "in search")
-                setProducts(res.data.products)}})
-            .catch(err => err)
-        else axios.get(`/api/buy/categoriessearch/${category}`,{params: {
-            text: text
-          }})
-            .then(res => {if(res.data.success) setProducts(res.data.products)})
+        if (!text)
+            axios.get(`/api/buy/categories/${category}`, {
+                params: {
+                    text: text
+                }
+            })
+                .then(res => {
+                    if (res.data.success) {
+                        console.log(res.data.products, "in search")
+                        setProducts(res.data.products)
+                    }
+                })
+                .catch(err => err)
+        else axios.get(`/api/buy/categoriessearch/${category}`, {
+            params: {
+                text: text
+            }
+        })
+            .then(res => { if (res.data.success) setProducts(res.data.products) })
             .catch(err => err)
     }
 
@@ -87,43 +94,45 @@ function SubCategories(props) {
 
     return (
         <div>
-        <MyNavbar {...props} />
-        {showMainComponent?
-            <>
-            
-            
-            <div className="container">
-                <div className="active-message-head"></div>
-                <div className="active-message-text">
-                    <h1>{title}</h1>
-                </div>
-            </div>
-            <SearchBar 
-                category={props.history.location.id}
-                products={filteredProducts ? filteredProducts : products}
-                {...props}
-                searchHandler={searchHandler}
-            />
-            <FilterBar 
-                filterHandler={filterHandler}
-            />
-            
-            <div className="container">
-                <Products
-                    products={filteredProducts ? filteredProducts : products}
-                    setTargetProduct={setTargetProduct}
-                    favorit={favorit}
-                    favoritHandler={favoritHandler}
-                />
-            </div>
-            </>:null}
+            <MyNavbar {...props} />
+            {showMainComponent ?
+                <>
+
+
+                    <div className="container">
+                        <div className="active-message-head"></div>
+                        <div className="active-message-text">
+                            <h1>{title}</h1>
+                        </div>
+                    </div>
+                    <SearchBar
+                        category={props.history.location.id}
+                        products={filteredProducts ? filteredProducts : products}
+                        {...props}
+                        searchHandler={searchHandler}
+                    />
+                    <FilterBar
+                        filterHandler={filterHandler}
+                    />
+
+                    <div className=" ">
+                        <Products
+                            products={filteredProducts ? filteredProducts : products}
+                            setTargetProduct={setTargetProduct}
+                            favorit={favorit}
+                            favoritHandler={favoritHandler}
+                        />
+                    </div>
+                </> : null}
             {showModal ?
-                <ProductDetails 
-                    showModel={showModal} 
-                    handleClose={()=>{setShowModal(false)
-                                      setShowMainComponents(true)}}
+                <ProductDetails
+                    showModel={showModal}
+                    handleClose={() => {
+                        setShowModal(false)
+                        setShowMainComponents(true)
+                    }}
                     id={productId} {...props}
-                />:null}
+                /> : null}
 
         </div>
     )
