@@ -19,10 +19,11 @@ import React from 'react';
 // import ConfirmEmail from "./components/signup/confirmEmail"
 // import { GlobalContextProvider } from "./components/Context/contextApi"
 import App2 from './App2';
-function App() {
+import MyNavbar from './components/navbar/navBar';
+function App(props) {
   return (
     <div className="App">
-
+      <MyNavbar{...props} />
       <App2 />
       <h1>This H1 is wrote in APP</h1>
 
