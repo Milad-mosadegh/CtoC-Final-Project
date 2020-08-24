@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from './components/landingpage/home';
+
 
 // import store from 'store.js'
 
@@ -20,7 +20,7 @@ import Home from './components/landingpage/home';
 ReactDOM.render(
   // <Provider store={store}>
   <React.StrictMode>
-    <h1>This is my home</h1>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
