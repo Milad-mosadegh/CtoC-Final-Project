@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/CtoC-Final-Project/static/css/main.384916af.chunk.css",
-    "main.js": "/CtoC-Final-Project/static/js/main.7a03047e.chunk.js",
-    "main.js.map": "/CtoC-Final-Project/static/js/main.7a03047e.chunk.js.map",
+    "main.js": "/CtoC-Final-Project/static/js/main.28458d51.chunk.js",
+    "main.js.map": "/CtoC-Final-Project/static/js/main.28458d51.chunk.js.map",
     "runtime-main.js": "/CtoC-Final-Project/static/js/runtime-main.54867a42.js",
     "runtime-main.js.map": "/CtoC-Final-Project/static/js/runtime-main.54867a42.js.map",
-    "static/css/2.d47accda.chunk.css": "/CtoC-Final-Project/static/css/2.d47accda.chunk.css",
-    "static/js/2.8fdb5fb4.chunk.js": "/CtoC-Final-Project/static/js/2.8fdb5fb4.chunk.js",
-    "static/js/2.8fdb5fb4.chunk.js.map": "/CtoC-Final-Project/static/js/2.8fdb5fb4.chunk.js.map",
+    "static/css/2.6fde30f9.chunk.css": "/CtoC-Final-Project/static/css/2.6fde30f9.chunk.css",
+    "static/js/2.baeb762f.chunk.js": "/CtoC-Final-Project/static/js/2.baeb762f.chunk.js",
+    "static/js/2.baeb762f.chunk.js.map": "/CtoC-Final-Project/static/js/2.baeb762f.chunk.js.map",
     "index.html": "/CtoC-Final-Project/index.html",
-    "precache-manifest.29ea8862e10fef55724fb147d06e674a.js": "/CtoC-Final-Project/precache-manifest.29ea8862e10fef55724fb147d06e674a.js",
+    "precache-manifest.1331d103e148f5203a9b8c6ac673da88.js": "/CtoC-Final-Project/precache-manifest.1331d103e148f5203a9b8c6ac673da88.js",
     "service-worker.js": "/CtoC-Final-Project/service-worker.js",
-    "static/css/2.d47accda.chunk.css.map": "/CtoC-Final-Project/static/css/2.d47accda.chunk.css.map",
+    "static/css/2.6fde30f9.chunk.css.map": "/CtoC-Final-Project/static/css/2.6fde30f9.chunk.css.map",
     "static/css/main.384916af.chunk.css.map": "/CtoC-Final-Project/static/css/main.384916af.chunk.css.map",
-    "static/js/2.8fdb5fb4.chunk.js.LICENSE.txt": "/CtoC-Final-Project/static/js/2.8fdb5fb4.chunk.js.LICENSE.txt",
+    "static/js/2.baeb762f.chunk.js.LICENSE.txt": "/CtoC-Final-Project/static/js/2.baeb762f.chunk.js.LICENSE.txt",
     "static/media/1.png": "/CtoC-Final-Project/static/media/1.ae4f36a0.png",
     "static/media/antique.jpg": "/CtoC-Final-Project/static/media/antique.369bcd35.jpg",
     "static/media/art.jpg": "/CtoC-Final-Project/static/media/art.1c3bae07.jpg",
@@ -41,9 +41,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.54867a42.js",
-    "static/css/2.d47accda.chunk.css",
-    "static/js/2.8fdb5fb4.chunk.js",
+    "static/css/2.6fde30f9.chunk.css",
+    "static/js/2.baeb762f.chunk.js",
     "static/css/main.384916af.chunk.css",
-    "static/js/main.7a03047e.chunk.js"
+    "static/js/main.28458d51.chunk.js"
   ]
 }

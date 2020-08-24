@@ -21,7 +21,7 @@ import { GlobalContextProvider } from "./components/Context/contextApi"
 function App() {
   return (
     <div className="App">
-      <GlobalContextProvider>
+      {/* <GlobalContextProvider>
         <Router>
           <Switch>
             <Route path="/" exact component={Home} />
@@ -39,7 +39,8 @@ function App() {
             <Route path="/confirm/:id/:token" component={ConfirmEmail} />
           </Switch>
         </Router>
-      </GlobalContextProvider>
+      </GlobalContextProvider> */}
+      <h1>This H1 is wrote in APP</h1>
     </div>
 
   );
