@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/CtoC-Final-Project/static/css/main.384916af.chunk.css",
-    "main.js": "/CtoC-Final-Project/static/js/main.03c5a5b6.chunk.js",
-    "main.js.map": "/CtoC-Final-Project/static/js/main.03c5a5b6.chunk.js.map",
+    "main.js": "/CtoC-Final-Project/static/js/main.4c3604f8.chunk.js",
+    "main.js.map": "/CtoC-Final-Project/static/js/main.4c3604f8.chunk.js.map",
     "runtime-main.js": "/CtoC-Final-Project/static/js/runtime-main.54867a42.js",
     "runtime-main.js.map": "/CtoC-Final-Project/static/js/runtime-main.54867a42.js.map",
     "static/css/2.278aff2b.chunk.css": "/CtoC-Final-Project/static/css/2.278aff2b.chunk.css",
-    "static/js/2.e679f2bb.chunk.js": "/CtoC-Final-Project/static/js/2.e679f2bb.chunk.js",
-    "static/js/2.e679f2bb.chunk.js.map": "/CtoC-Final-Project/static/js/2.e679f2bb.chunk.js.map",
+    "static/js/2.07b6a2f4.chunk.js": "/CtoC-Final-Project/static/js/2.07b6a2f4.chunk.js",
+    "static/js/2.07b6a2f4.chunk.js.map": "/CtoC-Final-Project/static/js/2.07b6a2f4.chunk.js.map",
     "index.html": "/CtoC-Final-Project/index.html",
-    "precache-manifest.748a9e8e2ae8e52151701bbd1e8cb313.js": "/CtoC-Final-Project/precache-manifest.748a9e8e2ae8e52151701bbd1e8cb313.js",
+    "precache-manifest.34430cf9b2d97b99dbdcfec741a02f88.js": "/CtoC-Final-Project/precache-manifest.34430cf9b2d97b99dbdcfec741a02f88.js",
     "service-worker.js": "/CtoC-Final-Project/service-worker.js",
     "static/css/2.278aff2b.chunk.css.map": "/CtoC-Final-Project/static/css/2.278aff2b.chunk.css.map",
     "static/css/main.384916af.chunk.css.map": "/CtoC-Final-Project/static/css/main.384916af.chunk.css.map",
-    "static/js/2.e679f2bb.chunk.js.LICENSE.txt": "/CtoC-Final-Project/static/js/2.e679f2bb.chunk.js.LICENSE.txt",
+    "static/js/2.07b6a2f4.chunk.js.LICENSE.txt": "/CtoC-Final-Project/static/js/2.07b6a2f4.chunk.js.LICENSE.txt",
     "static/media/1.png": "/CtoC-Final-Project/static/media/1.ae4f36a0.png",
     "static/media/antique.jpg": "/CtoC-Final-Project/static/media/antique.369bcd35.jpg",
     "static/media/art.jpg": "/CtoC-Final-Project/static/media/art.1c3bae07.jpg",
@@ -42,8 +42,8 @@
   "entrypoints": [
     "static/js/runtime-main.54867a42.js",
     "static/css/2.278aff2b.chunk.css",
-    "static/js/2.e679f2bb.chunk.js",
+    "static/js/2.07b6a2f4.chunk.js",
     "static/css/main.384916af.chunk.css",
-    "static/js/main.03c5a5b6.chunk.js"
+    "static/js/main.4c3604f8.chunk.js"
   ]
 }
