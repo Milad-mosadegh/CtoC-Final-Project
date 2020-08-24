@@ -20,7 +20,7 @@ import Home from './components/landingpage/home';
 ReactDOM.render(
   // <Provider store={store}>
   <React.StrictMode>
-    <Home />
+    <h1>This is my home</h1>
   </React.StrictMode>,
   document.getElementById('root')
 );
