@@ -24,7 +24,6 @@ function App(props) {
   return (
     <div className="App">
       <MyNavbar{...props} />
-      <App2 />
       <h1>This H1 is wrote in APP</h1>
 
     </div>
