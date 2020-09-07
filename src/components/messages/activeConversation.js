@@ -3,6 +3,9 @@ import '../styles/main.css';
 import GET from '../lib/get';
 import { POST } from '../lib/post';
 
+import { css } from 'emotion';
+import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
+
 const ActiveConversation = (props) => {
     const { hidePopUp, conversationId } = props
     const [message, setMessage] = useState("")
@@ -16,7 +19,7 @@ const ActiveConversation = (props) => {
             let res = await GET(`/api/messages/getconversation/${conversationId}`)
             if (res.data.data) {
                 setPrevMessages(res.data.data)
-                scrollToBottom()
+                // scrollToBottom()
             }
         }, 1000);
         return () => clearInterval(interval);
@@ -27,9 +30,9 @@ const ActiveConversation = (props) => {
 
     }
 
-    const scrollToBottom = () => {
-        if(chatEndRef) chatEndRef.current.scrollIntoView({ behavior: "smooth" })
-    }
+    // const scrollToBottom = () => {
+    //     if (chatEndRef) chatEndRef.current.scrollIntoView({ behavior: "smooth" })
+    // }
 
 
     const changeHandler = (e) => {
@@ -52,16 +55,24 @@ const ActiveConversation = (props) => {
                 setPrevMessages(res.data.data)
                 setMessage("")
                 focusInput()
-                scrollToBottom()
+                // scrollToBottom()
             }
         }
 
     }
+
+
     let userId = JSON.parse(localStorage.getItem("c2c-profile")).id
+
+    const ROOT_CSS = css({
+        height: 670,
+
+    });
+
+    const scrollToBottom = useScrollToBottom();
+    const [sticky] = useSticky();
     return (
-
         <div className="message-wrapper">
-
             <div className="message-header">
                 <div className="m-h-b ">
                     <button onClick={hidePopUp}>X</button>
@@ -80,21 +91,21 @@ const ActiveConversation = (props) => {
                 </p>
             </div>
             <div className="message-box">
-                {prevMessages.productId ? prevMessages.messages.map(msg =>
-                    msg.senderId === userId ?
+                <ScrollToBottom className={ROOT_CSS}>
+                    {prevMessages.productId ? prevMessages.messages.map(msg =>
+                        msg.senderId === userId ?
 
-                        <div className="reciver-box">
-                            <div className="reciver" >{msg.message}</div>
-                            <p>{msg.timeStamp}</p>
-                        </div>
-                        :
-                        <div className="sender-box"  >
-                            <div className="sender">{msg.message}</div>
-                        </div>
-                ) : null}
-                 <div ref={chatEndRef} />
-                
-
+                            <div className="reciver-box">
+                                <div className="reciver" >{msg.message}</div>
+                                <p>{msg.timeStamp}</p>
+                            </div>
+                            :
+                            <div className="sender-box"  >
+                                <div className="sender">{msg.message}</div>
+                            </div>
+                    ) : null}
+                    {/* <div ref={chatEndRef} /> */}
+                </ScrollToBottom>
             </div>
 
             <form className="message-write" onSubmit={submitHandler}>
@@ -102,7 +113,6 @@ const ActiveConversation = (props) => {
                 <button className="fa fa-send-o" type="submit"></button>
             </form>
         </div>
-
     );
 }
 
