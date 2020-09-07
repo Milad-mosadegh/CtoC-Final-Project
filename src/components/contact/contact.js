@@ -1,12 +1,18 @@
-import React from 'react';
+import React,{useState,useEffect,useContext}  from 'react';
 import MyNavbar from '../navbar/navBar';
-
+import  {GlobalContextContext} from "../Context/contextApi"
 import '../styles/main.css';
 
 
 
 
 const Contact = (props) => {
+    const [profile,setProfile]=useContext(GlobalContextContext)
+    console.log("profile in contact", profile)
+
+    useEffect(()=>{
+        if(profile.auth) console.log("user is atuhenticated", profile.userId)
+    },[])
     return (
         <div className="contact">
             <MyNavbar {...props} />
@@ -27,7 +33,7 @@ const Contact = (props) => {
                                     <div className="col-md-6 mb-3">
                                         <div className="md-form mb-0">
                                             <label for="name" className="">Your name</label>
-                                            <input type="text" id="name" name="name" className="form-control" />
+                                            <input type="text" id="name" name="name" className="form-control" value={profile.auth? profile.name:null} disabled={profile.name?true:false} />
                                         </div>
                                     </div>
 
@@ -36,7 +42,7 @@ const Contact = (props) => {
                                     <div className="col-md-6 mb-3">
                                         <div className="md-form mb-0">
                                             <label for="email" className="">Your email</label>
-                                            <input type="text" id="email" name="email" className="form-control" />
+                                            <input type="text" id="email" name="email" className="form-control" value={profile.auth? profile.email:null} disabled={profile.email?true:false} />
                                         </div>
                                     </div>
 

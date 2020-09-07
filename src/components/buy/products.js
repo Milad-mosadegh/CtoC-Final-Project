@@ -24,7 +24,8 @@ export default function Products(props) {
                     auth:true,
                     userId:res.data.data._id,
                     name:res.data.data.firstName,
-                    favorities:res.data.data.liked
+                    favorities:res.data.data.liked,
+                    email:res.data.data.email
                 })
                 else {
                     props.history.push("/signin")
@@ -32,7 +33,8 @@ export default function Products(props) {
                             auth:false,
                            userId:false,
                            favorities:[],
-                           name:false
+                           name:false,
+                           email:false
                        })}
                 })
         .catch(err => err)

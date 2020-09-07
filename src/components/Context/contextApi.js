@@ -10,7 +10,8 @@ const GlobalContextContext = React.createContext();
         auth:false,
         favorities:[],
         name:false,
-        userId:false
+        userId:false,
+        email:false
     })
 
      return (

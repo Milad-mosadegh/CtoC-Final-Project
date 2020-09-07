@@ -20,7 +20,8 @@ const MyNavbar = (props) => {
             auth:false,
            userId:false,
            favorities:[],
-           name:false
+           name:false,
+           email:false
        })
         props.history.push("/signin")
 
@@ -45,7 +46,8 @@ const MyNavbar = (props) => {
                             auth:true,
                             userId:response.data.data._id,
                             name:response.data.data.firstName,
-                            favorities:response.data.data.liked
+                            favorities:response.data.data.liked,
+                            email:response.data.data.email
                        })
                     }
                 }
@@ -54,7 +56,8 @@ const MyNavbar = (props) => {
                         auth:false,
                        userId:false,
                        favorities:[],
-                       name:false
+                       name:false,
+                       email:false
                    })
                     localStorage.removeItem("c2c-token")
                     localStorage.removeItem("c2c-profile")
@@ -66,7 +69,8 @@ const MyNavbar = (props) => {
             auth:false,
            userId:false,
            favorities:[],
-           name:false
+           name:false,
+           email:false
        })
 
         if (props.location) {

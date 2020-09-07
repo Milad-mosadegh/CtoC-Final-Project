@@ -41,7 +41,8 @@ export default function MaterialSignin(props) {
                             auth:true,
                             userId:response.data.data._id,
                             name:response.data.data.firstName,
-                            favorities:response.data.data.liked
+                            favorities:response.data.data.liked,
+                            email:response.data.data.email
                        })
                         props.history.push("/dashboard")}
                     
@@ -52,7 +53,8 @@ export default function MaterialSignin(props) {
                             auth:false,
                             userId:false,
                             favorities:[],
-                            name:null
+                            name:null,
+                            email:false
                             })
             }
                 }
@@ -106,7 +108,8 @@ export default function MaterialSignin(props) {
                     auth:true,
                    userId:response.data.data.id,
                    favorities:response.data.data.liked,
-                   name:response.data.data.firstName
+                   name:response.data.data.firstName,
+                   email:response.data.data.email
                })
                 props.history.push(`/dashboard`)
                 

@@ -44,7 +44,8 @@ export default function MaterialSignup(props) {
                             auth:true,
                             userId:response.data.data._id,
                             name:response.data.data.firstName,
-                            favorities:response.data.data.liked
+                            favorities:response.data.data.liked,
+                            email:response.data.data.email
                        })
 
                         props.history.push("/dashboard")}
