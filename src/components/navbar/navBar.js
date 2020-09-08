@@ -1,27 +1,29 @@
-import React, { useState, useEffect,useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom'
 import '../styles/main.css'
 import { Navbar, Nav, Badge } from 'react-bootstrap';
 import GET from '../lib/get';
 import pic1 from '../../logo/1.png'
-import {GlobalContextContext} from "../Context/contextApi"
+import { GlobalContextContext } from "../Context/contextApi"
 
 
 
 
 const MyNavbar = (props) => {
 
-    const [profile,setProfile]=useContext(GlobalContextContext)
+    const [profile, setProfile] = useContext(GlobalContextContext)
     const logoutHandler = () => {
         localStorage.removeItem('c2c-token')
         localStorage.removeItem("c2c-profile")
-        setProfile({ ...profile,
-            auth:false,
-           userId:false,
-           favorities:[],
-           name:false,
-           email:false
-       })
+        setProfile({
+            ...profile,
+            auth: false,
+            userId: false,
+            favorities: [],
+            name: false,
+            email: false,
+            admin: false
+        })
 
     }
 
@@ -32,36 +34,42 @@ const MyNavbar = (props) => {
                 let response = await GET("/api/auth/authenticated")
                 if (response.data) {
                     if (response.data.status === "success") {
-                        setProfile({ ...profile,
-                            auth:true,
-                            userId:response.data.data._id,
-                            name:response.data.data.firstName,
-                            favorities:response.data.data.liked,
-                            email:response.data.data.email
-                       })
+                        setProfile({
+                            ...profile,
+                            auth: true,
+                            userId: response.data.data._id,
+                            name: response.data.data.firstName,
+                            favorities: response.data.data.liked,
+                            email: response.data.data.email,
+                            admin: true
+                        })
                     }
                 }
                 else {
-                    setProfile({ ...profile,
-                        auth:false,
-                       userId:false,
-                       favorities:[],
-                       name:false,
-                       email:false
-                   })
+                    setProfile({
+                        ...profile,
+                        auth: false,
+                        userId: false,
+                        favorities: [],
+                        name: false,
+                        email: false,
+                        admin: false
+                    })
                     localStorage.removeItem("c2c-token")
                     localStorage.removeItem("c2c-profile")
                 }
             }
             getData()
         }
-        else setProfile({ ...profile,
-            auth:false,
-           userId:false,
-           favorities:[],
-           name:false,
-           email:false
-       })
+        else setProfile({
+            ...profile,
+            auth: false,
+            userId: false,
+            favorities: [],
+            name: false,
+            email: false,
+            admin: false
+        })
 
     }, [])
 
@@ -71,7 +79,7 @@ const MyNavbar = (props) => {
 
                 <Navbar.Brand className="navLogo">
                     <Link className="text-light text-uppercase" to="/">
-                    <img src={pic1} alt="" width="200px" height="70px" />
+                        <img src={pic1} alt="" width="200px" height="70px" />
                     </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -98,6 +106,15 @@ const MyNavbar = (props) => {
                                 <span className="navTitle">Contact</span>
                             </Link>
                         </Nav.Link>
+
+                        {profile.admin ?
+                            <Nav.Link id="admin" >
+                                <Link className="text-light text-uppercase" to='/admin'>
+                                    <span className="navTitle">Admin</span>
+                                </Link>
+                            </Nav.Link>
+                            : null
+                        }
                     </Nav>
 
                     {profile.auth ?
@@ -117,17 +134,17 @@ const MyNavbar = (props) => {
                                 <span className="navB">Welcome <span className="navBRed">{profile.name}</span> </span>
                             </Nav.Link>
                             <Nav.Link className="btn " onClick={logoutHandler}>
-                            <Link className="text-light text-uppercase" to="/signin">
-                                <span className="navTitle fa fa-sign-out " style={{ fontSize: "26px", color: "#11213b" }}></span>
-                            </Link>
+                                <Link className="text-light text-uppercase" to="/signin">
+                                    <span className="navTitle fa fa-sign-out " style={{ fontSize: "26px", color: "#11213b" }}></span>
+                                </Link>
                             </Nav.Link>
                         </Nav>
                         :
                         <Nav className="justify-content-end">
 
-                                <Link className="text-light text-uppercase" to="/signin" >
-                                    <span className="navTitle fa fa-sign-in " style={{ fontSize: "26px", color: "#11213b" }}></span>
-                                </Link>
+                            <Link className="text-light text-uppercase" to="/signin" >
+                                <span className="navTitle fa fa-sign-in " style={{ fontSize: "26px", color: "#11213b" }}></span>
+                            </Link>
                         </Nav>
                     }
 
@@ -142,7 +159,7 @@ const MyNavbar = (props) => {
                                     </svg>
                                 </Link>
                             </Badge>
-                        </Nav.Link> 
+                        </Nav.Link>
                     </Nav>
 
                 </Navbar.Collapse></Navbar>

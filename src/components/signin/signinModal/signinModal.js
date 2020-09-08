@@ -1,20 +1,20 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { POST } from '../../lib/post';
 import SigninForm from "./signinForm"
 import '../../styles/main.css';
 import axios from 'axios';
-import {GlobalContextContext} from "../../Context/contextApi"
+import { GlobalContextContext } from "../../Context/contextApi"
 
 export default function SigninModal(props) {
 
-    const { handleClose,show, classes, productSubmitHandler } = props
+    const { handleClose, show, classes, productSubmitHandler } = props
     const regexEmail = new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [errors, setErrors] = useState("")
-    const [profile,setProfile] = useContext(GlobalContextContext)
+    const [profile, setProfile] = useContext(GlobalContextContext)
 
-  
+
     const changeHandler = (e) => {
         setErrors({ ...errors, form: { ...errors.form, status: false } })
         switch (e.target.name) {
@@ -49,22 +49,23 @@ export default function SigninModal(props) {
             const response = await POST("/api/auth/signin", formData, config)
             if (response.data.status === "success") {
                 localStorage.setItem("c2c-token", response.data.token)
-                localStorage.setItem("c2c-profile",JSON.stringify(response.data.data) )
+                localStorage.setItem("c2c-profile", JSON.stringify(response.data.data))
                 axios.defaults.headers['x-auth-token'] = response.data.token
-                setProfile({ ...profile,
-                     auth:true,
-                    userId:response.data.data.id,
-                    favorities:response.data.data.liked,
-                    name:response.data.data.firstName,
-                    email:response.data.data.email
-                    
+                setProfile({
+                    ...profile,
+                    auth: true,
+                    userId: response.data.data.id,
+                    favorities: response.data.data.liked,
+                    name: response.data.data.firstName,
+                    email: response.data.data.email,
+                    admin: true
                 })
                 productSubmitHandler()
             }
             else setErrors({ ...errors, authentication: { ...errors.authentication, status: true } })
         }
     }
-  return (
+    return (
         <div>
             <SigninForm {...props}
                 classes={classes}

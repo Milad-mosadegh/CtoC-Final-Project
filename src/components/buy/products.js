@@ -1,43 +1,48 @@
-import React,{useContext,useEffect} from 'react';
+import React, { useContext, useEffect } from 'react';
 import '../styles/main.css'
 import '../../../node_modules/font-awesome/css/font-awesome.min.css'
 import ItemCard from '../landingpage/itemCard';
-import  {GlobalContextContext} from "../Context/contextApi"
+import { GlobalContextContext } from "../Context/contextApi"
 import axios from "axios"
 
 
 export default function Products(props) {
     const { favoritHandler, products, setTargetProduct, url, status } = props
-    const [profile,setProfile]=useContext(GlobalContextContext)
+    const [profile, setProfile] = useContext(GlobalContextContext)
 
     useEffect(() => {
-        if (localStorage.getItem("c2c-token")) 
-        axios.get("/api/auth/authenticated", {
-            headers: {
-                'Content-Type': 'application/json',
-                'x-auth-token': localStorage.getItem('c2c-token')
-            }
-        })
-        .then(res => {
-            if(res.data.status==="success")
-                setProfile({ ...profile,
-                    auth:true,
-                    userId:res.data.data._id,
-                    name:res.data.data.firstName,
-                    favorities:res.data.data.liked,
-                    email:res.data.data.email
+        if (localStorage.getItem("c2c-token"))
+            axios.get("/api/auth/authenticated", {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': localStorage.getItem('c2c-token')
+                }
+            })
+                .then(res => {
+                    if (res.data.status === "success")
+                        setProfile({
+                            ...profile,
+                            auth: true,
+                            userId: res.data.data._id,
+                            name: res.data.data.firstName,
+                            favorities: res.data.data.liked,
+                            email: res.data.data.email,
+                            admin: true
+                        })
+                    else {
+                        props.history.push("/signin")
+                        setProfile({
+                            ...profile,
+                            auth: false,
+                            userId: false,
+                            favorities: [],
+                            name: false,
+                            email: false,
+                            admin: false
+                        })
+                    }
                 })
-                else {
-                    props.history.push("/signin")
-                     setProfile({ ...profile,
-                            auth:false,
-                           userId:false,
-                           favorities:[],
-                           name:false,
-                           email:false
-                       })}
-                })
-        .catch(err => err)
+                .catch(err => err)
 
 
     }, [])
@@ -54,7 +59,7 @@ export default function Products(props) {
                         url={url ? url : `/api/buy/activeproductdetails`}
                         favoritHandler={favoritHandler}
                         status={status}
-                       
+
                     />
 
                 ) : null}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import LastSeen from './lastseen';
 import GET from '../lib/get';
 import SlideShow from '../buy/slideShow';
@@ -6,16 +6,16 @@ import '../styles/main.css'
 import LatestProducts from './latestProducts';
 import ProductDetails from '../buy/productDetails';
 import MyFooter from '../footer/footer';
-import  {GlobalContextContext} from "../Context/contextApi"
+import { GlobalContextContext } from "../Context/contextApi"
 import axios from "axios"
 
 const Home = (props) => {
 
-    const [profile,setProfile]=useContext(GlobalContextContext)
+    const [profile, setProfile] = useContext(GlobalContextContext)
     const [showModal, setShowModal] = useState(false)
     const [productId, setProductId] = useState("")
     const [lastSeenProducts, setLastSeenProducts] = useState([])
-    const [favToPass, setFavToPass]=useState([])
+    const [favToPass, setFavToPass] = useState([])
     const setTargetProduct = (id) => {
         setShowModal(true)
         setProductId(id)
@@ -26,47 +26,53 @@ const Home = (props) => {
         getFavorities()
 
     }
-    const unAuthenticated = () => setProfile({ ...profile,
-        auth:false,
-       userId:false,
-       favorities:[],
-       name:false
-   })
-   const getFavorities = async () => {
-    if (!localStorage.getItem("c2c-token")) return
-    let response = await GET("/api/account/getfavoritelist")
-    if (response.data.status === "success")
-    setProfile({ ...profile,favorities:response.data.favourities})
-}
+    const unAuthenticated = () => setProfile({
+        ...profile,
+        auth: false,
+        userId: false,
+        favorities: [],
+        name: false
+    })
+    const getFavorities = async () => {
+        if (!localStorage.getItem("c2c-token")) return
+        let response = await GET("/api/account/getfavoritelist")
+        if (response.data.status === "success")
+            setProfile({ ...profile, favorities: response.data.favourities })
+    }
     useEffect(() => {
-        if (localStorage.getItem("c2c-token")) 
-        axios.get("/api/auth/authenticated", {
-            headers: {
-                'Content-Type': 'application/json',
-                'x-auth-token': localStorage.getItem('c2c-token')
-            }
-        })
-        .then(res => {
-            if(res.data.status==="success")
-                setProfile({ ...profile,
-                    auth:true,
-                    userId:res.data.data._id,
-                    name:res.data.data.firstName,
-                    favorities:res.data.data.liked,
-                    email:res.data.data.email
+        if (localStorage.getItem("c2c-token"))
+            axios.get("/api/auth/authenticated", {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': localStorage.getItem('c2c-token')
+                }
+            })
+                .then(res => {
+                    if (res.data.status === "success")
+                        setProfile({
+                            ...profile,
+                            auth: true,
+                            userId: res.data.data._id,
+                            name: res.data.data.firstName,
+                            favorities: res.data.data.liked,
+                            email: res.data.data.email,
+                            admin: true
+                        })
+                    else {
+                        props.history.push("/signin")
+                        setProfile({
+                            ...profile,
+                            auth: false,
+                            userId: false,
+                            favorities: [],
+                            name: false,
+                            email: false,
+                            admin: false
+                        })
+                    }
                 })
-                else {
-                    props.history.push("/signin")
-                     setProfile({ ...profile,
-                            auth:false,
-                           userId:false,
-                           favorities:[],
-                           name:false,
-                           email:false
-                       })}
-                })
-        .catch(err => err)
-        else 
+                .catch(err => err)
+        else
             props.history.push("/")
 
 
@@ -84,7 +90,7 @@ const Home = (props) => {
 
     const favoritHandler = async () => {
         let response = await GET("/api/account/getfavoritelist")
-        if (response.data.status === "success") setProfile({ ...profile,favorities:response.data.favourities})
+        if (response.data.status === "success") setProfile({ ...profile, favorities: response.data.favourities })
     }
 
     return (
@@ -112,7 +118,7 @@ const Home = (props) => {
                                 setTargetProduct={setTargetProduct}
                                 favorit={profile.favorities}
                                 favoritHandler={favoritHandler}
-                                />
+                            />
                         </div>
 
                         <div className="rightCard">
@@ -122,7 +128,7 @@ const Home = (props) => {
                                 favoritHandler={favoritHandler}
                                 unAuthenticated={unAuthenticated}
                                 lastSeenProducts={lastSeenProducts}
-                                getLastSeen={getLastSeen}  /> 
+                                getLastSeen={getLastSeen} /> 
                         </div>
                     </div>
 

@@ -3,26 +3,27 @@ const GlobalContextContext = React.createContext();
 
 
 
- const GlobalContextProvider = (props) =>{ 
-    
+const GlobalContextProvider = (props) => {
+
 
     const [profile, setProfile] = useState({
-        auth:false,
-        favorities:[],
-        name:false,
-        userId:false,
-        email:false
+        auth: false,
+        favorities: [],
+        name: false,
+        userId: false,
+        email: false,
+        admin: false
     })
 
-     return (
-         //<GlobalContext.Provider value={[auth,setAuth,favorities,setFavorities,name,setName,userId,setUserId]}>
-         <GlobalContextContext.Provider value={[profile,setProfile]}>
+    return (
+        //<GlobalContext.Provider value={[auth,setAuth,favorities,setFavorities,name,setName,userId,setUserId]}>
+        <GlobalContextContext.Provider value={[profile, setProfile]}>
 
             {props.children}
-         </GlobalContextContext.Provider>
-     );
- };
- export  {GlobalContextProvider, GlobalContextContext }
+        </GlobalContextContext.Provider>
+    );
+};
+export { GlobalContextProvider, GlobalContextContext }
 
 
 
