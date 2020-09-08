@@ -1,6 +1,5 @@
 import React, { useState, useEffect,useContext } from 'react';
 import LastSeen from './lastseen';
-import MyNavbar from '../navbar/navBar';
 import GET from '../lib/get';
 import SlideShow from '../buy/slideShow';
 import '../styles/main.css'
@@ -90,8 +89,6 @@ const Home = (props) => {
 
     return (
         <div>
-            <MyNavbar {...props} />
-
 
             {showModal ?
                 <ProductDetails showModel={showModal} handleClose={handleClose} getLastSeen={getLastSeen}

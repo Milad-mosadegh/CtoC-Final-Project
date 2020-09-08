@@ -18,11 +18,15 @@ import EditProduct from './components/account/editProductDetail/editProduct';
 import SubCategories from './components/categories/subCategories';
 import ConfirmEmail from "./components/signup/confirmEmail"
 import { GlobalContextProvider } from "./components/Context/contextApi"
-function App() {
+import { Navbar } from 'react-bootstrap';
+import MyNavbar from './components/navbar/navBar';
+function App(props) {
     return (
         <div className="App">
             <GlobalContextProvider>
+                
                 <Router>
+                <MyNavbar {...props}/>
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <Route path="/account" component={MainAcc} />

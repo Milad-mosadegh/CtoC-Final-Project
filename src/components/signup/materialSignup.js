@@ -4,7 +4,6 @@ import '../../App.css'
 import {POST} from "../lib/post";
 import Errors from "../lib/errors"
 import './style.css'
-import MyNavbar from '../navbar/navBar';
 import SignupForm from './signupForm';
 import GET from '../lib/get';
 import {GlobalContextContext} from "../Context/contextApi"
@@ -140,7 +139,6 @@ export default function MaterialSignup(props) {
         }
     return (
         <div>
-            <MyNavbar {...props} />
             <SignupForm 
                 classes={classes}
                 submitHandler={submitHandler}

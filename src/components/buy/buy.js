@@ -1,6 +1,5 @@
 import React, { useEffect, useState,useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import MyNavbar from '../navbar/navBar';
 import SearchBar from '../searchBar/searchbar';
 import Products from "./products"
 import SlideShow from './slideShow';
@@ -95,7 +94,6 @@ const BuyComponent = (props) => {
     }
     return (
         <div>
-            <MyNavbar {...props} />
 
             {showMainComponent?<><div className="container">
                 <SlideShow />

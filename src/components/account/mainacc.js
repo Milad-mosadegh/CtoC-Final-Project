@@ -1,5 +1,4 @@
 import React, {useState,useEffect,useContext} from 'react';
-import MyNavbar from '../navbar/navBar';
 import MyProfile from './profile/mainProfile';
 import '../../App.css'
 import MainActivity from './activity/activity.js';
@@ -45,7 +44,6 @@ export default function MainAcc(props) {
     }
     return (
         <div >
-            <MyNavbar {...props} />
             {showModal ?
                 <ProductDetails 
                     showModel={showModal} 

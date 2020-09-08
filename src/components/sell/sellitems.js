@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import MyNavbar from '../navbar/navBar';
 import { POST, IMGPOST } from '../lib/post';
 import FormData from "form-data"
 import SellDetails from './sellDetails';
@@ -213,8 +212,6 @@ const showAlertBox =()=>{
     return (
         <div>
         
-            <MyNavbar {...props} />
-
             <SellDetails
                             {...props}
                             imageChangeHandler={imageChangeHandler}

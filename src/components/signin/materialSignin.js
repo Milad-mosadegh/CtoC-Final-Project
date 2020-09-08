@@ -4,7 +4,6 @@ import '../../App.css'
 import './style.css'
 import { POST } from '../lib/post';
 import Errors from "../lib/errors"
-import MyNavbar from '../navbar/navBar';
 import SigninForm from "./signinForm"
 import GET from '../lib/get';
 import {GlobalContextContext} from "../Context/contextApi"
@@ -120,7 +119,6 @@ export default function MaterialSignin(props) {
     return (
         <div>
 
-            <MyNavbar {...props} />
             <SigninForm {...props}
                 classes={classes}
                 submitHandler={submitHandler}

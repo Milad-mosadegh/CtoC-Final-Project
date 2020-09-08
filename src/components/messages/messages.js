@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AllConversations from "./allConversations"
 import ActiveConversation from "./activeConversation"
-import MyNavbar from '../navbar/navBar';
 import { CheckAuthentication } from '../lib/auth';
 import GET from "../lib/get"
 import axios from 'axios';
@@ -76,9 +75,6 @@ const Messages = (props) => {
     return (
 
         <div>
-            <div>
-                <MyNavbar {...props} />
-            </div>
             <div className="container mt-5">
                 <AllConversations
                     showPopUp={showPopUp}

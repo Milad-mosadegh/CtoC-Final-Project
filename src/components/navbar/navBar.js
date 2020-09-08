@@ -11,7 +11,6 @@ import {GlobalContextContext} from "../Context/contextApi"
 
 const MyNavbar = (props) => {
 
-    const [path, setPath] = useState("")
     const [profile,setProfile]=useContext(GlobalContextContext)
     const logoutHandler = () => {
         localStorage.removeItem('c2c-token')
@@ -23,18 +22,9 @@ const MyNavbar = (props) => {
            name:false,
            email:false
        })
-        props.history.push("/signin")
 
     }
 
-    const loginHandler = () => {
-        props.history.push("/signin")
-    }
-
-    const signupHandler = () => {
-        props.history.push("/signup")
-
-    }
 
     useEffect(() => {
         if (localStorage.getItem("c2c-token")) {
@@ -73,9 +63,6 @@ const MyNavbar = (props) => {
            email:false
        })
 
-        if (props.location) {
-            setPath(props.location.pathname)
-        }
     }, [])
 
     return (
@@ -130,27 +117,24 @@ const MyNavbar = (props) => {
                                 <span className="navB">Welcome <span className="navBRed">{profile.name}</span> </span>
                             </Nav.Link>
                             <Nav.Link className="btn " onClick={logoutHandler}>
-                                <span className="navTitle fa fa-sign-out " style={{ fontSize: "26px", colo: "#11213b" }}></span>
+                            <Link className="text-light text-uppercase" to="/signin">
+                                <span className="navTitle fa fa-sign-out " style={{ fontSize: "26px", color: "#11213b" }}></span>
+                            </Link>
                             </Nav.Link>
                         </Nav>
-
                         :
                         <Nav className="justify-content-end">
-                            {path === "/signin" ?
-                                <Nav.Link className="btn fa fa-sign-out  " style={{ fontSize: "26px", colo: "#11213b" }} onClick={signupHandler}></Nav.Link>
-                                : <Nav.Link className="btn fa fa-sign-in " style={{ fontSize: "26px", colo: "#11213b" }} onClick={loginHandler}></Nav.Link>
-                            }
+
+                                <Link className="text-light text-uppercase" to="/signin" >
+                                    <span className="navTitle fa fa-sign-in " style={{ fontSize: "26px", color: "#11213b" }}></span>
+                                </Link>
                         </Nav>
                     }
 
                     <Nav>
                         <Nav.Link>
                             <Badge className='text-danger'>
-
-                                {/* <span style={{ fontSize: "20px", marginRight: "-10px", fontFamily: 'Girassol, cursive' }}>10</span> */}
-
                                 <span className="badge badge-danger " style={{ verticalAlign: "super" }}>10</span>
-
                                 <Link to="/">
                                     <svg className="bi bi-bell navTitle" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M8 16a2 2 0 002-2H6a2 2 0 002 2z" />
@@ -158,7 +142,7 @@ const MyNavbar = (props) => {
                                     </svg>
                                 </Link>
                             </Badge>
-                        </Nav.Link>
+                        </Nav.Link> 
                     </Nav>
 
                 </Navbar.Collapse></Navbar>

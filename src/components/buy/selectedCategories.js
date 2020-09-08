@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import MyNavbar from '../navbar/navBar';
 import SearchBar from '../searchBar/searchbar';
 import FilterBar from '../filterBar/filterBar';
 import Products from './products';
@@ -38,7 +37,6 @@ const SelectedCategories = (props) => {
 
     return (
         <div>
-            <MyNavbar {...props} />
             <div className='container'>
                 <SearchBar />
                 <FilterBar />

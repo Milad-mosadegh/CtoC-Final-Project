@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import Categories from '../lib/categories'
 import '../styles/main.css'
-import MyNavbar from '../navbar/navBar';
 import SearchBar from '../searchBar/searchbar';
 import FilterBar from '../filterBar/filterBar';
 import Products from '../buy/products';
@@ -94,7 +93,6 @@ function SubCategories(props) {
 
     return (
         <div>
-            <MyNavbar {...props} />
             {showMainComponent ?
                 <>
 
