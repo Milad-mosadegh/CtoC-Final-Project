@@ -53,7 +53,6 @@ function AppSupport(props) {
                     <Switch>
                         <Route path="/dashboard" component={AdminMain} />
                         <Route path="/account" component={MainAcc} />
-                        <Route path="/signin" component={MaterialSignin} />
                     </Switch>
                 </Router>
             }

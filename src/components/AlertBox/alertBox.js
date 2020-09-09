@@ -1,8 +1,28 @@
-import React from 'react'
-
+import React,{useContext} from 'react'
+import { GlobalContextContext } from "../Context/contextApi"
+import { useHistory } from "react-router-dom";
 import '../styles/main.css'
 
-function AlertBox({ alertBoxTitle, alertBoxBody, proceedHandler, hideAlertBox , simpleAlert,cancelButtonBody}) {
+function AlertBox(props) {
+    const history = useHistory();
+    const { alertBoxTitle, alertBoxBody, proceedHandler, hideAlertBox , simpleAlert,cancelButtonBody}=props
+    const [profile, setProfile] = useContext(GlobalContextContext)
+
+    const adminHandler=()=>{
+            if(!localStorage.getItem("c2c-token"))
+            {setProfile({
+                ...profile,
+                auth: false,
+                userId: false,
+                favorities: [],
+                name: null,
+                email: false,
+                admin: false
+            })
+            history.push("/signin")}
+            else hideAlertBox()
+        
+    }
     return (
         <div className="alertBox">
             <div className="alertBox-head">
@@ -15,7 +35,7 @@ function AlertBox({ alertBoxTitle, alertBoxBody, proceedHandler, hideAlertBox , 
                 {alertBoxBody}
             </div>
             {simpleAlert?
-                <button type="button" className="myBlueButton-sm"       onClick={hideAlertBox }>Ok</button>
+                <button type="button" className="myBlueButton-sm"       onClick={profile.admin? adminHandler :hideAlertBox }>Ok</button>
             :
             <div className="alertBox-body">
                 <button type="button" className="myBlueButton-sm"       onClick={proceedHandler }>Yes   </button>
