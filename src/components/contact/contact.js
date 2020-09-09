@@ -6,13 +6,13 @@ import axios from 'axios';
 
 const Contact = (props) => {
     const [profile,setProfile]=useContext(GlobalContextContext)
-    const [showForm,setShowForm]=useState(false)
+    const [hideForm,setHideForm]=useState(false)
     const [formError, setFormError]=useState(false)
     const [message,setMessage]=useState({
         name:profile.auth? profile.name:null,
         email:profile.auth? profile.email:null,
         subject:null,
-        messagetext:null
+        messageText:null
     })
     const regexEmail = new RegExp(/^([a-zA-Z0-9_\-.äöüÄÖÜß_]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/)
 
@@ -21,15 +21,14 @@ const Contact = (props) => {
         if((!Object.keys(message).every(key=>message[key])) || (!regexEmail.test(message.email))) setFormError(true)
             else
                 {
-                setShowForm(true)
                 const config = {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 }
-                axios.post("/api/auth/contactus", message, config)
+                axios.post("/api/contact/querry", message, config)
                     .then(res=>{
-                        console.log(res)
+                        if(res.data.success) setHideForm(true)
                     })
                     .catch(err=>err)
                 }
@@ -48,7 +47,7 @@ const Contact = (props) => {
         <div className="contact">
             <div className="container">
 
-                <section className="mb-4" hidden={showForm}>
+                <section className="mb-4" hidden={hideForm}>
 
                     <h2 className="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
 
@@ -115,7 +114,7 @@ const Contact = (props) => {
                                             <label for="message">Your message</label>
                                             <textarea type="text" 
                                                       id="message"
-                                                      name="messagetext" 
+                                                      name="messageText" 
                                                       rows="2" 
                                                       className="form-control md-textarea"
                                                       onChange={changeHandler}
@@ -136,7 +135,7 @@ const Contact = (props) => {
 
                 </section>
 
-                <section className="mb-4" hidden={!showForm}>
+                <section className="mb-4" hidden={!hideForm}>
                     <h2 className="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
                     <p className="text-center w-responsive mx-auto mb-5">
                         We have recieved your querry and our support Team will repy on your given email address in next 48 Hours.</p>
