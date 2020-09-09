@@ -27,11 +27,11 @@ const MyProfile = (props) => {
 
     })
     const [avatarChanged, setAvatarChange] = useState(false)
-    const [editAble, setEditAble]= useState(false)
+    const [editAble, setEditAble] = useState(false)
     const [showModal, setShowModal] = useState(false)
     const [showAlertBox, setShowAlertBox] = useState(false)
-    const [alertBoxTitle, setAlertBoxTitle] =useState("")
-    const [alertBoxBody, setAlertBoxBody] =useState("")
+    const [alertBoxTitle, setAlertBoxTitle] = useState("")
+    const [alertBoxBody, setAlertBoxBody] = useState("")
     const [passChanged, setPassChanged] = useState(false)
     const [inputErrors, setInputErrors] = useState("")
 
@@ -61,118 +61,119 @@ const MyProfile = (props) => {
         else props.history.push("/signin")
 
 
-    },[])
+    }, [])
 
-    const changeAlertBoxTitle=(title)=>setAlertBoxTitle(title)
-    const changeAlertBoxBody=(body)=>setAlertBoxBody(body)
-    const passChangedHandler=()=>setPassChanged(true)
-    const editEnabler = () =>setEditAble(true)
-    const editDisabler= () =>setEditAble(false)
-    const renderModal = () =>setShowModal(true)
-    const derenderModal = () =>setShowModal(false)
+    const changeAlertBoxTitle = (title) => setAlertBoxTitle(title)
+    const changeAlertBoxBody = (body) => setAlertBoxBody(body)
+    const passChangedHandler = () => setPassChanged(true)
+    const editEnabler = () => setEditAble(true)
+    const editDisabler = () => setEditAble(false)
+    const renderModal = () => setShowModal(true)
+    const derenderModal = () => setShowModal(false)
 
-    const hideAlertBox=()=>{
-                        setShowAlertBox(false)
-                        if(passChanged) props.history.push("/signin")
-                    }
+    const hideAlertBox = () => {
+        setShowAlertBox(false)
+        if (passChanged) props.history.push("/signin")
+    }
     const changeHandler = (e) => {
-        setInputErrors({...inputErrors,form:{...inputErrors.form, status:false}})
+        setInputErrors({ ...inputErrors, form: { ...inputErrors.form, status: false } })
         switch (e.target.name) {
-            
+
             case "firstName":
-                if ((!regexAlphabet.test(e.target.value)) || (e.target.value.length < 3)) 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
-                else 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                if ((!regexAlphabet.test(e.target.value)) || (e.target.value.length < 3))
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: true } })
+                else
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: false } })
                 break;
 
             case "lastName":
-                if ((!regexAlphabet.test(e.target.value)) || (e.target.value.length < 3)) 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
-                else 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                if ((!regexAlphabet.test(e.target.value)) || (e.target.value.length < 3))
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: true } })
+                else
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: false } })
                 break;
 
             case "paypalId":
-                if (!regexEmail.test(e.target.value)) 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
-                else 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                if (!regexEmail.test(e.target.value))
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: true } })
+                else
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: false } })
                 break;
 
             case "city":
-                if ((!regexAlphabet.test(e.target.value)) ||(e.target.value.length<3) )
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
-                else 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                if ((!regexAlphabet.test(e.target.value)) || (e.target.value.length < 3))
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: true } })
+                else
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: false } })
                 break;
 
             case "phoneNumber":
-                if ((!regexNumber.test(e.target.value)) ||(e.target.value.length<9) )
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
-                else 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                if ((!regexNumber.test(e.target.value)) || (e.target.value.length < 9))
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: true } })
+                else
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: false } })
                 break;
 
             case "street":
-                if ((!regexAlphaNumber.test(e.target.value)) ||(e.target.value.length<5) )
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
-                else 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                if ((!regexAlphaNumber.test(e.target.value)) || (e.target.value.length < 5))
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: true } })
+                else
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: false } })
                 break;
 
             case "zipCode":
-                if ((!regexNumber.test(e.target.value)) || (e.target.value.length < 3) || (e.target.value.length > 7    ) )
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:true}})
-                else 
-                    setInputErrors({...inputErrors,[e.target.name]:{...inputErrors[e.target.name], status:false}})
+                if ((!regexNumber.test(e.target.value)) || (e.target.value.length < 3) || (e.target.value.length > 7))
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: true } })
+                else
+                    setInputErrors({ ...inputErrors, [e.target.name]: { ...inputErrors[e.target.name], status: false } })
                 break;
 
             default:
                 break;
         }
-                             
-                
-            setProfile({ ...profile, [e.target.name]: e.target.value })
-                
-            }
-                
+
+
+        setProfile({ ...profile, [e.target.name]: e.target.value })
+
+    }
+
     const imageChangeHandler = (image) => {
-        
+
         setProfile({ ...profile, profileImage: image.image })
         setAvatarChange(true)
     }
-  
 
-const submitHandler = async (e) => {
-    console.log("submit handler called")
-    e.preventDefault();
-        if(!Object.keys(profile)
-                .every(key=>{
-                    if(key==="paypalId") return true
-                    else return  profile[key]
-                            })) 
-            return setInputErrors({...inputErrors,form:{...inputErrors.form, status:true}})
-            else   setInputErrors({...inputErrors,form:{...inputErrors.form, status:false}})
 
-    if(profile.paypalId===""){
-        setInputErrors({...inputErrors,paypalId:{...inputErrors.form, status:false}})
+    const submitHandler = async (e) => {
+        console.log("submit handler called")
+        e.preventDefault();
+        if (!Object.keys(profile)
+            .every(key => {
+                if (key === "paypalId") return true
+                else return profile[key]
+            }))
+            return setInputErrors({ ...inputErrors, form: { ...inputErrors.form, status: true } })
+        else setInputErrors({ ...inputErrors, form: { ...inputErrors.form, status: false } })
+
+        if (profile.paypalId === "") {
+            setInputErrors({ ...inputErrors, paypalId: { ...inputErrors.form, status: false } })
             if (Object.keys(profile)
-                    .filter(e=>{
-                        if((e==="paypalId") ||(e==="profileImage") )return false
-                            else return true} )
-                            .map(key=>inputErrors[key].status).includes(true)) return
-            }
+                .filter(e => {
+                    if ((e === "paypalId") || (e === "profileImage")) return false
+                    else return true
+                })
+                .map(key => inputErrors[key].status).includes(true)) return
+        }
         else
             if (Object.keys(profile)
-                .filter(e=>{
-                        if(e==="profileImage") return false
-                            else return true
-                        }
-                    )
-                    .map(key=>inputErrors[key].status).includes(true)) return
-                    
-    if (avatarChanged) {
+                .filter(e => {
+                    if (e === "profileImage") return false
+                    else return true
+                }
+                )
+                .map(key => inputErrors[key].status).includes(true)) return
+
+        if (avatarChanged) {
             const config = {
                 headers: {
                     'x-auth-token': localStorage.getItem('c2c-token'),
@@ -198,31 +199,32 @@ const submitHandler = async (e) => {
                 changeAlertBoxBody("Please correct the inputs.")
                 setShowAlertBox(true)
                 setEditAble(false)
-                }
-        }
-        else{
-
-        const config = {
-            headers: {
-                'x-auth-token': localStorage.getItem('c2c-token'),
-                'Content-Type': 'application/json'
             }
         }
-        let response = await POST("/api/account/profile", profile, config)
-        if ((response.data) && (response.data.status === "success")) {
-            changeAlertBoxTitle("Profile updated")
-            changeAlertBoxBody("You have successfully updated your profile.")
-            setShowAlertBox(true)
-            setEditAble(false)
-
-        }
         else {
-            changeAlertBoxTitle("Request failed")
-            changeAlertBoxBody("Please correct the inputs.")
-            setShowAlertBox(true)
-            setEditAble(false)
-        }}
- 
+
+            const config = {
+                headers: {
+                    'x-auth-token': localStorage.getItem('c2c-token'),
+                    'Content-Type': 'application/json'
+                }
+            }
+            let response = await POST("/api/account/profile", profile, config)
+            if ((response.data) && (response.data.status === "success")) {
+                changeAlertBoxTitle("Profile updated")
+                changeAlertBoxBody("You have successfully updated your profile.")
+                setShowAlertBox(true)
+                setEditAble(false)
+
+            }
+            else {
+                changeAlertBoxTitle("Request failed")
+                changeAlertBoxBody("Please correct the inputs.")
+                setShowAlertBox(true)
+                setEditAble(false)
+            }
+        }
+
     }
     return (
         <div className='mainProfile'>
@@ -239,12 +241,12 @@ const submitHandler = async (e) => {
                 {...props}
             />
 
-            {showAlertBox? <AlertBox 
-                            simpleAlert={true}
-                            alertBoxTitle={alertBoxTitle}
-                            alertBoxBody = {alertBoxBody}
-                            hideAlertBox={hideAlertBox}
-                            />:null}
+            {showAlertBox ? <AlertBox
+                simpleAlert={true}
+                alertBoxTitle={alertBoxTitle}
+                alertBoxBody={alertBoxBody}
+                hideAlertBox={hideAlertBox}
+            /> : null}
             {showModal ?
                 <PasswordChange
                     showModal={showModal}
@@ -253,7 +255,7 @@ const submitHandler = async (e) => {
                     changeAlertBoxBody={changeAlertBoxBody}
                     passChangedHandler={passChangedHandler}
                     {...props}
-                    showAlertBox={()=>setShowAlertBox(true)}
+                    showAlertBox={() => setShowAlertBox(true)}
                     editDisabler={editDisabler}
                 /> : null}
         </div>

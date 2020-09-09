@@ -15,10 +15,10 @@ const AdminNavbar = (props) => {
         color: "white",
         boxShadow: "2px 4px 15px rgba(0, 0, 0, 0.363)"
     }
-    const {profile,logoutHandler}=props
-    return(
-    <div>
-        <Navbar expand="lg">
+    const { profile, logoutHandler } = props
+    return (
+        <div>
+            <Navbar expand="lg">
 
                 <Navbar.Brand className="navLogo">
                     <Link className="text-light text-uppercase" to="/">
@@ -28,34 +28,22 @@ const AdminNavbar = (props) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                            <Nav.Link id="admin" >
-                            <Link className="text-light text-uppercase" to="/dashboard">
-                            <span className="navTitle"
-                                        style={adminButtonStyle}>
-                                        Admin Pannel
-                                        </span>
-                                </Link>
-                                
-                            </Nav.Link>
- 
+
+                        <Nav.Link className="d-flex justify-content-center ">
+                            <span className="navB">Welcome <span className="navBRed">{profile.name}</span> to the ADMIN PANNEL </span>
+                        </Nav.Link>
+
                     </Nav>
-                        <Nav>
-                            <Nav.Link>
-                                <Link className="text-light text-uppercase" to="/account">
-                                    <span className="navTitle">Account</span>
-                                </Link>
-                            </Nav.Link>
-                            <Nav.Link className="justify-content-center ">
-                                <span className="navB">Welcome <span className="navBRed">{profile.name}</span> </span>
-                            </Nav.Link>
-                            <Nav.Link className="btn " onClick={logoutHandler}>
-                                <Link className="text-light text-uppercase" to="/signin">
-                                    <span className="navTitle fa fa-sign-out " style={{ fontSize: "26px", color: "#11213b" }}></span>
-                                </Link>
-                            </Nav.Link>
-                        </Nav>
-  
+                    <Nav>
+
+                        <Nav.Link className="btn " onClick={logoutHandler}>
+                            <Link className="text-light text-uppercase" to="/signin">
+                                <span className="navTitle fa fa-sign-out " style={{ fontSize: "26px", color: "#11213b" }}></span>
+                            </Link>
+                        </Nav.Link>
+                    </Nav>
+
                 </Navbar.Collapse></Navbar>
-                </div>)
-    }
-    export default AdminNavbar;
+        </div>)
+}
+export default AdminNavbar;

@@ -1,4 +1,4 @@
-import React,{useContext}from 'react';
+import React, { useContext } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -17,7 +17,7 @@ import Contact from './components/contact/contact';
 import EditProduct from './components/account/editProductDetail/editProduct';
 import SubCategories from './components/categories/subCategories';
 import ConfirmEmail from "./components/signup/confirmEmail"
-import {GlobalContextContext} from "./components/Context/contextApi"
+import { GlobalContextContext } from "./components/Context/contextApi"
 import MyNavbar from './components/navbar/navBar';
 import AdminMain from './components/AdminPannel/AdminMain';
 import UserList from './components/AdminPannel/UserList/UserList';
@@ -26,7 +26,7 @@ function AppSupport(props) {
     const [profile, setProfile] = useContext(GlobalContextContext)
     return (
         <div className="App">
-            {!profile.admin?
+            {!profile.admin ?
                 <Router>
                     <MyNavbar {...props} />
                     <Switch>
@@ -51,11 +51,12 @@ function AppSupport(props) {
                 <Router>
                     <MyNavbar {...props} />
                     <Switch>
-                        <Route path="/dashboard"  component={AdminMain} />
+                        <Route path="/dashboard" component={AdminMain} />
                         <Route path="/account" component={MainAcc} />
+                        <Route path="/signin" component={MaterialSignin} />
                     </Switch>
                 </Router>
-}
+            }
 
         </div>
 

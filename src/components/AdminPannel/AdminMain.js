@@ -7,6 +7,9 @@ import UserList from './UserList/UserList';
 import ProductList from './ProductList/ProductList';
 import Complains from './Complains/Complains';
 import Curries from './Curries/Curries';
+import MyAccount from './MyAccount/MyAccount';
+
+
 
 
 export default function AdminMain(props) {
@@ -20,27 +23,33 @@ export default function AdminMain(props) {
     return (
 
         <div className="container mt-5">
-            <h1 style={headingStyle}>WELCOME TO ADMIN PANNEL</h1>
+            {/* <h1 style={headingStyle}>WELCOME TO ADMIN PANNEL</h1> */}
 
             <Tabs
                 defaultActiveKey="userlist"
                 id="uncontrolled-tab-example"
                 mountOnEnter={true}
-                unmountOnExit={true}>
-
+                unmountOnExit={true}
+            >
 
                 <Tab eventKey="userlist" title="User List"  >
                     <UserList />
                 </Tab>
+
                 <Tab eventKey="productlist" title="Product List" >
                     <ProductList />
                 </Tab>
+
                 <Tab eventKey="complains" title="Complaints" >
                     <Complains />
                 </Tab>
 
                 <Tab eventKey="curries" title="Queries" >
                     <Curries />
+                </Tab>
+
+                <Tab eventKey="myaccount" title="My Account" >
+                    <MyAccount />
                 </Tab>
             </Tabs>
 
