@@ -5,90 +5,15 @@ import { Navbar, Nav, Badge } from 'react-bootstrap';
 import GET from '../lib/get';
 import pic1 from '../../logo/1.png'
 import { GlobalContextContext } from "../Context/contextApi"
-import UserNavbar from './userNavebar';
-import AdminNavbar from './adminNavbar';
 
 
 
 
-const MyNavbar = (props) => {
-
-    const [profile, setProfile] = useContext(GlobalContextContext)
-    const logoutHandler = () => {
-        localStorage.removeItem('c2c-token')
-        localStorage.removeItem("c2c-profile")
-        setProfile({
-            ...profile,
-            auth: false,
-            userId: false,
-            favorities: [],
-            name: false,
-            email: false,
-            admin: false
-        })
-
-    }
-
-
-    useEffect(() => {
-        if (localStorage.getItem("c2c-token")) {
-            const getData = async () => {
-                let response = await GET("/api/auth/authenticated")
-                if (response.data) {
-                    if (response.data.status === "success") {
-                        setProfile({
-                            ...profile,
-                            auth: true,
-                            userId: response.data.data._id,
-                            name: response.data.data.firstName,
-                            favorities: response.data.data.liked,
-                            email: response.data.data.email,
-                            admin: response.data.data.admin
-                        })
-                    }
-                }
-                else {
-                    setProfile({
-                        ...profile,
-                        auth: false,
-                        userId: false,
-                        favorities: [],
-                        name: false,
-                        email: false,
-                        admin: false
-                    })
-                    localStorage.removeItem("c2c-token")
-                    localStorage.removeItem("c2c-profile")
-                }
-            }
-            getData()
-        }
-        else setProfile({
-            ...profile,
-            auth: false,
-            userId: false,
-            favorities: [],
-            name: false,
-            email: false,
-            admin: false
-        })
-
-    }, [])
-
-
-
-
-
-    return (
-        <div>
-            {!profile.admin?<UserNavbar profile={profile} logoutHandler={logoutHandler}/>:<AdminNavbar profile={profile} logoutHandler={logoutHandler}/>}
-        </div>
-        
-        )
-    }
-    export default MyNavbar;
-        /*<div>
-            <Navbar expand="lg">
+const UserNavbar = (props) => {
+    const {profile,logoutHandler}=props
+    return(
+    <div>
+        <Navbar expand="lg">
 
                 <Navbar.Brand className="navLogo">
                     <Link className="text-light text-uppercase" to="/">
@@ -120,17 +45,6 @@ const MyNavbar = (props) => {
                             </Link>
                         </Nav.Link>
 
-                        {profile.admin ?
-                            <Nav.Link id="admin" >
-                                <Link className="text-light text-uppercase" to='/admin'>
-                                    <span className="navTitle"
-                                        style={adminButtonStyle}>
-                                        Admin
-                                        </span>
-                                </Link>
-                            </Nav.Link>
-                            : null
-                        }
                     </Nav>
 
                     {profile.auth ?
@@ -179,4 +93,6 @@ const MyNavbar = (props) => {
                     </Nav>
 
                 </Navbar.Collapse></Navbar>
-        </div>*/
+                </div>)
+    }
+    export default UserNavbar;

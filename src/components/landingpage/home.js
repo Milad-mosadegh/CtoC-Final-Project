@@ -31,7 +31,8 @@ const Home = (props) => {
         auth: false,
         userId: false,
         favorities: [],
-        name: false
+        name: false,
+        admin:false
     })
     const getFavorities = async () => {
         if (!localStorage.getItem("c2c-token")) return
@@ -56,7 +57,7 @@ const Home = (props) => {
                             name: res.data.data.firstName,
                             favorities: res.data.data.liked,
                             email: res.data.data.email,
-                            admin: true
+                            admin: res.data.data.admin
                         })
                     else {
                         props.history.push("/signin")

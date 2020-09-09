@@ -27,7 +27,7 @@ export default function Products(props) {
                             name: res.data.data.firstName,
                             favorities: res.data.data.liked,
                             email: res.data.data.email,
-                            admin: true
+                            admin: res.data.data.admin
                         })
                     else {
                         props.history.push("/signin")

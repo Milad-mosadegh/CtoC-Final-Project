@@ -35,11 +35,11 @@ export default function AdminMain(props) {
                 <Tab eventKey="productlist" title="Product List" >
                     <ProductList />
                 </Tab>
-                <Tab eventKey="complains" title="Complains" >
+                <Tab eventKey="complains" title="Complaints" >
                     <Complains />
                 </Tab>
 
-                <Tab eventKey="curries" title="Curries" >
+                <Tab eventKey="curries" title="Queries" >
                     <Curries />
                 </Tab>
             </Tabs>

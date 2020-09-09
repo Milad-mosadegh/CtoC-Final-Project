@@ -58,7 +58,7 @@ export default function SigninModal(props) {
                     favorities: response.data.data.liked,
                     name: response.data.data.firstName,
                     email: response.data.data.email,
-                    admin: true
+                    admin: response.data.data.admin
                 })
                 productSubmitHandler()
             }

@@ -42,7 +42,7 @@ export default function MaterialSignin(props) {
                         name: response.data.data.firstName,
                         favorities: response.data.data.liked,
                         email: response.data.data.email,
-                        admin: true
+                        admin: response.data.data.admin
                     })
                     props.history.push("/dashboard")
                 }
@@ -114,9 +114,11 @@ export default function MaterialSignin(props) {
                     favorities: response.data.data.liked,
                     name: response.data.data.firstName,
                     email: response.data.data.email,
-                    admin: true
+                    admin: response.data.data.admin
                 })
-                props.history.push(`/dashboard`)
+                if(!profile.admin) props.history.push("/dashboard")
+                    else props.history.push("/admin")
+                
 
             }
             else setErrors({ ...errors, authentication: { ...errors.authentication, status: true } })
