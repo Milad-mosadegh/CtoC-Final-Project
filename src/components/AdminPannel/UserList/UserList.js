@@ -1,11 +1,31 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
+import axios from 'axios'
 
 
 
 
 function UserList() {
+    useEffect(()=>{
+        axios.get()
 
+    })
+const  [querries, setQuerries]=useState([{
+    name:"Ather",
+    email:"atherahmad@gmail.com",
+    subject:"TEsing",
+    message:"sjkldafjaklsdjfklajds",
+    timeStamp:"23-11-2020",
+    completed:false
+},
+{
+    name:"Ather",
+    email:"atherahmad@gmail.com",
+    subject:"TEsing",
+    message:"sjkldafjaklsdjfklajds",
+    timeStamp:"23-11-2020",
+    completed:false
+}])
     return (
         <div className="mt-5">
 

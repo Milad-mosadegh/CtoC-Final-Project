@@ -129,7 +129,7 @@ const Home = (props) => {
                                 favoritHandler={favoritHandler}
                                 unAuthenticated={unAuthenticated}
                                 lastSeenProducts={lastSeenProducts}
-                                getLastSeen={getLastSeen} /> 
+                                getLastSeen={getLastSeen} />
                         </div>
                     </div>
 

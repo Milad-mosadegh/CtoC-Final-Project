@@ -6,7 +6,7 @@ import '../styles/main.css'
 import UserList from './UserList/UserList';
 import ProductList from './ProductList/ProductList';
 import Complains from './Complains/Complains';
-import Curries from './Curries/Curries';
+import Curries from './Querries/Querries';
 import MyAccount from './MyAccount/MyAccount';
 
 
