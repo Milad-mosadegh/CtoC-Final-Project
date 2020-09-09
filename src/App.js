@@ -20,6 +20,7 @@ import ConfirmEmail from "./components/signup/confirmEmail"
 import { GlobalContextProvider } from "./components/Context/contextApi"
 import MyNavbar from './components/navbar/navBar';
 import AdminMain from './components/AdminPannel/AdminMain';
+import UserList from './components/AdminPannel/UserList/UserList';
 function App(props) {
     return (
         <div className="App">
@@ -42,6 +43,8 @@ function App(props) {
                         <Route path="/signup" component={MaterialSignup} />
                         <Route path="/dashboard" component={Dashboard} />
                         <Route path="/confirm/:id/:token" component={ConfirmEmail} />
+                        <Route path="/admin/userlist" component={UserList} />
+
                     </Switch>
                 </Router>
             </GlobalContextProvider>

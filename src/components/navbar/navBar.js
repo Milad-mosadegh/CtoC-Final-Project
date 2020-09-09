@@ -73,6 +73,16 @@ const MyNavbar = (props) => {
 
     }, [])
 
+    const adminButtonStyle = {
+        background: '#b72826',
+        padding: "10px",
+        borderRadius: "0px 30px 30px 0px",
+        color: "white",
+        boxShadow: "2px 4px 15px rgba(0, 0, 0, 0.363)"
+    }
+
+
+
     return (
         <div>
             <Navbar expand="lg">
@@ -110,7 +120,10 @@ const MyNavbar = (props) => {
                         {profile.admin ?
                             <Nav.Link id="admin" >
                                 <Link className="text-light text-uppercase" to='/admin'>
-                                    <span className="navTitle">Admin</span>
+                                    <span className="navTitle"
+                                        style={adminButtonStyle}>
+                                        Admin
+                                        </span>
                                 </Link>
                             </Nav.Link>
                             : null
