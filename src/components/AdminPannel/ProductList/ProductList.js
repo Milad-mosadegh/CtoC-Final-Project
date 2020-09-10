@@ -1,7 +1,23 @@
-import React from 'react'
+import React ,{useEffect, useState}from 'react'
 import { Table } from 'react-bootstrap'
 import SearchBar from '../../searchBar/searchbar';
+import axios from 'axios'
+
 function ProductList() {
+
+    useEffect(()=>{
+            
+        axios.get("/api/admin/getproducts",{
+            headers:{
+                'x-auth-token':localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res=>{if(res.data.success) setProducts(res.data.success)})
+            .catch(err=>err)
+
+    },[])
+    const  [products, setProducts]=useState([])
     return (
         <div className="mt-5">
             <div className="active-message-head"></div>
@@ -10,34 +26,28 @@ function ProductList() {
             </div>
 
             <SearchBar />
-
             <Table striped bordered hover className="mt-5">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Creator ID</th>
+                        <th>Category</th>
+                        <th>Date/Time</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td colSpan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                {products.length > 0 ? products.map(data => {
+                        let myDate = new Date(data.timeStamp)
+                        return <tr className="active-message-body" onClick={()=>console.log(" querry selected", data._id)} >
+                            <td>{data._id}</td>
+                            <td>{data.title}</td>
+                            <td>{data.creator}</td>
+                            <td>{data.category}</td>
+                            <td>{data.timeStamp}</td>
+                        </tr>
+                    }
+                    ) : <h4>Currently no Products listed!</h4>}
                 </tbody>
             </Table>
         </div>
