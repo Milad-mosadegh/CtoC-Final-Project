@@ -3,6 +3,8 @@ import { Table } from 'react-bootstrap'
 import SearchBar from '../../searchBar/searchbar';
 import axios from 'axios'
 import ProductDetails from '../../buy/productDetails';
+import AdminRedAlertBox from '../PopupMessage/PopupAdmin';
+import Art from '../../../images/art.jpg'
 
 
 function ProductList(props) {
@@ -20,16 +22,18 @@ function ProductList(props) {
 
     }, [])
     const [products, setProducts] = useState([])
+    const [title, setTitle] = useState('')
+    const [creator, setCreator] = useState('')
 
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    // const [isModalOpen, setIsModalOpen] = useState(false)
     const [productId, setProductId] = useState(false)
 
     const handleClose = () => {
-        setIsModalOpen(false)
+        setAdminRedAlert(false)
 
     }
 
-    const getProducts =(e)=>{
+    const getProducts = (e) => {
 
         console.log("pather ", e.target.value)
         axios.get(`/api/admin/${e.target.value}`, {
@@ -43,14 +47,25 @@ function ProductList(props) {
 
     }
 
+    const [adminRedAlert, setAdminRedAlert] = useState(false)
+
     return (
         <div className="mt-5">
+            {adminRedAlert ?
+                <AdminRedAlertBox
+                    adminRedId={productId}
+                    closeHandler={handleClose}
+                    adminRedBoxTitle={title}
+                    adminredBoxImage={Art}
+                    adminRedCreator={creator}
+
+                /> : null}
+
             <div className="active-message-head"></div>
             <div className="active-message-text">
                 <h1>Product List</h1>
             </div>
-            {/* {isModalOpen ? <PopupAdmin popupAdminTitle="ahsdbva" popupAdminBody="lbfvlsdjbfv" /> : null} */}
-            {isModalOpen ? <ProductDetails showModel={() => setIsModalOpen(true)} handleClose={handleClose} id={productId} {...props} /> : null}
+            {/* {isModalOpen ? <ProductDetails showModel={() => setIsModalOpen(true)} handleClose={handleClose} id={productId} {...props} /> : null} */}
             <SearchBar />
             <Table striped bordered hover className="mt-5">
                 <thead>
@@ -62,11 +77,11 @@ function ProductList(props) {
                         <th>Date/Time</th>
                         <th>Status</th>
                         <th>
-                            <select className="form-control search-slt" 
-                                name="searchCategory" 
+                            <select className="form-control search-slt"
+                                name="searchCategory"
                                 defaultValue={props.category}
-                                onChange={e=>getProducts(e)}>
-    	                        <option value="activeproducts">Active Products</option>
+                                onChange={e => getProducts(e)}>
+                                <option value="activeproducts">Active Products</option>
                                 <option value="inactiveproducts">Inactive Products</option>
                                 <option value="blockedproducts">Blocked Products</option>
                                 <option value="deletedproducts">Deleted Products</option>
@@ -82,7 +97,11 @@ function ProductList(props) {
                             style={{ cursor: "pointer" }}
                             onClick={() => {
                                 setProductId(data._id)
-                                setIsModalOpen(true)
+                                // setIsModalOpen(true)
+                                setAdminRedAlert(true)
+                                setTitle(data.title)
+                                setCreator(data.creator)
+                                console.log(data)
                             }
                             }
                         >
