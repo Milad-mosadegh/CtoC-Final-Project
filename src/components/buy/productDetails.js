@@ -100,7 +100,6 @@ const ProductDetails = (props) => {
                 if(res.data.success) {
                     setShowInactiveAlertBox(false)
                     handleClose()
-                    //props.history.push("/")
                     props.history.push({pathname:"/account",mykey:"activities", subKey:"inactive"})
                 }
             })
@@ -138,7 +137,6 @@ const ProductDetails = (props) => {
             if(res.data.success) {
                 setShowActiveAlertBox(false)
                 handleClose()
-                //props.history.push("/")
                 props.history.push({pathname:"/account",mykey:"activities", subKey:"active"})
             }
         })
@@ -303,8 +301,7 @@ const reportHandler = (id) => setShowReportAlertBox(true)
                     hideAlertBox={()=>setShowReportBox(false)}
                     title={product.title}
                     productId={product._id}
-                    recipentId={product ? product.creator._id : null}
-                    recipentName={product ? product.creator.firstName : null}
+                    creatorId={product ? product.creator._id : null}
                     {...props}
                 />
                 :null  }                                  
