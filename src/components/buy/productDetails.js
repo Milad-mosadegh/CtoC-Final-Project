@@ -41,6 +41,7 @@ const ProductDetails = (props) => {
     const [showMessagePopup, setShowMessagePopup]= useState(false)
     const [showReportAlertBox, setShowReportAlertBox]=useState(false)
     const [showReportBox, setShowReportBox]=useState(false)
+    const [showBlockBox, setShowBlockBox]=useState(false)
 
 
     let color=product?Color.filter(color=>color.id===product.color)[0].value:null
@@ -120,7 +121,6 @@ const ProductDetails = (props) => {
                 if(res.data.success) {
                     setShowSoldAlertBox(false)
                     handleClose()
-                    //props.history.push("/")
                    props.history.push({pathname:"/account",mykey:"activities", subKey:"sold"})
                 }
             })
@@ -156,6 +156,8 @@ const ProductDetails = (props) => {
             }
         })
         .catch(err => err)
+    
+   
 
     const editHandler = (id) => props.history.push(`./editproduct/${id}`)
 
@@ -191,7 +193,24 @@ const messageHandler=async(id)=>{
         setShowSigninModal(true) 
 }
 
-const reportHandler = (id) => setShowReportAlertBox(true)
+const reportHandler = () => setShowReportAlertBox(true)
+
+const blockHandler=(id)=>{
+    console.log("block handler called")
+    axios.post("/api/admin/blockproduct", { data: { id } }, {
+        headers: {
+            'x-auth-token': localStorage.getItem('c2c-token'),
+            'Content-Type': 'application/json'
+        }
+    })
+
+        .then(res => {
+            if(res.data.success) {
+                setShowBlockBox(false)
+                handleClose()
+            }
+        })
+        .catch(err => err)}
 
     return (
         <div className="my-container" show={showModel} onHide={handleClose}>
@@ -223,6 +242,7 @@ const reportHandler = (id) => setShowReportAlertBox(true)
                         status={status}
                         favorit={favorit}
                         messageHandler={messageHandler}
+                        blockHandler={()=>setShowBlockBox(true)}
                         
                     />
                 </div>
@@ -304,7 +324,14 @@ const reportHandler = (id) => setShowReportAlertBox(true)
                     creatorId={product ? product.creator._id : null}
                     {...props}
                 />
-                :null  }                                  
+                :null  }
+            {showBlockBox?
+                 <AlertBox
+                 alertBoxTitle="Block Product" 
+                 alertBoxBody="Are you sure you want to block this product?"
+                 proceedHandler={()=>blockHandler(id)}
+                 hideAlertBox={()=>setShowBlockBox(false)} />
+                :null  }                                     
             </div>
 
     );

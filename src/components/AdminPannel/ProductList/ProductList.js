@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import SearchBar from '../../searchBar/searchbar';
 import axios from 'axios'
-import Modal from 'react-modal'
-import PopupAdmin from '../PopupMessage/PopupAdmin';
 import ProductDetails from '../../buy/productDetails';
 
 
@@ -11,7 +9,7 @@ function ProductList(props) {
 
     useEffect(() => {
 
-        axios.get("/api/admin/getproducts", {
+        axios.get("/api/admin/activeproducts", {
             headers: {
                 'x-auth-token': localStorage.getItem('c2c-token'),
                 'Content-Type': 'application/json'
@@ -31,7 +29,19 @@ function ProductList(props) {
 
     }
 
+    const getProducts =(e)=>{
 
+        console.log("pather ", e.target.value)
+        axios.get(`/api/admin/${e.target.value}`, {
+            headers: {
+                'x-auth-token': localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => { if (res.data.success) setProducts(res.data.success) })
+            .catch(err => err)
+
+    }
 
     return (
         <div className="mt-5">
@@ -50,7 +60,18 @@ function ProductList(props) {
                         <th>Creator ID</th>
                         <th>Category</th>
                         <th>Date/Time</th>
-                        <th></th>
+                        <th>
+                            <select className="form-control search-slt" 
+                                name="searchCategory" 
+                                defaultValue={props.category}
+                                onChange={e=>getProducts(e)}>
+    	                        <option value="activeproducts">Active Products</option>
+                                <option value="inactiveproducts">Inactive Products</option>
+                                <option value="blockedproducts">Blocked Products</option>
+                                <option value="deletedproducts">Deleted Products</option>
+                                <option value="soldproducts">Sold Products</option>
+                                <option value="allproducts">All Products</option>
+                            </select></th>
                     </tr>
                 </thead>
                 <tbody>

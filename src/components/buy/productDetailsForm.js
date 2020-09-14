@@ -28,7 +28,8 @@ const ProductDetailsForm = (props) => {
         activateHandler,
         status,
         favorit,
-        messageHandler } = props
+        messageHandler,
+        blockHandler } = props
 
     const [auth, setAuth] = useState(false)
     const [profile, setProfile] = useContext(GlobalContextContext)
@@ -105,7 +106,12 @@ const ProductDetailsForm = (props) => {
                 </div>
             </div>
             <div className="fixed-bottom">
-                {creatorId ?
+                {profile.admin?
+                <div>
+                    <button className="myIcons myRedButton-lg fa fa-ban" onClick={()=>blockHandler(productId)}/>
+                </div>:
+
+                creatorId ?
                     status!=="sold"?
                     creatorId === profile.userId ?
                         status==="inactive"?
