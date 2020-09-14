@@ -60,6 +60,7 @@ function ProductList(props) {
                         <th>Creator ID</th>
                         <th>Category</th>
                         <th>Date/Time</th>
+                        <th>Status</th>
                         <th>
                             <select className="form-control search-slt" 
                                 name="searchCategory" 
@@ -91,6 +92,7 @@ function ProductList(props) {
                             <td>{data.creator}</td>
                             <td>{data.category}</td>
                             <td>{data.timeStamp}</td>
+                            <td>{data.blocked}</td>
                         </tr>
                     }
                     ) : <h4>Currently no Products listed!</h4>}
