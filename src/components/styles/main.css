@@ -6683,8 +6683,6 @@ nav > .nav-link {
   top: 0;
   width: 50%;
   /* Full width */
-  height: 50%;
-  /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
   background: #eee;
@@ -6697,6 +6695,11 @@ nav > .nav-link {
 
 .adminRedBox .adminRedBox-head {
   background: #b72826;
+  height: 100px;
+}
+
+.adminRedBox .adminBlueBox-head {
+  background: #11213b;
   height: 100px;
 }
 
@@ -6720,6 +6723,23 @@ nav > .nav-link {
       -ms-flex-align: center;
           align-items: center;
   font-size: 15px;
+}
+
+.adminPopupContent {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  margin: 30px;
+}
+
+.bg-gray {
+  background: #d6d6d6;
+  padding: 10px;
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.219);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.219);
 }
 
 * {

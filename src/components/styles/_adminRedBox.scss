@@ -7,7 +7,7 @@
     left: 0;
     top: 0;
     width: 50%; /* Full width */
-    height: 50%; /* Full height */
+    // height: 50%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     // background-color: rgba(216, 216, 216, 0.822);
     background: #eee;
@@ -18,6 +18,11 @@
 
     .adminRedBox-head{
         background: $bestRedColor;
+        height: 100px; 
+    }
+
+     .adminBlueBox-head{
+        background: $bestBlueColor;
         height: 100px; 
     }
 
@@ -38,6 +43,18 @@
         align-items: center;
         font-size: 15px;
     }
-
-  
 }
+
+  .adminPopupContent{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        margin: 30px;
+    }
+    .bg-gray{
+        background: rgb(214, 214, 214);
+        padding: 10px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.219);
+    }
+
+   

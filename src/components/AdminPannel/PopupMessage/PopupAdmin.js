@@ -1,26 +1,69 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import '../../styles/main.css'
 
-function AdminRedAlertBox({ adminRedBoxTitle, closeHandler, adminRedId, adminredBoxImage, adminRedCreator }) {
+
+function AdminRedAlertBox({ adminRedBoxTitle, closeHandler, productId, adminRedBoxImage, adminRedCreator }) {
+    const [product, setProduct] = useState(false)
+    const [bgImage, setBgImage] = useState(false)
+
+
+    useEffect(() => {
+        axios.get(`/api/buy/activeproductdetails/${productId}`, {
+            headers: {
+                'x-auth-token': localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => {
+                if (res.data.success) {
+                    setProduct(res.data.success)
+                        (res.data.success.images.length > 0 ? setBgImage(res.data.success.images[0]) : null)
+                }
+            })
+            .catch(err => err)
+    }, [])
 
     return (
         <div className="adminRedBox">
-            <div className="adminRedBox-head">
-                {/* <button style={{ float: "left", borderRadius: "100px", width: "50px", margin: "20px" }} onClick={closeHandler} className="btn-danger">X</button> */}
-            </div>
+            {console.log("Product in admin", product)}
+            <div className="adminRedBox-head"></div>
             <div className="active-message-text">
-                <h1>{adminRedBoxTitle}</h1>
+                <h1>{product.title}</h1>
             </div>
 
             <div>
-                <img src={adminredBoxImage} width="200px" height="200px" />
+                <img src={bgImage} width="200px" height="200px" />
             </div>
-            <div className="adminredBox">
-                ID:{adminRedId}
+
+            <div className="adminPopupContent">
+
+                <div className="bg-gray m-1">
+                    <strong>User-ID:</strong> {product._id}
+                </div>
+                <div className="bg-gray m-1">
+                    <strong>Name:</strong> {product.firstName}
+                </div>
+
+                <div className="bg-gray m-1">
+                    <strong>Price:</strong> {product.price} €
+                </div>
+                <div className="bg-gray m-1">
+                    <strong>Color:</strong> {product.color}
+                </div>
+
             </div>
-            <div className="adminredBox">
-                Creator:{adminRedCreator}
+
+            <div className="bg-gray mb-5">
+                <strong>Description:</strong> {product.description}
             </div>
+
+            <button style={{ float: "left" }}
+                onClick={closeHandler}
+                className="myRedButton-sm m-1">
+                Close
+                </button>
+
         </div>
     )
 }

@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import SearchBar from '../../searchBar/searchbar';
 import axios from 'axios'
-import ProductDetails from '../../buy/productDetails';
 import AdminRedAlertBox from '../PopupMessage/PopupAdmin';
 import Art from '../../../images/art.jpg'
+
 
 
 function ProductList(props) {
 
     useEffect(() => {
-
         axios.get("/api/admin/activeproducts", {
             headers: {
                 'x-auth-token': localStorage.getItem('c2c-token'),
@@ -21,20 +20,19 @@ function ProductList(props) {
             .catch(err => err)
 
     }, [])
+
+
     const [products, setProducts] = useState([])
     const [title, setTitle] = useState('')
     const [creator, setCreator] = useState('')
-
-    // const [isModalOpen, setIsModalOpen] = useState(false)
     const [productId, setProductId] = useState(false)
+
 
     const handleClose = () => {
         setAdminRedAlert(false)
-
     }
 
     const getProducts = (e) => {
-
         console.log("pather ", e.target.value)
         axios.get(`/api/admin/${e.target.value}`, {
             headers: {
@@ -44,7 +42,6 @@ function ProductList(props) {
         })
             .then(res => { if (res.data.success) setProducts(res.data.success) })
             .catch(err => err)
-
     }
 
     const [adminRedAlert, setAdminRedAlert] = useState(false)
@@ -53,19 +50,18 @@ function ProductList(props) {
         <div className="mt-5">
             {adminRedAlert ?
                 <AdminRedAlertBox
-                    adminRedId={productId}
+                    productId={productId}
                     closeHandler={handleClose}
                     adminRedBoxTitle={title}
-                    adminredBoxImage={Art}
+                    adminRedBoxImage={Art}
                     adminRedCreator={creator}
-
-                /> : null}
+                />
+                : null}
 
             <div className="active-message-head"></div>
             <div className="active-message-text">
                 <h1>Product List</h1>
             </div>
-            {/* {isModalOpen ? <ProductDetails showModel={() => setIsModalOpen(true)} handleClose={handleClose} id={productId} {...props} /> : null} */}
             <SearchBar />
             <Table striped bordered hover className="mt-5">
                 <thead>
@@ -97,7 +93,6 @@ function ProductList(props) {
                             style={{ cursor: "pointer" }}
                             onClick={() => {
                                 setProductId(data._id)
-                                // setIsModalOpen(true)
                                 setAdminRedAlert(true)
                                 setTitle(data.title)
                                 setCreator(data.creator)
