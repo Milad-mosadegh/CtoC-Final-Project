@@ -32,8 +32,18 @@ function ProductList(props) {
         setAdminRedAlert(false)
     }
     const searchData =(searchText,searchCategory)=>{
+
+        console.log(searchCategory, "in searach product")
+
+        let filterType="allproducts";
+        if(searchCategory==="blockedproducts") filterType="blocked"
+            else if(searchCategory==="deletedproducts") filterType="deleted"
+                else if(searchCategory==="activeproducts") filterType="active"
+                    else if(searchCategory==="soldproducts") filterType="sold"
+                        else if(searchCategory==="inactiveproducts") filterType="inactive"
+                            
         console.log(searchText,searchCategory, "comming from search comp")
-        axios.get(`/api/admin/searchproduct/${searchCategory}/${searchText}`, {
+        axios.post(`/api/admin/searchproduct`,{id:searchText, type:filterType }, {
             headers: {
                 'x-auth-token': localStorage.getItem('c2c-token'),
                 'Content-Type': 'application/json'
@@ -92,7 +102,6 @@ function ProductList(props) {
                         <th>ID</th>
                         <th>Title</th>
                         <th>Creator ID</th>
-                        <th>Category</th>
                         <th>Date/Time</th>
                         <th>Status</th>
                     </tr>
@@ -112,10 +121,9 @@ function ProductList(props) {
                             }
                         >
 
-                            <td>{data._id}</td>
+                            <td>{data.refId}</td>
                             <td>{data.title}</td>
                             <td>{data.creator}</td>
-                            <td>{data.category}</td>
                             <td>{data.timeStamp}</td>
                             <td>{data.active?"Active":data.blocked?"Blocked":data.sold?"Sold":data.deleted?"Deleted":"Inactive"}</td>
                         </tr>

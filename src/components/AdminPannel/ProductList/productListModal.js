@@ -63,7 +63,7 @@ function ProductListModal({ closeHandler, productId }) {
             <div className="adminPopupContent">
 
                 <div className="bg-gray m-1">
-                    <strong>Product-ID:</strong> {product._id}
+                    <strong>Product-ID:</strong> {product.refId}
                 </div>
                 <div className="bg-gray m-1">
                     <strong>Creator-ID:</strong> {product.creator}

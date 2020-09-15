@@ -1,8 +1,24 @@
 import React, { useEffect, useState } from 'react'
+import axios from "axios"
 import '../../styles/main.css'
 
 
-function ComplainsPopup({ closeHandler, title, userId, creatorId, message }) {
+function ComplaintModal({ closeHandler, complainId}) {
+
+    const [complainData, setComplainData]=useState({})
+
+    useEffect(() => {
+
+        axios.get(`/api/admin/complaindetails/${complainId}`, {
+            headers: {
+                'x-auth-token': localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => { if (res.data.success) setComplainData(res.data.success) })
+            .catch(err => err)
+
+    }, [])
 
     return (
         <div className="adminRedBox">
@@ -10,20 +26,20 @@ function ComplainsPopup({ closeHandler, title, userId, creatorId, message }) {
             <div className="adminBlueBox-head"></div>
 
             <div className="active-message-text">
-                <h1>{title}</h1>
+                <h1>{complainData.title}</h1>
             </div>
 
             <div className="adminPopupContent">
 
                 <div className="bg-gray m-1">
-                    <strong>User-ID:</strong> {userId}
+                    <strong>User-ID:</strong> {complainData._id}
                 </div>
                 <div className="bg-gray m-1">
-                    <strong>Creator:</strong> {creatorId}
+                    <strong>Product-ID:</strong> {complainData.productId}
                 </div>
             </div>
             <div className="bg-gray mb-5">
-                <strong>Costumer Comments:</strong> <br /> {message}
+                <strong>Costumer Comments:</strong> <br /> {complainData.message}
             </div>
 
             <div className="p-2">
@@ -49,4 +65,4 @@ function ComplainsPopup({ closeHandler, title, userId, creatorId, message }) {
     )
 }
 
-export default ComplainsPopup
+export default ComplaintModal
