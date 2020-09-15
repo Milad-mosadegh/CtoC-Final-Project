@@ -216,6 +216,11 @@
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -576,6 +581,11 @@
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 .bestBlueColor {
   background: #11213b;
 }
@@ -792,6 +802,11 @@
           transform: translateY(-5px);
   -webkit-transition: 0.6s;
   transition: 0.6s;
+}
+
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
 }
 
 .cardImg {
@@ -1042,6 +1057,11 @@
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -1149,6 +1169,8 @@
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .my-container .pd-row-1 .thumbNailImage {
@@ -1608,6 +1630,11 @@
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 .p-s-show {
   width: 100%;
 }
@@ -1939,6 +1966,11 @@
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -2099,14 +2131,12 @@
 }
 
 .lastSeenBox .extra button {
-  width: 100px;
-  height: 30px;
   color: whitesmoke;
   background: #11213b;
   -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
           box-shadow: 0 8px 12px rgba(0, 0, 0, 0.363);
   border: none;
-  font-size: 30px;
+  font-size: 15px;
 }
 
 .homeBanner {
@@ -2516,6 +2546,11 @@
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 .boxes {
   width: 150px;
   height: 150px;
@@ -2864,6 +2899,11 @@
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 .navTitle {
   letter-spacing: 2px;
   -webkit-transition: 0.4s;
@@ -3117,6 +3157,11 @@
           transform: translateY(-5px);
   -webkit-transition: 0.6s;
   transition: 0.6s;
+}
+
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
 }
 
 .myCard {
@@ -3401,6 +3446,11 @@
           transform: translateY(-5px);
   -webkit-transition: 0.6s;
   transition: 0.6s;
+}
+
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
 }
 
 .mySignin {
@@ -3705,21 +3755,14 @@
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 .footer {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-.footer .footerLogo img {
-  width: 60%;
-  height: 65px;
-}
-
-.footer .footerInfo {
+  height: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3731,23 +3774,59 @@
           align-items: center;
 }
 
-.footer .footerLink {
+.footerLogo img {
+  width: 40%;
+  height: 100px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.footerInfo {
+  margin: 0 auto;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.301);
+          box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.301);
+}
+
+.footerInfo2 {
+  margin: 0 auto;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footerLink {
   text-decoration: none;
   color: #11213b;
-  padding: 10px;
+  padding: 40px;
   font-size: 20px;
   font-weight: 300;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
-.footer .footerLink:hover {
+.footerLink:hover {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   letter-spacing: 4px;
 }
 
-.footer .footerLink2 {
+.footerLink2 {
   text-decoration: none;
   color: #11213b;
   padding: 10px;
@@ -3757,7 +3836,7 @@
   transition: 0.5s;
 }
 
-.footer .footerLink2:hover {
+.footerLink2:hover {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   letter-spacing: 4px;
@@ -4008,6 +4087,11 @@
           transform: translateY(-5px);
   -webkit-transition: 0.6s;
   transition: 0.6s;
+}
+
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
 }
 
 .message-wrapper {
@@ -4512,6 +4596,11 @@
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 nav > .nav-link {
   color: #11213b;
 }
@@ -4758,8 +4847,13 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 .contact {
-  height: 100vh;
+  height: 88vh;
   background-image: url("../../images/gmail.png");
   background-position: 500px 600px;
   background-size: cover;
@@ -5003,6 +5097,11 @@ nav > .nav-link {
           transform: translateY(-5px);
   -webkit-transition: 0.6s;
   transition: 0.6s;
+}
+
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
 }
 
 .resetModal {
@@ -5315,6 +5414,11 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 .active-message-head {
   width: 100%;
   height: 120px;
@@ -5601,6 +5705,11 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 .alertBox {
   display: block;
   /* Hidden by default */
@@ -5869,6 +5978,11 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 .s-m-title .popover-header {
   padding: .5rem .75rem;
   width: 200px;
@@ -6111,6 +6225,11 @@ nav > .nav-link {
           transform: translateY(-5px);
   -webkit-transition: 0.6s;
   transition: 0.6s;
+}
+
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
 }
 
 .pdm {
@@ -6395,6 +6514,11 @@ nav > .nav-link {
   transition: 0.6s;
 }
 
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+}
+
 .rpd {
   display: block;
   /* Hidden by default */
@@ -6670,6 +6794,11 @@ nav > .nav-link {
           transform: translateY(-5px);
   -webkit-transition: 0.6s;
   transition: 0.6s;
+}
+
+.modalImageShadow {
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.767);
 }
 
 .adminRedBox {

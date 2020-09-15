@@ -7,8 +7,8 @@ function UserListModal({ closeHandler, userId }) {
     const [user, setUser] = useState('')
     const [bgImage, setBgImage] = useState('')
     const [showUpdate, setShowUpdate] = useState(false)
-    const [admin, setAdmin]=useState(false)
-    const [recordUpdated, setRecordUpdated]=useState(false)
+    const [admin, setAdmin] = useState(false)
+    const [recordUpdated, setRecordUpdated] = useState(false)
 
 
     useEffect(() => {
@@ -29,22 +29,24 @@ function UserListModal({ closeHandler, userId }) {
             .catch(err => err)
     }, [])
 
-    const updateHandler =()=>{
+    const updateHandler = () => {
         console.log("admin status", admin)
 
-         axios.post("/api/admin/updateuser",
-                    {userId,admin},
-                    {headers: {
-                            'x-auth-token': localStorage.getItem('c2c-token'),
-                            'Content-Type': 'application/json'
-                            }
-                    })
-        .then(res=>{
-            if(res.data.success){ 
-                setRecordUpdated(true)
-                setShowUpdate(false)}
-        }) 
-        .catch(err=>err)
+        axios.post("/api/admin/updateuser",
+            { userId, admin },
+            {
+                headers: {
+                    'x-auth-token': localStorage.getItem('c2c-token'),
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => {
+                if (res.data.success) {
+                    setRecordUpdated(true)
+                    setShowUpdate(false)
+                }
+            })
+            .catch(err => err)
     }
     return (
         <div className="adminRedBox">
@@ -53,9 +55,10 @@ function UserListModal({ closeHandler, userId }) {
                 <h3>{user.firstName} {user.lastName}</h3>
             </div>
             <div>
-                 <img
+                <img
                     width="200px" height="200px"
-                    src={`http://localhost:5000/avatars/${bgImage?bgImage:"noimage.png"}`} alt="profile Image" />
+                    className="modalImageShadow"
+                    src={`http://localhost:5000/avatars/${bgImage ? bgImage : "noimage.png"}`} alt="profile Image" />
             </div>
 
             <div className="adminPopupContent">
@@ -88,9 +91,11 @@ function UserListModal({ closeHandler, userId }) {
                     type="checkbox"
                     className="form-check-input"
                     defaultChecked={user.admin}
-                    onClick={() => { setShowUpdate(true)
-                                    setAdmin(!admin)
-                                    setRecordUpdated(false) }} /> <strong>Mark him/her Admin</strong>
+                    onClick={() => {
+                        setShowUpdate(true)
+                        setAdmin(!admin)
+                        setRecordUpdated(false)
+                    }} /> <strong>Mark him/her Admin</strong>
 
             </div>
 
@@ -99,7 +104,7 @@ function UserListModal({ closeHandler, userId }) {
                 className="myRedButton-lg m-1">
                 Close
                 </button>
-            {recordUpdated?<p className="text-success">You have successfully updated the user Access Level.</p>:null}
+            {recordUpdated ? <p className="text-success">You have successfully updated the user Access Level.</p> : null}
             {showUpdate ? <button style={{ float: "right" }}
                 onClick={updateHandler}
                 className="myOrabgeButton-lg m-1">

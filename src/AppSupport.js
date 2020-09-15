@@ -21,6 +21,7 @@ import { GlobalContextContext } from "./components/Context/contextApi"
 import MyNavbar from './components/navbar/navBar';
 import AdminMain from './components/AdminPannel/AdminMain';
 import UserList from './components/AdminPannel/UserList/UserList';
+import MyFooter from './components/footer/footer';
 
 function AppSupport(props) {
     const [profile, setProfile] = useContext(GlobalContextContext)
