@@ -6686,7 +6686,7 @@ nav > .nav-link {
   overflow: auto;
   /* Enable scroll if needed */
   background: #eee;
-  margin: 200px 480px;
+  margin: 150px 480px;
   -webkit-box-shadow: 0 10px 120px black;
           box-shadow: 0 10px 120px black;
   -webkit-transition: 0.5s;

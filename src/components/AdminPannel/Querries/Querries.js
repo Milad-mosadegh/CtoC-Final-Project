@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import axios from 'axios'
-import QueriesPopup from '../PopupMessage/QuriesPopup'
+import QueriesPopup from './QuriesPopup'
 
 function Querries() {
 
@@ -19,6 +19,9 @@ function Querries() {
     }, [])
     const [querries, setQuerries] = useState([])
     const [productId, setProductId] = useState(false)
+    const [name, setName] = useState('')
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
 
     const [queriesPopup, setQueriesPopup] = useState(false)
 
@@ -27,7 +30,15 @@ function Querries() {
     }
     return (
         <div className="mt-5">
-            {queriesPopup ? <QueriesPopup productMessageId={productId} closeHandler={closeHandler} /> : null}
+            {queriesPopup ? <QueriesPopup
+                productMessageId={productId}
+                closeHandler={closeHandler}
+                userId={productId}
+                name={name}
+                description={description}
+                title="Queries "
+
+            /> : null}
 
             <div className="active-message-head"></div>
             <div className="active-message-text">
@@ -47,10 +58,12 @@ function Querries() {
                 <tbody>
                     {querries.length > 0 ? querries.map(data => {
                         let myDate = new Date(data.timeStamp)
-                        return <tr className="active-message-body"
+                        return <tr key={data._id} className="active-message-body"
                             onClick={() => {
                                 setQueriesPopup(true)
                                 setProductId(data._id)
+                                setDescription(data.subject)
+                                setName(data.name)
                             }
                             }
                             style={{ cursor: "pointer" }}

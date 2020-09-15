@@ -9,6 +9,7 @@ function AdminRedAlertBox({ adminRedBoxTitle, closeHandler, productId, adminRedB
 
 
     useEffect(() => {
+        // let response = await GET("/api/account/profile")
         axios.get(`/api/buy/activeproductdetails/${productId}`, {
             headers: {
                 'x-auth-token': localStorage.getItem('c2c-token'),
@@ -55,7 +56,7 @@ function AdminRedAlertBox({ adminRedBoxTitle, closeHandler, productId, adminRedB
             </div>
 
             <div className="bg-gray mb-5">
-                <strong>Description:</strong> {product.description}
+                <strong>Description:</strong> <br /> {product.description}
             </div>
 
             <button style={{ float: "left" }}

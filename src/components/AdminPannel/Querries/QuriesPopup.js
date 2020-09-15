@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react'
-
-import axios from 'axios'
 import '../../styles/main.css'
 
 
-function QueriesPopup({ closeHandler }) {
-
-
+function QueriesPopup({ closeHandler, title, userId, name, description }) {
 
     return (
         <div className="adminRedBox">
@@ -14,20 +10,20 @@ function QueriesPopup({ closeHandler }) {
             <div className="adminBlueBox-head"></div>
 
             <div className="active-message-text">
-                <h1>Title</h1>
+                <h1>{title}</h1>
             </div>
 
             <div className="adminPopupContent">
 
                 <div className="bg-gray m-1">
-                    <strong>User-ID:</strong> 187641u3hbf17y
+                    <strong>User-ID:</strong> {userId}
                 </div>
                 <div className="bg-gray m-1">
-                    <strong>Name:</strong> Milad
+                    <strong>Name:</strong> {name}
                 </div>
             </div>
             <div className="bg-gray mb-5">
-                <strong>Description:</strong>  oaiuh ajv oiuhoanvjo naue ;ojna uibapeojvn biuv;ajfnv hi[ori jnf] oaiuh ajv oiuhoanvjo naue ;ojna uibapeojvn biuv;ajfnv hi[ori jnf]
+                <strong>Description:</strong> <br /> {description}
             </div>
 
             <div className="p-2">
