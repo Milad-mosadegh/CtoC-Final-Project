@@ -7,11 +7,12 @@ function ProductListModal({ closeHandler, productId }) {
     const [product, setProduct] = useState(false)
     const [bgImage, setBgImage] = useState(false)
     const [showUpdate, setShowUpdate] = useState(false)
+    const [blocked, setBlocked]=useState(false)
 
 
     useEffect(() => {
-        // let response = await GET("/api/account/profile")
-        axios.get(`/api/buy/activeproductdetails/${productId}`, {
+
+        axios.get(`/api/admin/productdetails/${productId}`, {
             headers: {
                 'x-auth-token': localStorage.getItem('c2c-token'),
                 'Content-Type': 'application/json'
@@ -20,11 +21,30 @@ function ProductListModal({ closeHandler, productId }) {
             .then(res => {
                 if (res.data.success) {
                     setProduct(res.data.success)
-                    console.log("productListModal", res.data.data);
+                    setBlocked(res.data.success.blocked)
                 }
             })
             .catch(err => err)
     }, [])
+
+    const updateHandler=()=>{
+        axios.post("/api/admin/blockproduct", { id:productId }, {
+            headers: {
+                'x-auth-token': localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        })
+    
+            .then(res => {
+                if(res.data.success) {
+
+                    setBlocked(!blocked)
+                    setShowUpdate(false)
+                }
+            })
+            .catch(err => err)
+        }
+    
 
     return (
         <div className="adminRedBox">
@@ -44,25 +64,20 @@ function ProductListModal({ closeHandler, productId }) {
             <div className="adminPopupContent">
 
                 <div className="bg-gray m-1">
-                    <strong>User-ID:</strong> {product._id}
+                    <strong>Product-ID:</strong> {product._id}
                 </div>
                 <div className="bg-gray m-1">
-                    <strong>Name:</strong> {product.firstName}
+                    <strong>Creator-ID:</strong> {product.creator}
                 </div>
 
                 <div className="bg-gray m-1">
                     <strong>Price:</strong> {product.price} €
                 </div>
-                <div className="bg-gray m-1">
-                    <strong>Color:</strong> {product.color}
-                </div>
-                <div className="bg-gray m-1">
-                    <strong>Access Level:</strong> {product.admin ? "Admin" : "User"}
-                </div>
-                <div className="bg-gray m-1 mb-2">
-                    <input id="exampleCheck1" type="checkbox" className="form-check-input" value={product.admin} onChange={() => { setShowUpdate(true) }} /> <strong>Block it</strong>
+                {product.active?<div className="bg-gray m-1 mb-2">
+                    <input id="exampleCheck1" type="checkbox" className="form-check-input" value={product.admin} onChange={() => { setShowUpdate(true) }} />
+                    <strong>Block It.</strong>
 
-                </div>
+                </div>:null}
 
             </div>
 
@@ -75,9 +90,9 @@ function ProductListModal({ closeHandler, productId }) {
                 className="myRedButton-lg m-1">
                 Close
                 </button>
-
+            {blocked?<p>You have successfully updated thie Product status!</p>:null}
             {showUpdate ? <button style={{ float: "right" }}
-                onClick={closeHandler}
+                onClick={updateHandler}
                 className="myOrabgeButton-lg m-1">
                 Update
                 </button> : null}
