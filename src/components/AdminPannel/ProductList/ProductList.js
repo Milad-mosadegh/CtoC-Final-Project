@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
-import SearchBar from '../../searchBar/searchbar';
 import axios from 'axios'
 import ProductListModal from './productListModal';
 import Art from '../../../images/art.jpg'
-
+import AdminSearch from '../Search/adminSearch';
 
 
 function ProductList(props) {
+
+    const [products, setProducts] = useState([])
+    const [title, setTitle] = useState('')
+    const [creator, setCreator] = useState('')
+    const [productId, setProductId] = useState(false)
 
     useEffect(() => {
         axios.get("/api/admin/activeproducts", {
@@ -22,19 +26,28 @@ function ProductList(props) {
     }, [])
 
 
-    const [products, setProducts] = useState([])
-    const [title, setTitle] = useState('')
-    const [creator, setCreator] = useState('')
-    const [productId, setProductId] = useState(false)
 
 
     const handleClose = () => {
         setAdminRedAlert(false)
     }
+    const searchData =(searchText,searchCategory)=>{
+        console.log(searchText,searchCategory, "comming from search comp")
+        axios.get(`/api/admin/searchproduct/${searchCategory}/${searchText}`, {
+            headers: {
+                'x-auth-token': localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => { 
+                    if (res.data.success) setProducts([res.data.success])
+                    else setProducts([])         })
+            .catch(err => err)
 
-    const getProducts = (e) => {
-        console.log("pather ", e.target.value)
-        axios.get(`/api/admin/${e.target.value}`, {
+    }
+    const getProducts = (productType) => {
+
+        axios.get(`/api/admin/${productType}`, {
             headers: {
                 'x-auth-token': localStorage.getItem('c2c-token'),
                 'Content-Type': 'application/json'
@@ -62,7 +75,17 @@ function ProductList(props) {
             <div className="active-message-text">
                 <h1>Product List</h1>
             </div>
-            <SearchBar />
+            <AdminSearch
+                searchData={searchData}
+                getData={getProducts} 
+                options={[
+                    {name:"Active Products", value:"activeproducts"},
+                    {name:"Inctive Products", value:"inactiveproducts"}, 
+                    {name:"Blocked Products", value:"blockedproducts"},
+                    {name:"Deleted Products", value:"deletedproducts"},
+                    {name:"Sold Products", value:"soldproducts"},
+                    {name:"All Products", value:"allproducts"} ]}
+/>
             <Table striped bordered hover className="mt-5">
                 <thead>
                     <tr>
@@ -72,23 +95,11 @@ function ProductList(props) {
                         <th>Category</th>
                         <th>Date/Time</th>
                         <th>Status</th>
-                        <th>
-                            <select className="form-control search-slt"
-                                name="searchCategory"
-                                defaultValue={props.category}
-                                onChange={e => getProducts(e)}>
-                                <option value="activeproducts">Active Products</option>
-                                <option value="inactiveproducts">Inactive Products</option>
-                                <option value="blockedproducts">Blocked Products</option>
-                                <option value="deletedproducts">Deleted Products</option>
-                                <option value="soldproducts">Sold Products</option>
-                                <option value="allproducts">All Products</option>
-                            </select></th>
                     </tr>
                 </thead>
+                
                 <tbody>
-                    {products.length > 0 ? products.map(data => {
-                        let myDate = new Date(data.timeStamp)
+                {products.length > 0 ? products.map(data => {
                         return <tr className="active-message-body"
                             style={{ cursor: "pointer" }}
                             onClick={() => {
@@ -101,7 +112,7 @@ function ProductList(props) {
                             }
                         >
 
-                            <td>{data.refId}</td>
+                            <td>{data._id}</td>
                             <td>{data.title}</td>
                             <td>{data.creator}</td>
                             <td>{data.category}</td>
@@ -109,9 +120,11 @@ function ProductList(props) {
                             <td>{data.active?"Active":data.blocked?"Blocked":data.sold?"Sold":data.deleted?"Deleted":"Inactive"}</td>
                         </tr>
                     }
-                    ) : <h4>Currently no Products listed!</h4>}
+                    ) : null}
                 </tbody>
+                
             </Table>
+            {products.length > 0 ?null:<div><h3>Currently there are no Products to show</h3></div> }
         </div>
     )
 }
