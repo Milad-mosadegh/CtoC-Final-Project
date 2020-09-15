@@ -54,9 +54,10 @@ function ProductListModal({ closeHandler, productId }) {
                 <h1>{product.title}</h1>
             </div>
 
-            <div>
+            <div >
                 <img
-                    width="200px" height="200px"
+                    width="180px" height="200px"
+                    className="modalImageShadow"
                     src={`http://localhost:5000/avatars/${bgImage}`} alt="profile Image" />
             </div>
 

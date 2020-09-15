@@ -32,7 +32,7 @@ const Home = (props) => {
         userId: false,
         favorities: [],
         name: false,
-        admin:false
+        admin: false
     })
     const getFavorities = async () => {
         if (!localStorage.getItem("c2c-token")) return
@@ -136,13 +136,13 @@ const Home = (props) => {
                     <div className="homeBanner"></div>
 
                     <div className="darkWhite p-5">
-                        <h2 className='mb-5'> See What we Have in Categories</h2>
+                        <h2 className='mb-5'> See What We Have In Categories</h2>
                         <div className="container">
                             <SlideShow />
                         </div>
                     </div>
 
-                    <MyFooter /> 
+                    <MyFooter />
 
                 </div>
             }
