@@ -21,7 +21,7 @@ function ProductListModal({ closeHandler, productId }) {
                 if (res.data.success) {
                     setProduct(res.data.success)
                     console.log("productListModal", res.data.data);
-                    (res.data.success.images.length ? setBgImage(res.data.success.images) : null)
+                    // (res.data.success.images.length ? setBgImage(res.data.success.images) : null)
                 }
             })
             .catch(err => err)
