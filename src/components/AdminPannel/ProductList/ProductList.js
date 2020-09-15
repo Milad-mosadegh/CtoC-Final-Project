@@ -101,12 +101,12 @@ function ProductList(props) {
                             }
                         >
 
-                            <td>{data._id}</td>
+                            <td>{data.refId}</td>
                             <td>{data.title}</td>
                             <td>{data.creator}</td>
                             <td>{data.category}</td>
                             <td>{data.timeStamp}</td>
-                            <td>{data.blocked}</td>
+                            <td>{data.active?"Active":data.blocked?"Blocked":data.sold?"Sold":data.deleted?"Deleted":"Inactive"}</td>
                         </tr>
                     }
                     ) : <h4>Currently no Products listed!</h4>}
