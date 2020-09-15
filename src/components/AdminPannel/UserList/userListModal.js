@@ -64,7 +64,11 @@ function UserListModal({ closeHandler }) {
             </div>
 
             <div className="bg-gray m-1 mb-2">
-                <input type="checkbox" value={product.admin} onChange={() => { setShowUpdate(true) }} /> <strong>Mark him/her Admin</strong>
+                <input id="exampleCheck1"
+                    type="checkbox"
+                    className="form-check-input"
+                    value={product.admin}
+                    onChange={() => { setShowUpdate(true) }} /> <strong>Mark him/her Admin</strong>
 
             </div>
 

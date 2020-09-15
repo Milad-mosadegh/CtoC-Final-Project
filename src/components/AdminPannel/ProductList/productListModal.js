@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react'
 import '../../styles/main.css'
 
 
-function AdminRedAlertBox({ adminRedBoxTitle, closeHandler, productId, adminRedBoxImage, adminRedCreator }) {
+function ProductListModal({ closeHandler, productId }) {
     const [product, setProduct] = useState(false)
     const [bgImage, setBgImage] = useState(false)
+    const [showUpdate, setShowUpdate] = useState(false)
 
 
     useEffect(() => {
@@ -19,7 +20,8 @@ function AdminRedAlertBox({ adminRedBoxTitle, closeHandler, productId, adminRedB
             .then(res => {
                 if (res.data.success) {
                     setProduct(res.data.success)
-                        (res.data.success.images.length > 0 ? setBgImage(res.data.success.images[0]) : null)
+                    console.log("productListModal", res.data.data);
+                    (res.data.success.images.length ? setBgImage(res.data.success.images) : null)
                 }
             })
             .catch(err => err)
@@ -34,7 +36,9 @@ function AdminRedAlertBox({ adminRedBoxTitle, closeHandler, productId, adminRedB
             </div>
 
             <div>
-                <img src={bgImage} width="200px" height="200px" />
+                <img
+                    width="200px" height="200px"
+                    src={`http://localhost:5000/avatars/${bgImage}`} alt="profile Image" />
             </div>
 
             <div className="adminPopupContent">
@@ -52,6 +56,13 @@ function AdminRedAlertBox({ adminRedBoxTitle, closeHandler, productId, adminRedB
                 <div className="bg-gray m-1">
                     <strong>Color:</strong> {product.color}
                 </div>
+                <div className="bg-gray m-1">
+                    <strong>Access Level:</strong> {product.admin ? "Admin" : "User"}
+                </div>
+                <div className="bg-gray m-1 mb-2">
+                    <input id="exampleCheck1" type="checkbox" className="form-check-input" value={product.admin} onChange={() => { setShowUpdate(true) }} /> <strong>Block it</strong>
+
+                </div>
 
             </div>
 
@@ -61,12 +72,19 @@ function AdminRedAlertBox({ adminRedBoxTitle, closeHandler, productId, adminRedB
 
             <button style={{ float: "left" }}
                 onClick={closeHandler}
-                className="myRedButton-sm m-1">
+                className="myRedButton-lg m-1">
                 Close
                 </button>
+
+            {showUpdate ? <button style={{ float: "right" }}
+                onClick={closeHandler}
+                className="myOrabgeButton-lg m-1">
+                Update
+                </button> : null}
+
 
         </div>
     )
 }
 
-export default AdminRedAlertBox
+export default ProductListModal

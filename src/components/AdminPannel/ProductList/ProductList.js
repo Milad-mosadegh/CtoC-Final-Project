@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import SearchBar from '../../searchBar/searchbar';
 import axios from 'axios'
-import AdminRedAlertBox from '../PopupMessage/PopupAdmin';
+import ProductListModal from './productListModal';
 import Art from '../../../images/art.jpg'
 
 
@@ -49,7 +49,7 @@ function ProductList(props) {
     return (
         <div className="mt-5">
             {adminRedAlert ?
-                <AdminRedAlertBox
+                <ProductListModal
                     productId={productId}
                     closeHandler={handleClose}
                     adminRedBoxTitle={title}
