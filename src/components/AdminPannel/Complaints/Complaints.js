@@ -20,11 +20,28 @@ function Complains(props) {
             .catch(err => err)
 
     }, [])
-    const [complain, setComplain] = useState([])
+
+    console.log(complainsInfo);
+
+    const [complain, setComplain] = useState()
+    const closeHandler = () => {
+        setComplain(false)
+    }
+
+    const [title, setTitle] = useState()
+    const [userId, setUserId] = useState()
+    const [creatorId, setCreatorId] = useState()
+    const [message, setMessage] = useState()
+
 
     return (
         <div className="mt-5">
-            {complain ? <ComplainsPopup /> : null}
+            {complain ? <ComplainsPopup
+                title={title}
+                userId={userId}
+                creatorId={creatorId}
+                message={message}
+                closeHandler={closeHandler} /> : null}
             <div className="active-message-head"></div>
             <div className="active-message-text">
                 <h1>Customer Complains</h1>
@@ -41,11 +58,15 @@ function Complains(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {/*  "_id":"5f58cd3c9f182f7d1cc6c053","title":"Robot for sell","timeStamp":"2020-09-09T12:40:28.893Z" */}
+
                     {complainsInfo.length > 0 ? complainsInfo.map(data => {
                         let myDate = new Date(data.timeStamp)
                         return <tr className="active-message-body" onClick={() => {
                             setComplain(true)
+                            setTitle(data.title)
+                            setUserId(data._id)
+                            setCreatorId(data.creatorId)
+                            setMessage(data.message)
                         }} >
                             <td>{data.productId}</td>
                             <td>{data.title}</td>
