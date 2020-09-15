@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import axios from 'axios'
-import QueriesPopup from './QuriesPopup'
+import QuerryModal from './querryModal'
 
 function Querries() {
 
@@ -18,26 +18,17 @@ function Querries() {
 
     }, [])
     const [querries, setQuerries] = useState([])
-    const [productId, setProductId] = useState(false)
-    const [name, setName] = useState('')
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
-
-    const [queriesPopup, setQueriesPopup] = useState(false)
+    const [querryId, setQuerryId] = useState(false)
+    const [showQuerryModal, setShowQuerryModal] = useState(false)
 
     const closeHandler = () => {
-        setQueriesPopup(false)
+        setShowQuerryModal(false)
     }
     return (
         <div className="mt-5">
-            {queriesPopup ? <QueriesPopup
-                productMessageId={productId}
+            {showQuerryModal ? <QuerryModal
+                querryId={querryId}
                 closeHandler={closeHandler}
-                userId={productId}
-                name={name}
-                description={description}
-                title="Queries "
-
             /> : null}
 
             <div className="active-message-head"></div>
@@ -48,7 +39,7 @@ function Querries() {
             <Table striped bordered hover className="mt-5">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Query ID</th>
                         <th>Sender</th>
                         <th>Subject</th>
                         <th>Date/Time</th>
@@ -60,10 +51,8 @@ function Querries() {
                         let myDate = new Date(data.timeStamp)
                         return <tr key={data._id} className="active-message-body"
                             onClick={() => {
-                                setQueriesPopup(true)
-                                setProductId(data._id)
-                                setDescription(data.subject)
-                                setName(data.name)
+                                setShowQuerryModal(true)
+                                setQuerryId(data._id)
                             }
                             }
                             style={{ cursor: "pointer" }}

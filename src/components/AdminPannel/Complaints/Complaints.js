@@ -52,6 +52,7 @@ function Complains() {
                         <th>Product Id   </th>
                         <th>Date/Time</th>
                         <th>Status</th>
+                        <th>Response</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,6 +67,7 @@ function Complains() {
                             <td>{data.productId}</td>
                             <td>{data.timeStamp}</td>
                             <td>{data.completed ? "Completed" : "In Proccess"}</td>
+                            <td>{data.completed ? data.valid? "Valid":"Invalid"  : "Decision Pending"}</td>
                         </tr>
                     }
                     ) : <h4>You have no Complaints!</h4>}
