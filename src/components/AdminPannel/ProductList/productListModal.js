@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import PictureSlider from './pictureSlider'
 import '../../styles/main.css'
 
 
@@ -21,6 +22,7 @@ function ProductListModal({ closeHandler, productId ,getProducts}) {
             .then(res => {
                 if (res.data.success) {
                     setProduct(res.data.success)
+                    if(product.images.length>0)setBgImage(product.images[0])
                 }
             })
             .catch(err => err)
@@ -51,12 +53,16 @@ function ProductListModal({ closeHandler, productId ,getProducts}) {
             <div className="active-message-text">
                 <h1>{product.title}</h1>
             </div>
-
-            <div >
-                <img
+            <div style={{height:"200px"}} >
+{/*                 <img
                     width="180px" height="200px"
                     className="modalImageShadow"
-                    src={`http://localhost:5000/avatars/${bgImage}`} alt="profile Image" />
+                    src={`http://localhost:5000/avatars/${product?product.images[0]:"noimage.png"}`} alt="profile Image" /> */}
+
+                    {product?product.images.map(key=><img
+                    width="180px" height="200px"
+                    className="modalImageShadow"
+                    src={`http://localhost:5000/avatars/${key}`} alt="profile Image" />):null}
             </div>
 
             <div className="adminPopupContent">
