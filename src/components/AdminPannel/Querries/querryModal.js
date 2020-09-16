@@ -3,10 +3,10 @@ import axios from "axios"
 import '../../styles/main.css'
 
 
-function QuerryModal({ closeHandler, querryId }) {
+function QuerryModal({ closeHandler, querryId,getData }) {
 
     const [querry,setQuerry]=useState(false)
-   
+    const [formError, setFormError]=useState(false)
     useEffect(() => {
         axios.get(`/api/admin/querrydetails/${querryId}`, {
         headers: {
@@ -18,6 +18,21 @@ function QuerryModal({ closeHandler, querryId }) {
         .catch(err => err)
 
 }, [])
+    const submitHandler=(e)=>{
+        e.preventDefault()
+        if(e.target.response.value.length<15) return setFormError(true)
+        axios.post("/api/admin/handlequerry",{id:querryId,  response:e.target.response.value, email:querry.email, name:querry.name,subject:querry.subject},{
+            headers: {
+                'x-auth-token': localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => { 
+                if (res.data.success) closeHandler()
+                    getData() })
+            .catch(err => err)
+
+    }
 
     return (
         <div className="adminRedBox">
@@ -49,21 +64,32 @@ function QuerryModal({ closeHandler, querryId }) {
             <div className="bg-gray mb-5">
                 <strong>Details</strong> <br /> {querry.message}
             </div>
-
+        <form onSubmit={submitHandler}>
             <div className="p-2">
-                <textarea style={{ width: "100%", height: "200px", padding: "10px" }} placeholder="Write answer"></textarea>
+                <textarea 
+                    style={{ width: "100%", height: "100px", padding: "10px" }} 
+                    name="response"
+                    placeholder="Write answer"
+                    disabled={querry.completed}
+                    value={querry.response} 
+                    onChange={()=>setFormError(false)}/>
+                    {formError?<small className="text-danger">* Please reply with atleast 15 characters.</small>:null}
             </div>
 
-            <button style={{ float: "center" }}
-                // onClick={closeHandler}
-                className="myBlueButton-lg m-1">
-                Send
-                </button>
+            {!querry.completed?<button style={{ float: "center" }} 
+                        type="submit"
+                        className="myBlueButton-lg m-1">
+                    Reply
+                    </button> 
+                	
+                    :null}
+
             <button style={{ float: "center" }}
                 onClick={closeHandler}
                 className="myRedButton-lg m-1">
                 Close
                 </button>
+            </form>
         </div>
     )
 }

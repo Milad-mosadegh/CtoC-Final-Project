@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import '../../styles/main.css'
 
 
-function UserListModal({ closeHandler, userId }) {
+function UserListModal({ closeHandler, userId, getUserList }) {
     const [user, setUser] = useState('')
     const [bgImage, setBgImage] = useState('')
     const [showUpdate, setShowUpdate] = useState(false)
@@ -42,8 +42,8 @@ function UserListModal({ closeHandler, userId }) {
             })
             .then(res => {
                 if (res.data.success) {
-                    setRecordUpdated(true)
-                    setShowUpdate(false)
+                    getUserList()
+                    closeHandler()
                 }
             })
             .catch(err => err)
@@ -99,13 +99,13 @@ function UserListModal({ closeHandler, userId }) {
 
             </div>
 
-            <button style={{ float: "left" }}
+            <button style={{ float: "center" }}
                 onClick={closeHandler}
                 className="myRedButton-lg m-1">
                 Close
                 </button>
             {recordUpdated ? <p className="text-success">You have successfully updated the user Access Level.</p> : null}
-            {showUpdate ? <button style={{ float: "right" }}
+            {showUpdate ? <button style={{ float: "center" }}
                 onClick={updateHandler}
                 className="myOrabgeButton-lg m-1">
                 Update

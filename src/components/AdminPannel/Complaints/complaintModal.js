@@ -3,7 +3,7 @@ import axios from "axios"
 import '../../styles/main.css'
 
 
-function ComplaintModal({ closeHandler, complainId}) {
+function ComplaintModal({ closeHandler, complainId, getComplaints}) {
 
     const [complainData, setComplainData]=useState({})
     const [selectError, setSelectError]=useState(false)
@@ -34,7 +34,10 @@ function ComplaintModal({ closeHandler, complainId}) {
                 'Content-Type': 'application/json'
             }
         })
-            .then(res => { if (res.data.success) setComplainData(res.data.success) })
+            .then(res => { if (res.data.success) {
+                                        getComplaints()
+                                        closeHandler()
+            } })
             .catch(err => err)
 
 

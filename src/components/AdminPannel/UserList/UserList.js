@@ -19,6 +19,18 @@ function UserList() {
             .catch(err => err)
 
     }, [])
+
+    const getUserList=()=>{
+        axios.get("/api/admin/getuserlist", {
+            headers: {
+                'x-auth-token': localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => { if (res.data.success) setUsers(res.data.success) })
+            .catch(err => err)
+    }
+
     const closeHandler = () => {
         setUserModel(false)
     }
@@ -28,7 +40,7 @@ function UserList() {
     const [userId, setUserId] = useState(false)
     return (
         <div className="mt-5">
-            {showUserModel ? <UserListModal closeHandler={closeHandler} userId={userId} /> : null}
+            {showUserModel ? <UserListModal closeHandler={closeHandler} userId={userId} getUserList={getUserList} /> : null}
             <div className="active-message-head"></div>
             <div className="active-message-text">
                 <h1>User List</h1>

@@ -42,7 +42,7 @@ function ProductList(props) {
                     else if(searchCategory==="soldproducts") filterType="sold"
                         else if(searchCategory==="inactiveproducts") filterType="inactive"
                             
-        console.log(searchText,searchCategory, "comming from search comp")
+
         axios.post(`/api/admin/searchproduct`,{id:searchText, type:filterType }, {
             headers: {
                 'x-auth-token': localStorage.getItem('c2c-token'),
@@ -74,6 +74,7 @@ function ProductList(props) {
             {adminRedAlert ?
                 <ProductListModal
                     productId={productId}
+                    getProducts={getProducts}
                     closeHandler={handleClose}
                     adminRedBoxTitle={title}
                     adminRedBoxImage={Art}

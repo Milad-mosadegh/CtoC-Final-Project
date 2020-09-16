@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import '../../styles/main.css'
 
 
-function ProductListModal({ closeHandler, productId }) {
+function ProductListModal({ closeHandler, productId ,getProducts}) {
     const [product, setProduct] = useState(false)
     const [bgImage, setBgImage] = useState(false)
     const [showUpdate, setShowUpdate] = useState(false)
@@ -21,7 +21,6 @@ function ProductListModal({ closeHandler, productId }) {
             .then(res => {
                 if (res.data.success) {
                     setProduct(res.data.success)
-                    setBlocked(res.data.success.blocked)
                 }
             })
             .catch(err => err)
@@ -37,9 +36,8 @@ function ProductListModal({ closeHandler, productId }) {
     
             .then(res => {
                 if(res.data.success) {
-
-                    setBlocked(!blocked)
-                    setShowUpdate(false)
+                    getProducts("activeproducts")
+                    closeHandler()
                 }
             })
             .catch(err => err)
@@ -73,11 +71,29 @@ function ProductListModal({ closeHandler, productId }) {
                 <div className="bg-gray m-1">
                     <strong>Price:</strong> {product.price} €
                 </div>
-                {product.active?<div className="bg-gray m-1 mb-2">
-                    <input id="exampleCheck1" type="checkbox" className="form-check-input" value={product.admin} onChange={() => { setShowUpdate(true) }} />
+                <div className="bg-gray m-1 mb-2">
+                    {product.blocked?
+                    <input id="exampleCheck1" 
+                        type="checkbox"
+                        className="form-check-input" 
+                        checked={true}
+                        disabled={true } />
+
+                    :product.active?
+                    <input id="exampleCheck2" 
+                        type="checkbox"
+                        className="form-check-input" 
+                        onChange={() => { setShowUpdate(true) }} />
+
+                    :<input id="exampleCheck2" 
+                    type="checkbox"
+                    className="form-check-input"
+                    disabled={true }  
+                    />}
+
                     <strong>Block It.</strong>
 
-                </div>:null}
+                </div>
 
             </div>
 
@@ -85,13 +101,13 @@ function ProductListModal({ closeHandler, productId }) {
                 <strong>Description:</strong> <br /> {product.description}
             </div>
 
-            <button style={{ float: "left" }}
+            <button style={{ float: "center" }}
                 onClick={closeHandler}
                 className="myRedButton-lg m-1">
                 Close
                 </button>
             {blocked?<p>You have successfully updated thie Product status!</p>:null}
-            {showUpdate ? <button style={{ float: "right" }}
+            {showUpdate? <button style={{ float: "center" }}
                 onClick={updateHandler}
                 className="myOrabgeButton-lg m-1">
                 Update

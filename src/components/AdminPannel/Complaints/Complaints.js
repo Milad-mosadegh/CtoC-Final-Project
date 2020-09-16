@@ -22,6 +22,17 @@ function Complains() {
             .catch(err => err)
 
     }, [])
+    
+    const getComplaints =()=>{
+        axios.get("/api/admin/getcomplaints", {
+            headers: {
+                'x-auth-token': localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => { if (res.data.success) setComplainsList(res.data.success) })
+            .catch(err => err)
+    }
 
     const closeHandler = () => {
         setShowComplainModal(false)
@@ -37,7 +48,8 @@ function Complains() {
 
             {showComplainModal ? <ComplaintModal
                 complainId={complainId}
-                closeHandler={closeHandler} /> : null}
+                closeHandler={closeHandler}
+                getComplaints={getComplaints} /> : null}
 
             <div className="active-message-head"></div>
             <div className="active-message-text">

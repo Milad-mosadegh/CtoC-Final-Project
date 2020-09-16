@@ -21,6 +21,17 @@ function Querries() {
     const [querryId, setQuerryId] = useState(false)
     const [showQuerryModal, setShowQuerryModal] = useState(false)
 
+    const getData=()=>{
+        axios.get("/api/admin/getquerries", {
+            headers: {
+                'x-auth-token': localStorage.getItem('c2c-token'),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => { if (res.data.success) setQuerries(res.data.success) })
+            .catch(err => err)
+    }
+
     const closeHandler = () => {
         setShowQuerryModal(false)
     }
@@ -29,6 +40,7 @@ function Querries() {
             {showQuerryModal ? <QuerryModal
                 querryId={querryId}
                 closeHandler={closeHandler}
+                getData={getData}
             /> : null}
 
             <div className="active-message-head"></div>
