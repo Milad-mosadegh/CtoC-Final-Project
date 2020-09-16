@@ -44,7 +44,7 @@ function AppSupport(props) {
                         <Route path="/signup" component={MaterialSignup} />
                         <Route path="/dashboard" component={Dashboard} />
                         <Route path="/confirm/:id/:token" component={ConfirmEmail} />
-                        <Route path="/admin/userlist" component={UserList} />
+
 
                     </Switch>
                 </Router>

@@ -1,5 +1,5 @@
 import React from 'react'
-import MyProfile from '../../account/profile/mainProfile'
+import MyProfile from './mainProfile'
 
 function MyAccount(props) {
     return (
